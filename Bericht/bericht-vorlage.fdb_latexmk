@@ -1,18 +1,18 @@
 # Fdb version 4
-["biber bericht-vorlage"] 1702840506 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1702840552 0
+["biber bericht-vorlage"] 0 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1702844115 -1
   "./literatur.bib" 1702836148 1681 8dc34e7b8306256f9952c9c56902c339 ""
-  "bericht-vorlage.bcf" 1702840551 107766 4b1af91736875f9e36ae239646055791 "pdflatex"
+  "bericht-vorlage.bcf" 1702844115 107766 4b1af91736875f9e36ae239646055791 "pdflatex"
   (generated)
   "bericht-vorlage.bbl"
   "bericht-vorlage.blg"
   (rewritten before read)
-["pdflatex"] 1702840549 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1702840552 0
-  "bericht-vorlage.aux" 1702840551 9444 fb85bd3cb794c9d47caad3b2615ade70 "pdflatex"
+["pdflatex"] 1702844112 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1702844115 0
+  "bericht-vorlage.aux" 1702844115 9450 c62a9b477b7be816cd18dbb83a68bba9 "pdflatex"
   "bericht-vorlage.bbl" 1702840543 4029 2a101888023a94f69696d1156fff0820 "biber bericht-vorlage"
-  "bericht-vorlage.out" 1702840551 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "bericht-vorlage.run.xml" 1702840551 2411 91f4544ee2047fdb431c3c2af033003e "pdflatex"
-  "bericht-vorlage.tex" 1702840500 8670 9ecf990f777088dc27057be949d60198 ""
-  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1702840500 8670 9ecf990f777088dc27057be949d60198 ""
+  "bericht-vorlage.out" 1702844114 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "bericht-vorlage.run.xml" 1702844115 2411 91f4544ee2047fdb431c3c2af033003e "pdflatex"
+  "bericht-vorlage.tex" 1702844109 10119 b7cebbcf73e1b26afa5c0c379e8c0a6b ""
+  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1702844109 10119 b7cebbcf73e1b26afa5c0c379e8c0a6b ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1691421962 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1691420818 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1691420393 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
@@ -45,6 +45,7 @@
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr6.tfm" 1691421962 11836 e3b6ce3e601aec94f64a536e7f4224d5 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr7.tfm" 1691421962 11852 5a9022f105fd1ee2797df861e79ae9a0 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr8.tfm" 1691421962 11864 309fd7f43e4a0ba39f6f7644d76e8edf ""
+  "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb" 1691421962 121021 836464b5fe0c782d94085eb083550ccc ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb" 1691421962 116908 9a7a12d1e4df280ea0ab4aad83cdef88 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb" 1691421962 116427 4909e80035dae5d5a4ec2b5ddd9649dd ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb" 1691421962 119235 05e5c8d6d60439433e50047898c2c0e0 ""

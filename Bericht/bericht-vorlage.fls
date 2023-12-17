@@ -262,6 +262,7 @@ INPUT ./bericht-vorlage.out
 INPUT ./bericht-vorlage.out
 INPUT bericht-vorlage.run.xml
 OUTPUT bericht-vorlage.run.xml
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb
