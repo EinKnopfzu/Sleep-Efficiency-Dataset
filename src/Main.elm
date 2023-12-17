@@ -80,17 +80,15 @@ view : Model -> Html Msg
 view model =
   case model of
     Failure ->
-      text "I was unable to load the data :("
+      text "Ich konnte die Daten nicht laden"
 
     Loading ->
-      text "Loading..."
+      text "Am Laden..."
 
     Success fullText ->
        pre [] [ text fullText ]
 
--- DATA
---This area is for preparing and manipulating the data: Each step has to be named and the purpose described
-
+--Dieser Bereich ist zum Analysieren und Manipulieren von Daten 
 
 
 
