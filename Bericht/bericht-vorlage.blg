@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'bericht-vorlage.blg'
+[183] biber-MSWIN64:340> INFO - === 
+[233] Biber.pm:419> INFO - Reading 'bericht-vorlage.bcf'
+[399] Biber.pm:979> INFO - Found 1 citekeys in bib section 0
+[419] Biber.pm:4419> INFO - Processing section 0
+[435] Biber.pm:4610> INFO - Looking for bibtex file 'literatur.bib' for section 0
+[493] bibtex.pm:1713> INFO - LaTeX decoding ...
+[508] bibtex.pm:1519> INFO - Found BibTeX data source 'literatur.bib'
+[590] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[591] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[591] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'de-DE'
+[591] Biber.pm:4245> INFO - No sort tailoring available for locale 'de-DE'
+[598] bbl.pm:660> INFO - Writing 'bericht-vorlage.bbl' with encoding 'UTF-8'
+[601] bbl.pm:763> INFO - Output to bericht-vorlage.bbl
