@@ -1,0 +1,25 @@
+Inputdaten Filter: 
+    Leere Datenfelder aussortieren: Wenn eine Zeile einen leeren Wert hat, dann wird der gesampte daten punkt gelöscht
+    Überlegung outliner zu entfernen? 
+    DatenPunkt
+
+Visualisierungs Techniken: 
+    
+    Scatterplot, Zeitreihen-Diagramme
+        Differentielle Wahrnehmbarkeitsschwelle
+        Farben 
+        Texturen
+        Gruppierung: Farbe ist stärker als Form -> Zugehörigkeit bedeuted gleiche Farbe.
+        QQ-Plot für unsere Attribute gegen die Normalverteilung/ Distribution Fitting?
+    Mehrdimensionale Darstellungen
+
+
+    Icon und Pixel-orientierte Techniken
+        Einfluss der verhaltens Datenpunkte auf die Ausprägung der Schlafqualität.
+        (schattierungß)
+    Bäume und Graphen
+
+Ordinale Werte: 
+S.209 Präsentation
+
+Interaktion der Visualisierungen entweder: Attribute der Menschen, verhaltensweisen oder die Auswirkungen auf den schlaf 

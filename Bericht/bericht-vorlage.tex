@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{amssymb}
+\usepackage{graphicx}
 % Dimensionen bitte nicht ändern. 
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm, bindingoffset=1cm, includeheadfoot]{geometry}
 %Zeilenabstand bitte nicht ändern
@@ -28,7 +29,7 @@
 
 \section{Einleitung}
 Tipps zu Latex und Koma-Script für Hausarbeiten sind im \href{http://mirrors.ctan.org/info/latex-refsheet/LaTeX_RefSheet.pdf}{LaTeX Reference Sheet for a thesis with KOMA-Script} von Marion Lammarsch und Elke Schubert zusammengefasst. 
-Der Bericht fällt in die Kategorie von InfoVis-Paper, die Tamara Munzner Design Study nennt \cite{Munzner2008}: In der Einleitung sollen sie zuerst das Zielproblem beschrieben. Daraus sollen sie Fragestellungen motivieren, die mittels Techniken der Informationsvisualisierung beantwortet werden können. In dem Abschnitt direkt unter der Überschrift Einleitung sollen Sie nach einer kurzen Einleitung Fragestellungen und das Zielproblem motivieren und besschreiben. 
+Der Bericht fällt in die Kategorie von InfoVis-Paper, die Tamara Munzner Design Study nennt ~\cite{Munzner2008}: In der Einleitung sollen sie zuerst das Zielproblem beschrieben. Daraus sollen sie Fragestellungen motivieren, die mittels Techniken der Informationsvisualisierung beantwortet werden können. In dem Abschnitt direkt unter der Überschrift Einleitung sollen Sie nach einer kurzen Einleitung Fragestellungen und das Zielproblem motivieren und besschreiben. 
 
 \subsection{Anwendungshintergrund}
 Sie müssen genug Hintergrund bereitstellen, so dass die Lesenden sich ein Urteil bilden können, ob ihre Lösung funktioniert. Sie sollen die Lesenden jedoch nicht mit Anwendungsdetails so überschütten, dass der Fokus auf die Fragen zur Informationsvisualisierung untergehen. 
@@ -46,7 +47,9 @@ Beschreiben sie die Personengruppe oder Personengruppen, die das von ihnen benan
 In diesem Abschnitt geben sie einen kurzen Überblick über die Daten und verwendeten Visualisierungen. Dann benennen sie die Beiträge ihres Projekts. Diese Beiträge müssen sie in den hinteren Teilen des Berichts genauer ausführen und belegen.
 
 \section{Daten}
-Beschreiben Sie vorhandenen Daten. Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen. Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
+Beschreiben Sie vorhandenen Daten. 
+\textbf {Input Daten ist csv Datei mit teilweise leeren feldern.\\ ID: Identifikator der eine Reihe eindeutig Identifiziert.\\ Age: Gibt das Alter der Person zum zeitpunkt der erfassung hatte\\ Gender: Gibt das Geschlecht de rPerson mittels "Male" oder "Female" wieder. \\ WakeUp Time  }
+Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen. Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
 Erklären sie die technische Bereitstellung der Daten.
 \textbf { Die Daten }
 Wie sind die Daten zugänglich? Welche Formate werden genutzt. Gibt es Besonderheiten beim Lesen der Formate?
@@ -65,6 +68,8 @@ Beschreiben sie die Datenvorverarbeitung.
 
 \section{Visualisierungen}
 \subsection{Analyse der Anwendungsaufgaben}
+Die Aufgaben die durch dei Visualisierung gelöst werden sollen: \\
+
 Analysieren sie die konkreten Anwendungsaufgaben, die die Lösung des Zielproblems durch die Anwender:innen bearbeitet werden müssen. 
 Welche sinnvollen mentale Modelle helfen den Personen bei der Bearbeitung. 
 %Welche Visualisierungen helfen den Personen, die die Software verwenden, sinnvolle mentale Modelle aufzubauen. 
