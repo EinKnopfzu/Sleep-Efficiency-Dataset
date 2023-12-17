@@ -102,48 +102,60 @@ csvString_to_data csvRaw =
 decode_CVD_Data : Csv.Decode.Decoder ((Unprocessed_CVD_Data)-> a) a
 decode_CVD_Data =
     Csv.Decode.map Unprocessed_CVD_Data
-        (Csv.Decode.field "general_Health" Ok
-            |> Csv.Decode.andMap (Csv.Decode.field "checkup" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "exercise" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "heart_Disease" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "skin_Cancer" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "other_Cancer" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "depression" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "diabetes" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "arthritis" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "sex" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "age_Category" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "height" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "weight" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "bmi" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "smoking_History" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "alcohol"  (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "fruit"  (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "green_Vegetables" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "friedPotato" (String.toFloat >> Result.fromMaybe "error parsing string"))
+        (Csv.Decode.field "ID" Ok
+            |> Csv.Decode.andMap (Csv.Decode.field "Age" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Gender" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Bedtime" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Wakeup_time" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Sleep_duration" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Sleep_efficiency" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "REM_sleep_percentage" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Deep_sleep_percentage" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Light_sleep_percentage" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Awakenings" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Caffeine consumption" Ok)--(String.toFloat >> Result.fromMaybe "error parsing string"))
+            |> Csv.Decode.andMap (Csv.Decode.field "Alcohol consumption" Ok)--(String.toFloat >> Result.fromMaybe "error parsing string"))
+            |> Csv.Decode.andMap (Csv.Decode.field "Smoking status" Ok)
+            |> Csv.Decode.andMap (Csv.Decode.field "Exercise frequency"  Ok)--(String.toFloat >> Result.fromMaybe "error parsing string"))
+
         )
 
-type alias Unprocessed_CVD_Data = 
- {general_Health : String 
- ,checkup : String
- ,exercise : String
- ,heart_Disease : String
- ,skin_Cancer : String
- ,other_Cancer : String
- ,depression : String
- ,diabetes : String
- ,arthritis : String
- ,sex : String
- ,age_Category : String
- ,height : Float
- ,weight : Float
- ,bmi :  Float
- ,smoking_History : String
- ,alcohol : Float
- ,fruit : Float
- ,green_Vegetables : Float
- ,friedPotato : Float
+type alias Unprocessed_CVD_Data =  
+ {id_ : String 
+ ,alter : String
+ ,geschlecht : String
+ ,schlafenszeitt : String
+ ,aufwachzeit : String
+ ,schlafdauer : String
+ ,schlaf_effizienz : String
+ ,rem_anteil : String
+ ,tiefschlaf_anteil : String
+ ,leichtschlaf_anteil : String
+ ,erwacht_anzahl : String
+ ,koffein_konsum : String
+ ,alkohol_konsum : String
+ ,raucher :  String
+ ,sport : String
+
   }
+--Ziel der Datentransformation  
+type alias Daten_angepasst =  
+ {id_ : String 
+ ,alter : Maybe Float
+ ,geschlecht : Bool
+ ,schlafenszeitt : String
+ ,aufwachzeit : String
+ ,schlafdauer : Maybe Float
+ ,schlaf_effizienz : Maybe Float
+ ,rem_anteil : Maybe Float
+ ,tiefschlaf_anteil : Maybe Float
+ ,leichtschlaf_anteil : Maybe Float
+ ,erwacht_anzahl : Maybe Float
+ ,koffein_konsum : Maybe Float
+ ,alkohol_konsum : Maybe Float
+ ,raucher :  Bool
+ ,sport : Maybe Float
+ }
 
 type alias CVD_Data_adapted = 
  { general_Health : Health
@@ -174,7 +186,7 @@ type Health
   | Good
   | Excellent
 
-type Sex 
+type Geschlecht 
   = Male
   | Female
 
