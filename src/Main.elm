@@ -37,7 +37,7 @@ init : () -> (Model, Cmd Msg)
 init _ =
   ( Loading
   , Http.get
-      { url = "https://mick.woerner.gpages-lehre.informatik.uni-halle.de/informationsvisualisierung-cardiovascular-diseases-risk-prediction-dataset/CVD_cleaned.csv"
+      { url = "https://github.com/EinKnopfzu/Sleep-Efficiency-Dataset/blob/main/Sleep_Efficiency.csv.csv"
       , expect = Http.expectString GotText
       }
   )
@@ -167,7 +167,7 @@ type alias CVD_Data_adapted =
  ,depression : Bool
  ,diabetes : Bool
  ,arthritis : Bool
- ,sex : Sex
+ ,sex : Geschlecht
  ,age_Category : String
  ,height : Maybe Float
  ,weight : Maybe Float
