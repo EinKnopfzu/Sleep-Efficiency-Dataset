@@ -52,15 +52,15 @@ header =
         , Html.Attributes.style "text-align" "center"
         , Html.Attributes.style "padding" "1em"
         ]
-        [ h1 [] [ text "Willkommen auf unserer Seite" ] ]
+        [ h1 [] [ text "Willkommen auf meiner Seite" ] ]
 
 inhalt : Html msg
 inhalt =
     div [ style "padding" "2em",
           style "max-width" "600px",
           style "margin" "0 auto" ]
-        [ p [] [ text "Zielstellung : andaskndmasd" ]
-        , p [] [ text "Hier ist etwas Beispieltext, den du nach Belieben anpassen kannst." ]
+        [ p [] [ text "Zielstellung : Visualiserung" ]
+        , p [] [ text "Hier ist etwas Beispieltext." ]
         ]
 
 
