@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, text, pre, a, div)
+import Html exposing (..)
 import Html.Attributes exposing(..)
 import Http
 import Color
@@ -53,6 +53,16 @@ header =
         , Html.Attributes.style "padding" "1em"
         ]
         [ h1 [] [ text "Willkommen auf unserer Seite" ] ]
+
+inhalt : Html msg
+inhalt =
+    div [ style "padding" "2em",
+          style "max-width" "600px",
+          style "margin" "0 auto" ]
+        [ p [] [ text "Zielstellung : andaskndmasd" ]
+        , p [] [ text "Hier ist etwas Beispieltext, den du nach Belieben anpassen kannst." ]
+        ]
+
 
 
 
