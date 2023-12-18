@@ -119,11 +119,16 @@ view model =
       text "Ich konnte die Daten nicht laden"
 
     Loading ->
-      div[]
-         [Html.h1[][text"Wilkommen"]]
+      text "Am Laden..."
 
     Success fullText ->
-       pre [] [ text fullText ]
+      --  pre [] [ text fullText ]
+      div []
+        [ header
+        , inhalt
+        , footer
+        ]
+
 
 --Dieser Bereich ist zum Analysieren und Manipulieren von Daten 
 
