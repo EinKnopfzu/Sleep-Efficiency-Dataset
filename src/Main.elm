@@ -1,12 +1,13 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, text, pre)
+import Html exposing (Html, text, pre, a, div)
+import Html.Attributes exposing(..)
 import Http
 import Color
 import Csv 
-import Csv.Decode
-import Html exposing (a)
+import Csv.Decode 
+
 -- import
 
 
@@ -41,6 +42,20 @@ init _ =
       , expect = Http.expectString GotText
       }
   )
+
+
+header : Html msg
+header =
+    div
+        [ Html.Attributes.style "background-color" "#333"
+        , Html.Attributes.style "color" "white"
+        , Html.Attributes.style "text-align" "center"
+        , Html.Attributes.style "padding" "1em"
+        ]
+        [ h1 [] [ text "Willkommen auf unserer Seite" ] ]
+
+
+
 
 
 
@@ -83,7 +98,8 @@ view model =
       text "Ich konnte die Daten nicht laden"
 
     Loading ->
-      text "Am Laden..."
+      div[]
+         [Html.h1[][text"Wilkommen"]]
 
     Success fullText ->
        pre [] [ text fullText ]
