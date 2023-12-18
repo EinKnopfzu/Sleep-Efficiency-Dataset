@@ -64,6 +64,17 @@ inhalt =
         ]
 
 
+footer : Html msg
+footer =
+    div [ style "background-color" "#333",
+          style "color" "white",
+          style "text-align" "center",
+          style "padding" "1em",
+          style "position" "fixed",
+          style "bottom" "0", 
+          style "width" "100%" ]
+        [ p [] [ text "© 2023 Mick Wörner" ]
+        ]
 
 
 
