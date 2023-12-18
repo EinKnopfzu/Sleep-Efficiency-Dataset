@@ -5,9 +5,9 @@ import Html exposing (..)
 import Html.Attributes exposing(..)
 import Http
 import Color
-import Csv 
-import Csv.Decode 
-import Scatterplot
+
+import Csv.Decode as Decode exposing (Decoder, decodeCsv)
+import Debug exposing (toString)
 
 -- import
 
@@ -115,79 +115,58 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-  case model of
-    Failure ->
-      text "Ich konnte die Daten nicht laden"
+    case model of
+        Failure ->
+            text "Ich konnte die Daten nicht laden"
 
-    Loading ->
-      text "Am Laden..."
+        Loading ->
+            text "Am Laden..."
 
-    Success fullText ->
-      --  pre [] [ text fullText ]
-      div []
-        [ header
-        , inhalt
-        , footer
-        ]
+        Success fullText ->
+                    div []
+                        [ pre [] [ text (toString (Decode.decodeCsv Decode.FieldNamesFromFirstRow decode fullText ))]
+                        ]
 
 
 --Dieser Bereich ist zum Aufarbeiten der Daten 
 
 
 
-csvString_to_data : String -> List ( Unverarbeitete_Daten )
-csvString_to_data csvRaw =
-    Csv.parse csvRaw
-        |> Csv.Decode.decodeCsv decode_CVD_Data
-        |> Result.toMaybe
-        |> Maybe.withDefault []
 
-decode_CVD_Data : Csv.Decode.Decoder ((Unverarbeitete_Daten)-> a) a
-decode_CVD_Data =
-    Csv.Decode.map Unverarbeitete_Daten
-        (Csv.Decode.field "ID" Ok
-            |> Csv.Decode.andMap (Csv.Decode.field "Age" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "Gender" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "Bedtime" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "Wakeup_time" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "Sleep_duration" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "Sleep_efficiency" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "REM_sleep_percentage" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "Deep_sleep_percentage" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "Light_sleep_percentage" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "Awakenings" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "Caffeine consumption" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "Alcohol consumption" (String.toFloat >> Result.fromMaybe "error parsing string"))
-            |> Csv.Decode.andMap (Csv.Decode.field "Smoking status" Ok)
-            |> Csv.Decode.andMap (Csv.Decode.field "Exercise frequency"  (String.toFloat >> Result.fromMaybe "error parsing string"))
 
-        )
+
+
+
+
+
+
+decode : Decoder Unverarbeitete_Daten
+decode =
+    Decode.into Unverarbeitete_Daten
+        |> Decode.pipeline (Decode.field "ID" (Decode.blank Decode.string))
+        |> Decode.pipeline (Decode.field "Age" (Decode.blank Decode.float))
+        |> Decode.pipeline (Decode.field "Gender" (Decode.blank Decode.string))
+        |> Decode.pipeline (Decode.field "Bedtime" (Decode.blank Decode.string))
+        |> Decode.pipeline (Decode.field "Wakeup time" (Decode.blank Decode.string))
+        |> Decode.pipeline (Decode.field "Sleep duration" (Decode.blank Decode.float))
+        |> Decode.pipeline (Decode.field "Sleep efficiency" (Decode.blank Decode.float))
+        |> Decode.pipeline (Decode.field "REM sleep percentage" (Decode.blank Decode.float))
+        |> Decode.pipeline (Decode.field "Deep sleep percentage" (Decode.blank Decode.float))
+        |> Decode.pipeline (Decode.field "Light sleep percentage" (Decode.blank Decode.float))
+        |> Decode.pipeline (Decode.field "Awakenings" (Decode.blank Decode.float))
+        |> Decode.pipeline (Decode.field "Caffeine consumption" (Decode.blank Decode.float))
+        |> Decode.pipeline (Decode.field "Alcohol consumption" (Decode.blank Decode.float))
+        |> Decode.pipeline (Decode.field "Smoking status" (Decode.blank Decode.string))
+        |> Decode.pipeline (Decode.field "Exercise frequency" (Decode.blank Decode.float))
+
+--Alcohol consumption,Smoking status,Exercise frequency
 
 type alias Unverarbeitete_Daten =  
- {id_ : String 
- ,alter :  Float
- ,geschlecht : String
- ,schlafenszeitt : String
- ,aufwachzeit : String
- ,schlafdauer :  Float
- ,schlaf_effizienz :  Float
- ,rem_anteil :  Float
- ,tiefschlaf_anteil :  Float
- ,leichtschlaf_anteil :  Float
- ,erwacht_anzahl :  Float
- ,koffein_konsum :  Float
- ,alkohol_konsum :  Float
- ,raucher :  String
- ,sport :  Float
-
-  }
---Ziel der Datentransformation  
-type alias Daten_angepasst =  
- {id_ : String 
+ {id_ :  Maybe String 
  ,alter : Maybe Float
- ,geschlecht : Bool
- ,schlafenszeitt : String
- ,aufwachzeit : String
+ ,geschlecht :  Maybe String
+ ,schlafenszeitt :  Maybe String
+ ,aufwachzeit :  Maybe String
  ,schlafdauer : Maybe Float
  ,schlaf_effizienz : Maybe Float
  ,rem_anteil : Maybe Float
@@ -196,9 +175,13 @@ type alias Daten_angepasst =
  ,erwacht_anzahl : Maybe Float
  ,koffein_konsum : Maybe Float
  ,alkohol_konsum : Maybe Float
- ,raucher :  Bool
+ ,raucher :  Maybe String
  ,sport : Maybe Float
  }
+
+
+
+
 
 
 
@@ -208,7 +191,9 @@ type Geschlecht
   | Female
 
 
---Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott
+--Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.
+
+
 
 --Der Typ soll die relative Position eines Datenpunktes darstellen. 
 type alias ScatterplottXYPoint =
