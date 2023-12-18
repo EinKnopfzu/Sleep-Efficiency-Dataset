@@ -7,6 +7,7 @@ import Http
 import Color
 import Csv 
 import Csv.Decode 
+import Scatterplot
 
 -- import
 
