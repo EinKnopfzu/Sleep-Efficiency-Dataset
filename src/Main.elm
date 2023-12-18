@@ -103,7 +103,6 @@ update msg model =
 
 -- SUBSCRIPTIONS
 
-
 subscriptions : Model -> Sub Msg
 subscriptions model =
   Sub.none
@@ -111,7 +110,6 @@ subscriptions model =
 
 
 -- VIEW
-
 
 view : Model -> Html Msg
 view model =
@@ -129,16 +127,6 @@ view model =
 
 
 --Dieser Bereich ist zum Aufarbeiten der Daten 
-
-
-
-
-
-
-
-
-
-
 
 decode : Decoder Unverarbeitete_Daten
 decode =
@@ -159,8 +147,8 @@ decode =
         |> Decode.pipeline (Decode.field "Smoking status" (Decode.blank Decode.string))
         |> Decode.pipeline (Decode.field "Exercise frequency" (Decode.blank Decode.float))
 
---Alcohol consumption,Smoking status,Exercise frequency
 
+-- Typ für die unaufgearbeiteten Daten
 type alias Unverarbeitete_Daten =  
  {id_ :  Maybe String 
  ,alter : Maybe Float
@@ -179,17 +167,31 @@ type alias Unverarbeitete_Daten =
  ,sport : Maybe Float
  }
 
-
-
-
-
-
-
+type alias Aussortierte_Daten =
+{id_ :  String 
+ ,alter : Float
+ ,geschlecht : Geschlecht
+ ,schlafenszeitt : String
+ ,aufwachzeit : String
+ ,schlafdauer : Float
+ ,schlaf_effizienz : Float
+ ,rem_anteil : Float
+ ,tiefschlaf_anteil : Float
+ ,leichtschlaf_anteil : Float
+ ,erwacht_anzahl : Float
+ ,koffein_konsum : Float
+ ,alkohol_konsum : Float
+ ,raucher : Raucher
+ ,sport : Float
+ }
 
 type Geschlecht 
   = Male
   | Female
 
+type Raucher
+  = Yes
+  | No
 
 --Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.
 
