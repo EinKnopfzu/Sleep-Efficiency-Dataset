@@ -158,7 +158,7 @@ sleep2Point c =
             Aussortierte_Daten
                 (myid_)
                 (myalter)
-                (mygeschlecht(\i -> if i =="Male" then Male else if i == "Female" then Female else Unknown ))
+                (mygeschlecht)
                 (myschlafenszeit)
                 (myaufwachzeit)
                 0.0
@@ -182,11 +182,11 @@ sleep2Point c =
                 Maybe.map5
                     (\myXA myXB myXY myXV myXK->
                         { cX | 
-                         myweight = myXA,
-                         myschlafdauer =  myXB, 
-                         myschlaf_effizienz = myXY,
-                         myrem_anteil = myXV,
-                         mytiefschlaf_anteil = myXK
+                         myschlafdauer =  myXA,
+                         myschlaf_effizienz =myXB, 
+                         myrem_anteil = myXY,
+                         mytiefschlaf_anteil = myXV,
+                         myleichtschlaf_anteil = myXK
                           }
                     )
                     c.schlafdauer
@@ -203,7 +203,7 @@ sleep2Point c =
                          myerwacht_anzahl = myXA,
                          mykoffein_konsum =  myXB, 
                          myalkohol_konsum = myXY,
-                         myraucher = (if myXV =="Yes" then Yes else if myXV == "No" then NO else Unknown),
+                         myraucher = (if myXV =="Yes" then Yes else if myXV == "No" then NO else NA),
                          mysport = myXK
                           }
                     )
@@ -218,7 +218,7 @@ sleep2Point c =
 type alias Aussortierte_Daten =
  {myid_ :  String 
  ,myalter : Float
- ,mygeschlecht : Geschlecht
+ ,mygeschlecht : String
  ,myschlafenszeitt : String
  ,myaufwachzeit : String
  ,myschlafdauer : Float
