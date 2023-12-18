@@ -37,7 +37,7 @@ init : () -> (Model, Cmd Msg)
 init _ =
   ( Loading
   , Http.get
-      { url = "https://github.com/EinKnopfzu/Sleep-Efficiency-Dataset/blob/main/Sleep_Efficiency.csv"
+      { url = "https://raw.githubusercontent.com/EinKnopfzu/Sleep-Efficiency-Dataset/main/Sleep_Efficiency.csv"
       , expect = Http.expectString GotText
       }
   )
