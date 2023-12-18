@@ -131,7 +131,7 @@ view model =
         ]
 
 
---Dieser Bereich ist zum Analysieren und Manipulieren von Daten 
+--Dieser Bereich ist zum Aufarbeiten der Daten 
 
 
 
@@ -207,7 +207,22 @@ type Geschlecht
   = Male
   | Female
 
-type Binär 
-  = Yes
-  | No 
+
+--Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott
+
+--Der Typ soll die relative Position eines Datenpunktes darstellen. 
+type alias ScatterplottXYPoint =
+    { xValue : Float
+     ,yValue : Float}
+
+-- XyData soll den Datensatz Beschreiben, der im Scatterplott angezeigt wird
+type alias ScatterplottXYData =
+    { xDescription : String
+    , yDescription : String
+    , data : List ScatterplottPoint
+    }
+
+--Repräsentiert den individuellen Punkt mit Name. 
+type alias ScatterplottPoint =
+    { pointName : String, x : Float, y : Float }
 
