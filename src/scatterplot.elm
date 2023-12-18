@@ -21,21 +21,38 @@ import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
 
 
-decoder : Decoder Unverarbeitete_Daten
-decoder =
-    Decoda.into Unverarbeitete_Daten
-        |> Decoda.pipeline (Decoda.field "ID" (Decoda.blank Decoda.string))
-        |> Decoda.pipeline (Decoda.field "Age" (Decoda.blank Decoda.float))
-        |> Decoda.pipeline (Decoda.field "Gender" (Decoda.blank Decoda.string))
-        |> Decoda.pipeline (Decoda.field "Bedtime" (Decoda.blank Decoda.string))
-        |> Decoda.pipeline (Decoda.field "Wakeup time" (Decoda.blank Decoda.string))
-        |> Decoda.pipeline (Decoda.field "Sleep duration" (Decoda.blank Decoda.float))
-        |> Decoda.pipeline (Decoda.field "Sleep efficiency" (Decoda.blank Decoda.float))
-        |> Decoda.pipeline (Decoda.field "REM sleep percentage" (Decoda.blank Decoda.float))
-        |> Decoda.pipeline (Decoda.field "Deep sleep percentage" (Decoda.blank Decoda.float))
-        |> Decoda.pipeline (Decoda.field "Light sleep percentage" (Decoda.blank Decoda.float))
-        |> Decoda.pipeline (Decoda.field "Awakenings" (Decoda.blank Decoda.float))
-        |> Decoda.pipeline (Decoda.field "Caffeine consumption" (Decoda.blank Decoda.float))
-        |> Decoda.pipeline (Decoda.field "Alcohol consumption" (Decoda.blank Decoda.float))
-        |> Decoda.pipeline (Decoda.field "Smoking status" (Decoda.blank Decoda.string))
-        |> Decoda.pipeline (Decoda.field "Exercise frequency" (Decoda.blank Decoda.float))
+car2Point : Car -> Maybe MyCar
+car2Point c =
+    Maybe.map5
+        (\myRetail myCityMpg myVehicleName mydealerCost mycarLen ->
+            MyCar
+                (toFloat myRetail)
+                (toFloat myCityMpg)
+                (myVehicleName
+                    ++ "("
+                    ++ String.fromInt myCityMpg
+                    ++ ","
+                    ++ String.fromInt myRetail
+                    ++ ")"
+                )
+                (toFloat mydealerCost)
+                (toFloat mycarLen)
+                0.0
+                0.0
+                0.0
+        )
+        c.retailPrice
+        c.cityMPG
+        (Just c.vehicleName)
+        c.dealerCost
+        c.carLen
+        |> Maybe.andThen
+            (\cX ->
+                Maybe.map3
+                    (\myXA myXB myXC ->
+                        { cX | myweight = toFloat myXA, mycarWidth = toFloat myXB, myengineSize = myXC }
+                    )
+                    c.weight
+                    c.carWidth
+                    c.engineSize
+            )

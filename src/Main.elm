@@ -8,6 +8,7 @@ import Color
 
 import Csv.Decode as Decode exposing (Decoder, decodeCsv)
 import Debug exposing (toString)
+import TypedSvg.Types exposing (YesNo(..))
 
 -- import
 
@@ -51,7 +52,7 @@ header =
         [ Html.Attributes.style "background-color" "#333"
         , Html.Attributes.style "color" "white"
         , Html.Attributes.style "text-align" "center"
-        , Html.Attributes.style "padding" "1em"
+        , Html.Attributes.style "padding" "0.5em"
         ]
         [ h1 [] [ text "Willkommen auf meiner Seite" ] ]
 
@@ -122,7 +123,9 @@ view model =
 
         Success fullText ->
                     div []
-                        [ pre [] [ text (toString (Decode.decodeCsv Decode.FieldNamesFromFirstRow decode fullText ))]
+                        [ header,
+                          pre [] [ text (toString (Decode.decodeCsv Decode.FieldNamesFromFirstRow decode fullText ))]
+                          ,footer
                         ]
 
 
@@ -148,6 +151,87 @@ decode =
         |> Decode.pipeline (Decode.field "Exercise frequency" (Decode.blank Decode.float))
 
 
+sleep2Point : Unverarbeitete_Daten -> Maybe Aussortierte_Daten
+sleep2Point c =
+    Maybe.map5
+        (\myid_ myalter mygeschlecht myschlafenszeit myaufwachzeit  ->
+            Aussortierte_Daten
+                (myid_)
+                (myalter)
+                (mygeschlecht(\i -> if i =="Male" then Male else if i == "Female" then Female else Unknown ))
+                (myschlafenszeit)
+                (myaufwachzeit)
+                0.0
+                0.0
+                0.0
+                0.0
+                0.0
+                0.0
+                0.0
+                0.0
+                NA
+                0.0
+        )
+        c.id_
+        c.alter
+        c.geschlecht
+        c.schlafenszeitt
+        c.aufwachzeit
+        |> Maybe.andThen
+            (\cX ->
+                Maybe.map5
+                    (\myXA myXB myXY myXV myXK->
+                        { cX | 
+                         myweight = myXA,
+                         myschlafdauer =  myXB, 
+                         myschlaf_effizienz = myXY,
+                         myrem_anteil = myXV,
+                         mytiefschlaf_anteil = myXK
+                          }
+                    )
+                    c.schlafdauer
+                    c.schlaf_effizienz
+                    c.rem_anteil
+                    c.tiefschlaf_anteil
+                    c.leichtschlaf_anteil
+            )
+        |> Maybe.andThen
+            (\cX ->
+                Maybe.map5
+                    (\myXA myXB myXY myXV myXK->
+                        { cX | 
+                         myerwacht_anzahl = myXA,
+                         mykoffein_konsum =  myXB, 
+                         myalkohol_konsum = myXY,
+                         myraucher = (if myXV =="Yes" then Yes else if myXV == "No" then NO else Unknown),
+                         mysport = myXK
+                          }
+                    )
+                    c.erwacht_anzahl
+                    c.koffein_konsum
+                    c.alkohol_konsum
+                    c.raucher
+                    c.sport
+            )
+
+
+type alias Aussortierte_Daten =
+ {myid_ :  String 
+ ,myalter : Float
+ ,mygeschlecht : Geschlecht
+ ,myschlafenszeitt : String
+ ,myaufwachzeit : String
+ ,myschlafdauer : Float
+ ,myschlaf_effizienz : Float
+ ,myrem_anteil : Float
+ ,mytiefschlaf_anteil : Float
+ ,myleichtschlaf_anteil : Float
+ ,myerwacht_anzahl : Float
+ ,mykoffein_konsum : Float
+ ,myalkohol_konsum : Float
+ ,myraucher : Raucher
+ ,mysport : Float
+ }
 -- Typ für die unaufgearbeiteten Daten
 type alias Unverarbeitete_Daten =  
  {id_ :  Maybe String 
@@ -167,32 +251,17 @@ type alias Unverarbeitete_Daten =
  ,sport : Maybe Float
  }
 
-type alias Aussortierte_Daten =
-{id_ :  String 
- ,alter : Float
- ,geschlecht : Geschlecht
- ,schlafenszeitt : String
- ,aufwachzeit : String
- ,schlafdauer : Float
- ,schlaf_effizienz : Float
- ,rem_anteil : Float
- ,tiefschlaf_anteil : Float
- ,leichtschlaf_anteil : Float
- ,erwacht_anzahl : Float
- ,koffein_konsum : Float
- ,alkohol_konsum : Float
- ,raucher : Raucher
- ,sport : Float
- }
+
 
 type Geschlecht 
   = Male
   | Female
+  | Unknown
 
 type Raucher
   = Yes
-  | No
-
+  | NO
+  | NA
 --Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.
 
 
