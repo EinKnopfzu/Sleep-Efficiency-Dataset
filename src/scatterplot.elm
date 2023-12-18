@@ -1,5 +1,5 @@
 module Scatterplot exposing (..)
-
+{-
 import Axis
 import Browser
 import Color exposing (Color(..), rgb)
@@ -20,3 +20,4 @@ import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
 
+-}

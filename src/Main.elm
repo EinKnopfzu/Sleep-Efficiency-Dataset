@@ -6,7 +6,7 @@ import Html.Attributes exposing(..)
 import Http
 import Color
 
-import Csv.Decode as Decode exposing (Decoder, decodeCsv)
+import Csv.Decode as Decode exposing (Decoder)
 import Debug exposing (toString)
 import TypedSvg.Types exposing (YesNo(..))
 
@@ -54,7 +54,7 @@ header =
         , Html.Attributes.style "text-align" "center"
         , Html.Attributes.style "padding" "0.5em"
         ]
-        [ h1 [] [ text "Willkommen auf meiner Seite" ] ]
+        [ h1 [] [ text "Informationsvisualiserung Sleep Quality" ] ]
 
 inhalt : Html msg
 inhalt =
@@ -75,7 +75,7 @@ footer =
           style "position" "fixed",
           style "bottom" "0", 
           style "width" "100%" ]
-        [ p [] [ text "© 2023 Mick Wörner" ]
+        [ p [] [ text "© 2023 Mick Wörner 217246242" ]
         ]
 
 
