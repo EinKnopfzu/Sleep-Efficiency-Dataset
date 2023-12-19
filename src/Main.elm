@@ -4,6 +4,7 @@ import Browser
 import Html exposing (..)
 import Html.Attributes exposing(..)
 import Html.Events exposing (onInput)
+import Maybe.Extra exposing (isJust)
 import Http
 import Color
 import List exposing (filter, sum)
@@ -252,12 +253,12 @@ view model =
                              combineLists xList yList name
                   in
                    div []
-                   [ --scatterplot 
-      --             { xDescription = model.droppdown1
-       --            , yDescription = model.droppdown2
-        --           , data = combinedList
-          --         }
-                    Html.text (toString combinedList)
+                   [ scatterplot 
+                    { xDescription = model.droppdown1
+                    , yDescription = model.droppdown2
+                    , data = combinedList
+                    }
+              --     ,Html.text (toString combinedList)
                    ]
                 ]
 
@@ -411,7 +412,7 @@ w =
 
 h : Float
 h =
-    450
+    40
 
 padding : Float
 padding =
@@ -489,7 +490,7 @@ scatterplot model =
         yScaleLocal =
             yScale yValues
     in
-    svg [ viewBox 100 10 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }
@@ -504,7 +505,7 @@ scatterplot model =
             ]
             [ xAxis xValues
             , text_
-                [ x 400
+                [ x 40
                 , y 40
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle
@@ -518,7 +519,7 @@ scatterplot model =
             [ yAxis yValues
             , text_
                 [ x 0
-                , y -15
+                , y -0
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
