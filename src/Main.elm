@@ -123,7 +123,7 @@ view model =
         Success fullText ->
                     div []
                         [ header,
-                          pre [] [ text (toString (Decode.decodeCsv Decode.FieldNamesFromFirstRow decode fullText ))]
+                          pre [] [ text (toString (stringtoUnverarbeitete fullText ))]
                           ,footer
                         ]
 
@@ -150,8 +150,8 @@ decode =
         |> Decode.pipeline (Decode.field "Exercise frequency" (Decode.blank Decode.float))
 
 
-stringtoAussortierte : String -> List(Unverarbeitete_Daten)
-stringtoAussortierte string =
+stringtoUnverarbeitete : String -> List(Unverarbeitete_Daten)
+stringtoUnverarbeitete string =
     let
         result = Decode.decodeCsv Decode.FieldNamesFromFirstRow decode string
     in
@@ -178,8 +178,10 @@ stringtoAussortierte string =
                 }
 
 --["0",0,Unknown,"0","0",0,0,0,0,0,NA,0]
+sleepData :  Unverarbeitete_Daten -> List Aussortierte_Daten
+sleepData i = 
+  List.filter sleep2Point i
 -}
-
 
 
 sleep2Point : Unverarbeitete_Daten -> Maybe Aussortierte_Daten
