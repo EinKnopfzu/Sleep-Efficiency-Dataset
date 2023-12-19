@@ -54,10 +54,19 @@ footer =
         [ p [] [ text "© 2023 Mick Wörner 217246242" ]
         ]
 
-type Model
+
+type Zustand
   = Failure
   | Loading
   | Success String
+
+type alias Model
+ = { datenladen : Zustand
+     , droppdown1 : String
+     , droppdown2 : String
+     , droppdown3 : String
+     , droppdown4 : String
+ }
 
 
 type alias RecordName =
@@ -67,7 +76,11 @@ type alias RecordName =
 
 init : () -> (Model, Cmd Msg)
 init _ =
-  ( Loading
+  ( {datenladen = Loading,
+    droppdown1 = "",
+    droppdown2 = "",
+    droppdown3 = "",
+    droppdown4 = ""}
   , Http.get
       { url = "https://raw.githubusercontent.com/EinKnopfzu/Sleep-Efficiency-Dataset/main/Sleep_Efficiency.csv"
       , expect = Http.expectString GotText
