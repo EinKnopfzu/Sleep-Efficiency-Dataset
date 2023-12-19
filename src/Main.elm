@@ -66,6 +66,9 @@ type alias Model
      , droppdown2 : String
      , droppdown3 : String
      , droppdown4 : String
+     , datenString : String
+     , header : List (String)
+     , datenincsv : List (String)
  }
 
 
@@ -80,7 +83,10 @@ init _ =
     droppdown1 = "",
     droppdown2 = "",
     droppdown3 = "",
-    droppdown4 = ""}
+    droppdown4 = "",
+    datenString = "",
+    header = [],
+    datenincsv = [] }
   , Http.get
       { url = "https://raw.githubusercontent.com/EinKnopfzu/Sleep-Efficiency-Dataset/main/Sleep_Efficiency.csv"
       , expect = Http.expectString GotText
