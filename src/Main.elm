@@ -205,7 +205,7 @@ view model =
                , Html.text model.droppdown2]
                ]
           --    ,Html.div [] [Html.text (toString model.daten)]
-                , let
+               , let
                    xList : List (Float)
                    xList =
                      case model.droppdown1 of
@@ -251,21 +251,19 @@ view model =
                    combinedList: List ScatterplottPoint 
                    combinedList =
                              combineLists xList yList name
-                  in
+                in
                    div []
-                   [ scatterplot 
+                    [ scatterplot 
                     { xDescription = model.droppdown1
                     , yDescription = model.droppdown2
                     , data = combinedList
                     }
-              --     ,Html.text (toString combinedList)
+                  ,Html.text (toString combinedList)
                    ]
                 ]
 
   
 
-testwert: Int
-testwert = 4000000000
 
 --Dieser Bereich ist zum Aufarbeiten der Daten 
 
@@ -448,19 +446,25 @@ type alias ScatterplottPoint =
 
 wideExtent : List Float -> ( Float, Float )
 wideExtent values =
-    defaultExtent
+    values
+    |> Statistics.extent
+    |> Maybe.withDefault defaultExtent
+
 
 xScale : List Float -> ContinuousScale Float
 xScale values =
     Scale.linear ( 0, w - 2 * padding ) (wideExtent values)
 
+
 yScale : List Float -> ContinuousScale Float
 yScale values =
     Scale.linear ( h - 2 * padding, 0 ) (wideExtent values)
 
+
 xAxis : List Float -> Svg msg
 xAxis values =
     Axis.bottom [ Axis.tickCount tickCount ] (xScale values)
+
 
 yAxis : List Float -> Svg msg
 yAxis values =
@@ -479,8 +483,7 @@ scatterplot model =
             List.map .x model.data
 
         yValues : List Float
-        yValues =
-            List.map .y model.data
+        yValues = List.map .y model.data
 
         xScaleLocal : ContinuousScale Float
         xScaleLocal =
@@ -500,7 +503,7 @@ scatterplot model =
         , g [ transform [ Translate padding padding ] ]
             (List.map (point xScaleLocal yScaleLocal) model.data)
         , g
-            [ transform [ Translate padding (h - padding) ]
+            [ transform [ Translate padding (h-padding) ]
             , TypedSvg.Attributes.class [ "x-axis" ]
             ]
             [ xAxis xValues
