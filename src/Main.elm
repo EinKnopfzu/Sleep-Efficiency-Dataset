@@ -9,7 +9,15 @@ import Color
 import List exposing (filter, sum)
 import Csv.Decode as Decode exposing (Decoder)
 import Debug exposing (toString)
-import TypedSvg.Types exposing (YesNo(..))
+import Scale exposing (ContinuousScale)
+import Axis
+import Stat
+import Statistics exposing (extent, quantile)
+import TypedSvg exposing (circle, g, line, rect, style, svg, text_)
+import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
+import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
+import TypedSvg.Core exposing (Svg, text)
+import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
 
 
 -- MAIN
@@ -31,27 +39,27 @@ header =
         , Html.Attributes.style "text-align" "center"
         , Html.Attributes.style "padding" "0.5em"
         ]
-        [ h1 [] [ text "Informationsvisualiserung Sleep Quality" ] ]
+        [ h1 [] [ Html.text "Informationsvisualiserung Sleep Quality" ] ]
 
 inhalt : Html msg
 inhalt =
-    div [ style "padding" "2em",
-          style "max-width" "600px",
-          style "margin" "0 auto" ]
-        [ p [] [ text "Zielstellung : Visualiserung" ]
-        , p [] [ text "Hier ist etwas Beispieltext." ]
+    div [ Html.Attributes.style "padding" "2em",
+          Html.Attributes.style "max-width" "600px",
+          Html.Attributes.style "margin" "0 auto" ]
+        [ p [] [ Html.text "Zielstellung : Visualiserung" ]
+        , p [] [ Html.text "Hier ist etwas Beispieltext." ]
         ]
 
 footer : Html msg
 footer =
-    div [ style "background-color" "#333",
-          style "color" "white",
-          style "text-align" "center",
-          style "padding" "1em",
-          style "position" "fixed",
-          style "bottom" "0", 
-          style "width" "100%" ]
-        [ p [] [ text "© 2023 Mick Wörner 217246242" ]
+    div [ Html.Attributes.style "background-color" "#333",
+          Html.Attributes.style "color" "white",
+          Html.Attributes.style "text-align" "center",
+          Html.Attributes.style "padding" "1em",
+          Html.Attributes.style "position" "fixed",
+          Html.Attributes.style "bottom" "0", 
+          Html.Attributes.style "width" "100%" ]
+        [ p [] [ Html.text "© 2023 Mick Wörner 217246242" ]
         ]
 
 
@@ -150,23 +158,24 @@ view : Model -> Html Msg
 view model =
     case model.datenladen of
         Failure ->
-            text "Ich konnte die Daten nicht laden"
+            Html.text "Ich konnte die Daten nicht laden"
 
         Loading ->
-            text "Am Laden..."
+            Html.text "Am Laden..."
 
         Success  ->
            Html.div []
-            [ Html.div [style "background-color" "#333"
-              , style "color" "white"
-              , style "text-align" "center"
-              , style "padding" "1em"
-              , style "position" "fixed"
-              , style "left" "0"
-              , style "width" "10%"
-              , style "height" "100%"]
-               [text "Erster Daten Wert:"
-               , text "    " 
+            [ Html.div 
+              [Html.Attributes.style "background-color" "#333"
+              , Html.Attributes.style "color" "white"
+              , Html.Attributes.style "text-align" "center"
+              , Html.Attributes.style "padding" "1em"
+              , Html.Attributes.style "position" "fixed"
+              , Html.Attributes.style "left" "0"
+              , Html.Attributes.style "width" "10%"
+              , Html.Attributes.style "height" "100%"]
+               [Html.text "Erster Daten Wert:"
+               , Html.text "    " 
                ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
                , Html.option [ value "City MPG", selected ("City MPG" == model.droppdown1) ] [ Html.text "City MPG" ]
@@ -177,9 +186,9 @@ view model =
                , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown1) ] [ Html.text "Car Width" ]
                , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown1) ] [ Html.text "Engine Size" ]
                 
-                , text model.droppdown1]
+                , Html.text model.droppdown1]
              , Html.div []
-               [ text "Erster Daten Wert" 
+               [ Html.text "Erster Daten Wert" 
                ,Html.select [ onInput Option2Selected ]
                [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
                , Html.option [ value " MPG", selected ("City MPG" == model.droppdown2) ] [ Html.text "City MPG" ]
@@ -188,18 +197,69 @@ view model =
                , Html.option [ value "Car Len", selected ("Car Len" == model.droppdown2) ] [ Html.text "Car Len" ]
                , Html.option [ value "Weight", selected ("Weight" == model.droppdown2) ] [ Html.text "Weight" ]
                , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown2) ] [ Html.text "Car Width" ]
-               , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown2) ] [ Html.text "Engine Size" ]
-               ], text model.droppdown2]]
-               Html.div [] [text (toString model.daten)]  ]
-                 
-                 
-                 --   div []
-                 --       [ header,
-                 --         pre [] [ text (toString  model.daten)]
-                 --         ,div [] [text "Daten"]
-                 --         ,footer
-                 --        ]
+               , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown2) ] [ Html.text "Engine Size" ]]
+               
+               , Html.text model.droppdown2]
+               ]
+              ,Html.div [] [Html.text (toString model.daten)]
+                , let
+                   xList : List (Float)
+                   xList =
+                     case model.droppdown1 of
 
+                      "City MPG" -> List.map .mykoffein_konsum model.daten
+
+                      "myretailPrice" -> List.map .myschlafdauer model.daten
+
+                      "Dealer Cost" -> List.map  .myschlaf_effizienz model.daten
+
+                      "Car Len" -> List.map .myrem_anteil model.daten
+
+                      "Weight" ->  List.map  .mytiefschlaf_anteil model.daten
+
+                      "Car Width" -> List.map .myleichtschlaf_anteil model.daten
+
+                      "Engine Size" -> List.map .myerwacht_anzahl model.daten
+
+                      _ -> []    
+     
+                   yList : List (Float)
+                   yList =
+                     case model.droppdown2 of
+
+                      "City MPG" -> List.map .mykoffein_konsum model.daten
+
+                      "myretailPrice" -> List.map .myschlafdauer model.daten
+
+                      "Dealer Cost" -> List.map  .myschlaf_effizienz model.daten
+
+                      "Car Len" -> List.map .myrem_anteil model.daten
+
+                      "Weight" ->  List.map  .mytiefschlaf_anteil model.daten
+
+                      "Car Width" -> List.map .myleichtschlaf_anteil model.daten
+
+                      "Engine Size" -> List.map .myerwacht_anzahl model.daten
+                      
+                      _ -> [] 
+                   name =
+                    List.map .myVehicleName model.daten
+
+                   combinedList: List ScatterplottPoint 
+                   combinedList =
+                             combineLists xList yList name
+                  in
+                  div []
+                   [ scatterplot 
+                   { xDescription = model.selectedOption2
+                   , yDescription = model.selectedOption2
+            
+                   , data = combinedList
+                   }
+                   ]
+                ]
+
+  
 
 testwert: Int
 testwert = 4000000000
@@ -225,7 +285,6 @@ decode =
         |> Decode.pipeline (Decode.field "Smoking status" (Decode.blank Decode.string))
         |> Decode.pipeline (Decode.field "Exercise frequency" (Decode.blank Decode.float))
 
-
 stringtoUnverarbeitete : String -> List(Unverarbeitete_Daten)
 stringtoUnverarbeitete string =
     let
@@ -235,10 +294,6 @@ stringtoUnverarbeitete string =
     Ok value -> value
     Err msg ->
           []
-            
-
-
-
 
 -- Diese Funktion verwandelt den Datensatz so, dass die leeren Datenfelder entfernt werden. 
 sleep2Point : Unverarbeitete_Daten -> Maybe Aussortierte_Daten
@@ -305,7 +360,6 @@ sleep2Point c =
                     c.sport
             )
 
-
 type alias Aussortierte_Daten =
  {myid_ :  String 
  ,myalter : Float
@@ -344,35 +398,35 @@ type alias Unverarbeitete_Daten =
 
 
 
-type Geschlecht 
-  = Male
-  | Female
-  | Unknown
-
-
-  
+ 
 --Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.
-
+combineLists : List Float -> List Float ->List String -> List ScatterplottPoint
+combineLists x y z =
+    List.map3 (\zValue xValue yValue -> { pointName = zValue, x = xValue, y = yValue }) z x y
 
 w : Float
 w =
     900
 
-
 h : Float
 h =
     450
-
 
 padding : Float
 padding =
     60
 
-
 radius : Float
 radius =
     5.0
 
+tickCount : Int
+tickCount =
+    5
+
+defaultExtent : ( number, number1 )
+defaultExtent =
+    ( 0, 100 )
 
 --Der Typ soll die relative Position eines Datenpunktes darstellen. 
 type alias ScatterplottXYPoint =
@@ -389,4 +443,113 @@ type alias ScatterplottXYData =
 --Repräsentiert den individuellen Punkt mit Name. 
 type alias ScatterplottPoint =
     { pointName : String, x : Float, y : Float }
+
+wideExtent : List Float -> ( Float, Float )
+wideExtent values =
+    defaultExtent
+
+xScale : List Float -> ContinuousScale Float
+xScale values =
+    Scale.linear ( 0, w - 2 * padding ) (wideExtent values)
+
+yScale : List Float -> ContinuousScale Float
+yScale values =
+    Scale.linear ( h - 2 * padding, 0 ) (wideExtent values)
+
+xAxis : List Float -> Svg msg
+xAxis values =
+    Axis.bottom [ Axis.tickCount tickCount ] (xScale values)
+
+yAxis : List Float -> Svg msg
+yAxis values =
+    Axis.left [ Axis.tickCount tickCount ] (yScale values)
+
+scatterplot : ScatterplottXYData -> Svg msg
+scatterplot model =
+    let
+        {- hier können Sie die Beschriftung des Testpunkts berechnen -}
+        kreisbeschriftung : String
+        kreisbeschriftung =
+            ""
+
+        xValues : List Float
+        xValues =
+            List.map .x model.daten
+
+        yValues : List Float
+        yValues =
+            List.map .y model.daten
+
+        xScaleLocal : ContinuousScale Float
+        xScaleLocal =
+            xScale xValues
+
+        yScaleLocal : ContinuousScale Float
+        yScaleLocal =
+            yScale yValues
+    in
+    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+        [ TypedSvg.style [] [ TypedSvg.Core.text """
+            .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
+            .point text { display: none; }
+            .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
+            .point:hover text { display: inline; }
+          """ ]
+        , g [ transform [ Translate padding padding ] ]
+            (List.map (point xScaleLocal yScaleLocal) model.daten)
+        , g
+            [ transform [ Translate padding (h - padding) ]
+            , TypedSvg.Attributes.class [ "x-axis" ]
+            ]
+            [ xAxis xValues
+            , text_
+                [ x 400
+                , y 40
+                , fontSize (TypedSvg.Types.px 16)
+                , textAnchor TypedSvg.Types.AnchorMiddle
+                ]
+                [ TypedSvg.Core.text model.xDescription ]
+            ]
+        , g
+            [ transform [ Translate padding padding ]
+            , TypedSvg.Attributes.class [ "y-axis" ]
+            ]
+            [ yAxis yValues
+            , text_
+                [ x 0
+                , y -15
+                , fontSize (TypedSvg.Types.px 16)
+                , textAnchor TypedSvg.Types.AnchorMiddle
+                ]
+                [ TypedSvg.Core.text model.yDescription ]
+            ]
+        , g [ transform [ Translate padding padding ] ]
+            (List.map (point xScaleLocal yScaleLocal) model.daten)
+        , line
+            [ x 0
+            , y 0
+            , x 300
+            , y 300
+            , stroke (Paint Color.blue)
+            ]
+            []
+        ]
+
+point : ContinuousScale Float -> ContinuousScale Float -> ScatterplottPoint -> Svg msg
+point scaleX scaleY xyPoint =
+    let
+        ( xa, ya ) =
+            ( Scale.convert scaleX xyPoint.x, Scale.convert scaleY xyPoint.y )
+    in
+    g [ TypedSvg.Attributes.class [ "point" ], fontSize <| Px 10.0, fontFamily [ "sans-serif" ] ]
+        [ circle [ cx xa, cy ya, r radius ]
+            []
+        , text_
+            [ x (xa + radius)
+            , y (ya - radius)
+            , textAnchor TypedSvg.Types.AnchorStart
+            ]
+            [ TypedSvg.Core.text xyPoint.pointName ]
+        ]
+
 
