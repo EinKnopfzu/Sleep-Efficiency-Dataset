@@ -123,7 +123,7 @@ view model =
         Success fullText ->
                     div []
                         [ header,
-                          pre [] [ text (toString (stringtoUnverarbeitete fullText ))]
+                          pre [] [ text (toString  ((stringtoUnverarbeitete fullText )|> List.map sleep2Point))]
                           ,footer
                         ]
 
@@ -178,15 +178,17 @@ stringtoUnverarbeitete string =
                 }
 
 --["0",0,Unknown,"0","0",0,0,0,0,0,NA,0]
-sleepData :  Unverarbeitete_Daten -> List Aussortierte_Daten
+
+
+
 sleepData i = 
   List.filter sleep2Point i
--}
 
+-}
 
 sleep2Point : Unverarbeitete_Daten -> Maybe Aussortierte_Daten
 sleep2Point c = 
-   
+    
     Maybe.map5
         (\myid_ myalter mygeschlecht myschlafenszeit myaufwachzeit  ->
             Aussortierte_Daten
