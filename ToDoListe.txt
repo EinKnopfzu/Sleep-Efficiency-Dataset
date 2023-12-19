@@ -33,3 +33,13 @@ S.209 Präsentation
 Interaktion der Visualisierungen entweder: Attribute der Menschen, verhaltensweisen oder die Auswirkungen auf den schlaf 
 
 
+Ist Stand: 
+    - Die Daten werden ordentlich transformiert und in model.data abgespeichert. 
+    - 
+    -
+    -
+    -
+    -
+
+
+

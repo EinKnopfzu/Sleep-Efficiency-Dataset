@@ -84,9 +84,9 @@ init _ =
     droppdown4 = ""
       , daten = [ Just { myid_ = "Test"
       , myalter = 0.0
-      , mygeschlecht = "String"
-      , myschlafenszeitt = "String"
-      , myaufwachzeit = "String"
+      , mygeschlecht = "NA"
+      , myschlafenszeitt = "NA"
+      , myaufwachzeit = "NA"
       , myschlafdauer = 0.0
       , myschlaf_effizienz = 0.0
       , myrem_anteil = 0.0
@@ -95,7 +95,7 @@ init _ =
       , myerwacht_anzahl = 0.0
       , mykoffein_konsum = 0.0
       , myalkohol_konsum = 0.0
-      , myraucher = "String"
+      , myraucher = "NA"
       , mysport = 0.0
                        } ]
       }
@@ -158,7 +158,7 @@ view model =
         Success  ->
                     div []
                         [ header,
-                          pre [] [ text (toString  "Data")]
+                          pre [] [ text (toString  model.daten)]
                           ,div [] [text "Daten"]
                           ,footer
                         ]
@@ -312,10 +312,8 @@ type Geschlecht
   | Female
   | Unknown
 
-type Raucher
-  = YES
-  | NO
-  | NA
+
+  
 --Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.
 
 
