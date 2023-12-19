@@ -406,19 +406,19 @@ combineLists x y z =
 
 w : Float
 w =
-    900
+    100
 
 h : Float
 h =
-    40
+    100
 
 padding : Float
 padding =
-    60
+    200
 
 radius : Float
 radius =
-    5.0
+    2.0
 
 tickCount : Int
 tickCount =
@@ -426,7 +426,7 @@ tickCount =
 
 defaultExtent : ( number, number1 )
 defaultExtent =
-    ( 0, 100 )
+    ( 0, 50 )
 
 --Der Typ soll die relative Position eines Datenpunktes darstellen. 
 type alias ScatterplottXYPoint =
@@ -483,7 +483,8 @@ scatterplot model =
             List.map .x model.data
 
         yValues : List Float
-        yValues = List.map .y model.data
+        yValues = 
+            List.map .y model.data
 
         xScaleLocal : ContinuousScale Float
         xScaleLocal =
@@ -508,9 +509,9 @@ scatterplot model =
             ]
             [ xAxis xValues
             , text_
-                [ x 40
-                , y 40
-                , fontSize (TypedSvg.Types.px 16)
+                [ x 4
+                , y 4
+                , fontSize (TypedSvg.Types.px 160)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
                 [ TypedSvg.Core.text model.xDescription ]
@@ -533,8 +534,8 @@ scatterplot model =
         , line
             [ x 0
             , y 0
-            , x 300
-            , y 300
+            , x 100
+            , y 100
             , stroke (Paint Color.blue)
             ]
             []
