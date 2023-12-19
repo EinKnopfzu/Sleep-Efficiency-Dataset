@@ -5,7 +5,7 @@ import Html exposing (..)
 import Html.Attributes exposing(..)
 import Http
 import Color
-
+import List exposing (filter, sum)
 import Csv.Decode as Decode exposing (Decoder)
 import Debug exposing (toString)
 import TypedSvg.Types exposing (YesNo(..))
@@ -109,7 +109,6 @@ subscriptions model =
   Sub.none
 
 
-
 -- VIEW
 
 view : Model -> Html Msg
@@ -136,7 +135,7 @@ decode =
     Decode.into Unverarbeitete_Daten
         |> Decode.pipeline (Decode.field "ID" (Decode.blank Decode.string))
         |> Decode.pipeline (Decode.field "Age" (Decode.blank Decode.float))
-        |> Decode.pipeline (Decode.field "Gender" (Decode.blank Decode.string))
+        |> Decode.pipeline (Decode.field "Gender" (Decode.blank Decode.string))       
         |> Decode.pipeline (Decode.field "Bedtime" (Decode.blank Decode.string))
         |> Decode.pipeline (Decode.field "Wakeup time" (Decode.blank Decode.string))
         |> Decode.pipeline (Decode.field "Sleep duration" (Decode.blank Decode.float))
@@ -151,8 +150,41 @@ decode =
         |> Decode.pipeline (Decode.field "Exercise frequency" (Decode.blank Decode.float))
 
 
+stringtoAussortierte : String -> List(Unverarbeitete_Daten)
+stringtoAussortierte string =
+    let
+        result = Decode.decodeCsv Decode.FieldNamesFromFirstRow decode string
+    in
+    case result of
+    Ok value -> value
+    Err msg ->
+          []
+            
+{-                { myid_ = "0"
+                , myalter = "0.0"
+                , mygeschlecht = "Unknown"
+                , myschlafenszeitt = "0"
+                , myaufwachzeit = "0"
+                , myschlafdauer = 0.0
+                , myschlaf_effizienz = 0.0
+                , myrem_anteil = 0.0
+                , mytiefschlaf_anteil = 0.0
+                , myleichtschlaf_anteil = 0.0
+                , myerwacht_anzahl = 0.0
+                , mykoffein_konsum = 0.0
+                , myalkohol_konsum = 0.0
+                , myraucher = "Unknown"
+                , mysport = 0.0
+                }
+
+--["0",0,Unknown,"0","0",0,0,0,0,0,NA,0]
+-}
+
+
+
 sleep2Point : Unverarbeitete_Daten -> Maybe Aussortierte_Daten
-sleep2Point c =
+sleep2Point c = 
+   
     Maybe.map5
         (\myid_ myalter mygeschlecht myschlafenszeit myaufwachzeit  ->
             Aussortierte_Daten
@@ -169,7 +201,7 @@ sleep2Point c =
                 0.0
                 0.0
                 0.0
-                NA
+                "NA"
                 0.0
         )
         c.id_
@@ -203,7 +235,7 @@ sleep2Point c =
                          myerwacht_anzahl = myXA,
                          mykoffein_konsum =  myXB, 
                          myalkohol_konsum = myXY,
-                         myraucher = (if myXV =="Yes" then Yes else if myXV == "No" then NO else NA),
+                         myraucher = myXV,
                          mysport = myXK
                           }
                     )
@@ -229,7 +261,7 @@ type alias Aussortierte_Daten =
  ,myerwacht_anzahl : Float
  ,mykoffein_konsum : Float
  ,myalkohol_konsum : Float
- ,myraucher : Raucher
+ ,myraucher : String
  ,mysport : Float
  }
 -- Typ für die unaufgearbeiteten Daten
@@ -259,7 +291,7 @@ type Geschlecht
   | Unknown
 
 type Raucher
-  = Yes
+  = YES
   | NO
   | NA
 --Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.
