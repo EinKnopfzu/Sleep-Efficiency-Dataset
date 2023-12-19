@@ -301,6 +301,25 @@ type Raucher
 --Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.
 
 
+w : Float
+w =
+    900
+
+
+h : Float
+h =
+    450
+
+
+padding : Float
+padding =
+    60
+
+
+radius : Float
+radius =
+    5.0
+
 
 --Der Typ soll die relative Position eines Datenpunktes darstellen. 
 type alias ScatterplottXYPoint =
