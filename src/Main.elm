@@ -177,7 +177,7 @@ view model =
                , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown1) ] [ Html.text "Car Width" ]
                , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown1) ] [ Html.text "Engine Size" ]
                 
-                , text model.droppdown1]]
+                , text model.droppdown1]
              , Html.div []
                [ text "Erster Daten Wert" 
                ,Html.select [ onInput Option2Selected ]
@@ -189,7 +189,8 @@ view model =
                , Html.option [ value "Weight", selected ("Weight" == model.droppdown2) ] [ Html.text "Weight" ]
                , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown2) ] [ Html.text "Car Width" ]
                , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown2) ] [ Html.text "Engine Size" ]
-               ], text model.droppdown2] ]  
+               ], text model.droppdown2]]
+               Html.div [] [text (toString model.daten)]  ]
                  
                  
                  --   div []
