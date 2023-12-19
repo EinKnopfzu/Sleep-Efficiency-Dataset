@@ -157,14 +157,17 @@ view model =
 
         Success  ->
            Html.div []
-            [ Html.div [style "background-color" "#333",
-             style "color" "white",
-          style "text-align" "center",
-          style "padding" "1em",
-          style "position" "fixed",
-          style "bottom" "0", 
-          style "width" "100%"]
-               [Html.select [ onInput Option1Selected ]
+            [ Html.div [style "background-color" "#333"
+              , style "color" "white"
+              , style "text-align" "center"
+              , style "padding" "1em"
+              , style "position" "fixed"
+              , style "left" "0"
+              , style "width" "10%"
+              , style "height" "100%"]
+               [text "Erster Daten Wert:"
+               , text "    " 
+               ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
                , Html.option [ value "City MPG", selected ("City MPG" == model.droppdown1) ] [ Html.text "City MPG" ]
                , Html.option [ value "Retail Price", selected ("Retail Price" == model.droppdown1) ] [ Html.text "Retail Price" ]
@@ -176,9 +179,10 @@ view model =
                 
                 , text model.droppdown1]]
              , Html.div []
-               [ Html.select [ onInput Option2Selected ]
+               [ text "Erster Daten Wert" 
+               ,Html.select [ onInput Option2Selected ]
                [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
-               , Html.option [ value "City MPG", selected ("City MPG" == model.droppdown2) ] [ Html.text "City MPG" ]
+               , Html.option [ value " MPG", selected ("City MPG" == model.droppdown2) ] [ Html.text "City MPG" ]
                , Html.option [ value "Retail Price", selected ("Retail Price" == model.droppdown2) ] [ Html.text "Retail Price" ]
                , Html.option [ value "Dealer Cost", selected ("Dealer Cost" == model.droppdown2) ] [ Html.text "Dealer Cost" ]
                , Html.option [ value "Car Len", selected ("Car Len" == model.droppdown2) ] [ Html.text "Car Len" ]
