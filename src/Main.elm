@@ -58,7 +58,7 @@ footer =
 type Zustand
   = Failure
   | Loading
-  | Success String
+  | Success 
 
 type alias Model
  = { datenladen : Zustand
@@ -66,9 +66,7 @@ type alias Model
      , droppdown2 : String
      , droppdown3 : String
      , droppdown4 : String
-     , datenString : String
-     , header : List (String)
-     , datenincsv : List (String)
+     , daten :List (Maybe Aussortierte_Daten)
  }
 
 
@@ -83,10 +81,24 @@ init _ =
     droppdown1 = "",
     droppdown2 = "",
     droppdown3 = "",
-    droppdown4 = "",
-    datenString = "",
-    header = [],
-    datenincsv = [] }
+    droppdown4 = ""
+      , daten = [ Just { myid_ = "Test"
+      , myalter = 0.0
+      , mygeschlecht = "String"
+      , myschlafenszeitt = "String"
+      , myaufwachzeit = "String"
+      , myschlafdauer = 0.0
+      , myschlaf_effizienz = 0.0
+      , myrem_anteil = 0.0
+      , mytiefschlaf_anteil = 0.0
+      , myleichtschlaf_anteil = 0.0
+      , myerwacht_anzahl = 0.0
+      , mykoffein_konsum = 0.0
+      , myalkohol_konsum = 0.0
+      , myraucher = "String"
+      , mysport = 0.0
+                       } ]
+      }
   , Http.get
       { url = "https://raw.githubusercontent.com/EinKnopfzu/Sleep-Efficiency-Dataset/main/Sleep_Efficiency.csv"
       , expect = Http.expectString GotText
@@ -97,8 +109,11 @@ init _ =
 
 type Msg
   = GotText (Result Http.Error String)
-  | Option1Selected (String)
-  | Option2Selected (String)
+  | Option1Selected String
+  | Option2Selected String
+  | Option3Selected String
+  | Option4Selected String
+  
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -107,10 +122,19 @@ update msg model =
     GotText result ->
       case result of
         Ok fullText ->
-          (Success fullText, Cmd.none)
+         (({ model | datenladen = Success , daten = ((stringtoUnverarbeitete fullText )|> List.map sleep2Point)},Cmd.none))
 
         Err _ ->
-          (Failure, Cmd.none)
+         ({ model | datenladen = Failure }, Cmd.none)
+    Option1Selected value -> 
+      ({ model | droppdown1 = value }, Cmd.none)
+    Option2Selected value -> 
+      ({ model | droppdown2 = value }, Cmd.none)
+    Option3Selected value ->
+      ({ model | droppdown3 = value }, Cmd.none)
+    Option4Selected value -> 
+      ({ model | droppdown4 = value }, Cmd.none)
+
 
 
 -- SUBSCRIPTIONS
@@ -124,17 +148,17 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    case model of
+    case model.datenladen of
         Failure ->
             text "Ich konnte die Daten nicht laden"
 
         Loading ->
             text "Am Laden..."
 
-        Success fullText ->
+        Success  ->
                     div []
                         [ header,
-                          pre [] [ text (toString  ((stringtoUnverarbeitete fullText )|> List.map sleep2Point))]
+                          pre [] [ text (toString  "Data")]
                           ,div [] [text "Daten"]
                           ,footer
                         ]
@@ -175,31 +199,10 @@ stringtoUnverarbeitete string =
     Err msg ->
           []
             
-{-                { myid_ = "0"
-                , myalter = "0.0"
-                , mygeschlecht = "Unknown"
-                , myschlafenszeitt = "0"
-                , myaufwachzeit = "0"
-                , myschlafdauer = 0.0
-                , myschlaf_effizienz = 0.0
-                , myrem_anteil = 0.0
-                , mytiefschlaf_anteil = 0.0
-                , myleichtschlaf_anteil = 0.0
-                , myerwacht_anzahl = 0.0
-                , mykoffein_konsum = 0.0
-                , myalkohol_konsum = 0.0
-                , myraucher = "Unknown"
-                , mysport = 0.0
-                }
-
---["0",0,Unknown,"0","0",0,0,0,0,0,NA,0]
 
 
 
-sleepData i = 
-  List.filter sleep2Point i
 
--}
 
 sleep2Point : Unverarbeitete_Daten -> Maybe Aussortierte_Daten
 sleep2Point c = 
