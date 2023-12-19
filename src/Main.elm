@@ -252,7 +252,7 @@ view model =
                    combinedList =
                              combineLists xList yList name
                 in
-                   div []
+                   div [Html.Attributes.style "margin-left" "10%"]
                     [ scatterplot 
                     { xDescription = model.droppdown1
                     , yDescription = model.droppdown2
@@ -406,15 +406,15 @@ combineLists x y z =
 
 w : Float
 w =
-    100
+    900
 
 h : Float
 h =
-    100
+    450
 
 padding : Float
 padding =
-    200
+    60
 
 radius : Float
 radius =
@@ -426,7 +426,7 @@ tickCount =
 
 defaultExtent : ( number, number1 )
 defaultExtent =
-    ( 0, 50 )
+    ( 0, 100 )
 
 --Der Typ soll die relative Position eines Datenpunktes darstellen. 
 type alias ScatterplottXYPoint =
