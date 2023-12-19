@@ -3,6 +3,7 @@ module Main exposing (..)
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing(..)
+import Html.Events exposing (onInput)
 import Http
 import Color
 import List exposing (filter, sum)
@@ -10,12 +11,8 @@ import Csv.Decode as Decode exposing (Decoder)
 import Debug exposing (toString)
 import TypedSvg.Types exposing (YesNo(..))
 
--- import
-
-
 
 -- MAIN
-
 
 main =
   Browser.element
@@ -25,27 +22,7 @@ main =
     , view = view
     }
 
-
-
 -- MODEL
-
-
-type Model
-  = Failure
-  | Loading
-  | Success String
-
-
-init : () -> (Model, Cmd Msg)
-init _ =
-  ( Loading
-  , Http.get
-      { url = "https://raw.githubusercontent.com/EinKnopfzu/Sleep-Efficiency-Dataset/main/Sleep_Efficiency.csv"
-      , expect = Http.expectString GotText
-      }
-  )
-
-
 header : Html msg
 header =
     div
@@ -65,7 +42,6 @@ inhalt =
         , p [] [ text "Hier ist etwas Beispieltext." ]
         ]
 
-
 footer : Html msg
 footer =
     div [ style "background-color" "#333",
@@ -78,15 +54,32 @@ footer =
         [ p [] [ text "© 2023 Mick Wörner 217246242" ]
         ]
 
+type Model
+  = Failure
+  | Loading
+  | Success String
 
 
+type alias RecordName =
+    { key1 : Float
+    , key2 : Float
+    }
 
+init : () -> (Model, Cmd Msg)
+init _ =
+  ( Loading
+  , Http.get
+      { url = "https://raw.githubusercontent.com/EinKnopfzu/Sleep-Efficiency-Dataset/main/Sleep_Efficiency.csv"
+      , expect = Http.expectString GotText
+      }
+  )
 
 -- UPDATE
 
-
 type Msg
   = GotText (Result Http.Error String)
+  | Option1Selected (String)
+  | Option2Selected (String)
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -99,7 +92,6 @@ update msg model =
 
         Err _ ->
           (Failure, Cmd.none)
-
 
 
 -- SUBSCRIPTIONS
@@ -124,9 +116,13 @@ view model =
                     div []
                         [ header,
                           pre [] [ text (toString  ((stringtoUnverarbeitete fullText )|> List.map sleep2Point))]
+                          ,div [] [text "Daten"]
                           ,footer
                         ]
 
+
+testwert: Int
+testwert = 4000000000
 
 --Dieser Bereich ist zum Aufarbeiten der Daten 
 
