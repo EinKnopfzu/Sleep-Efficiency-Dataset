@@ -406,15 +406,15 @@ combineLists x y z =
 
 w : Float
 w =
-    900
+    100
 
 h : Float
 h =
-    450
+    100
 
 padding : Float
 padding =
-    60
+    40
 
 radius : Float
 radius =
@@ -511,7 +511,7 @@ scatterplot model =
             , text_
                 [ x 4
                 , y 4
-                , fontSize (TypedSvg.Types.px 160)
+                , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
                 [ TypedSvg.Core.text model.xDescription ]
