@@ -239,7 +239,7 @@ stringtoUnverarbeitete string =
 
 
 
-
+-- Diese Funktion verwandelt den Datensatz so, dass die leeren Datenfelder entfernt werden. 
 sleep2Point : Unverarbeitete_Daten -> Maybe Aussortierte_Daten
 sleep2Point c = 
     
