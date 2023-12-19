@@ -74,7 +74,7 @@ type alias Model
      , droppdown2 : String
      , droppdown3 : String
      , droppdown4 : String
-     , daten :List (Maybe Aussortierte_Daten)
+     , daten :List ( Aussortierte_Daten)
  }
 
 
@@ -85,12 +85,13 @@ type alias RecordName =
 
 init : () -> (Model, Cmd Msg)
 init _ =
-  ( {datenladen = Loading,
-    droppdown1 = "",
-    droppdown2 = "",
-    droppdown3 = "",
-    droppdown4 = ""
-      , daten = [ Just { myid_ = "Test"
+  ( 
+      {datenladen = Loading,
+      droppdown1 = "",
+      droppdown2 = "",
+      droppdown3 = "",
+      droppdown4 = ""
+      , daten = [  { myid_ = "Test"
       , myalter = 0.0
       , mygeschlecht = "NA"
       , myschlafenszeitt = "NA"
@@ -130,19 +131,22 @@ update msg model =
     GotText result ->
       case result of
         Ok fullText ->
-         (({ model | datenladen = Success , daten = ((stringtoUnverarbeitete fullText )|> List.map sleep2Point)},Cmd.none))
+         (({ model | datenladen = Success , daten = ((stringtoUnverarbeitete fullText )|> List.filterMap sleep2Point)},Cmd.none))
 
         Err _ ->
          ({ model | datenladen = Failure }, Cmd.none)
+
     Option1Selected value -> 
       ({ model | droppdown1 = value }, Cmd.none)
+
     Option2Selected value -> 
       ({ model | droppdown2 = value }, Cmd.none)
+
     Option3Selected value ->
       ({ model | droppdown3 = value }, Cmd.none)
+
     Option4Selected value -> 
       ({ model | droppdown4 = value }, Cmd.none)
-
 
 
 -- SUBSCRIPTIONS
@@ -174,8 +178,7 @@ view model =
               , Html.Attributes.style "left" "0"
               , Html.Attributes.style "width" "10%"
               , Html.Attributes.style "height" "100%"]
-               [Html.text "Erster Daten Wert:"
-               , Html.text "    " 
+               [Html.text "Erster Daten Wert:"               
                ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
                , Html.option [ value "City MPG", selected ("City MPG" == model.droppdown1) ] [ Html.text "City MPG" ]
@@ -184,9 +187,8 @@ view model =
                , Html.option [ value "Car Len", selected ("Car Len" == model.droppdown1) ] [ Html.text "Car Len" ]
                , Html.option [ value "Weight", selected ("Weight" == model.droppdown1) ] [ Html.text "Weight" ]
                , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown1) ] [ Html.text "Car Width" ]
-               , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown1) ] [ Html.text "Engine Size" ]
-                
-                , Html.text model.droppdown1]
+               , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown1) ] [ Html.text "Engine Size" ]                
+               , Html.text model.droppdown1]
              , Html.div []
                [ Html.text "Erster Daten Wert" 
                ,Html.select [ onInput Option2Selected ]
@@ -201,7 +203,7 @@ view model =
                
                , Html.text model.droppdown2]
                ]
-              ,Html.div [] [Html.text (toString model.daten)]
+          --    ,Html.div [] [Html.text (toString model.daten)]
                 , let
                    xList : List (Float)
                    xList =
@@ -225,7 +227,7 @@ view model =
      
                    yList : List (Float)
                    yList =
-                     case model.droppdown2 of
+                      case model.droppdown2 of
 
                       "City MPG" -> List.map .mykoffein_konsum model.daten
 
@@ -243,19 +245,19 @@ view model =
                       
                       _ -> [] 
                    name =
-                    List.map .myVehicleName model.daten
+                    List.map .myid_ model.daten
 
                    combinedList: List ScatterplottPoint 
                    combinedList =
                              combineLists xList yList name
                   in
-                  div []
-                   [ scatterplot 
-                   { xDescription = model.selectedOption2
-                   , yDescription = model.selectedOption2
-            
-                   , data = combinedList
-                   }
+                   div []
+                   [ --scatterplot 
+      --             { xDescription = model.droppdown1
+       --            , yDescription = model.droppdown2
+        --           , data = combinedList
+          --         }
+                    Html.text (toString combinedList)
                    ]
                 ]
 
@@ -285,7 +287,7 @@ decode =
         |> Decode.pipeline (Decode.field "Smoking status" (Decode.blank Decode.string))
         |> Decode.pipeline (Decode.field "Exercise frequency" (Decode.blank Decode.float))
 
-stringtoUnverarbeitete : String -> List(Unverarbeitete_Daten)
+stringtoUnverarbeitete : String -> List (Unverarbeitete_Daten)
 stringtoUnverarbeitete string =
     let
         result = Decode.decodeCsv Decode.FieldNamesFromFirstRow decode string
@@ -298,7 +300,6 @@ stringtoUnverarbeitete string =
 -- Diese Funktion verwandelt den Datensatz so, dass die leeren Datenfelder entfernt werden. 
 sleep2Point : Unverarbeitete_Daten -> Maybe Aussortierte_Daten
 sleep2Point c = 
-    
     Maybe.map5
         (\myid_ myalter mygeschlecht myschlafenszeit myaufwachzeit  ->
             Aussortierte_Daten
@@ -474,11 +475,11 @@ scatterplot model =
 
         xValues : List Float
         xValues =
-            List.map .x model.daten
+            List.map .x model.data
 
         yValues : List Float
         yValues =
-            List.map .y model.daten
+            List.map .y model.data
 
         xScaleLocal : ContinuousScale Float
         xScaleLocal =
@@ -488,7 +489,7 @@ scatterplot model =
         yScaleLocal =
             yScale yValues
     in
-    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 100 10 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }
@@ -496,7 +497,7 @@ scatterplot model =
             .point:hover text { display: inline; }
           """ ]
         , g [ transform [ Translate padding padding ] ]
-            (List.map (point xScaleLocal yScaleLocal) model.daten)
+            (List.map (point xScaleLocal yScaleLocal) model.data)
         , g
             [ transform [ Translate padding (h - padding) ]
             , TypedSvg.Attributes.class [ "x-axis" ]
@@ -524,7 +525,7 @@ scatterplot model =
                 [ TypedSvg.Core.text model.yDescription ]
             ]
         , g [ transform [ Translate padding padding ] ]
-            (List.map (point xScaleLocal yScaleLocal) model.daten)
+            (List.map (point xScaleLocal yScaleLocal) model.data)
         , line
             [ x 0
             , y 0
