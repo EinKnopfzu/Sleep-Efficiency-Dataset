@@ -252,7 +252,11 @@ view model =
                    combinedList =
                              combineLists xList yList name
                 in
-                   div [Html.Attributes.style "margin-left" "10%"]
+                   div [
+                    Html.Attributes.style "margin-left" "20%" 
+                    , Html.Attributes.style "padding" "2em"
+                    ,  Html.Attributes.style "height" "100%" 
+                    , Html.Attributes.style "width" "90%"] 
                     [ scatterplot 
                     { xDescription = model.droppdown1
                     , yDescription = model.droppdown2
