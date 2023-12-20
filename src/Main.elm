@@ -69,6 +69,10 @@ type Zustand
   | Loading
   | Success 
 
+type Grafik
+  = Scatterplott
+
+
 type alias Model
  = { datenladen : Zustand
      , droppdown1 : String
@@ -76,6 +80,7 @@ type alias Model
      , droppdown3 : String
      , droppdown4 : String
      , daten :List ( Aussortierte_Daten)
+     , pageview: Grafik
  }
 
 
@@ -91,7 +96,8 @@ init _ =
       droppdown1 = "",
       droppdown2 = "",
       droppdown3 = "",
-      droppdown4 = ""
+      droppdown4 = "",
+      pageview = Scatterplott
       , daten = [  { myid_ = "Test"
       , myalter = 0.0
       , mygeschlecht = "NA"
@@ -528,7 +534,7 @@ scatterplot model =
             ]
             [ xAxis xValues
             , text_
-                [ x 400
+                [ x 350
                 , y 40
                 , fontSize (TypedSvg.Types.px 20)
                 , textAnchor TypedSvg.Types.AnchorMiddle
