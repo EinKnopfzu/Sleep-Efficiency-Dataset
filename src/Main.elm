@@ -331,7 +331,7 @@ view model =
                     , data = combinedList
                     }
                 --  ,Html.text (toString combinedList)
-                   ]
+                   ], footer
                 ]
 
   
