@@ -194,13 +194,13 @@ view model =
                        ,Html.text "Erster Daten Wert:"               
                   ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
-                  , Html.option [ value "City MPG", selected ("City MPG" == model.droppdown1) ] [ Html.text "City MPG" ]
-                  , Html.option [ value "Retail Price", selected ("Retail Price" == model.droppdown1) ] [ Html.text "Retail Price" ]
-                  , Html.option [ value "Dealer Cost", selected ("Dealer Cost" == model.droppdown1) ] [ Html.text "Dealer Cost" ]
-                  , Html.option [ value "Car Len", selected ("Car Len" == model.droppdown1) ] [ Html.text "Car Len" ]
-                  , Html.option [ value "Weight", selected ("Weight" == model.droppdown1) ] [ Html.text "Weight" ]
-                  , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown1) ] [ Html.text "Car Width" ]
-                  , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown1) ] [ Html.text "Engine Size" ]                
+                  , Html.option [ value "Alter", selected ("Alter" == model.droppdown1) ] [ Html.text "Alter" ]
+                  , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown1) ] [ Html.text "Schlafdauer" ]
+                  , Html.option [ value "Schlaf Effizient", selected ("Schlaf Effizient" == model.droppdown1) ] [ Html.text "Schlaf Effizient" ]
+                  , Html.option [ value "REM", selected ("REM" == model.droppdown1) ] [ Html.text "REM" ]
+                  , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown1) ] [ Html.text "Tiefschlaf Anteil" ]
+                  , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown1) ] [ Html.text "Erwacht Anzahl" ]
+                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown1) ] [ Html.text "Koffein Konsum" ]                
                   , Html.text model.droppdown1]
                   , Html.br [] []
                   , Html.br [] []
@@ -208,13 +208,13 @@ view model =
                   [ Html.text "Erster Daten Wert" 
                   ,Html.select [ onInput Option2Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
-                  , Html.option [ value " MPG", selected ("City MPG" == model.droppdown2) ] [ Html.text "City MPG" ]
-                  , Html.option [ value "Retail Price", selected ("Retail Price" == model.droppdown2) ] [ Html.text "Retail Price" ]
-                  , Html.option [ value "Dealer Cost", selected ("Dealer Cost" == model.droppdown2) ] [ Html.text "Dealer Cost" ]
-                  , Html.option [ value "Car Len", selected ("Car Len" == model.droppdown2) ] [ Html.text "Car Len" ]
-                  , Html.option [ value "Weight", selected ("Weight" == model.droppdown2) ] [ Html.text "Weight" ]
-                  , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown2) ] [ Html.text "Car Width" ]
-                  , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown2) ] [ Html.text "Engine Size" ]]
+                  , Html.option [ value " Alter", selected ("Alter" == model.droppdown2) ] [ Html.text "Alter" ]
+                  , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown2) ] [ Html.text "Schlafdauer" ]
+                  , Html.option [ value "Schlaf Effizient", selected ("Schlaf Effizient" == model.droppdown2) ] [ Html.text "Schlaf Effizient" ]
+                  , Html.option [ value "REM", selected ("REM" == model.droppdown2) ] [ Html.text "REM" ]
+                  , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown2) ] [ Html.text "Tiefschlaf Anteil" ]
+                  , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown2) ] [ Html.text "Erwacht Anzahl" ]
+                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]]
                
                , Html.text model.droppdown2]]
                ]
@@ -224,19 +224,19 @@ view model =
                    xList =
                      case model.droppdown1 of
 
-                      "City MPG" -> List.map .mykoffein_konsum model.daten
+                      "Alter" -> List.map .myalter model.daten
 
-                      "myretailPrice" -> List.map .myschlafdauer model.daten
+                      "Schlafdauer" -> List.map .myschlafdauer model.daten
 
-                      "Dealer Cost" -> List.map  .myschlaf_effizienz model.daten
+                      "Schlaf Effizient" -> List.map  .myschlaf_effizienz model.daten
 
-                      "Car Len" -> List.map .myrem_anteil model.daten
+                      "REM" -> List.map .myrem_anteil model.daten
 
-                      "Weight" ->  List.map  .mytiefschlaf_anteil model.daten
+                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
 
-                      "Car Width" -> List.map .myleichtschlaf_anteil model.daten
+                      "Erwacht Anzahl" -> List.map .myleichtschlaf_anteil model.daten
 
-                      "Engine Size" -> List.map .myerwacht_anzahl model.daten
+                      "Koffein Konsum" -> List.map .myerwacht_anzahl model.daten
 
                       _ -> []    
      
@@ -244,19 +244,19 @@ view model =
                    yList =
                       case model.droppdown2 of
 
-                      "City MPG" -> List.map .mykoffein_konsum model.daten
+                      "Alter" -> List.map .myalter model.daten
 
-                      "myretailPrice" -> List.map .myschlafdauer model.daten
+                      "Schlafdauer" -> List.map .myschlafdauer model.daten
 
-                      "Dealer Cost" -> List.map  .myschlaf_effizienz model.daten
+                      "Schlaf Effizient" -> List.map  .myschlaf_effizienz model.daten
 
-                      "Car Len" -> List.map .myrem_anteil model.daten
+                      "REM" -> List.map .myrem_anteil model.daten
 
-                      "Weight" ->  List.map  .mytiefschlaf_anteil model.daten
+                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
 
-                      "Car Width" -> List.map .myleichtschlaf_anteil model.daten
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
 
-                      "Engine Size" -> List.map .myerwacht_anzahl model.daten
+                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
                       
                       _ -> [] 
                    name =
@@ -277,7 +277,7 @@ view model =
                     , yDescription = model.droppdown2
                     , data = combinedList
                     }
-                  ,Html.text (toString combinedList)
+                --  ,Html.text (toString combinedList)
                    ]
                 ]
 
