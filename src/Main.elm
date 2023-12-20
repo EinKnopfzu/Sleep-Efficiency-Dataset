@@ -20,6 +20,7 @@ import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
 import Scatterplot exposing (..)
+import Boxplott exposing (..)
 
 
 -- MAIN
