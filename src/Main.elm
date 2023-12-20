@@ -269,8 +269,8 @@ view model =
                    div [
                     Html.Attributes.style "margin-left" "20%" 
                     , Html.Attributes.style "padding" "2em"
-                    , Html.Attributes.style "height" "100vw" 
-                    , Html.Attributes.style "width" "90vwm"
+                    , Html.Attributes.style "height" "600" 
+                    , Html.Attributes.style "width" "600"
                     , Html.Attributes.style "font-family" "Arial"] 
                     [ scatterplot 
                     { xDescription = model.droppdown1
@@ -425,11 +425,11 @@ combineLists x y z =
 
 w : Float
 w =
-    100
+    180
 
 h : Float
 h =
-    200
+    100
 
 padding : Float
 padding =
@@ -437,11 +437,11 @@ padding =
     
 radius : Float
 radius =
-    1.0
+    5.0
 
 tickCount : Int
 tickCount =
-    5
+    10
 
 defaultExtent : ( number, number1 )
 defaultExtent =
@@ -472,12 +472,12 @@ wideExtent values =
 
 xScale : List Float -> ContinuousScale Float
 xScale values =
-    Scale.linear ( 0, w - 2 * padding ) (wideExtent values)
+    Scale.linear ( 0, w - 1 * padding ) (wideExtent values)
 
 
 yScale : List Float -> ContinuousScale Float
 yScale values =
-    Scale.linear ( h - 2 * padding, 0 ) (wideExtent values)
+    Scale.linear ( h - 1 * padding, 0 ) (wideExtent values)
 
 
 xAxis : List Float -> Svg msg
@@ -530,7 +530,7 @@ scatterplot model =
             , text_
                 [ x 4
                 , y 4
-                , fontSize (TypedSvg.Types.px 5)
+                , fontSize (TypedSvg.Types.px 1)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
                 [ TypedSvg.Core.text model.xDescription ]
@@ -541,9 +541,9 @@ scatterplot model =
             ]
             [ yAxis yValues
             , text_
-                [ x 0
-                , y -0
-                , fontSize (TypedSvg.Types.px 5)
+                [ x 4
+                , y -4
+                , fontSize (TypedSvg.Types.px 1)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
                 [ TypedSvg.Core.text model.yDescription ]
