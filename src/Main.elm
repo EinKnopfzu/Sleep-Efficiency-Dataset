@@ -84,7 +84,7 @@ type alias Model
      , droppdown2 : String
      , droppdown3 : String
      , droppdown4 : String
-     , daten :List ( Aussortierte_Daten)
+     , daten :List (Aussortierte_Daten)
      , pageview : PageState
  }
 
@@ -325,12 +325,40 @@ view model =
                       "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
                       
                       _ -> [] 
+
+                   zList : List (Float)
+                   zList =
+                      case model.droppdown3 of
+
+                      "Alter" -> List.map .myalter model.daten
+
+                      "Schlafdauer" -> List.map .myschlafdauer model.daten
+
+                      "Schlaf Effizient" -> List.map  .myschlaf_effizienz model.daten
+
+                      "REM" -> List.map .myrem_anteil model.daten
+
+                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
+
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
+
+                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
+                      
+                      _ -> [] 
                    name =
                     List.map .myid_ model.daten
 
-                   combinedList: List ScatterplottPoint 
-                   combinedList =
+                   combinedList_Scatter: List ScatterplottPoint 
+                   combinedList_Scatter =
                              combineLists xList yList name
+
+--Hier werden die Listen in für den Boxplott vorbereitet in diesem Fall istes wichtig, dass die XListe 
+--Die Mittlere Liste ist, da wir ansonsten nicht das zu suchende element in der Mitte haben. 
+                   combinedList_Box : List MultiDimPoint
+                   combinedList_Box =
+                               combineLists_Box name  yList xList zList 
+
+                   
                 in
                    div [
                     Html.Attributes.style "margin-left" "20%" 
@@ -341,10 +369,17 @@ view model =
                     [ scatterplot 
                     { xDescription = model.droppdown1
                     , yDescription = model.droppdown2
-                    , data = combinedList
-                    }
-                --  ,Html.text (toString combinedList)
-                   ], footer
+                    , data = combinedList_Scatter
+                    }]
+                   ,div [
+                    Html.Attributes.style "margin-left" "20%" 
+                    , Html.Attributes.style "padding" "2em"
+                    , Html.Attributes.style "height" "700" 
+                    , Html.Attributes.style "width" "600"
+                    , Html.Attributes.style "font-family" "Arial"] 
+                    [ boxplott combineLists_Box]
+                    
+                   , footer
                 ]
 
   
