@@ -61,6 +61,7 @@ combineLists_Box names list1 list2 list3 =
         list1
         list2
         list3
+        
 boxplott :List (MultiDimPoint) -> Svg msg
 boxplott model =
     let

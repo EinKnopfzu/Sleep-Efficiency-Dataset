@@ -355,8 +355,7 @@ view model =
 --Hier werden die Listen in für den Boxplott vorbereitet in diesem Fall istes wichtig, dass die XListe 
 --Die Mittlere Liste ist, da wir ansonsten nicht das zu suchende element in der Mitte haben. 
                    combinedList_Box : List MultiDimPoint
-                   combinedList_Box =
-                               combineLists_Box name  yList xList zList 
+                   combinedList_Box = Boxplott.combineLists_Box name  yList xList zList 
 
                    
                 in
@@ -370,14 +369,9 @@ view model =
                     { xDescription = model.droppdown1
                     , yDescription = model.droppdown2
                     , data = combinedList_Scatter
-                    }]
-                   ,div [
-                    Html.Attributes.style "margin-left" "20%" 
-                    , Html.Attributes.style "padding" "2em"
-                    , Html.Attributes.style "height" "700" 
-                    , Html.Attributes.style "width" "600"
-                    , Html.Attributes.style "font-family" "Arial"] 
-                    [ boxplott combineLists_Box]
+                    }
+                    ,boxplott combinedList_Box]
+
                     
                    , footer
                 ]
@@ -516,7 +510,8 @@ type alias Unverarbeitete_Daten =
  ,sport : Maybe Float
  }
 
-
+type alias MultiDimPoint =
+    { pointName : String, value : List Float }
 
  
 --Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.

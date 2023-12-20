@@ -104,7 +104,7 @@ scatterplot model =
             List.map .x model.data
 
         yValues : List Float
-        yValues = 
+        yValues =
             List.map .y model.data
 
         xScaleLocal : ContinuousScale Float
@@ -114,10 +114,41 @@ scatterplot model =
         yScaleLocal : ContinuousScale Float
         yScaleLocal =
             yScale yValues
+
+        half : ( Float, Float ) -> Float
+        half t =
+            (Tuple.second t - Tuple.first t) / 2
+
+        labelPositions : { x : Float, y : Float }
+        labelPositions =
+            { x = wideExtent xValues |> half
+            , y = wideExtent yValues |> Tuple.second
+            }
+            
+        nvWerte =
+           List.map .x model.data
+           
+        valuesofdata =
+           List.map .y model.data
+           
+        nvWerte25 =
+            Maybe.withDefault 0.0(quantile 0.25 nvWerte)
+        nvWerte75 =
+            Maybe.withDefault 0.0(quantile 0.75 nvWerte)
+        valuesofdata25 =
+          Maybe.withDefault 0.0( quantile 0.25 valuesofdata)
+        valuesofdata75 =
+            Maybe.withDefault 0.0(quantile 0.75 valuesofdata)
+        quantilListe : List (List Float)
+        quantilListe =
+            [ [ nvWerte25, valuesofdata25 ]
+            , [ nvWerte75, valuesofdata75 ]
+            ]   
+               
     in
     svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
-            .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 0, 255,0.3); }
+            .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }
             .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
@@ -126,40 +157,42 @@ scatterplot model =
             (List.map (point xScaleLocal yScaleLocal) model.data)
         , g
             [ transform [ Translate padding (h - padding) ]
-            , TypedSvg.Attributes.class [ "x-axis" ]
+            , class [ "x-axis" ]
             ]
             [ xAxis xValues
             , text_
-                [ x 350
-                , y 40
-                , fontSize (TypedSvg.Types.px 20)
+                [ x (400)                
+                , y ( 40)
+                , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
-                [ TypedSvg.Core.text model.xDescription ]
+                [ Html.text model.xDescription]
             ]
         , g
             [ transform [ Translate padding padding ]
-            , TypedSvg.Attributes.class [ "y-axis" ]
+            , class [ "y-axis" ]
             ]
             [ yAxis yValues
             , text_
                 [ x 0
                 , y -15
-                , fontSize (TypedSvg.Types.px 20)
+                , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
-                [ TypedSvg.Core.text model.yDescription ]
+                [ Html.text model.yDescription ]
             ]
+        
         , g [ transform [ Translate padding padding ] ]
-            (List.map (point xScaleLocal yScaleLocal) model.data)
-        , line
-            [ x 0
-            , y 0
-            , x 100
-            , y 100
-            , stroke (Paint Color.blue)
-            ]
-            []
+            [ line
+                [ x <| Scale.convert xScaleLocal nvWerte25
+                , y <| Scale.convert yScaleLocal valuesofdata25
+                , x <| Scale.convert xScaleLocal nvWerte75 
+                , y <| Scale.convert yScaleLocal valuesofdata75
+                , TypedSvg.Attributes.InPx.strokeWidth 10
+                , stroke <| Paint <| Color.rgba 0 0 0 1
+                ]
+                []
+            ]   
         ]
 
 point : ContinuousScale Float -> ContinuousScale Float -> ScatterplottPoint -> Svg msg
