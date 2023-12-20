@@ -71,6 +71,8 @@ type Zustand
 
 type Grafik
   = Scatterplott
+  | Grafik1
+  | Grafik2
 
 
 type alias Model
@@ -129,31 +131,45 @@ type Msg
   | Option2Selected String
   | Option3Selected String
   | Option4Selected String
+  | Scatterplottzeigen
+  | Grafik1zeigen
+  | Grafik2zeigen
   
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-  case msg of
-    GotText result ->
-      case result of
-        Ok fullText ->
-         (({ model | datenladen = Success , daten = ((stringtoUnverarbeitete fullText )|> List.filterMap sleep2Point)},Cmd.none))
+    case msg of
+        GotText result ->
+            case result of
+                Ok fullText ->
+                    ({ model | datenladen = Success, daten = ((stringtoUnverarbeitete fullText) |> List.filterMap sleep2Point) }, Cmd.none)
 
-        Err _ ->
-         ({ model | datenladen = Failure }, Cmd.none)
+                Err _ ->
+                    ({ model | datenladen = Failure }, Cmd.none)
 
-    Option1Selected value -> 
-      ({ model | droppdown1 = value }, Cmd.none)
+        Option1Selected value -> 
+            ({ model | droppdown1 = value }, Cmd.none)
 
-    Option2Selected value -> 
-      ({ model | droppdown2 = value }, Cmd.none)
+        Option2Selected value -> 
+            ({ model | droppdown2 = value }, Cmd.none)
 
-    Option3Selected value ->
-      ({ model | droppdown3 = value }, Cmd.none)
+        Option3Selected value ->
+            ({ model | droppdown3 = value }, Cmd.none)
 
-    Option4Selected value -> 
-      ({ model | droppdown4 = value }, Cmd.none)
+        Option4Selected value -> 
+            ({ model | droppdown4 = value }, Cmd.none)
+
+        Scatterplottzeigen ->
+            ({ model | pageview = Scatterplott }, Cmd.none)
+        
+        Grafik1zeigen -> 
+            ({ model | pageview = Grafik1 }, Cmd.none)
+        
+        Grafik2zeigen -> 
+            ({ model | pageview = Grafik2 }, Cmd.none)
+      
+
 
 
 -- SUBSCRIPTIONS
@@ -193,7 +209,7 @@ view model =
                     , Html.Attributes.style "height" "100%"
                     , Html.Attributes.style "font-family" "Arial"
                   ]
-                  [ Html.text "SETTINGS"
+                  [Html.u[][ Html.text " SETTINGS "]
                        , Html.br [] []
                        , Html.br [] []
                        , Html.br [] []
@@ -207,7 +223,7 @@ view model =
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown1) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown1) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown1) ] [ Html.text "Koffein Konsum" ]                
-                  , Html.text model.droppdown1]
+                  ]
                   , Html.br [] []
                   , Html.br [] []
                , Html.div []
@@ -221,8 +237,39 @@ view model =
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown2) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown2) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]]
+                  ]
+                  , Html.br [] []
+                  
+               , Html.div []
+                  [ Html.text "Z-Achse" 
+                  ,Html.select [ onInput Option3Selected ]
+                  [ Html.option [ value "", selected ("" == model.droppdown3) ] [ Html.text "Select an option" ]
+                  , Html.option [ value "Alter", selected ("Alter" == model.droppdown3) ] [ Html.text "Alter" ]
+                  , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown3) ] [ Html.text "Schlafdauer" ]
+                  , Html.option [ value "Schlaf Effizient", selected ("Schlaf Effizient" == model.droppdown3) ] [ Html.text "Schlaf Effizient" ]
+                  , Html.option [ value "REM", selected ("REM" == model.droppdown3) ] [ Html.text "REM" ]
+                  , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown3) ] [ Html.text "Tiefschlaf Anteil" ]
+                  , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown3) ] [ Html.text "Erwacht Anzahl" ]
+                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown3) ] [ Html.text "Koffein Konsum" ]]
                
-               , Html.text model.droppdown2]]
+               , Html.text model.droppdown3]
+                                 , Html.br [] []
+                  
+               , Html.div []
+                  [ Html.text "E-Achse" 
+                  ,Html.select [ onInput Option4Selected ]
+                  [ Html.option [ value "", selected ("" == model.droppdown4) ] [ Html.text "Select an option" ]
+                  , Html.option [ value "Alter", selected ("Alter" == model.droppdown4) ] [ Html.text "Alter" ]
+                  , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown4) ] [ Html.text "Schlafdauer" ]
+                  , Html.option [ value "Schlaf Effizient", selected ("Schlaf Effizient" == model.droppdown4) ] [ Html.text "Schlaf Effizient" ]
+                  , Html.option [ value "REM", selected ("REM" == model.droppdown4) ] [ Html.text "REM" ]
+                  , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown4) ] [ Html.text "Tiefschlaf Anteil" ]
+                  , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown4) ] [ Html.text "Erwacht Anzahl" ]
+                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown4) ] [ Html.text "Koffein Konsum" ]]
+               
+               , Html.text model.droppdown3]
+               
+               ]
                ]
           --    ,Html.div [] [Html.text (toString model.daten)]
                , let
