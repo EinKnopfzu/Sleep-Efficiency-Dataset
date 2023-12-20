@@ -166,46 +166,57 @@ view model =
             Html.text "Ich konnte die Daten nicht laden"
 
         Loading ->
-            Html.text "Am Laden..."
+            Html.div[]
+            [ Html.div [][header],
+            Html.text "Am Laden..."]
 
         Success  ->
-           Html.div []
-            [ Html.div 
-              [Html.Attributes.style "background-color" "#333"
-              , Html.Attributes.style "color" "white"
-              , Html.Attributes.style "text-align" "center"
-              , Html.Attributes.style "padding" "1em"
-              , Html.Attributes.style "position" "fixed"
-              , Html.Attributes.style "left" "0"
-              , Html.Attributes.style "width" "10%"
-              , Html.Attributes.style "height" "100%"
-              , Html.Attributes.style "font-family" "Arial"]
-               [Html.text "Erster Daten Wert:"               
-               ,Html.select [ onInput Option1Selected ]
+            Html.div [ Html.Attributes.style "display" "flex"
+                    , Html.Attributes.style "flex-direction" "column"
+                    , Html.Attributes.style "height" "100vh" ]
+                 [ header
+                  , Html.div [ Html.Attributes.style "display" "flex" ]
+                [ Html.div 
+                   [ Html.Attributes.style "background-color" "#333"
+                    , Html.Attributes.style "color" "white"
+                    , Html.Attributes.style "text-align" "center"
+                    , Html.Attributes.style "padding" "1em"
+                    , Html.Attributes.style "position" "fixed"
+                    , Html.Attributes.style "left" "0"
+                    , Html.Attributes.style "width" "10%"
+                    , Html.Attributes.style "height" "100%"
+                    , Html.Attributes.style "font-family" "Arial"
+                  ]
+                  [ Html.text "SETTINGS"
+                       , Html.br [] []
+                       , Html.br [] []
+                       , Html.br [] []
+                       ,Html.text "Erster Daten Wert:"               
+                  ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
-               , Html.option [ value "City MPG", selected ("City MPG" == model.droppdown1) ] [ Html.text "City MPG" ]
-               , Html.option [ value "Retail Price", selected ("Retail Price" == model.droppdown1) ] [ Html.text "Retail Price" ]
-               , Html.option [ value "Dealer Cost", selected ("Dealer Cost" == model.droppdown1) ] [ Html.text "Dealer Cost" ]
-               , Html.option [ value "Car Len", selected ("Car Len" == model.droppdown1) ] [ Html.text "Car Len" ]
-               , Html.option [ value "Weight", selected ("Weight" == model.droppdown1) ] [ Html.text "Weight" ]
-               , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown1) ] [ Html.text "Car Width" ]
-               , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown1) ] [ Html.text "Engine Size" ]                
-               , Html.text model.droppdown1]
-               , Html.br [] []
-               , Html.br [] []
-             , Html.div []
-               [ Html.text "Erster Daten Wert" 
-               ,Html.select [ onInput Option2Selected ]
-               [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
-               , Html.option [ value " MPG", selected ("City MPG" == model.droppdown2) ] [ Html.text "City MPG" ]
-               , Html.option [ value "Retail Price", selected ("Retail Price" == model.droppdown2) ] [ Html.text "Retail Price" ]
-               , Html.option [ value "Dealer Cost", selected ("Dealer Cost" == model.droppdown2) ] [ Html.text "Dealer Cost" ]
-               , Html.option [ value "Car Len", selected ("Car Len" == model.droppdown2) ] [ Html.text "Car Len" ]
-               , Html.option [ value "Weight", selected ("Weight" == model.droppdown2) ] [ Html.text "Weight" ]
-               , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown2) ] [ Html.text "Car Width" ]
-               , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown2) ] [ Html.text "Engine Size" ]]
+                  , Html.option [ value "City MPG", selected ("City MPG" == model.droppdown1) ] [ Html.text "City MPG" ]
+                  , Html.option [ value "Retail Price", selected ("Retail Price" == model.droppdown1) ] [ Html.text "Retail Price" ]
+                  , Html.option [ value "Dealer Cost", selected ("Dealer Cost" == model.droppdown1) ] [ Html.text "Dealer Cost" ]
+                  , Html.option [ value "Car Len", selected ("Car Len" == model.droppdown1) ] [ Html.text "Car Len" ]
+                  , Html.option [ value "Weight", selected ("Weight" == model.droppdown1) ] [ Html.text "Weight" ]
+                  , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown1) ] [ Html.text "Car Width" ]
+                  , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown1) ] [ Html.text "Engine Size" ]                
+                  , Html.text model.droppdown1]
+                  , Html.br [] []
+                  , Html.br [] []
+               , Html.div []
+                  [ Html.text "Erster Daten Wert" 
+                  ,Html.select [ onInput Option2Selected ]
+                  [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
+                  , Html.option [ value " MPG", selected ("City MPG" == model.droppdown2) ] [ Html.text "City MPG" ]
+                  , Html.option [ value "Retail Price", selected ("Retail Price" == model.droppdown2) ] [ Html.text "Retail Price" ]
+                  , Html.option [ value "Dealer Cost", selected ("Dealer Cost" == model.droppdown2) ] [ Html.text "Dealer Cost" ]
+                  , Html.option [ value "Car Len", selected ("Car Len" == model.droppdown2) ] [ Html.text "Car Len" ]
+                  , Html.option [ value "Weight", selected ("Weight" == model.droppdown2) ] [ Html.text "Weight" ]
+                  , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown2) ] [ Html.text "Car Width" ]
+                  , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown2) ] [ Html.text "Engine Size" ]]
                
-               , Html.text model.droppdown2]
+               , Html.text model.droppdown2]]
                ]
           --    ,Html.div [] [Html.text (toString model.daten)]
                , let
@@ -258,8 +269,9 @@ view model =
                    div [
                     Html.Attributes.style "margin-left" "20%" 
                     , Html.Attributes.style "padding" "2em"
-                    ,  Html.Attributes.style "height" "100%" 
-                    , Html.Attributes.style "width" "90%"] 
+                    , Html.Attributes.style "height" "100vw" 
+                    , Html.Attributes.style "width" "90vwm"
+                    , Html.Attributes.style "font-family" "Arial"] 
                     [ scatterplot 
                     { xDescription = model.droppdown1
                     , yDescription = model.droppdown2
@@ -417,15 +429,15 @@ w =
 
 h : Float
 h =
-    100
+    200
 
 padding : Float
 padding =
-    40
-
+    20
+    
 radius : Float
 radius =
-    2.0
+    1.0
 
 tickCount : Int
 tickCount =
@@ -501,9 +513,9 @@ scatterplot model =
         yScaleLocal =
             yScale yValues
     in
-    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 80, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 80 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
-            .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
+            .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 0, 255,0.3); }
             .point text { display: none; }
             .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
@@ -511,14 +523,14 @@ scatterplot model =
         , g [ transform [ Translate padding padding ] ]
             (List.map (point xScaleLocal yScaleLocal) model.data)
         , g
-            [ transform [ Translate padding (h-padding) ]
+            [ transform [ Translate padding (h - padding) ]
             , TypedSvg.Attributes.class [ "x-axis" ]
             ]
             [ xAxis xValues
             , text_
                 [ x 4
                 , y 4
-                , fontSize (TypedSvg.Types.px 16)
+                , fontSize (TypedSvg.Types.px 5)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
                 [ TypedSvg.Core.text model.xDescription ]
@@ -531,7 +543,7 @@ scatterplot model =
             , text_
                 [ x 0
                 , y -0
-                , fontSize (TypedSvg.Types.px 16)
+                , fontSize (TypedSvg.Types.px 5)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
                 [ TypedSvg.Core.text model.yDescription ]
