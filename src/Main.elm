@@ -19,6 +19,7 @@ import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, s
 import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
+import Scatterplot exposing (..)
 
 
 -- MAIN
@@ -45,7 +46,7 @@ header =
 inhalt : Html msg
 inhalt =
     div [ Html.Attributes.style "padding" "2em",
-          Html.Attributes.style "max-width" "600px",
+          Html.Attributes.style "max-width" "900px",
           Html.Attributes.style "margin" "0 auto" ]
         [ p [] [ Html.text "Zielstellung : Visualiserung" ]
         , p [] [ Html.text "Hier ist etwas Beispieltext." ]
@@ -56,10 +57,11 @@ footer =
     div [ Html.Attributes.style "background-color" "#333",
           Html.Attributes.style "color" "white",
           Html.Attributes.style "text-align" "center",
-          Html.Attributes.style "padding" "1em",
+          Html.Attributes.style "padding" "0em",
           Html.Attributes.style "position" "fixed",
           Html.Attributes.style "bottom" "0", 
-          Html.Attributes.style "width" "100%" ]
+          Html.Attributes.style "width" "100%",
+          Html.Attributes.style "height" "10px" ]
         [ p [] [ Html.text "© 2023 Mick Wörner 217246242" ]
         ]
 
@@ -69,7 +71,7 @@ type Zustand
   | Loading
   | Success 
 
-type Grafik
+type PageState
   = Scatterplott
   | Grafik1
   | Grafik2
@@ -82,7 +84,7 @@ type alias Model
      , droppdown3 : String
      , droppdown4 : String
      , daten :List ( Aussortierte_Daten)
-     , pageview: Grafik
+     , pageview : PageState
  }
 
 
@@ -131,9 +133,7 @@ type Msg
   | Option2Selected String
   | Option3Selected String
   | Option4Selected String
-  | Scatterplottzeigen
-  | Grafik1zeigen
-  | Grafik2zeigen
+  | PageChange PageState
   
 
 
@@ -160,14 +160,17 @@ update msg model =
         Option4Selected value -> 
             ({ model | droppdown4 = value }, Cmd.none)
 
-        Scatterplottzeigen ->
-            ({ model | pageview = Scatterplott }, Cmd.none)
+        PageChange value ->
+            case value of
+                Scatterplott ->
+                    ({ model | pageview = Scatterplott} , Cmd.none)
+                Grafik1 ->
+                    ({ model | pageview = Grafik1} , Cmd.none)
+                Grafik2 ->
+                    ({ model | pageview = Grafik2} , Cmd.none)
+
         
-        Grafik1zeigen -> 
-            ({ model | pageview = Grafik1 }, Cmd.none)
-        
-        Grafik2zeigen -> 
-            ({ model | pageview = Grafik2 }, Cmd.none)
+
       
 
 
@@ -322,7 +325,7 @@ view model =
                    div [
                     Html.Attributes.style "margin-left" "20%" 
                     , Html.Attributes.style "padding" "2em"
-                    , Html.Attributes.style "height" "600" 
+                    , Html.Attributes.style "height" "700" 
                     , Html.Attributes.style "width" "600"
                     , Html.Attributes.style "font-family" "Arial"] 
                     [ scatterplot 
