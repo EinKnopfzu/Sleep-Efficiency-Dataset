@@ -61,7 +61,7 @@ combineLists_Box names list1 list2 list3 =
         list1
         list2
         list3
-        
+
 boxplott :List (MultiDimPoint) -> Svg msg
 boxplott model =
     let
@@ -126,7 +126,7 @@ boxplott model =
 
     
     in
-    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 0 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }

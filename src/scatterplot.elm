@@ -3,7 +3,7 @@ module Scatterplot exposing (..)
 import Axis
 import Browser
 import Color exposing (Color(..), rgb)
-
+import List exposing (filter, sum)
 import Debug
 import Html exposing (Html, div, pre, text)
 import Html.Attributes exposing (selected, style, value)
@@ -91,13 +91,104 @@ yAxis : List Float -> Svg msg
 yAxis values =
     Axis.left [ Axis.tickCount tickCount ] (yScale values)
 
+type alias Point =
+    { id_ : String
+     ,x : Float
+     ,y : Float }
+
+filterAndReduceCars : List (Point)  -> List (Point)
+filterAndReduceCars data  =
+    let
+        geordneteDaten : List (Point)
+        geordneteDaten =
+            List.sortBy .y data
+
+      
+        n1 : Float
+        n1 =
+            List.length geordneteDaten |> toFloat
+
+      
+        listederFValuesundDaten : List (Point)  
+        listederFValuesundDaten =
+            List.indexedMap (\i pt -> { pt | x = ((toFloat i + 0.5) / n1), y = pt.y }) geordneteDaten
+            
+        quantilesofData : List (Float)    
+        quantilesofData = 
+            List.map .x listederFValuesundDaten
+        
+        valuesofdata : List(Float)
+        valuesofdata = 
+            List.map .y geordneteDaten
+             
+                -- Normal Distribution --
+        
+        transformierer : Float -> Float    
+        transformierer f= 
+            let 
+               mun = List.sum valuesofdata / (toFloat <| List.length valuesofdata)
+               stdn = Statistics.deviation valuesofdata |> Maybe.withDefault 0 
+                    
+            in 
+              f * stdn + mun 
+            
+        invNormalCdf : Float -> Float
+        invNormalCdf f =
+             if f >= 0.5 then
+                5.5556 * (1.0 - ((1.0 - f) / f) ^ 0.1186)
+             else
+                -5.5556 * (1.0 - (f / (1.0 - f)) ^ 0.1186)    
+
+            
+        mu = List.sum valuesofdata / (toFloat <| List.length valuesofdata)
+        
+        std = Statistics.deviation valuesofdata |> Maybe.withDefault 0 
+        
+                    
+        quantilesWithEstimates : Int -> List Float
+        quantilesWithEstimates n = 
+         let
+             step = 1.0 / (toFloat n - 1.0)
+             indexes = List.range 0 (n - 1)
+             quantiles = List.map (\i -> mu + std * invNormalCdf (toFloat i * step)) indexes
+         in
+             List.map (\q -> (q)) quantiles
+                
+ 
+        nvFWerte =
+           List.map invNormalCdf quantilesofData  
+
+
+        nvWerte =
+            List.map transformierer nvFWerte      
+
+
+        qqquants = List.map (\a -> Maybe.withDefault 0.0 ( quantile a valuesofdata)) 
+
+
+        normalverteileDaten =
+            List.map transformierer quantilesofData
+
+
+        qqPlot = 
+            List.map2 (Point "")  nvWerte valuesofdata
+        
+
+
+    in
+     qqPlot
+
 scatterplot : ScatterplottXYData -> Svg msg
-scatterplot model =
+scatterplot amodel =
     let
         {- hier können Sie die Beschriftung des Testpunkts berechnen -}
         kreisbeschriftung : String
         kreisbeschriftung =
             ""
+        data : List (Point)
+        data =
+            List.map  model amodel.data
+
 
         xValues : List Float
         xValues =
@@ -132,13 +223,13 @@ scatterplot model =
            List.map .y model.data
            
         nvWerte25 =
-            Maybe.withDefault 0.0(quantile 0.25 nvWerte)
+            Maybe.withDefault 0.0 (quantile 0.25 nvWerte)
         nvWerte75 =
-            Maybe.withDefault 0.0(quantile 0.75 nvWerte)
+            Maybe.withDefault 0.0 (quantile 0.75 nvWerte)
         valuesofdata25 =
-          Maybe.withDefault 0.0( quantile 0.25 valuesofdata)
+          Maybe.withDefault 0.0 (quantile 0.25 valuesofdata)
         valuesofdata75 =
-            Maybe.withDefault 0.0(quantile 0.75 valuesofdata)
+            Maybe.withDefault 0.0 (quantile 0.75 valuesofdata)
         quantilListe : List (List Float)
         quantilListe =
             [ [ nvWerte25, valuesofdata25 ]
@@ -146,7 +237,7 @@ scatterplot model =
             ]   
                
     in
-    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 0 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }

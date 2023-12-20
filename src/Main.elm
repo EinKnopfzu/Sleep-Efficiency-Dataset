@@ -350,7 +350,7 @@ view model =
 
                    combinedList_Scatter: List ScatterplottPoint 
                    combinedList_Scatter =
-                             combineLists xList yList name
+                             combineLists xList xList name
 
 --Hier werden die Listen in für den Boxplott vorbereitet in diesem Fall istes wichtig, dass die XListe 
 --Die Mittlere Liste ist, da wir ansonsten nicht das zu suchende element in der Mitte haben. 
@@ -366,7 +366,7 @@ view model =
                     , Html.Attributes.style "width" "600"
                     , Html.Attributes.style "font-family" "Arial"] 
                     [ scatterplot 
-                    { xDescription = model.droppdown1
+                    { xDescription = "Normalverteilung"
                     , yDescription = model.droppdown2
                     , data = combinedList_Scatter
                     }
