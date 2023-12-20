@@ -89,10 +89,6 @@ type alias Model
  }
 
 
-type alias RecordName =
-    { key1 : Float
-    , key2 : Float
-    }
 
 init : () -> (Model, Cmd Msg)
 init _ =
@@ -350,7 +346,7 @@ view model =
 
                    combinedList_Scatter: List ScatterplottPoint 
                    combinedList_Scatter =
-                             combineLists xList xList name
+                              (combineLists xList xList name) |> addNV
 
 --Hier werden die Listen in für den Boxplott vorbereitet in diesem Fall istes wichtig, dass die XListe 
 --Die Mittlere Liste ist, da wir ansonsten nicht das zu suchende element in der Mitte haben. 

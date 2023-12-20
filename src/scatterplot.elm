@@ -91,15 +91,13 @@ yAxis : List Float -> Svg msg
 yAxis values =
     Axis.left [ Axis.tickCount tickCount ] (yScale values)
 
-type alias Point =
-    { id_ : String
-     ,x : Float
-     ,y : Float }
 
-filterAndReduceCars : List (Point)  -> List (Point)
-filterAndReduceCars data  =
+
+addNV : List (ScatterplottPoint)  -> List (ScatterplottPoint)
+addNV data  =
+
     let
-        geordneteDaten : List (Point)
+        geordneteDaten : List (ScatterplottPoint)
         geordneteDaten =
             List.sortBy .y data
 
@@ -109,7 +107,7 @@ filterAndReduceCars data  =
             List.length geordneteDaten |> toFloat
 
       
-        listederFValuesundDaten : List (Point)  
+        listederFValuesundDaten : List (ScatterplottPoint)  
         listederFValuesundDaten =
             List.indexedMap (\i pt -> { pt | x = ((toFloat i + 0.5) / n1), y = pt.y }) geordneteDaten
             
@@ -171,7 +169,7 @@ filterAndReduceCars data  =
 
 
         qqPlot = 
-            List.map2 (Point "")  nvWerte valuesofdata
+            List.map2 (ScatterplottPoint "")  nvWerte valuesofdata
         
 
 
@@ -179,15 +177,14 @@ filterAndReduceCars data  =
      qqPlot
 
 scatterplot : ScatterplottXYData -> Svg msg
-scatterplot amodel =
+scatterplot model =
+
     let
         {- hier können Sie die Beschriftung des Testpunkts berechnen -}
-        kreisbeschriftung : String
+        kreisbeschriftung : List(String)
         kreisbeschriftung =
-            ""
-        data : List (Point)
-        data =
-            List.map  model amodel.data
+            List.map .pointName model.data 
+
 
 
         xValues : List Float
