@@ -178,7 +178,8 @@ view model =
               , Html.Attributes.style "position" "fixed"
               , Html.Attributes.style "left" "0"
               , Html.Attributes.style "width" "10%"
-              , Html.Attributes.style "height" "100%"]
+              , Html.Attributes.style "height" "100%"
+              , Html.Attributes.style "font-family" "Arial"]
                [Html.text "Erster Daten Wert:"               
                ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
@@ -190,6 +191,8 @@ view model =
                , Html.option [ value "Car Width", selected ("Car Width" == model.droppdown1) ] [ Html.text "Car Width" ]
                , Html.option [ value "Engine Size", selected ("Engine Size" == model.droppdown1) ] [ Html.text "Engine Size" ]                
                , Html.text model.droppdown1]
+               , Html.br [] []
+               , Html.br [] []
              , Html.div []
                [ Html.text "Erster Daten Wert" 
                ,Html.select [ onInput Option2Selected ]
