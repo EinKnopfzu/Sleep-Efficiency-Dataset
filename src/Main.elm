@@ -191,7 +191,7 @@ view model =
                        , Html.br [] []
                        , Html.br [] []
                        , Html.br [] []
-                       ,Html.text "Erster Daten Wert:"               
+                       ,Html.text "X-Achse"               
                   ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown1) ] [ Html.text "Alter" ]
@@ -205,10 +205,10 @@ view model =
                   , Html.br [] []
                   , Html.br [] []
                , Html.div []
-                  [ Html.text "Erster Daten Wert" 
+                  [ Html.text "Y-Achse" 
                   ,Html.select [ onInput Option2Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
-                  , Html.option [ value " Alter", selected ("Alter" == model.droppdown2) ] [ Html.text "Alter" ]
+                  , Html.option [ value "Alter", selected ("Alter" == model.droppdown2) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown2) ] [ Html.text "Schlafdauer" ]
                   , Html.option [ value "Schlaf Effizient", selected ("Schlaf Effizient" == model.droppdown2) ] [ Html.text "Schlaf Effizient" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown2) ] [ Html.text "REM" ]
