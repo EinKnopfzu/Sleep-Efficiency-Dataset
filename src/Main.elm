@@ -425,15 +425,15 @@ combineLists x y z =
 
 w : Float
 w =
-    180
+    900
 
 h : Float
 h =
-    100
+    450
 
 padding : Float
 padding =
-    20
+    100
     
 radius : Float
 radius =
@@ -472,12 +472,12 @@ wideExtent values =
 
 xScale : List Float -> ContinuousScale Float
 xScale values =
-    Scale.linear ( 0, w - 1 * padding ) (wideExtent values)
+    Scale.linear ( 0, w - 2 * padding ) (wideExtent values)
 
 
 yScale : List Float -> ContinuousScale Float
 yScale values =
-    Scale.linear ( h - 1 * padding, 0 ) (wideExtent values)
+    Scale.linear ( h - 2 * padding, 0 ) (wideExtent values)
 
 
 xAxis : List Float -> Svg msg
@@ -513,7 +513,7 @@ scatterplot model =
         yScaleLocal =
             yScale yValues
     in
-    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 80, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 80 ]
+    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 0, 255,0.3); }
             .point text { display: none; }
@@ -528,9 +528,9 @@ scatterplot model =
             ]
             [ xAxis xValues
             , text_
-                [ x 4
-                , y 4
-                , fontSize (TypedSvg.Types.px 1)
+                [ x 400
+                , y 40
+                , fontSize (TypedSvg.Types.px 20)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
                 [ TypedSvg.Core.text model.xDescription ]
@@ -541,9 +541,9 @@ scatterplot model =
             ]
             [ yAxis yValues
             , text_
-                [ x 4
-                , y -4
-                , fontSize (TypedSvg.Types.px 1)
+                [ x 0
+                , y -15
+                , fontSize (TypedSvg.Types.px 20)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
                 [ TypedSvg.Core.text model.yDescription ]
