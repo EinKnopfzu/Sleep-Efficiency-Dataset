@@ -19,6 +19,11 @@ import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, s
 import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
+import TypedSvg.Attributes.InPx exposing (x1)
+import TypedSvg.Attributes.InPx exposing (y1)
+import TypedSvg.Attributes.InPx exposing (x2)
+import TypedSvg.Attributes.InPx exposing (y2)
+import TypedSvg.Attributes exposing (x1)
 
 
 combineLists : List Float -> List Float ->List String -> List ScatterplottPoint
@@ -227,6 +232,12 @@ scatterplot model =
           Maybe.withDefault 0.0 (quantile 0.25 valuesofdata)
         valuesofdata75 =
             Maybe.withDefault 0.0 (quantile 0.75 valuesofdata)
+
+        xS = Scale.convert xScaleLocal nvWerte25
+        yS= Scale.convert yScaleLocal valuesofdata25
+        xE = Scale.convert xScaleLocal nvWerte75
+        yE = Scale.convert yScaleLocal valuesofdata75
+
         quantilListe : List (List Float)
         quantilListe =
             [ [ nvWerte25, valuesofdata25 ]
@@ -234,7 +245,7 @@ scatterplot model =
             ]   
                
     in
-    svg [ viewBox 0 0 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 100 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }
@@ -272,14 +283,13 @@ scatterplot model =
         
         , g [ transform [ Translate padding padding ] ]
             [ line
-                [ x <| Scale.convert xScaleLocal nvWerte25
-                , y <| Scale.convert yScaleLocal valuesofdata25
-                , x <| Scale.convert xScaleLocal nvWerte75 
-                , y <| Scale.convert yScaleLocal valuesofdata75
-                , TypedSvg.Attributes.InPx.strokeWidth 10
-                , stroke <| Paint <| Color.rgba 0 0 0 1
-                ]
-                []
+              [ TypedSvg.Attributes.InPx.x1 (xS)
+                , TypedSvg.Attributes.InPx.y1 (yS)
+                , TypedSvg.Attributes.InPx.x2 (xE)
+                , TypedSvg.Attributes.InPx.y2 (yE)
+                , TypedSvg.Attributes.InPx.strokeWidth 2  -- Adjusted stroke width
+                , stroke <| Paint <| Color.rgba 255 0 0 1
+                ]    []
             ]   
         ]
 
