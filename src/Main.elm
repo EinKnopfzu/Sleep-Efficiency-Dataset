@@ -232,7 +232,8 @@ view model =
                   , Html.option [ value "REM", selected ("REM" == model.droppdown1) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown1) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown1) ] [ Html.text "Erwacht Anzahl" ]
-                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown1) ] [ Html.text "Koffein Konsum" ]                
+                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown1) ] [ Html.text "Koffein Konsum" ]       
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher" ]         
                   ]
                   , Html.br [] []
                   , Html.br [] []
@@ -248,6 +249,7 @@ view model =
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown2) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown2) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]]
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher" ]
                   ]
                   , Html.br [] []
                   
@@ -263,7 +265,8 @@ view model =
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown3) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown3) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown3) ] [ Html.text "Koffein Konsum" ]]
-               
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher" ]
+
                , Html.text model.droppdown3]
                                  , Html.br [] []
                   
@@ -279,6 +282,8 @@ view model =
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown4) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown4) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown4) ] [ Html.text "Koffein Konsum" ]]
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown4) ] [ Html.text "Raucher" ]
+
                
                , Html.text model.droppdown3]
                
@@ -305,6 +310,7 @@ view model =
 
                       "Koffein Konsum" -> List.map .myerwacht_anzahl model.daten
 
+                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
                       _ -> []    
      
                    yList : List (Float)
@@ -350,7 +356,8 @@ view model =
                       "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
 
                       "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
-                      
+
+                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat                      
                       _ -> [] 
                    name =
                     List.map .myid_ model.daten
