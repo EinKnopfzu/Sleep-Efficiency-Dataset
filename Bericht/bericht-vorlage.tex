@@ -32,14 +32,13 @@ Tipps zu Latex und Koma-Script für Hausarbeiten sind im \href{http://mirrors.ct
 Der Bericht fällt in die Kategorie von InfoVis-Paper, die Tamara Munzner Design Study nennt ~\cite{Munzner2008}: In der Einleitung sollen sie zuerst das Zielproblem beschrieben. Daraus sollen sie Fragestellungen motivieren, die mittels Techniken der Informationsvisualisierung beantwortet werden können. In dem Abschnitt direkt unter der Überschrift Einleitung sollen Sie nach einer kurzen Einleitung Fragestellungen und das Zielproblem motivieren und besschreiben. 
 
 \subsection{Anwendungshintergrund}
-Sie müssen genug Hintergrund bereitstellen, so dass die Lesenden sich ein Urteil bilden können, ob ihre Lösung funktioniert. Sie sollen die Lesenden jedoch nicht mit Anwendungsdetails so überschütten, dass der Fokus auf die Fragen zur Informationsvisualisierung untergehen. 
+Sie müssen genug Hintergrund bereitstellen, so dass die Lesenden sich ein Urteil bilden können, ob ihre Lösung funktioniert. 
+Sie sollen die Lesenden jedoch nicht mit Anwendungsdetails so überschütten, dass der Fokus auf die Fragen zur Informationsvisualisierung untergehen. 
 Eine Visualisierung muss
-I expressiv:Expresivität bedeutet, dass die Daten unverfälscht wiedergegeben werden. Grundsätzlich sollen nur die Informationen dargestellt werden, die auch im Datenamterial vorhanden sind.
-I effektiv (Effektivität hängt nicht nur von den Daten ab, sondern auch
-von: 1. dem Bearbeitungsziel und 2. den Fähigkeiten des Betrachters 3. Eine effektive Visualisierung versucht die Inhalte auf intuitiven
-Wegen zu präsentierten)
-I angemessen sein (Angemessenheit beschreibt den Verbrauch an Ressourcen zur
-Erzeugung der Visualisierung)
+\textbr {- expressiv: Expresivität bedeutet, dass die Daten unverfälscht wiedergegeben werden. Grundsätzlich sollen nur die Informationen dargestellt werden, die auch im Datenamterial vorhanden sind.\\
+I effektiv (Effektivität hängt nicht nur von den Daten ab, sondern auch von:\\ 1. dem Bearbeitungsziel und \\2. den Fähigkeiten des Betrachters \\
+3. Eine effektive Visualisierung versucht die Inhalte auf intuitivenWegen zu präsentierten)
+I angemessen sein (Angemessenheit beschreibt den Verbrauch an Ressourcen zur Erzeugung der Visualisierung)}
 \subsection{Zielgruppen}
 \textbf {Die Visualsierung soll dabei helfen die Einflüsse von Unterschiedlichen Verhaltensweisen auf in der Lebensweise zu analysieren. Hierbei werden Lebensstile anhand von Koffeein, alkohol, Tabak Konsum und Sport verhalten analysiert. Das  soll Forschern als auch der privatperson dabei Helfen, risikoreiche verhaltensweisen zu identifizieren um die Lebensqualität zu verbessern: Die Schlafqualität hat einen hohen einfluss auf die Lebensqualität }
 Beschreiben sie die Personengruppe oder Personengruppen, die das von ihnen benannte Anwendungsproblem lösen möchte. Auf welches Vorwissen können sie in dieser Gruppen von Anwenderinnen aufbauen? Welche Informations"-bedürf"-nisse werden durch die Visualisierungen adressiert?: The data was then analyzed to understand the relationship between lifestyle factors and sleep patterns and to identify any potential areas for intervention to improve sleep
@@ -49,7 +48,7 @@ In diesem Abschnitt geben sie einen kurzen Überblick über die Daten und verwen
 \section{Daten}
 Beschreiben Sie vorhandenen Daten. 
 \textbf {Input Daten ist csv Datei mit teilweise leeren Datenpunkten. Umgang mit den leeren Feldern-> Mit List.map (Bei einem Nothing, wird der Tupel komplett gelöscht. ), da wir somit nur mit einem sauberem Datensatz arbeiten. Datensatz hat nur Fehlende werte bei gewisse Datenpunkten. (Koffeein, Alkohol, Tabak, Sport).
-\\ ID: Identifikator der eine Reihe eindeutig Identifiziert. -> Unique identifier keine Person wird zweimal erfasst. -> keine Zeitentwicklung. -> 452 Personen erfasst. Type : Integer.
+\\ ID\@ : Identifikator der eine Reihe eindeutig Identifiziert. -> Unique identifier keine Person wird zweimal erfasst. -> keine Zeitentwicklung. -> 452 Personen erfasst. Type : Integer.
 \\ Age: Gibt das Alter der Person zum zeitpunkt der erfassung hatte.-> Type : Integer   Datenreichweite 9-69 Jahre.
 \\ Gender: Gibt das Geschlecht der Person mittels "Male" oder "Female" wieder. Type : String
 \\ Bedtime: Gibt die Uhrzeit an zu der die Person ins Bett gegangen ist. Type : DateTime
@@ -57,48 +56,63 @@ Beschreiben Sie vorhandenen Daten.
 \\ Sleep Duration = Gibt die Stunden an, die die Person im Bett schlafend verbracht hat in Stunden. Type : Float 
 \\  Schlaf Effizienz = Gibt die Zeit an die im Bett schlafend verbracht wurde. Type : Float -> In Prozent -> Interpretation nur in combination mit Anzahl erwacht möglich. -> MICK müssen wir das noch Transmutieren? -> Nacher drüber nachdenken.
 \\ REM Sleep percentage = Gibt den Prozentualen Anteil an, der im REM Schlaf verbracht wurde. Type : Integer WICHTIG: In Prozent. 
-\\ Deep sleep percentage ? = Gibt den Prozentualen Anteil an, der im Tiefschlaf verbracht wurde. Type : Integer WICHTIG: In Prozent.
+\\ Deep sleep percentage? = Gibt den Prozentualen Anteil an, der im Tiefschlaf verbracht wurde. Type : Integer WICHTIG: In Prozent.
 \\ Light sleep percentage = Gibt den Prozentualen Anteil an, der im Leichtschlaf verbracht wurde. Type : Integer WICHTIG: In Prozent.
 \\ Awakenings = Absolute Anzahl an , wie oft eine Person aufgewacht ist. Interpretation -> 0.0 bedeutet, ungestörter Schlaf. -> Lässt an der validität des Datensatzes zweifeln. Da, bei "0.0" mal aufgewacht die person im Schlaf gestorben ist.
 \\ Caffeine Intake = Gibt an wie viel Koffeein die Person zu sich genommen hat in den letzten 24 Studenen (In mg) ( Frage für Mick: Halbwertszeit von Koffein? (Adenosin rezeptoren block.) -> Problematik bei der Interpretation. Hoher kofeein intake in the Morining might not have th esame effect as the koffeein intake in the evening, Surge of adenosin before going to bed -> More sleep? Or maybe worse sleep?: Datentyp: VERHALTEN ). 
 \\ Alcohol Intake = Gibt an wie viel Alkohol die Personen ind en letzten 24 Stundne zu sich genommen hat. (In OZ)  Maßeinheit. Alkohol-> Nerven gift -> Blockierung der REM Tiefschlafphase? 
 \\ Tobacco Intake = Gibt an wie viel Tabak die Person zu sich genommen hat. ->Boolean Wert. Raucht die Person ja oder nein. (Datensatz wurde angeblich in einem Paper produziert.)
 \\ Exercise Intake = Gibt an wie viel Sport die Person getrieben hat. Sporteinheiten pro Woche. (Gibt nur die Absolute Anzahl an, das Problem liegt darin, dass die Daten nicht nach Minute aufgeteilt sind. ) \\ }
-Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen. Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
+Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen.
+\textbf{es ist nciht klar ob die Daten legitim sind. Die Quelle auf Kaggle ist nicht angegeben.-> 
+Eignet sich besonders gut fü unseren Zweck, da wir die Datenverteilung und das Verhalten von }
+ Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
 Erklären sie die technische Bereitstellung der Daten.
-\textbf Daten werden als amerikanisches CSV auf Kaggle.com bereitgestellt. (MICK: Genauen Typ der CSV herausfinden. (trennung mit , statt dem Europäischem ;))
+
+\textbf {Daten werden als amerikanisches CSV auf Kaggle.com bereitgestellt. (MICK: Genauen Typ der CSV herausfinden. (trennung mit , statt dem Europäischem ;))}
 
 \textbf { Die Daten }
 Wie sind die Daten zugänglich? Welche Formate werden genutzt. Gibt es Besonderheiten beim Lesen der Formate?
 Beschreiben sie die Datenvorverarbeitung.
  Welche Datenvorverarbeitungsschritte sind notwendig?
-
+ \textbf{ Einspielen des CSV als String, -> Werden aus dme Github Repository gezogen.  }
   Beschreiben Sie die einzelnen Schritte und begründen sie sie, z.B. warum werden manche Daten weggelassen, über welche Mengen werden Durchschnitte berechnet, warum sind die so berechneten Werte aussagekräftiger als andere Werte. Wenn möglich sollen sie die Datenvorverarbeitung in Elm programmieren, so dass ihre Anwendung auf eine Änderung der Rohdaten reagieren kan.
- Realisiert eine Daten-zu-Daten-Abbildung\\
+ 
+ 
+  Realisiert eine Daten-zu-Daten-Abbildung\\
  \textbf { Mögliche Operationen:\\
     - Vervollständigung, Interpolation\\
     - Projektion (Reduzierung der Variablen)\\
     - Selektion (Anwendung von Filterkriterien, Glättung,Ausreißereliminierung)\\
     - Berechnung impliziter Eigenschaften (z.B. Maximum,Gradient)\\
     - Konvertierung\\
-    \\
+    \\}
 
-    Die Daten sollten so konvertiert werden, dass Sie den Visualisierungsanwendungen entsprechen. \\
+\textbf Die Daten sollten so konvertiert werden, dass Sie den Visualisierungsanwendungen entsprechen. \\
 
-    - Transformierung der DateTIME in ein Float, so dass wir die Position berechnen können.\\
-    -Veränderung der Merkmalsausprägungs Daten (alle Strings außer ID) in eine Interpretierbaren Wert. Unsere Strings sind Boolean, male oder female und Raucher (Yes und No)
- }
+\textbf - Transformierung der DateTIME in ein Float, so dass wir die Position berechnen können.\\
+\textbf - Veränderung der Merkmalsausprägungs Daten (alle Strings außer ID) in eine Interpretierbaren Wert. Unsere Strings sind Boolean, male oder female und Raucher (Yes und No)\\
+   
 
 \section{Visualisierungen}
 \subsection{Analyse der Anwendungsaufgaben}
-Die Aufgaben die durch dei Visualisierung gelöst werden sollen: \\
-
+Die Aufgaben die durch dei Visualisierung gelöst werden sollen: \\ 
+\textbf{ Das Problem ist folgendes: In hochkomplexen Systemen sind die Einflussfaktoren die die ausprägung eines Merkmals beeinflussen nicht immer klar. Daher ist es wichtig, dass wir die Daten visualisieren um die Zusammenhänge zu erkennen.\\
+Die Visualisierung soll uns also erlauben den Einfluss von multiplen Verhaltensindikatoren auf die Ausprägung eines Merkmales zu schätzen. 
+Die klassische Herangehensweise in den Einfluss zu überprüfen sind hochkomplizierte und benötigen
+statistisches Hintergrundwissen auf Seiten des Anwenders. Die Visualisierungsanwendung soll es dem Anwender ermöglichen den Datensatz und die Merkmale derer zu untersuchen und Rückschlüsse auf die Beziehungen von Ausprägungen untereinander und mit Verhaltensindikatoren und zu treffen.
+ In dem Anwendugsfall bei der  \\  }
 Analysieren sie die konkreten Anwendungsaufgaben, die die Lösung des Zielproblems durch die Anwender:innen bearbeitet werden müssen. 
+
 Welche sinnvollen mentale Modelle helfen den Personen bei der Bearbeitung. 
+\textbr {Aufgabenstellung: Analyse der Variablen und den Einfuss den }
 %Welche Visualisierungen helfen den Personen, die die Software verwenden, sinnvolle mentale Modelle aufzubauen. 
-Sind diese mentalen Modelle für sie notwendig, um die Aufgaben lösen zu können? Gehen sie bei ihrer Argumentation von den Anwendungsaufgaben aus und kommen sie dann zu den mentalen Modellen, deren Aufbau durch Visualisierungen unterstützt wird. 
+Sind diese mentalen Modelle für sie notwendig, um die Aufgaben lösen zu können? 
+Gehen sie bei ihrer Argumentation von den Anwendungsaufgaben aus und kommen sie dann zu den mentalen Modellen, deren Aufbau durch Visualisierungen unterstützt wird. 
 \subsection{Anforderungen an die Visualisierungen}
 Leiten sie Anforderungen an das Design der Visualisierungen ab, die sich durch ihre Analyse des Zielproblems ergeben.
+
+\textbf{ Anforderungen an das Design. }
 \subsection{Präsentation der Visualisierungen}
 Präsentieren sie die visuelle Abbildungen und Kodierungen der Daten und Interaktionsmöglichkeiten. 
 Sie müssen  begründen, warum und wie gut ihre Designentscheidungen die erstellten Anforderungen erfüllen. 
@@ -111,8 +125,11 @@ Diskutieren sie also nicht einfach Zeitreihendiagramme, weil sie in den Anforder
 Diskutieren sie die Expressivität und die Effektivität der einzelnen Visualisierungen. 
 
 Die eben beschriebenen Präsentationen und Begründungen sollen für jede der drei folgenden Visualisierungen durchgeführt werden. 
-\subsubsection{Visualisierung Eins}
-\subsubsection{Visualisierung Zwei}
+\subsubsection{Visualisierung Eins: QQ-Plot Datenlage Normalverteilt?}
+
+\subsubsection{Visualisierung Zwei: Boxplott}
+Ziel der Visualisierung: 
+Erklärung, wie diese aufgebaut sind. Daher 
 \subsubsection{Visualisierung Drei}
 
 \subsection{Interaktion}
