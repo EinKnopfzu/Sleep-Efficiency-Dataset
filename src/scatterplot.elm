@@ -1,6 +1,6 @@
 module Scatterplot exposing (..)
 
-import Main exposing (..)
+
 import Axis
 import Browser
 import Color exposing (Color(..), rgb)
@@ -26,6 +26,38 @@ import TypedSvg.Attributes.InPx exposing (x2)
 import TypedSvg.Attributes.InPx exposing (y2)
 import TypedSvg.Attributes exposing (x1)
 
+
+
+
+--Variablen zur Dartsellung der Größe dr Grafiken gelten auch in den anderen Modulen
+w : Float
+w =
+    900
+
+
+h : Float
+h =
+    550
+
+
+padding : Float
+padding =
+    60
+
+
+radius : Float
+radius =
+    5.0
+
+
+tickCount : Int
+tickCount =
+    5
+
+
+defaultExtent : ( number, number1 )
+defaultExtent =
+    ( 0, 100 )
 
 combineLists : List Float -> List Float ->List String -> List ScatterplottPoint
 combineLists x y z =

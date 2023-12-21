@@ -19,8 +19,8 @@ import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, s
 import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
-import Scatterplot exposing (..)
-import ParalleleKoordinatenRoengten exposing (..)
+import Scatterplot exposing (scatterplot)
+import ParalleleKoordinatenRoengten exposing (blackbox)
 
 
 -- MAIN
@@ -513,31 +513,3 @@ type alias MultiDimPoint =
  
 --Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.--Variablen zur Beeinflussung der Dartstellungen
 
-w : Float
-w =
-    900
-
-
-h : Float
-h =
-    550
-
-
-padding : Float
-padding =
-    60
-
-
-radius : Float
-radius =
-    5.0
-
-
-tickCount : Int
-tickCount =
-    5
-
-
-defaultExtent : ( number, number1 )
-defaultExtent =
-    ( 0, 100 )

@@ -1,7 +1,7 @@
 module ParalleleKoordinatenRoengten exposing (..)
 
-import Main exposing (w, h, padding, radius, tickCount)
-import Scatterplot exposing (..) 
+import Scatterplot exposing (w, h, padding, radius, tickCount)
+ 
 import Axis
 import Color exposing (Color(..), rgb)
 import Html exposing (Html)
