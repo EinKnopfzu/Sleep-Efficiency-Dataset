@@ -19,7 +19,7 @@ import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, s
 import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
-import Scatterplot exposing (scatterplot)
+import Scatterplot exposing (..)
 import ParalleleKoordinatenRoengten exposing (blackbox)
 
 
@@ -225,6 +225,7 @@ view model =
                        ,Html.text "X-Achse"               
                   ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
+                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown1) ] [ Html.text "Geschlecht" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown1) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown1) ] [ Html.text "Schlafdauer" ]
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown1) ] [ Html.text "Schlaf Effizienz" ]
@@ -239,6 +240,7 @@ view model =
                   [ Html.text "Y-Achse" 
                   ,Html.select [ onInput Option2Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
+                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown2) ] [ Html.text "Geschlecht" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown2) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown2) ] [ Html.text "Schlafdauer" ]
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown2) ] [ Html.text "Schlaf Effizienz" ]
@@ -253,6 +255,7 @@ view model =
                   [ Html.text "Z-Achse" 
                   ,Html.select [ onInput Option3Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown3) ] [ Html.text "Select an option" ]
+                , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown3) ] [ Html.text "Geschlecht" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown3) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown3) ] [ Html.text "Schlafdauer" ]
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown3) ] [ Html.text "Schlaf Effizienz" ]
@@ -268,6 +271,7 @@ view model =
                   [ Html.text "E-Achse" 
                   ,Html.select [ onInput Option4Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown4) ] [ Html.text "Select an option" ]
+                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown4) ] [ Html.text "Geschlecht" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown4) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown4) ] [ Html.text "Schlafdauer" ]
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown4) ] [ Html.text "Schlaf Effizienz" ]
@@ -285,6 +289,7 @@ view model =
                    xList : List (Float)
                    xList =
                      case model.droppdown1 of
+                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map yesNoToNumber
 
                       "Alter" -> List.map .myalter model.daten
 
@@ -306,6 +311,8 @@ view model =
                    yList =
                       case model.droppdown2 of
 
+                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map yesNoToNumber
+
                       "Alter" -> List.map .myalter model.daten
 
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
@@ -325,6 +332,8 @@ view model =
                    zList : List (Float)
                    zList =
                       case model.droppdown3 of
+
+                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map yesNoToNumber
 
                       "Alter" -> List.map .myalter model.daten
 
@@ -470,6 +479,14 @@ sleep2Point c =
                     c.raucher
                     c.sport
             )
+
+-- Hilfsfunktion, die "Yes" zu 2 und "No" zu 1 zuordnet
+yesNoToNumber : String -> Float
+yesNoToNumber value =
+    case value of
+        "Yes" -> 2
+        "No" -> 1
+        _ -> 0
 
 type alias Aussortierte_Daten =
  {myid_ :  String 
