@@ -4,6 +4,7 @@ import Scatterplot exposing (w, h, padding, radius, tickCount)
 
 import JXstat exposing (..)
 import TypedSvg exposing (svg)
+import TypedSvg.Attributes exposing (d)
 
 
 --etwas hindernd, dass ELM keine Rückewärts kompatibilität erzwingt und man so nicht die neusten Versionen nutzen kann, wenn diese Abhängig sind
@@ -33,11 +34,16 @@ r : List ( Float, Float ) -> Maybe Float
 r data =   
     correlation data
 
-{-
 
-graph : svg msg
-graph =
+
+graph : ScatterplottXYData -> Svg msg
+graph model =
     let
+        data : List ( Float, Float )
+        data =  model.data
+
+        rValue : Maybe Float
+        rValue = r data
 
     in
     svg [ viewBox 0 200 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
