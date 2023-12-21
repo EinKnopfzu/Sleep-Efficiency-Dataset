@@ -278,7 +278,7 @@ scatterplot model =
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
-                [ Html.text model.yDescription ]
+                [ Html.text model.xDescription ]
             ]
         
         , g [ transform [ Translate padding padding ] ]

@@ -1,4 +1,4 @@
-module Boxplott exposing (..)
+module ParalleleKoordinatenRoengten exposing (..)
 
 import Scatterplot exposing (..) 
 import Axis
@@ -62,8 +62,8 @@ combineLists_Box names list1 list2 list3 =
         list2
         list3
 
-boxplott :List (MultiDimPoint) -> Svg msg
-boxplott model =
+blackbox :List (MultiDimPoint) -> Svg msg
+blackbox model =
     let
         {- hier können Sie die Beschriftung des Testpunkts berechnen -}
         kreisbeschriftung : String

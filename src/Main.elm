@@ -20,7 +20,7 @@ import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
 import Scatterplot exposing (..)
-import Boxplott exposing (..)
+import ParalleleKoordinatenRoengten exposing (..)
 
 
 -- MAIN
@@ -351,7 +351,7 @@ view model =
 --Hier werden die Listen in für den Boxplott vorbereitet in diesem Fall istes wichtig, dass die XListe 
 --Die Mittlere Liste ist, da wir ansonsten nicht das zu suchende element in der Mitte haben. 
                    combinedList_Box : List MultiDimPoint
-                   combinedList_Box = Boxplott.combineLists_Box name  yList xList zList 
+                   combinedList_Box = ParalleleKoordinatenRoengten.combineLists_Box name  yList xList zList 
 
                    
                 in
@@ -363,10 +363,10 @@ view model =
                     , Html.Attributes.style "font-family" "Arial"] 
                     [ scatterplot 
                     { xDescription = "Normalverteilung"
-                    , yDescription = model.droppdown2
+                    , yDescription = model.droppdown1
                     , data = combinedList_Scatter
                     }
-                    ,boxplott combinedList_Box]
+                    ,blackbox combinedList_Box]
 
                     
                    , footer

@@ -34,24 +34,28 @@ Der Bericht fällt in die Kategorie von InfoVis-Paper, die Tamara Munzner Design
 \subsection{Anwendungshintergrund}
 Sie müssen genug Hintergrund bereitstellen, so dass die Lesenden sich ein Urteil bilden können, ob ihre Lösung funktioniert. 
 Sie sollen die Lesenden jedoch nicht mit Anwendungsdetails so überschütten, dass der Fokus auf die Fragen zur Informationsvisualisierung untergehen. 
-Eine Visualisierung muss
-\textbr {- expressiv: Expresivität bedeutet, dass die Daten unverfälscht wiedergegeben werden. Grundsätzlich sollen nur die Informationen dargestellt werden, die auch im Datenamterial vorhanden sind.\\
+Eine Visualisierung muss 
+\textbf{expressiv: Expresivität bedeutet, dass die Daten unverfälscht wiedergegeben werden. Grundsätzlich sollen nur die Informationen dargestellt werden, die auch im Datenamterial vorhanden sind.\\
 I effektiv (Effektivität hängt nicht nur von den Daten ab, sondern auch von:\\ 1. dem Bearbeitungsziel und \\2. den Fähigkeiten des Betrachters \\
 3. Eine effektive Visualisierung versucht die Inhalte auf intuitivenWegen zu präsentierten)
 I angemessen sein (Angemessenheit beschreibt den Verbrauch an Ressourcen zur Erzeugung der Visualisierung)}
 \subsection{Zielgruppen}
-\textbf {Die Visualsierung soll dabei helfen die Einflüsse von Unterschiedlichen Verhaltensweisen auf in der Lebensweise zu analysieren. Hierbei werden Lebensstile anhand von Koffeein, alkohol, Tabak Konsum und Sport verhalten analysiert. Das  soll Forschern als auch der privatperson dabei Helfen, risikoreiche verhaltensweisen zu identifizieren um die Lebensqualität zu verbessern: Die Schlafqualität hat einen hohen einfluss auf die Lebensqualität }
-Beschreiben sie die Personengruppe oder Personengruppen, die das von ihnen benannte Anwendungsproblem lösen möchte. Auf welches Vorwissen können sie in dieser Gruppen von Anwenderinnen aufbauen? Welche Informations"-bedürf"-nisse werden durch die Visualisierungen adressiert?: The data was then analyzed to understand the relationship between lifestyle factors and sleep patterns and to identify any potential areas for intervention to improve sleep
+\textbf{Die Visualsierung soll dabei helfen die Einflüsse von Unterschiedlichen Verhaltensweisen auf in der Lebensweise zu analysieren. Hierbei werden Lebensstile anhand von Koffeein, alkohol, Tabak Konsum und Sport verhalten analysiert. Das  soll Forschern als auch der privatperson dabei Helfen, risikoreiche verhaltensweisen zu identifizieren um die Lebensqualität zu verbessern: Die Schlafqualität hat einen hohen einfluss auf die Lebensqualität }
+Beschreiben sie die Personengruppe oder Personengruppen, die das von ihnen benannte Anwendungsproblem lösen möchte.
+ Auf welches Vorwissen können sie in dieser Gruppen von Anwenderinnen aufbauen? 
+ Welche Informations"-bedürf"-nisse werden durch die Visualisierungen adressiert?:
+\textbf{Überarbeiten: \\ The data was then analyzed to understand the relationship between lifestyle factors 
+  and sleep patterns and to identify any potential areas for intervention to improve sleep \\}
 \subsection{Überblick und Beiträge}
 In diesem Abschnitt geben sie einen kurzen Überblick über die Daten und verwendeten Visualisierungen. Dann benennen sie die Beiträge ihres Projekts. Diese Beiträge müssen sie in den hinteren Teilen des Berichts genauer ausführen und belegen.
 
 \section{Daten}
 Beschreiben Sie vorhandenen Daten. 
-\textbf {Input Daten ist csv Datei mit teilweise leeren Datenpunkten. Umgang mit den leeren Feldern-> Mit List.map (Bei einem Nothing, wird der Tupel komplett gelöscht. ), da wir somit nur mit einem sauberem Datensatz arbeiten. Datensatz hat nur Fehlende werte bei gewisse Datenpunkten. (Koffeein, Alkohol, Tabak, Sport).
+\textbf{Input Daten ist csv Datei mit teilweise leeren Datenpunkten. Umgang mit den leeren Feldern-> Mit List.map (Bei einem Nothing, wird der Tupel komplett gelöscht. ), da wir somit nur mit einem sauberem Datensatz arbeiten. Datensatz hat nur Fehlende werte bei gewisse Datenpunkten. (Koffeein, Alkohol, Tabak, Sport).
 \\ ID\@ : Identifikator der eine Reihe eindeutig Identifiziert. -> Unique identifier keine Person wird zweimal erfasst. -> keine Zeitentwicklung. -> 452 Personen erfasst. Type : Integer.
-\\ Age: Gibt das Alter der Person zum zeitpunkt der erfassung hatte.-> Type : Integer   Datenreichweite 9-69 Jahre.
-\\ Gender: Gibt das Geschlecht der Person mittels "Male" oder "Female" wieder. Type : String
-\\ Bedtime: Gibt die Uhrzeit an zu der die Person ins Bett gegangen ist. Type : DateTime
+\\ Age: Gibt das Alter der Person zum zeitpunkt der erfassung hatte.-> Type : Integer   Datenreichweite 9-69 Jahre. Diskreter Wert.
+\\ Gender: Gibt das Geschlecht der Person mittels "Male" oder "Female" wieder. Type : String: Boolean Wert.
+\\ Bedtime: Gibt die Uhrzeit an zu der die Person ins Bett gegangen ist. Type : DateTime: Diskreter Wert. Halbe Stunde Schritte
 \\ WakeUp Time = Gibt das Datum und die Uhrzeit an an dem die Person erwacht ist.  Type : DateTime
 \\ Sleep Duration = Gibt die Stunden an, die die Person im Bett schlafend verbracht hat in Stunden. Type : Float 
 \\  Schlaf Effizienz = Gibt die Zeit an die im Bett schlafend verbracht wurde. Type : Float -> In Prozent -> Interpretation nur in combination mit Anzahl erwacht möglich. -> MICK müssen wir das noch Transmutieren? -> Nacher drüber nachdenken.
@@ -65,13 +69,13 @@ Beschreiben Sie vorhandenen Daten.
 \\ Exercise Intake = Gibt an wie viel Sport die Person getrieben hat. Sporteinheiten pro Woche. (Gibt nur die Absolute Anzahl an, das Problem liegt darin, dass die Daten nicht nach Minute aufgeteilt sind. ) \\ }
 Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen.
 \textbf{es ist nciht klar ob die Daten legitim sind. Die Quelle auf Kaggle ist nicht angegeben.-> 
-Eignet sich besonders gut fü unseren Zweck, da wir die Datenverteilung und das Verhalten von }
+Eignet sich besonders gut für unseren Zweck, da wir die Datenverteilung und das Verhalten von der Variablen zueinander untersuchen wollen. }
  Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
 Erklären sie die technische Bereitstellung der Daten.
 
-\textbf {Daten werden als amerikanisches CSV auf Kaggle.com bereitgestellt. (MICK: Genauen Typ der CSV herausfinden. (trennung mit , statt dem Europäischem ;))}
+\textbf{Daten werden als amerikanisches CSV auf Kaggle.com bereitgestellt. (MICK: Genauen Typ der CSV herausfinden. (trennung mit , statt dem Europäischem ;))}
 
-\textbf { Die Daten }
+\textbf{ Die Daten }
 Wie sind die Daten zugänglich? Welche Formate werden genutzt. Gibt es Besonderheiten beim Lesen der Formate?
 Beschreiben sie die Datenvorverarbeitung.
  Welche Datenvorverarbeitungsschritte sind notwendig?
@@ -80,7 +84,7 @@ Beschreiben sie die Datenvorverarbeitung.
  
  
   Realisiert eine Daten-zu-Daten-Abbildung\\
- \textbf { Mögliche Operationen:\\
+ \textbf{ Mögliche Operationen:\\
     - Vervollständigung, Interpolation\\
     - Projektion (Reduzierung der Variablen)\\
     - Selektion (Anwendung von Filterkriterien, Glättung,Ausreißereliminierung)\\
@@ -88,10 +92,7 @@ Beschreiben sie die Datenvorverarbeitung.
     - Konvertierung\\
     \\}
 
-\textbf Die Daten sollten so konvertiert werden, dass Sie den Visualisierungsanwendungen entsprechen. \\
-
-\textbf - Transformierung der DateTIME in ein Float, so dass wir die Position berechnen können.\\
-\textbf - Veränderung der Merkmalsausprägungs Daten (alle Strings außer ID) in eine Interpretierbaren Wert. Unsere Strings sind Boolean, male oder female und Raucher (Yes und No)\\
+\textbf{ Die Daten sollten so konvertiert werden, dass Sie den Visualisierungsanwendungen entsprechen. Veränderung der Merkmalsausprägungs Daten alle Strings außer ID in eine Interpretierbaren Wert. Unsere Strings sind Boolean, male oder female und Raucher Yes und No }
    
 
 \section{Visualisierungen}
@@ -105,7 +106,7 @@ statistisches Hintergrundwissen auf Seiten des Anwenders. Die Visualisierungsanw
 Analysieren sie die konkreten Anwendungsaufgaben, die die Lösung des Zielproblems durch die Anwender:innen bearbeitet werden müssen. 
 
 Welche sinnvollen mentale Modelle helfen den Personen bei der Bearbeitung. 
-\textbr {Aufgabenstellung: Analyse der Variablen und den Einfuss den }
+\textbf{Aufgabenstellung: Analyse der Variablen und den Einfuss der Verhaltensindikatoren}
 %Welche Visualisierungen helfen den Personen, die die Software verwenden, sinnvolle mentale Modelle aufzubauen. 
 Sind diese mentalen Modelle für sie notwendig, um die Aufgaben lösen zu können? 
 Gehen sie bei ihrer Argumentation von den Anwendungsaufgaben aus und kommen sie dann zu den mentalen Modellen, deren Aufbau durch Visualisierungen unterstützt wird. 
@@ -130,8 +131,9 @@ Die eben beschriebenen Präsentationen und Begründungen sollen für jede der dr
 \subsubsection{Visualisierung Zwei: Boxplott}
 Ziel der Visualisierung: 
 Erklärung, wie diese aufgebaut sind. Daher 
-\subsubsection{Visualisierung Drei}
-
+\subsubsection{Visualisierung Drei: Force Graph.}
+Ziel der Visualisierung: 
+Erklärung, wie diese aufgebaut sind. 
 \subsection{Interaktion}
 Die präsentierten Visualisierungstechniken müssen interaktiv zu einer Anwendung verknüpft werden.
 Die Interaktion mit einer Visualisierung soll in den anderen Visualisierungen zu einer Änderung führen. 
@@ -143,8 +145,14 @@ Beschreiben Sie die Implementierung ihrer Visualisierungsanwendung in Elm. Stell
 Wie sieht die Elm-Datenstruktur für das Model aus, in dem die verschiedenen Zustände der Interaktion gespeichert werden können.
 
 \section{Anwendungsfälle}
-Präsentieren sie für jede der drei Visualisierungen einen sinnvollen Anwendungsfall in dem ein bestimmter Fakt, ein Muster oder die Abwesenheit eines Musters visuell festgestellt wird. Begründen sie warum dieser Anwendungsfall wichtig für die Zielgruppe der Anwenderinnen ist. Diskutieren sie weiterhin, ob die oben beschriebene Information auch mit anderen Visualisierungstechniken hätte gefunden werden können. Falls dies möglich wäre, vergleichen sie die den Aufwand und die Schwierigkeiten ihres Ansatzes und der Alternativen. 
+Präsentieren sie für jede der drei Visualisierungen einen sinnvollen Anwendungsfall 
+in dem ein bestimmter Fakt, ein Muster oder die Abwesenheit eines Musters visuell festgestellt wird.
+Begründen sie warum dieser Anwendungsfall wichtig für die Zielgruppe der Anwenderinnen ist.
+Diskutieren sie weiterhin, ob die oben beschriebene Information auch mit anderen 
+Visualisierungstechniken hätte gefunden werden können.
+Falls dies möglich wäre, vergleichen sie die den Aufwand und die Schwierigkeiten ihres Ansatzes und der Alternativen. 
 \subsection{Anwendung Visualisierung Eins}
+
 \subsection{Anwendung Visualisierung Zwei}
 \subsection{Anwendung Visualisierung Drei}
 
