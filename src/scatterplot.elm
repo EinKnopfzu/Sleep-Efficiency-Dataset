@@ -1,5 +1,6 @@
 module Scatterplot exposing (..)
 
+import Main exposing (..)
 import Axis
 import Browser
 import Color exposing (Color(..), rgb)
@@ -30,25 +31,7 @@ combineLists : List Float -> List Float ->List String -> List ScatterplottPoint
 combineLists x y z =
     List.map3 (\zValue xValue yValue -> { pointName = zValue, x = xValue, y = yValue }) z x y
 
-w : Float
-w =
-    900
 
-h : Float
-h =
-    450
-
-padding : Float
-padding =
-    100
-    
-radius : Float
-radius =
-    5.0
-
-tickCount : Int
-tickCount =
-    10
 
 defaultExtent : ( number, number1 )
 defaultExtent =

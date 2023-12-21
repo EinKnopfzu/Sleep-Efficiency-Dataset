@@ -1,5 +1,6 @@
 module ParalleleKoordinatenRoengten exposing (..)
 
+import Main exposing (w, h, padding, radius, tickCount)
 import Scatterplot exposing (..) 
 import Axis
 import Color exposing (Color(..), rgb)
@@ -19,34 +20,7 @@ import Path exposing (Path)
 
 
 
-w : Float
-w =
-    900
 
-
-h : Float
-h =
-    550
-
-
-padding : Float
-padding =
-    60
-
-
-radius : Float
-radius =
-    5.0
-
-
-tickCount : Int
-tickCount =
-    5
-
-
-defaultExtent : ( number, number1 )
-defaultExtent =
-    ( 0, 100 )
 
 
 combineLists_Box : List String -> List Float -> List Float -> List Float -> List MultiDimPoint

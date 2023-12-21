@@ -54,14 +54,14 @@ Beschreiben Sie vorhandenen Daten.
 \textbf{Input Daten ist csv Datei mit teilweise leeren Datenpunkten. Umgang mit den leeren Feldern-> Mit List.map (Bei einem Nothing, wird der Tupel komplett gelöscht. ), da wir somit nur mit einem sauberem Datensatz arbeiten. Datensatz hat nur Fehlende werte bei gewisse Datenpunkten. (Koffeein, Alkohol, Tabak, Sport).
 \\ ID\@ : Identifikator der eine Reihe eindeutig Identifiziert. -> Unique identifier keine Person wird zweimal erfasst. -> keine Zeitentwicklung. -> 452 Personen erfasst. Type : Integer.
 \\ Age: Gibt das Alter der Person zum zeitpunkt der erfassung hatte.-> Type : Integer   Datenreichweite 9-69 Jahre. Diskreter Wert.
-\\ Gender: Gibt das Geschlecht der Person mittels "Male" oder "Female" wieder. Type : String: Boolean Wert.
+\\ Gender: Gibt das Geschlecht der Person mittels ``Male'' oder ``Female'' wieder. Type : String : Boolean Wert.
 \\ Bedtime: Gibt die Uhrzeit an zu der die Person ins Bett gegangen ist. Type : DateTime: Diskreter Wert. Halbe Stunde Schritte
 \\ WakeUp Time = Gibt das Datum und die Uhrzeit an an dem die Person erwacht ist.  Type : DateTime
-\\ Sleep Duration = Gibt die Stunden an, die die Person im Bett schlafend verbracht hat in Stunden. Type : Float 
-\\  Schlaf Effizienz = Gibt die Zeit an die im Bett schlafend verbracht wurde. Type : Float -> In Prozent -> Interpretation nur in combination mit Anzahl erwacht möglich. -> MICK müssen wir das noch Transmutieren? -> Nacher drüber nachdenken.
-\\ REM Sleep percentage = Gibt den Prozentualen Anteil an, der im REM Schlaf verbracht wurde. Type : Integer WICHTIG: In Prozent. 
-\\ Deep sleep percentage? = Gibt den Prozentualen Anteil an, der im Tiefschlaf verbracht wurde. Type : Integer WICHTIG: In Prozent.
-\\ Light sleep percentage = Gibt den Prozentualen Anteil an, der im Leichtschlaf verbracht wurde. Type : Integer WICHTIG: In Prozent.
+\\ Sleep Duration = Gibt die Stunden an, die die Person im Bett schlafend verbracht hat in Stunden. Type: Float 
+\\  Schlaf Effizienz = Gibt die Zeit an die im Bett schlafend verbracht wurde. Type: Float -> In Prozent -> Interpretation nur in combination mit Anzahl erwacht möglich. -> MICK müssen wir das noch Transmutieren? -> Nacher drüber nachdenken.
+\\ REM Sleep percentage = Gibt den Prozentualen Anteil an, der im REM Schlaf verbracht wurde. Type: Integer WICHTIG: In Prozent. 
+\\ Deep sleep percentage? = Gibt den Prozentualen Anteil an, der im Tiefschlaf verbracht wurde. Type: Integer WICHTIG : In Prozent.
+\\ Light sleep percentage = Gibt den Prozentualen Anteil an, der im Leichtschlaf verbracht wurde. Type: Integer WICHTIG: In Prozent.
 \\ Awakenings = Absolute Anzahl an , wie oft eine Person aufgewacht ist. Interpretation -> 0.0 bedeutet, ungestörter Schlaf. -> Lässt an der validität des Datensatzes zweifeln. Da, bei "0.0" mal aufgewacht die person im Schlaf gestorben ist.
 \\ Caffeine Intake = Gibt an wie viel Koffeein die Person zu sich genommen hat in den letzten 24 Studenen (In mg) ( Frage für Mick: Halbwertszeit von Koffein? (Adenosin rezeptoren block.) -> Problematik bei der Interpretation. Hoher kofeein intake in the Morining might not have th esame effect as the koffeein intake in the evening, Surge of adenosin before going to bed -> More sleep? Or maybe worse sleep?: Datentyp: VERHALTEN ). 
 \\ Alcohol Intake = Gibt an wie viel Alkohol die Personen ind en letzten 24 Stundne zu sich genommen hat. (In OZ)  Maßeinheit. Alkohol-> Nerven gift -> Blockierung der REM Tiefschlafphase? 

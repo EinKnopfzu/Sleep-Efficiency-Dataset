@@ -366,6 +366,7 @@ view model =
                     , yDescription = model.droppdown1
                     , data = combinedList_Scatter
                     }
+                    --Interaktion mittels einschränken, welcher Bereich der Daten angezeigt werden sollte. (z.B. Alter einschränken oder Koffein Konsum
                     ,blackbox combinedList_Box]
 
                     
@@ -510,4 +511,33 @@ type alias MultiDimPoint =
     { pointName : String, value : List Float }
 
  
---Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.
+--Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.--Variablen zur Beeinflussung der Dartstellungen
+
+w : Float
+w =
+    900
+
+
+h : Float
+h =
+    550
+
+
+padding : Float
+padding =
+    60
+
+
+radius : Float
+radius =
+    5.0
+
+
+tickCount : Int
+tickCount =
+    5
+
+
+defaultExtent : ( number, number1 )
+defaultExtent =
+    ( 0, 100 )
