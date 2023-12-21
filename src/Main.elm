@@ -21,6 +21,7 @@ import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
 import Scatterplot exposing (..)
 import ParalleleKoordinatenRoengten exposing (blackbox)
+--import ImpactGraph exposing (..)
 
 
 -- MAIN
@@ -268,7 +269,8 @@ view model =
                   , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher" ]
 
                , Html.text model.droppdown3]
-                                 , Html.br [] []
+
+               , Html.br [] []
                   
                , Html.div []
                   [ Html.text "E-Achse" 
@@ -289,7 +291,6 @@ view model =
                
                ]
                ]
-          --    ,Html.div [] [Html.text (toString model.daten)]
                , let
                    xList : List (Float)
                    xList =
