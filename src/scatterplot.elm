@@ -65,9 +65,7 @@ combineLists x y z =
 
 
 
-defaultExtent : ( number, number1 )
-defaultExtent =
-    ( 0, 100 )
+
 
 --Der Typ soll die relative Position eines Datenpunktes darstellen. 
 type alias ScatterplottXYPoint =
