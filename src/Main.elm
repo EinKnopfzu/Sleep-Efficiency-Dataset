@@ -227,7 +227,7 @@ view model =
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown1) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown1) ] [ Html.text "Schlafdauer" ]
-                  , Html.option [ value "Schlaf Effizient", selected ("Schlaf Effizient" == model.droppdown1) ] [ Html.text "Schlaf Effizient" ]
+                  , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown1) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown1) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown1) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown1) ] [ Html.text "Erwacht Anzahl" ]
@@ -241,7 +241,7 @@ view model =
                   [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown2) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown2) ] [ Html.text "Schlafdauer" ]
-                  , Html.option [ value "Schlaf Effizient", selected ("Schlaf Effizient" == model.droppdown2) ] [ Html.text "Schlaf Effizient" ]
+                  , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown2) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown2) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown2) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown2) ] [ Html.text "Erwacht Anzahl" ]
@@ -255,7 +255,7 @@ view model =
                   [ Html.option [ value "", selected ("" == model.droppdown3) ] [ Html.text "Select an option" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown3) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown3) ] [ Html.text "Schlafdauer" ]
-                  , Html.option [ value "Schlaf Effizient", selected ("Schlaf Effizient" == model.droppdown3) ] [ Html.text "Schlaf Effizient" ]
+                  , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown3) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown3) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown3) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown3) ] [ Html.text "Erwacht Anzahl" ]
@@ -270,7 +270,7 @@ view model =
                   [ Html.option [ value "", selected ("" == model.droppdown4) ] [ Html.text "Select an option" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown4) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown4) ] [ Html.text "Schlafdauer" ]
-                  , Html.option [ value "Schlaf Effizient", selected ("Schlaf Effizient" == model.droppdown4) ] [ Html.text "Schlaf Effizient" ]
+                  , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown4) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown4) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown4) ] [ Html.text "Tiefschlaf Anteil" ]
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown4) ] [ Html.text "Erwacht Anzahl" ]
@@ -290,7 +290,7 @@ view model =
 
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
 
-                      "Schlaf Effizient" -> List.map  .myschlaf_effizienz model.daten
+                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
 
                       "REM" -> List.map .myrem_anteil model.daten
 
@@ -310,7 +310,7 @@ view model =
 
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
 
-                      "Schlaf Effizient" -> List.map  .myschlaf_effizienz model.daten
+                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
 
                       "REM" -> List.map .myrem_anteil model.daten
 
@@ -330,7 +330,7 @@ view model =
 
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
 
-                      "Schlaf Effizient" -> List.map  .myschlaf_effizienz model.daten
+                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
 
                       "REM" -> List.map .myrem_anteil model.daten
 
