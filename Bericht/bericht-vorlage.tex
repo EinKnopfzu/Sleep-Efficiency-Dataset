@@ -66,10 +66,14 @@ Beschreiben Sie vorhandenen Daten.
 \\ Exercise Intake = Gibt an wie viel Sport die Person getrieben hat. Sporteinheiten pro Woche. (Gibt nur die Absolute Anzahl an, das Problem liegt darin, dass die Daten nicht nach Minute aufgeteilt sind. ) \\ }
 Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen. Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
 Erklären sie die technische Bereitstellung der Daten.
+\textbf Daten werden als amerikanisches CSV auf Kaggle.com bereitgestellt. (MICK: Genauen Typ der CSV herausfinden. (trennung mit , statt dem Europäischem ;))
+
 \textbf { Die Daten }
 Wie sind die Daten zugänglich? Welche Formate werden genutzt. Gibt es Besonderheiten beim Lesen der Formate?
 Beschreiben sie die Datenvorverarbeitung.
- Welche Datenvorverarbeitungsschritte sind notwendig? Beschreiben Sie die einzelnen Schritte und begründen sie sie, z.B. warum werden manche Daten weggelassen, über welche Mengen werden Durchschnitte berechnet, warum sind die so berechneten Werte aussagekräftiger als andere Werte. Wenn möglich sollen sie die Datenvorverarbeitung in Elm programmieren, so dass ihre Anwendung auf eine Änderung der Rohdaten reagieren kan.
+ Welche Datenvorverarbeitungsschritte sind notwendig?
+
+  Beschreiben Sie die einzelnen Schritte und begründen sie sie, z.B. warum werden manche Daten weggelassen, über welche Mengen werden Durchschnitte berechnet, warum sind die so berechneten Werte aussagekräftiger als andere Werte. Wenn möglich sollen sie die Datenvorverarbeitung in Elm programmieren, so dass ihre Anwendung auf eine Änderung der Rohdaten reagieren kan.
  Realisiert eine Daten-zu-Daten-Abbildung\\
  \textbf { Mögliche Operationen:\\
     - Vervollständigung, Interpolation\\
@@ -78,7 +82,11 @@ Beschreiben sie die Datenvorverarbeitung.
     - Berechnung impliziter Eigenschaften (z.B. Maximum,Gradient)\\
     - Konvertierung\\
     \\
-    Die Daten sollten so konvertiert werden, dass Sie den Visualisierungsanwendungen entsprechen. 
+
+    Die Daten sollten so konvertiert werden, dass Sie den Visualisierungsanwendungen entsprechen. \\
+
+    - Transformierung der DateTIME in ein Float, so dass wir die Position berechnen können.\\
+    -Veränderung der Merkmalsausprägungs Daten (alle Strings außer ID) in eine Interpretierbaren Wert. Unsere Strings sind Boolean, male oder female und Raucher (Yes und No)
  }
 
 \section{Visualisierungen}
