@@ -48,12 +48,13 @@ import Stat exposing (..)
 -}
 
 
-{-| Compute the mean of a list of floats.
+{- | Compute the mean of a list of floats.
 
     > Stat.mean [1,2,4,5] == Just 3
     > Stat.mean [] == Nothing
 
 -}
+
 mean : List Float -> Maybe Float
 mean list =
     case list of

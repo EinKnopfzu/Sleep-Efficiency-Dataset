@@ -42,7 +42,7 @@ h =
 
 padding : Float
 padding =
-    60
+    50
 
 
 radius : Float
@@ -98,7 +98,7 @@ xScale values =
 yScale : List Float -> ContinuousScale Float
 yScale values =
     Scale.linear ( h - 2 * padding, 0 ) (wideExtent values)
-
+ 
 
 xAxis : List Float -> Svg msg
 xAxis values =
@@ -251,6 +251,8 @@ scatterplot model =
         xE = Scale.convert xScaleLocal nvWerte75
         yE = Scale.convert yScaleLocal valuesofdata75
 
+        
+
         quantilListe : List (List Float)
         quantilListe =
             [ [ nvWerte25, valuesofdata25 ]
@@ -258,7 +260,7 @@ scatterplot model =
             ]   
                
     in
-    svg [ viewBox 0 200 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 150 (w)  (h - 200) , TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }
@@ -268,7 +270,7 @@ scatterplot model =
         , g [ transform [ Translate padding padding ] ]
             (List.map (point xScaleLocal yScaleLocal) model.data)
         , g
-            [ transform [ Translate padding (h - padding) ]
+            [ transform [ Translate padding (h- padding) ]
             , class [ "x-axis" ]
             ]
             [ xAxis xValues
@@ -281,7 +283,7 @@ scatterplot model =
                 [ Html.text model.xDescription]
             ]
         , g
-            [ transform [ Translate padding padding ]
+            [ transform [ Translate  padding padding ]
             , class [ "y-axis" ]
             ]
             [ yAxis yValues
@@ -291,7 +293,7 @@ scatterplot model =
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle
                 ]
-                [ Html.text model.xDescription ]
+                [ Html.text model.yDescription ]
             ]
         
         , g [ transform [ Translate padding padding ] ]
