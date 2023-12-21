@@ -251,7 +251,7 @@ scatterplot model =
         xE = Scale.convert xScaleLocal nvWerte75
         yE = Scale.convert yScaleLocal valuesofdata75
 
-        
+
 
         quantilListe : List (List Float)
         quantilListe =
@@ -324,5 +324,7 @@ point scaleX scaleY xyPoint =
             ]
             [ TypedSvg.Core.text xyPoint.pointName ]
         ]
+
+
 
 
