@@ -289,7 +289,7 @@ view model =
                    xList : List (Float)
                    xList =
                      case model.droppdown1 of
-                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map yesNoToNumber
+                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
 
                       "Alter" -> List.map .myalter model.daten
 
@@ -311,7 +311,7 @@ view model =
                    yList =
                       case model.droppdown2 of
 
-                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map yesNoToNumber
+                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
 
                       "Alter" -> List.map .myalter model.daten
 
@@ -326,6 +326,8 @@ view model =
                       "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
 
                       "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
+
+                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
                       
                       _ -> [] 
 
@@ -333,7 +335,7 @@ view model =
                    zList =
                       case model.droppdown3 of
 
-                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map yesNoToNumber
+                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
 
                       "Alter" -> List.map .myalter model.daten
 
@@ -480,12 +482,19 @@ sleep2Point c =
                     c.sport
             )
 
--- Hilfsfunktion, die "Yes" zu 2 und "No" zu 1 zuordnet
-yesNoToNumber : String -> Float
-yesNoToNumber value =
+-- Hilfsfunktion, die "Yes" zu 2 und "No" zu 1 zuordnet Bewusst nicht 0 und 1 genommen, da wir so eine bessere Darstellung im Scatterplot haben.
+raucherToFloat : String -> Float
+raucherToFloat value =
     case value of
         "Yes" -> 2
         "No" -> 1
+        _ -> 1
+
+genderToFloat : String -> Float
+genderToFloat value =
+    case value of
+        "Male" -> 2
+        "Female" -> 1
         _ -> 0
 
 type alias Aussortierte_Daten =
