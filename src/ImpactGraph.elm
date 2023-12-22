@@ -50,6 +50,8 @@ type alias ImpactGraphData =
     , zdescriptor : ImpactDataList
     , ddescriptor : ImpactDataList
     , kdescriptor : ImpactDataList
+    , fdescriptor : ImpactDataList
+    , ldescriptor : ImpactDataList
     
     }
 

@@ -234,10 +234,14 @@ view model =
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown1) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown1) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown1) ] [ Html.text "Tiefschlaf Anteil" ]
+                  , Html.option [ value "Leichtschlaf Anteil", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher" ]  
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown1) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown1) ] [ Html.text "Koffein Konsum" ]       
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher" ]         
-                  ]
+                  , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown1) ] [ Html.text "Alkohol Konsum" ]         
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher" ]  
+                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown1) ] [ Html.text "Sport Einheiten" ]                                      
+                  
+                      ]
                   , Html.br [] []
                   , Html.br [] []
                , Html.div []
@@ -250,46 +254,39 @@ view model =
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown2) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown2) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown2) ] [ Html.text "Tiefschlaf Anteil" ]
+                  , Html.option [ value "Leichtschlaf Anteil", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher" ]  
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown2) ] [ Html.text "Erwacht Anzahl" ]
-                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]]
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher" ]
-                  ]
+                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]       
+                  , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown2) ] [ Html.text "Alkohol Konsum" ]         
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher" ]  
+                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown2) ] [ Html.text "Sport Einheiten" ]                                      
+                  ]]
+                  , Html.br [] []
                   , Html.br [] []
                   
                , Html.div []
                   [ Html.text "Z-Achse" 
                   ,Html.select [ onInput Option3Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown3) ] [ Html.text "Select an option" ]
-                , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown3) ] [ Html.text "Geschlecht" ]
+                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown3) ] [ Html.text "Geschlecht" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown3) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown3) ] [ Html.text "Schlafdauer" ]
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown3) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown3) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown3) ] [ Html.text "Tiefschlaf Anteil" ]
+                  , Html.option [ value "Leichtschlaf Anteil", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher" ]  
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown3) ] [ Html.text "Erwacht Anzahl" ]
-                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown3) ] [ Html.text "Koffein Konsum" ]]
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher" ]
-
-               , Html.text model.droppdown3]
+                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown3) ] [ Html.text "Koffein Konsum" ]       
+                  , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown3) ] [ Html.text "Alkohol Konsum" ]         
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher" ]  
+                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]                                      
+                  ]
+                  
+                  ]
 
                , Html.br [] []
                   
-               , Html.div []
-                  [ Html.text "E-Achse" 
-                  ,Html.select [ onInput Option4Selected ]
-                  [ Html.option [ value "", selected ("" == model.droppdown4) ] [ Html.text "Select an option" ]
-                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown4) ] [ Html.text "Geschlecht" ]
-                  , Html.option [ value "Alter", selected ("Alter" == model.droppdown4) ] [ Html.text "Alter" ]
-                  , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown4) ] [ Html.text "Schlafdauer" ]
-                  , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown4) ] [ Html.text "Schlaf Effizienz" ]
-                  , Html.option [ value "REM", selected ("REM" == model.droppdown4) ] [ Html.text "REM" ]
-                  , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown4) ] [ Html.text "Tiefschlaf Anteil" ]
-                  , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown4) ] [ Html.text "Erwacht Anzahl" ]
-                  , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown4) ] [ Html.text "Koffein Konsum" ]]
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown4) ] [ Html.text "Raucher" ]
-
                
-               , Html.text model.droppdown3]
                
                ]
                ]
@@ -298,117 +295,76 @@ view model =
                    xList =
                      case model.droppdown1 of
                       "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
-
                       "Alter" -> List.map .myalter model.daten
-
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
-
                       "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
-
                       "REM" -> List.map .myrem_anteil model.daten
-
                       "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
-
+                      "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil model.daten
                       "Erwacht Anzahl" -> List.map .myleichtschlaf_anteil model.daten
-
                       "Koffein Konsum" -> List.map .myerwacht_anzahl model.daten
-
+                      "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
                       "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
+                      "Sport Einheiten" -> List.map .mysport model.daten
                       _ -> []    
      
                    yList : List (Float)
                    yList =
-                      case model.droppdown2 of
-
+                     case model.droppdown2 of
                       "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
-
                       "Alter" -> List.map .myalter model.daten
-
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
-
                       "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
-
                       "REM" -> List.map .myrem_anteil model.daten
-
                       "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
-
-                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
-
-                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
-
+                      "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil model.daten
+                      "Erwacht Anzahl" -> List.map .myleichtschlaf_anteil model.daten
+                      "Koffein Konsum" -> List.map .myerwacht_anzahl model.daten
+                      "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
                       "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
-                      
-                      _ -> [] 
+                      "Sport Einheiten" -> List.map .mysport model.daten
+                      _ -> []  
 
                    zList : List (Float)
                    zList =
-                      case model.droppdown3 of
-
+                     case model.droppdown3 of
                       "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
-
                       "Alter" -> List.map .myalter model.daten
-
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
-
                       "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
-
                       "REM" -> List.map .myrem_anteil model.daten
-
                       "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
+                      "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil model.daten
+                      "Erwacht Anzahl" -> List.map .myleichtschlaf_anteil model.daten
+                      "Koffein Konsum" -> List.map .myerwacht_anzahl model.daten
+                      "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
+                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
+                      "Sport Einheiten" -> List.map .mysport model.daten
+                      _ -> []  
 
-                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
+                   filteralter : List Float
+                   filteralter =
+                        List.map .myalter model.daten
 
-                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
+                   filtergender : List Float
+                   filtergender =
+                        (List.map .mygeschlecht model.daten) |> List.map genderToFloat
+                     
+                   filterkoffein : List(Float)
+                   filterkoffein =
+                      List.map .mykoffein_konsum model.daten
+                    
+                   filteralkohol: List(Float)
+                   filteralkohol =
+                      List.map .myalter model.daten
 
-                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat                      
-                      _ -> [] 
+                   filterraucher: List(Float)
+                   filterraucher =
+                     ( List.map .myraucher model.daten )|> List.map raucherToFloat
 
-                   kList : List (Float)
-                   kList =
-                      case model.droppdown4 of
-
-                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
-
-                      "Alter" -> List.map .myalter model.daten
-
-                      "Schlafdauer" -> List.map .myschlafdauer model.daten
-
-                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
-
-                      "REM" -> List.map .myrem_anteil model.daten
-
-                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
-
-                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
-
-                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
-
-                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat                      
-                      _ -> [] 
-
-                   dList : List (Float)
-                   dList =
-                      case model.droppdown5 of
-
-                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
-
-                      "Alter" -> List.map .myalter model.daten
-
-                      "Schlafdauer" -> List.map .myschlafdauer model.daten
-
-                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
-
-                      "REM" -> List.map .myrem_anteil model.daten
-
-                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
-
-                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
-
-                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
-
-                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat                      
-                      _ -> []              
-
+                   filtersport: List(Float)
+                   filtersport =
+                      List.map .mysport model.daten
 
                    name =
                     List.map .myid_ model.daten
@@ -441,10 +397,13 @@ view model =
                     --Interaktion mittels einschränken, welcher Bereich der Daten angezeigt werden sollte. (z.B. Alter einschränken oder Koffein Konsum
                     ,blackbox combinedList_Box
                     ,graph {xdescriptor = {name= model.droppdown1, data= xList},
-                            ydescriptor = {name= model.droppdown2, data= yList},
-                            zdescriptor = {name= model.droppdown3, data= zList},
-                            ddescriptor = {name= model.droppdown4, data= dList},
-                            kdescriptor = {name= model.droppdown5, data= kList}}]
+                            ydescriptor = {name= "Alter", data= filteralter},
+                            zdescriptor = {name= "Geschlecht", data= filtergender},
+                            ddescriptor = {name= "Koffein", data= filterkoffein},
+                            kdescriptor = {name= "Alkohol", data= filteralkohol},
+                            fdescriptor = {name= "Raucher", data= filterraucher},
+                            ldescriptor = {name= "Sport", data= filtersport}
+                            }]
 
                     
                    , footer
@@ -554,7 +513,7 @@ raucherToFloat value =
     case value of
         "Yes" -> 2
         "No" -> 1
-        _ -> 1
+        _ -> 0
 
 genderToFloat : String -> Float
 genderToFloat value =
