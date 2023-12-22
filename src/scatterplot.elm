@@ -10,7 +10,6 @@ import Html exposing (Html, div, pre, text)
 import Html.Attributes exposing (selected, style, value)
 import Html.Events exposing (onInput)
 import Http
-import List exposing (filter, sum)
 import Maybe.Extra exposing (isJust)
 import Scale exposing (ContinuousScale)
 import Stat

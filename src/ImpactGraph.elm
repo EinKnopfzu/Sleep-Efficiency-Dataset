@@ -1,7 +1,8 @@
 module ImpactGraph exposing (..)
 
-import Scatterplot exposing (w, h, padding, radius, tickCount)
+import Scatterplot exposing (w, h, padding, radius, tickCount, defaultExtent)
 
+import List exposing (..)
 import JXstat exposing (..)
 import TypedSvg exposing (circle, g, line, rect, style, svg, text_)
 import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
@@ -78,26 +79,45 @@ graph model =
         dWert : List Float
         dWert = List.map .dValue model.data
 
-        kWert : List Float
+        kWert : List Float 
         kWert = List.map .kValue model.data
-
 
         combineLists : List Float -> List Float -> List (Float, Float)
         combineLists list1 list2 =
             List.map2 Tuple.pair list1 list2
 
-        ListYX : List( Float, Float )
-        ListYX =  combineLists yWert xWert
 
-        ListZX : List( Float, Float )
-        ListZX =  combineLists zWert xWert
+        listYX : List(Float, Float) 
+        listYX = combineLists yWert xWert
 
-        ListDX : List( Float, Float )
-        ListDX =  combineLists dWert xWert
+        rY : Maybe Float
+        rY = r listYX 
 
-        ListKX : List( Float, Float )
-        ListKX =  combineLists kWert xWert
+        listZX : List(Float, Float )
+        listZX =  combineLists zWert xWert
+
+        rZ : Maybe Float
+        rZ = r listZX
+
+        listDX : List( Float, Float )
+        listDX =  combineLists dWert xWert
+
+        rD : Maybe Float
+        rD = r listDX
+
+        listKX : List( Float, Float )
+        listKX =  combineLists kWert xWert
+
+        rK : Maybe Float
+        rK = r listKX
+
+
+         
+
         
+
+
+
 
         rValue : Maybe Float
         rValue = r data
