@@ -213,19 +213,19 @@ view model =
                     , Html.Attributes.style "font-family" "Arial"
                   ]
                   [Html.u[][ Html.text " SETTINGS "]
+                      
+            --           , button [ Html.Events.onClick (PageChange Scatterplott) ] [ Html.text "Scatterplot" ]
+           --            , Html.br [] []
+            --           , button [ Html.Events.onClick (PageChange Grafik1) ] [ Html.text "Parallele Koordinaten" ]
+           --            , Html.br [] []
+          --             , button [ Html.Events.onClick (PageChange Grafik2) ] [ Html.text "Farbskala" ]
+          --             , Html.br [] []
+          --             , Html.br [] []
+          --             , Html.br [] []
                        , Html.br [] []
                        , Html.br [] []
-                       , button [ Html.Events.onClick (PageChange Scatterplott) ] [ Html.text "Scatterplot" ]
-                       , Html.br [] []
-                       , button [ Html.Events.onClick (PageChange Grafik1) ] [ Html.text "Parallele Koordinaten" ]
-                       , Html.br [] []
-                       , button [ Html.Events.onClick (PageChange Grafik2) ] [ Html.text "Farbskala" ]
-                       , Html.br [] []
-                       , Html.br [] []
-                       , Html.br [] []
-                       , Html.br [] []
-                       , Html.br [] []
-                       ,Html.text "X-Achse"               
+                       ,Html.text "Untersuchendes Attribut"  
+                       ,Html.br [] []        
                   ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
                   , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown1) ] [ Html.text "Geschlecht" ]
@@ -244,9 +244,11 @@ view model =
                       ]
                   , Html.br [] []
                   , Html.br [] []
-               , Html.div []
-                  [ Html.text "Y-Achse" 
-                  ,Html.select [ onInput Option2Selected ]
+                  , Html.br [] []
+                  ,Html.text "BlackBox Links: Y" 
+                  , Html.br [] []
+               ,  
+                  Html.select [ onInput Option2Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
                   , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown2) ] [ Html.text "Geschlecht" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown2) ] [ Html.text "Alter" ]
@@ -260,13 +262,13 @@ view model =
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown2) ] [ Html.text "Alkohol Konsum" ]         
                   , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher" ]  
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown2) ] [ Html.text "Sport Einheiten" ]                                      
-                  ]]
+                  ]
                   , Html.br [] []
                   , Html.br [] []
-                  
-               , Html.div []
-                  [ Html.text "Z-Achse" 
-                  ,Html.select [ onInput Option3Selected ]
+                  , Html.br [] []
+                  , Html.text "BlackBox Rechts: Z"
+                  , Html.br [] []
+               ,  Html.select [ onInput Option3Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown3) ] [ Html.text "Select an option" ]
                   , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown3) ] [ Html.text "Geschlecht" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown3) ] [ Html.text "Alter" ]
@@ -282,7 +284,7 @@ view model =
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]                                      
                   ]
                   
-                  ]
+                  
 
                , Html.br [] []
                   
