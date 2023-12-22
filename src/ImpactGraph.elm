@@ -45,13 +45,21 @@ r data =
     correlation data
 
 type alias ImpactGraphData =
-    { xdescriptor : String
-    , ydescriptor : String
-    , zdescriptor : String
-    , ddescriptor : String
-    , kdescriptor : String
-    , data : List (ImpactGraphPoint)
+    { xdescriptor : ImpactDataList
+    , ydescriptor : ImpactDataList
+    , zdescriptor : ImpactDataList
+    , ddescriptor : ImpactDataList
+    , kdescriptor : ImpactDataList
+    
     }
+
+
+type alias ImpactDataList =
+    { name : String
+    , data : List (Float)
+
+    }
+
 
 type alias ImpactGraphPoint =
     { xValue : Float
@@ -71,20 +79,20 @@ graph model =
 -- Die Lösung die Listen so "hardgecoded" herieinzuspielen is unschön Besser wäre es, die zwei Typen zu übergeben: 
 -- List (List Float) Für die Variablen die wir überprüfen und dann die Daten auszupacken. Aber da wir nur limitierte 
 -- Verhalteneigenschaftenhaben: Alter, 
-        xWert : List Float
-        xWert = List.map .xValue model.data
+        xWert : String
+        xWert =   model.xdescriptor.name
 
-        yWert : List Float
-        yWert = List.map .yValue model.data
+        yWert : String
+        yWert = model.ydescriptor.name
 
-        zWert : List Float  
-        zWert = List.map .zValue model.data
+        zWert : String  
+        zWert = model.zdescriptor.name
 
-        dWert : List Float
-        dWert = List.map .dValue model.data
+        dWert : String
+        dWert = model.ddescriptor.name
 
-        kWert : List Float 
-        kWert = List.map .kValue model.data
+        kWert : String 
+        kWert = model.kdescriptor.name
 
         combineLists : List Float -> List Float -> List (Float, Float)
         combineLists list1 list2 =
@@ -92,25 +100,25 @@ graph model =
 
 
         listYX : List(Float, Float) 
-        listYX = combineLists yWert xWert
+        listYX = combineLists model.ydescriptor.data model.xdescriptor.data
 
         rY : Maybe Float
         rY = r listYX 
 
         listZX : List(Float, Float )
-        listZX =  combineLists zWert xWert
+        listZX =  combineLists model.zdescriptor.data model.xdescriptor.data
 
         rZ : Maybe Float
         rZ = r listZX
 
         listDX : List( Float, Float )
-        listDX =  combineLists dWert xWert
+        listDX =  combineLists model.ddescriptor.data model.xdescriptor.data
 
         rD : Maybe Float
         rD = r listDX
 
         listKX : List( Float, Float )
-        listKX =  combineLists kWert xWert
+        listKX =  combineLists model.kdescriptor.data model.xdescriptor.data
 
         rK : Maybe Float
         rK = r listKX

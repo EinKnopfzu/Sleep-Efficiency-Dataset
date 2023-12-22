@@ -20,8 +20,8 @@ import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
 import Scatterplot exposing (..)
-import ParalleleKoordinatenRoengten exposing (blackbox)
---import ImpactGraph exposing (..)
+import ParalleleKoordinatenRoengten exposing (blackbox) 
+import ImpactGraph exposing (graph, ImpactDataList)
 
 
 -- MAIN
@@ -85,6 +85,7 @@ type alias Model
      , droppdown2 : String
      , droppdown3 : String
      , droppdown4 : String
+     , droppdown5 : String
      , daten :List (Aussortierte_Daten)
      , pageview : PageState
  }
@@ -99,6 +100,7 @@ init _ =
       droppdown2 = "",
       droppdown3 = "",
       droppdown4 = "",
+      droppdown5 = "",
       pageview = Scatterplott
       , daten = [  { myid_ = "Test"
       , myalter = 0.0
@@ -360,6 +362,54 @@ view model =
 
                       "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat                      
                       _ -> [] 
+
+                   kList : List (Float)
+                   kList =
+                      case model.droppdown4 of
+
+                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
+
+                      "Alter" -> List.map .myalter model.daten
+
+                      "Schlafdauer" -> List.map .myschlafdauer model.daten
+
+                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
+
+                      "REM" -> List.map .myrem_anteil model.daten
+
+                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
+
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
+
+                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
+
+                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat                      
+                      _ -> [] 
+
+                   dList : List (Float)
+                   dList =
+                      case model.droppdown5 of
+
+                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
+
+                      "Alter" -> List.map .myalter model.daten
+
+                      "Schlafdauer" -> List.map .myschlafdauer model.daten
+
+                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
+
+                      "REM" -> List.map .myrem_anteil model.daten
+
+                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
+
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
+
+                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
+
+                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat                      
+                      _ -> []              
+
+
                    name =
                     List.map .myid_ model.daten
 
@@ -371,6 +421,9 @@ view model =
 --Die Mittlere Liste ist, da wir ansonsten nicht das zu suchende element in der Mitte haben. 
                    combinedList_Box : List MultiDimPoint
                    combinedList_Box = ParalleleKoordinatenRoengten.combineLists_Box name  yList xList zList 
+
+                   
+
 
                    
                 in
@@ -386,7 +439,12 @@ view model =
                     , data = combinedList_Scatter
                     }
                     --Interaktion mittels einschränken, welcher Bereich der Daten angezeigt werden sollte. (z.B. Alter einschränken oder Koffein Konsum
-                    ,blackbox combinedList_Box]
+                    ,blackbox combinedList_Box
+                    ,graph {xdescriptor = {name= model.droppdown1, data= xList},
+                            ydescriptor = {name= model.droppdown2, data= yList},
+                            zdescriptor = {name= model.droppdown3, data= zList},
+                            ddescriptor = {name= model.droppdown4, data= dList},
+                            kdescriptor = {name= model.droppdown5, data= kList}}]
 
                     
                    , footer
