@@ -66,8 +66,8 @@ graph : ImpaxtGraphData -> Svg msg
 graph model =
     let
 
-        XWert : List Float
-        XWert = List.map .xValue model.data
+        xWert : List Float
+        xWert = List.map .xValue model.data
 
         yWert : List Float
         yWert = List.map .yValue model.data
@@ -86,8 +86,17 @@ graph model =
         combineLists list1 list2 =
             List.map2 Tuple.pair list1 list2
 
-        dataY : List ( Float, Float )
-        dataY =  combineLists xWert yWert
+        ListYX : List( Float, Float )
+        ListYX =  combineLists yWert xWert
+
+        ListZX : List( Float, Float )
+        ListZX =  combineLists zWert xWert
+
+        ListDX : List( Float, Float )
+        ListDX =  combineLists dWert xWert
+
+        ListKX : List( Float, Float )
+        ListKX =  combineLists kWert xWert
         
 
         rValue : Maybe Float
