@@ -14,7 +14,8 @@ import TypedSvg.Attributes.InPx exposing (y1)
 import TypedSvg.Attributes.InPx exposing (x2)
 import TypedSvg.Attributes.InPx exposing (y2)
 import TypedSvg.Attributes exposing (x1)
-
+import Html exposing (..)
+import Scale exposing (ContinuousScale) 
 
 --etwas hindernd, dass ELM keine Rückewärts kompatibilität erzwingt und man so nicht die neusten Versionen nutzen kann, wenn diese Abhängig sind
 
@@ -43,16 +44,16 @@ r : List ( Float, Float ) -> Maybe Float
 r data =   
     correlation data
 
-type alias ImpaxtGraphData =
+type alias ImpactGraphData =
     { xdescriptor : String
     , ydescriptor : String
     , zdescriptor : String
     , ddescriptor : String
     , kdescriptor : String
-    , data : List (ImpactGrapPoint)
+    , data : List (ImpactGraphPoint)
     }
 
-type alias ImpactGrapPoint =
+type alias ImpactGraphPoint =
     { xValue : Float
      ,yValue : Float
      ,zValue : Float
@@ -63,10 +64,13 @@ type alias ImpactGrapPoint =
 -- Ziel ist es eine Grafik zu erschaffen di eim zentrum unseren X Datensatz hat (Sagen wir als Quader . ) und den in de rMitte Zeichnet. 
 -- dann geben wi reine distanz an. das ist die maximale Distanz bei den X Werten zum Quader. 
 -- Die Quader werden dann um den Quader herum gezeichnet 
-graph : ImpaxtGraphData -> Svg msg
+graph : ImpactGraphData -> Svg msg
 graph model =
     let
 
+-- Die Lösung die Listen so "hardgecoded" herieinzuspielen is unschön Besser wäre es, die zwei Typen zu übergeben: 
+-- List (List Float) Für die Variablen die wir überprüfen und dann die Daten auszupacken. Aber da wir nur limitierte 
+-- Verhalteneigenschaftenhaben: Alter, 
         xWert : List Float
         xWert = List.map .xValue model.data
 
@@ -112,15 +116,10 @@ graph model =
         rK = r listKX
 
 
-         
+        xa = 200/2
+        ya = h/2
 
-        
-
-
-
-
-        rValue : Maybe Float
-        rValue = r data
+        radius = 40
 
     in
     svg [ viewBox 0 200 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
@@ -131,8 +130,35 @@ graph model =
             .point:hover text { display: inline; }
           """ ]
         , g [ transform [ Translate padding padding ] ]
-            (List.map (point xScaleLocal yScaleLocal) model.data)
+            [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r 50 ]
+            []
+            ]           --(   List.map (point xScaleLocal yScaleLocal) model.data)
    
         ]
 
+{-
+kreis : ContinuousScale Float -> ContinuousScale Float -> ScatterplottPoint -> Svg msg
+kreis scaleX scaleY xyPoint =
+    let
+        ( xa, ya ) =
+            ( Scale.convert scaleX xyPoint.x, Scale.convert scaleY xyPoint.y )
+    in
+    g [ TypedSvg.Attributes.class [ "point" ], fontSize <| Px 10.0, fontFamily [ "sans-serif" ] ]
+        [ circle [ cx xa, cy ya, r radius ]
+            []
+        , text_
+            [ x (xa + radius)
+            , y (ya - radius)
+            , textAnchor TypedSvg.Types.AnchorStart
+            ]
+            [ TypedSvg.Core.text xyPoint.pointName ]
+        ]
 
+
+type alias ScatterplottPoint =
+    { pointName : String, x : Float, y : Float }
+
+type alias ScatterplottXYPoint =
+    { xValue : Float
+     ,yValue : Float}
+     -}
