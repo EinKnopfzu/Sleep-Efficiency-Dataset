@@ -380,10 +380,6 @@ view model =
                    combinedList_Box : List MultiDimPoint
                    combinedList_Box = ParalleleKoordinatenRoengten.combineLists_Box name  yList xList zList 
 
-                   
-
-
-                   
                 in
                    div [
                     Html.Attributes.style "margin-left" "20%" 

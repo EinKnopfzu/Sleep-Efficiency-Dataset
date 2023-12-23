@@ -68,7 +68,9 @@ type alias ImpactGraphPoint =
      ,yValue : Float
      ,zValue : Float
      ,dValue : Float
-     , kValue : Float}
+     ,kValue : Float
+     ,fValue : Float
+     ,lVaule : Float}
 
 
 -- Ziel ist es eine Grafik zu erschaffen di eim zentrum unseren X Datensatz hat (Sagen wir als Quader . ) und den in de rMitte Zeichnet. 
@@ -126,10 +128,13 @@ graph model =
         rK = r listKX
 
 
-        xa = 200/2
+        xa = w/2 - padding
         ya = h/2
 
-        radius = 40
+        
+
+        versetzung :  Maybe Float -> Float
+        versetzung rValue = Maybe.withDefault 0 rValue
 
     in
     svg [ viewBox 0 200 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
@@ -140,10 +145,54 @@ graph model =
             .point:hover text { display: inline; }
           """ ]
         , g [ transform [ Translate padding padding ] ]
-            [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r 50 ]
+            [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r Scatterplot.radius ]
             []
-            ]           --(   List.map (point xScaleLocal yScaleLocal) model.data)
-   
+            ,text_
+            [ x (xa + radius)
+            , y (ya - radius)
+            , textAnchor TypedSvg.Types.AnchorStart
+            ]
+            [ TypedSvg.Core.text xWert ]]
+        , g [ transform [ Translate padding padding ] ]
+            
+            [ circle [ cx (xa+100) , cy (ya), TypedSvg.Attributes.InPx.r (Scatterplot.radius * versetzung rY )]
+            []]
+        , g [ transform [ Translate padding padding ] ]
+            [ circle [ cx xa, cy (ya + 100), TypedSvg.Attributes.InPx.r (Scatterplot.radius * versetzung rZ ) ]
+            []
+            ,text_
+            [ x (xa + radius)
+            , y (ya - radius)
+            , textAnchor TypedSvg.Types.AnchorStart
+            ]
+            [ TypedSvg.Core.text xWert ]]
+        , g [ transform [ Translate padding padding ] ]
+            [ circle [ cx (xa - 100), cy ya, TypedSvg.Attributes.InPx.r (Scatterplot.radius * versetzung rD ) ]
+            []
+            ,text_
+            [ x (xa + radius)
+            , y (ya - radius)
+            , textAnchor TypedSvg.Types.AnchorStart
+            ]
+            [ TypedSvg.Core.text xWert ]]
+        , g [ transform [ Translate padding padding ] ]
+            [ circle [ cx xa, cy (ya - 100), TypedSvg.Attributes.InPx.r (Scatterplot.radius * versetzung rK ) ]
+            []
+            ,text_
+            [ x (xa + radius)
+            , y (ya - radius)
+            , textAnchor TypedSvg.Types.AnchorStart
+            ]
+            [ TypedSvg.Core.text xWert ]]
+        , g [ transform [ Translate padding padding ] ]
+            [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r (Scatterplot.radius * (versetzung r) ) ]
+            []
+            ,text_
+            [ x (xa + radius)
+            , y (ya - radius)
+            , textAnchor TypedSvg.Types.AnchorStart
+            ]
+            [ TypedSvg.Core.text xWert ]]
         ]
 
 {-
