@@ -96,9 +96,9 @@ init : () -> (Model, Cmd Msg)
 init _ =
   ( 
       {datenladen = Loading,
-      droppdown1 = "",
-      droppdown2 = "",
-      droppdown3 = "",
+      droppdown1 = "Alter",
+      droppdown2 = "Alter",
+      droppdown3 = "Alter",
       droppdown4 = "",
       droppdown5 = "",
       pageview = Scatterplott

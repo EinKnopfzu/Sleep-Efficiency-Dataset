@@ -41,7 +41,7 @@ h =
 
 padding : Float
 padding =
-    50
+    60
 
 
 radius : Float

@@ -6,10 +6,9 @@ import List exposing (..)
 import JXstat exposing (..)
 import TypedSvg exposing (circle, g, line, rect, style, svg, text_)
 import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
-import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y, rx )
+import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y, rx, x1, x2, y1, y2)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
-import TypedSvg.Attributes.InPx exposing (x1, x2, y1, y2)
 
 import TypedSvg.Attributes exposing (x1)
 import Html exposing (..)
@@ -108,55 +107,34 @@ graph model =
         winkelEinteilung : Float
         winkelEinteilung = 2.0 * pi / toFloat anzahlPunkte
 
-        xa = w/2 - padding
-        ya = h/2 - padding
+        xa = w/2 - padding * 0.5
+        ya = h/2 
 
         headerY : Float
         headerY =  30
 
-      {-  
-
-
-        listYX : List(Float, Float) 
-        listYX = combineLists model.ydescriptor.data model.xdescriptor.data
-
-        rY : Maybe Float
-        rY = r listYX 
-
-        listZX : List(Float, Float )
-        listZX =  combineLists model.zdescriptor.data model.xdescriptor.data
-
-        rZ : Maybe Float
-        rZ = r listZX
-
-        listDX : List( Float, Float )
-        listDX =  combineLists model.ddescriptor.data model.xdescriptor.data
-
-        rD : Maybe Float
-        rD = r listDX
-
-        listKX : List( Float, Float )
-        listKX =  combineLists model.kdescriptor.data model.xdescriptor.data
-
-        rK : Maybe Float
-        rK = r listKX
-
-
-        
-
-        
-
-        versetzung :  Maybe Float -> Float
-        versetzung rValue = Maybe.withDefault 0 rValue-}
 
     in
-    svg [ viewBox 0 200 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 0 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0, 0.4); fill: rgba(255, 255, 255, 0.3); }
             .point text { display: inline; }
             .point:hover circle { stroke: rgba(0, 0, 0, 1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
           """ ]
+       , g [ transform [ Translate padding padding ] ]
+            [ rect
+            [ TypedSvg.Attributes.InPx.x1 (5)
+            , TypedSvg.Attributes.InPx.y1 (5)
+            , TypedSvg.Attributes.InPx.width (w - padding - 5 )
+            , TypedSvg.Attributes.InPx.height (h - 5)
+            , rx 15
+            , stroke <| Paint <| Color.rgb 0 0 0 
+            ,fill PaintNone
+            
+            ]
+            [] 
+            ]
         , g [transform [ Translate padding padding]]
              ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung 100) indexedimpactDataList)
 
@@ -180,19 +158,7 @@ graph model =
             ]
             [ TypedSvg.Core.text model.xdescriptor.name ] 
             ]
-       , g [ transform [ Translate padding padding ] ]
-            [ rect
-            [ TypedSvg.Attributes.InPx.x1 0
-            , TypedSvg.Attributes.InPx.y1 0
 
-            , TypedSvg.Attributes.InPx.width (w)
-            , TypedSvg.Attributes.InPx.height ( h)
-            , rx 15
-            , stroke <| Paint <| Color.rgb 1 1 1 -- Rahmenfarbe
-            , width 10
-            ]
-            [] 
-            ]
         ]
 
 
@@ -221,9 +187,11 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
 
     in
     g [ ]
-        [ circle [ cx xPosition, cy yPosition, TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3) 
-          , fill <| Paint <| farbe]
-            []
+        [ circle [ cx xPosition
+                  , cy yPosition
+                  , TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3) 
+                  , fill <| Paint <| farbe]
+                   []
             
         , text_
             [ x (xPosition )
@@ -232,14 +200,5 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
             ]
             [ TypedSvg.Core.text (datenwerte.name ++ ": "++ String.fromFloat größe) ]
         ]
-
-{-
-type alias ScatterplottPoint =
-    { pointName : String, x : Float, y : Float }
-
-type alias ScatterplottXYPoint =
-    { xValue : Float
-     ,yValue : Float}
-     -}
 
 

@@ -67,11 +67,11 @@ blackbox model =
         -- Skalierung für die X-Achse
         xScaling : ContinuousScale Float
         xScaling =
-            Scale.linear ( toFloat 0, w * 0.8 ) ( toFloat 1, toFloat dimension )
+            Scale.linear ( toFloat 30 , w - padding- 30 ) ( toFloat 1, toFloat dimension )
 
         scalingY : List (ContinuousScale Float)
         scalingY =
-            List.map (\x -> Scale.linear ( 0, h - 2*padding ) ( Tuple.first x, Tuple.second x )) datenReichweite
+            List.map (\x -> Scale.linear ( 10, h - 2 * padding - 10 ) ( Tuple.first x, Tuple.second x )) datenReichweite
 
         --Rechnet die Werte auf die Skalierung der Dimension
     
@@ -100,19 +100,19 @@ blackbox model =
 
     
     in
-    svg [ viewBox 0 150 (w) ( h - 150), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 150 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }
             .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
           """ ]
-        , g []
+        , g [transform [Translate padding padding ] ]
             [rect
-                [ x ( 0)
+                [ x ( 5)
                 , y ( 0 )
                 , width ( w)
-                , height ( h)
+                , height ( h - 2*padding  +5)
                 , fill (Paint <| Color.rgba 0 0 0 1)
                 ]
             []
@@ -127,7 +127,7 @@ blackbox model =
             , class [ "y-axis" ]
             ]
             [ text_
-                [ x 0
+                [ x (padding *0.5)
                 , y -15
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle
@@ -182,28 +182,4 @@ type alias Point =
       
 
 
-{-}
-lengthnofilter : String
-lengthnofilter =
-    String.fromInt (List.length cars)
 
-
-avgMpg : List Car -> Float
-avgMpg myCars =
-    let
-        cityMpgs =
-            List.filterMap (\car -> car.cityMPG) myCars
-
-        totalCityMpg =
-            sum cityMpgs
-
-        totalCars =
-            List.length cityMpgs
-    in
-    if totalCars == 0 then
-        0
-
-    else
-        toFloat totalCityMpg / toFloat totalCars
-
--}
