@@ -18,6 +18,8 @@ import Html exposing (..)
 import Scale exposing (ContinuousScale) 
 import Round exposing (round)
 
+import Color exposing (rgba)
+import Color exposing (Color)
 
 --etwas hindernd, dass ELM keine Rückewärts kompatibilität erzwingt und man so nicht die neusten Versionen nutzen kann, wenn diese Abhängig sind
 
@@ -161,7 +163,7 @@ graph model =
             , text_
             [ x (xa + radius)
              , y (ya - radius)
-             , textAnchor TypedSvg.Types.AnchorStart
+             , textAnchor TypedSvg.Types.AnchorMiddle
             ]
             [ TypedSvg.Core.text model.xdescriptor.name ] 
             ]
@@ -176,15 +178,33 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
         xPosition = xa + (cos (toFloat index * winkel) * radiusUmkreis)
         yPosition = ya + (sin (toFloat index * winkel) * radiusUmkreis)
 
--- Berechnet die Korrelation und rundet sie auf 4 Nachkommastellen. 
+-- Berechnet die Korrelation und rundet sie auf die 4 Nachkommastelle auf. 
         größe :   Float
         größe = runden (Maybe.withDefault 0.0 ( (r (combineLists xAttribut.data datenwerte.data))))
 
+        rgbScale : ContinuousScale Float
+        rgbScale  =
+            Scale.linear ( 0, 255 ) (0, 1)
+
+        colorTon : Float
+        colorTon = 
+            Scale.convert rgbScale größe
+
+        farbe : Color
+        farbe = if größe <= 0.0 
+                then  Color.rgba 1 0 0 größe
+                else Color.rgba 0 1 0 größe 
+                
+            
+
+
         
     in
-    g [ TypedSvg.Attributes.class [ "point" ], fontSize <| Px 10.0, fontFamily [ "sans-serif" ] ]
-        [ circle [ cx xPosition, cy yPosition, TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3) ]
+    g [ ]
+        [ circle [ cx xPosition, cy yPosition, TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3) 
+          , fill <| Paint <| farbe]
             []
+            
         , text_
             [ x (xPosition )
             , y (yPosition)
