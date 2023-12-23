@@ -366,8 +366,8 @@ view model =
                 in
                    div [
                     Html.Attributes.style "margin-left" "20%" 
-                    , Html.Attributes.style "padding" "2em"
-                    , Html.Attributes.style "height" "700" 
+                    , Html.Attributes.style "padding" "1em"
+                    , Html.Attributes.style "height" "300" 
                     , Html.Attributes.style "width" "600"
                     , Html.Attributes.style "font-family" "Arial"] 
                     [ scatterplot 
@@ -375,6 +375,7 @@ view model =
                     , yDescription = model.droppdown1
                     , data = combinedList_Scatter
                     }
+
                     --Interaktion mittels einschränken, welcher Bereich der Daten angezeigt werden sollte. (z.B. Alter einschränken oder Koffein Konsum
                     ,blackbox combinedList_Box
                     ,graph {xdescriptor = {name = model.droppdown1, data = xList},

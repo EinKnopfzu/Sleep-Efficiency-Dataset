@@ -266,6 +266,15 @@ scatterplot model =
             .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
           """ ]
+        , g [ transform [ Translate padding 0 ] ]
+            [  text_
+                [ x (0)                
+                , y ( padding * -1 )
+                , fontSize (TypedSvg.Types.px 16)
+                , textAnchor TypedSvg.Types.AnchorStart
+                ]
+                [ Html.text "Der Scatterplott soll Ihnen dabei Helfen die Attribute auf Normalverteilung zu untersuchen. "]]
+                       
         , g [ transform [ Translate padding padding ] ]
             (List.map (point xScaleLocal yScaleLocal) model.data)
         , g
