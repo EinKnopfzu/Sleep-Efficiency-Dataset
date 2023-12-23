@@ -74,20 +74,8 @@ graph model =
 -- Die Lösung die Listen so "hardgecoded" herieinzuspielen is unschön Besser wäre es, die zwei Typen zu übergeben: 
 -- List (List Float) Für die Variablen die wir überprüfen und dann die Daten auszupacken. Aber da wir nur limitierte 
 -- Verhalteneigenschaftenhaben: Alter, 
-        xWert : String
-        xWert =   model.xdescriptor.name
-
-        yWert : String
-        yWert = model.ydescriptor.name
-
-        zWert : String  
-        zWert = model.zdescriptor.name
-
-        dWert : String
-        dWert = model.ddescriptor.name
-
-        kWert : String 
-        kWert = model.kdescriptor.name
+        anzahlPunkte : Int
+        anzahlPunkte = List.length model.attribute
 
         combineLists : List Float -> List Float -> List (Float, Float)
         combineLists list1 list2 =
