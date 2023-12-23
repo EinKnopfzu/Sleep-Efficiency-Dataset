@@ -6,13 +6,11 @@ import List exposing (..)
 import JXstat exposing (..)
 import TypedSvg exposing (circle, g, line, rect, style, svg, text_)
 import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
-import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
+import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y, rx )
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
-import TypedSvg.Attributes.InPx exposing (x1)
-import TypedSvg.Attributes.InPx exposing (y1)
-import TypedSvg.Attributes.InPx exposing (x2)
-import TypedSvg.Attributes.InPx exposing (y2)
+import TypedSvg.Attributes.InPx exposing (x1, x2, y1, y2)
+
 import TypedSvg.Attributes exposing (x1)
 import Html exposing (..)
 import Scale exposing (ContinuousScale) 
@@ -20,6 +18,7 @@ import Round exposing (round)
 
 import Color exposing (rgba)
 import Color exposing (Color)
+import TypedSvg.Types exposing (px)
 
 --etwas hindernd, dass ELM keine Rückewärts kompatibilität erzwingt und man so nicht die neusten Versionen nutzen kann, wenn diese Abhängig sind
 
@@ -110,9 +109,10 @@ graph model =
         winkelEinteilung = 2.0 * pi / toFloat anzahlPunkte
 
         xa = w/2 - padding
-        ya = h/2
+        ya = h/2 - padding
 
-
+        headerY : Float
+        headerY =  30
 
       {-  
 
@@ -154,9 +154,22 @@ graph model =
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0, 0.4); fill: rgba(255, 255, 255, 0.3); }
             .point text { display: inline; }
-            .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
+            .point:hover circle { stroke: rgba(0, 0, 0, 1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
           """ ]
+        , g [transform [ Translate padding padding]]
+             ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung 100) indexedimpactDataList)
+
+        , g [ transform [ Translate padding padding ] ]
+            [ text_
+            [ x (xa )
+             , y (headerY)
+             , textAnchor TypedSvg.Types.AnchorMiddle
+             , fontSize (TypedSvg.Types.px 30)
+            ]
+            [ TypedSvg.Core.text model.xdescriptor.name ] 
+            ]
+    
         , g [ transform [ Translate padding padding ] ]
             [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r (Scatterplot.radius * 3) ]
             []
@@ -167,8 +180,19 @@ graph model =
             ]
             [ TypedSvg.Core.text model.xdescriptor.name ] 
             ]
-        , g [transform [ Translate padding padding]]
-             ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung 100) indexedimpactDataList)
+       , g [ transform [ Translate padding padding ] ]
+            [ rect
+            [ TypedSvg.Attributes.InPx.x1 0
+            , TypedSvg.Attributes.InPx.y1 0
+
+            , TypedSvg.Attributes.InPx.width (w)
+            , TypedSvg.Attributes.InPx.height ( h)
+            , rx 15
+            , stroke <| Paint <| Color.rgb 1 1 1 -- Rahmenfarbe
+            , width 10
+            ]
+            [] 
+            ]
         ]
 
 
@@ -193,12 +217,8 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
         farbe : Color
         farbe = if größe <= 0.0 
                 then  Color.rgba 1 0 0 größe
-                else Color.rgba 0 1 0 größe 
-                
-            
+                else Color.rgba 0 1 0 größe      
 
-
-        
     in
     g [ ]
         [ circle [ cx xPosition, cy yPosition, TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3) 
@@ -211,8 +231,6 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
             , textAnchor TypedSvg.Types.AnchorMiddle
             ]
             [ TypedSvg.Core.text (datenwerte.name ++ ": "++ String.fromFloat größe) ]
-
-        
         ]
 
 {-
