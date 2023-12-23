@@ -306,8 +306,8 @@ view model =
                       "REM" -> List.map .myrem_anteil model.daten
                       "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
                       "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil model.daten
-                      "Erwacht Anzahl" -> List.map .myleichtschlaf_anteil model.daten
-                      "Koffein Konsum" -> List.map .myerwacht_anzahl model.daten
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
+                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
                       "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
                       "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
                       "Sport Einheiten" -> List.map .mysport model.daten
@@ -323,12 +323,12 @@ view model =
                       "REM" -> List.map .myrem_anteil model.daten
                       "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
                       "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil model.daten
-                      "Erwacht Anzahl" -> List.map .myleichtschlaf_anteil model.daten
-                      "Koffein Konsum" -> List.map .myerwacht_anzahl model.daten
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
+                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
                       "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
                       "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
                       "Sport Einheiten" -> List.map .mysport model.daten
-                      _ -> []  
+                      _ -> []      
 
                    zList : List (Float)
                    zList =
@@ -340,12 +340,12 @@ view model =
                       "REM" -> List.map .myrem_anteil model.daten
                       "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
                       "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil model.daten
-                      "Erwacht Anzahl" -> List.map .myleichtschlaf_anteil model.daten
-                      "Koffein Konsum" -> List.map .myerwacht_anzahl model.daten
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
+                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
                       "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
                       "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
                       "Sport Einheiten" -> List.map .mysport model.daten
-                      _ -> []  
+                      _ -> []    
 
                    filteralter : List Float
                    filteralter =
