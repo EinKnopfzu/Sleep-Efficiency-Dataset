@@ -86,6 +86,9 @@ graph model =
         attributDaten : ImpactData
         attributDaten = model.xdescriptor
 
+        winkelEinteilung : Float
+        winkelEinteilung = 2.0 * pi / toFloat anzahlPunkte
+
 
 
       {-  combineLists : List Float -> List Float -> List (Float, Float)
@@ -186,11 +189,12 @@ graph model =
         ]
 
 
-kreis : Float-> Float ->  List (Int, ImpactData, Float)-> Svg msg
-kreis scaleX scaleY xyPoint =
+kreis : Float-> Float -> ImpactData-> Int -> ImpactData-> Svg msg
+kreis xa ya xAttribut index datenwerte =
     let
-        ( xa, ya ) =
-            ( Scale.convert scaleX xyPoint.x, Scale.convert scaleY xyPoint.y )
+        xPosition =
+
+        yPosition = 
     in
     g [ TypedSvg.Attributes.class [ "point" ], fontSize <| Px 10.0, fontFamily [ "sans-serif" ] ]
         [ circle [ cx xa, cy ya, r radius ]
@@ -200,7 +204,7 @@ kreis scaleX scaleY xyPoint =
             , y (ya - radius)
             , textAnchor TypedSvg.Types.AnchorStart
             ]
-            [ TypedSvg.Core.text xyPoint.pointName ]
+            [ TypedSvg.Core.text datenwerte.name ]
         ]
 
 {-
