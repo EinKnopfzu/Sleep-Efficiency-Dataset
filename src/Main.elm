@@ -214,7 +214,7 @@ view model =
                   ]
                   [Html.u[][ Html.text " SETTINGS "]
                       
-            --           , button [ Html.Events.onClick (PageChange Scatterplott) ] [ Html.text "Scatterplot" ]
+                      
            --            , Html.br [] []
             --           , button [ Html.Events.onClick (PageChange Grafik1) ] [ Html.text "Parallele Koordinaten" ]
            --            , Html.br [] []
@@ -284,9 +284,12 @@ view model =
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]                                      
                   ]
                   
-                  
-
-               , Html.br [] []
+                  , Html.br [] []
+                  , Html.br [] []
+                  , Html.br [] []
+                  , Html.text "Graph Einflüsse:"
+                  , Html.br [] []
+                , button [ Html.Events.onClick (PageChange Scatterplott) ] [ Html.text "Scatterplot" ]
                   
                
                
@@ -395,12 +398,12 @@ view model =
                     --Interaktion mittels einschränken, welcher Bereich der Daten angezeigt werden sollte. (z.B. Alter einschränken oder Koffein Konsum
                     ,blackbox combinedList_Box
                     ,graph {xdescriptor = {name= model.droppdown1, data= xList},
-                            ydescriptor = {name= "Alter", data= filteralter},
-                            zdescriptor = {name= "Geschlecht", data= filtergender},
-                            ddescriptor = {name= "Koffein", data= filterkoffein},
-                            kdescriptor = {name= "Alkohol", data= filteralkohol},
-                            fdescriptor = {name= "Raucher", data= filterraucher},
-                            ldescriptor = {name= "Sport", data= filtersport}
+                            attribute = [{name= "Alter", data= filteralter},
+                             {name= "Geschlecht", data= filtergender},
+                             {name= "Koffein", data= filterkoffein},
+                             {name= "Alkohol", data= filteralkohol},
+                             {name= "Raucher", data= filterraucher},
+                             {name= "Sport", data= filtersport}]
                             }]
 
                     

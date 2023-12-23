@@ -45,18 +45,13 @@ r data =
     correlation data
 
 type alias ImpactGraphData =
-    { xdescriptor : ImpactDataList
-    , ydescriptor : ImpactDataList
-    , zdescriptor : ImpactDataList
-    , ddescriptor : ImpactDataList
-    , kdescriptor : ImpactDataList
-    , fdescriptor : ImpactDataList
-    , ldescriptor : ImpactDataList
+    { xdescriptor : ImpactData
+    , attribute : List ImpactData
     
     }
 
 
-type alias ImpactDataList =
+type alias ImpactData =
     { name : String
     , data : List (Float)
 
@@ -64,13 +59,9 @@ type alias ImpactDataList =
 
 
 type alias ImpactGraphPoint =
-    { xValue : Float
-     ,yValue : Float
-     ,zValue : Float
-     ,dValue : Float
-     ,kValue : Float
-     ,fValue : Float
-     ,lVaule : Float}
+    { xPosition: Float
+    , yPosition: Float
+    , yValue : List (Float, Float)}
 
 
 -- Ziel ist es eine Grafik zu erschaffen di eim zentrum unseren X Datensatz hat (Sagen wir als Quader . ) und den in de rMitte Zeichnet. 
@@ -221,3 +212,5 @@ type alias ScatterplottXYPoint =
     { xValue : Float
      ,yValue : Float}
      -}
+
+
