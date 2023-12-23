@@ -103,7 +103,7 @@ blackbox model =
     svg [ viewBox 0 150 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
-            .point text { display: none; }
+            .point text { display: inline; }
             .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
           """ ]
@@ -130,9 +130,34 @@ blackbox model =
                 [ x (padding *0.5)
                 , y -15
                 , fontSize (TypedSvg.Types.px 16)
-                , textAnchor TypedSvg.Types.AnchorMiddle
+                , textAnchor TypedSvg.Types.AnchorStart
                 ]
-                [ text "Placeholder" ]
+                [ text "Variable Y" ]
+            ]
+        , g
+            [ transform [ Translate padding padding ]
+            , class [ "y-axis" ]
+            ]
+            [ text_
+                [ x (w/2 - padding*0.5 )
+                , y -15
+                , fontSize (TypedSvg.Types.px 16)
+                , textAnchor TypedSvg.Types.AnchorMiddle
+
+                ]
+                [ text "Varriable X" ]
+            ]
+        , g
+            [ transform [ Translate padding padding ]
+            , class [ "y-axis" ]
+            ]
+            [ text_
+                [ x (w - padding - 30)
+                , y -15
+                , fontSize (TypedSvg.Types.px 16)
+                , textAnchor TypedSvg.Types.AnchorEnd
+                ]
+                [ text "Variable Z" ]
             ]
         , g
             [ transform [ Translate padding padding ]

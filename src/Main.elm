@@ -213,15 +213,6 @@ view model =
                     , Html.Attributes.style "font-family" "Arial"
                   ]
                   [Html.u[][ Html.text " SETTINGS "]
-                      
-                      
-           --            , Html.br [] []
-            --           , button [ Html.Events.onClick (PageChange Grafik1) ] [ Html.text "Parallele Koordinaten" ]
-           --            , Html.br [] []
-          --             , button [ Html.Events.onClick (PageChange Grafik2) ] [ Html.text "Farbskala" ]
-          --             , Html.br [] []
-          --             , Html.br [] []
-          --             , Html.br [] []
                        , Html.br [] []
                        , Html.br [] []
                        ,Html.text "Untersuchendes Attribut"  
@@ -239,16 +230,13 @@ view model =
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown1) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown1) ] [ Html.text "Alkohol Konsum" ]         
                   , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher" ]  
-                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown1) ] [ Html.text "Sport Einheiten" ]                                      
-                  
-                      ]
+                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown1) ] [ Html.text "Sport Einheiten" ]   ]                            
                   , Html.br [] []
                   , Html.br [] []
                   , Html.br [] []
                   ,Html.text "BlackBox Links: Y" 
                   , Html.br [] []
-               ,  
-                  Html.select [ onInput Option2Selected ]
+               , Html.select [ onInput Option2Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
                   , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown2) ] [ Html.text "Geschlecht" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown2) ] [ Html.text "Alter" ]
@@ -261,8 +249,7 @@ view model =
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown2) ] [ Html.text "Alkohol Konsum" ]         
                   , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher" ]  
-                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown2) ] [ Html.text "Sport Einheiten" ]                                      
-                  ]
+                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown2) ] [ Html.text "Sport Einheiten" ] ]
                   , Html.br [] []
                   , Html.br [] []
                   , Html.br [] []
@@ -281,20 +268,13 @@ view model =
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown3) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown3) ] [ Html.text "Alkohol Konsum" ]         
                   , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher" ]  
-                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]                                      
-                  ]
-                  
+                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]  ]                 
                   , Html.br [] []
                   , Html.br [] []
                   , Html.br [] []
                   , Html.text "Graph Einflüsse:"
                   , Html.br [] []
-                , button [ Html.Events.onClick (PageChange Scatterplott) ] [ Html.text "Scatterplot" ]
-                  
-               
-               
-               ]
-               ]
+                , button [ Html.Events.onClick (PageChange Scatterplott) ] [ Html.text "Scatterplot" ]   ]]                                          
                , let
                    xList : List (Float)
                    xList =
