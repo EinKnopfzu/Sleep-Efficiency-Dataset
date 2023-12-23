@@ -40,21 +40,17 @@ summe list =
     List.sum list
 
 --Correlation von X auf Y 
-r : List ( Float, Float ) -> Maybe Float
-r data =   
-    correlation data
+
 
 type alias ImpactGraphData =
     { xdescriptor : ImpactData
-    , attribute : List ImpactData
-    
+    , attribute : List ImpactData    
     }
 
 
 type alias ImpactData =
     { name : String
     , data : List (Float)
-
     }
 
 
@@ -63,6 +59,9 @@ type alias ImpactGraphPoint =
     , yPosition: Float
     , yValue : List (Float, Float)}
 
+r : List ( Float, Float ) -> Maybe Float
+r data =   
+    correlation data
 
 -- Ziel ist es eine Grafik zu erschaffen di eim zentrum unseren X Datensatz hat (Sagen wir als Quader . ) und den in de rMitte Zeichnet. 
 -- dann geben wi reine distanz an. das ist die maximale Distanz bei den X Werten zum Quader. 
@@ -77,7 +76,19 @@ graph model =
         anzahlPunkte : Int
         anzahlPunkte = List.length model.attribute
 
-        combineLists : List Float -> List Float -> List (Float, Float)
+        indiziereImpactData : List ImpactData -> List (Int, ImpactData)
+        indiziereImpactData impactDataList =
+          List.indexedMap (\index impactData -> (index, impactData)) impactDataList
+
+        indexedimpactDataList : List (Int, ImpactData)
+        indexedimpactDataList = indiziereImpactData model.attribute
+
+        attributDaten : ImpactData
+        attributDaten = model.xdescriptor
+
+
+
+      {-  combineLists : List Float -> List Float -> List (Float, Float)
         combineLists list1 list2 =
             List.map2 Tuple.pair list1 list2
 
@@ -113,7 +124,7 @@ graph model =
         
 
         versetzung :  Maybe Float -> Float
-        versetzung rValue = Maybe.withDefault 0 rValue
+        versetzung rValue = Maybe.withDefault 0 rValue-}
 
     in
     svg [ viewBox 0 200 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
@@ -174,8 +185,8 @@ graph model =
             [ TypedSvg.Core.text xWert ]]
         ]
 
-{-
-kreis : ContinuousScale Float -> ContinuousScale Float -> ScatterplottPoint -> Svg msg
+
+kreis : Float-> Float ->  List (Int, ImpactData, Float)-> Svg msg
 kreis scaleX scaleY xyPoint =
     let
         ( xa, ya ) =
@@ -192,7 +203,7 @@ kreis scaleX scaleY xyPoint =
             [ TypedSvg.Core.text xyPoint.pointName ]
         ]
 
-
+{-
 type alias ScatterplottPoint =
     { pointName : String, x : Float, y : Float }
 
