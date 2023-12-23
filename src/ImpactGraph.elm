@@ -41,6 +41,9 @@ summe list =
 
 --Correlation von X auf Y 
 
+radiusUmkreis : Float
+radiusUmkreis = 100
+
 
 type alias ImpactGraphData =
     { xdescriptor : ImpactData
@@ -53,6 +56,11 @@ type alias ImpactData =
     , data : List (Float)
     }
 
+type alias IndexedImpactData =
+    { index : Int
+    , data : ImpactData
+    }
+
 
 type alias ImpactGraphPoint =
     { xPosition: Float
@@ -62,6 +70,10 @@ type alias ImpactGraphPoint =
 r : List ( Float, Float ) -> Maybe Float
 r data =   
     correlation data
+
+combineLists : List Float -> List Float -> List (Float, Float)
+combineLists list1 list2 =
+            List.map2 Tuple.pair list1 list2
 
 -- Ziel ist es eine Grafik zu erschaffen di eim zentrum unseren X Datensatz hat (Sagen wir als Quader . ) und den in de rMitte Zeichnet. 
 -- dann geben wi reine distanz an. das ist die maximale Distanz bei den X Werten zum Quader. 
@@ -76,11 +88,12 @@ graph model =
         anzahlPunkte : Int
         anzahlPunkte = List.length model.attribute
 
-        indiziereImpactData : List ImpactData -> List (Int, ImpactData)
+        indiziereImpactData : List ImpactData -> List (IndexedImpactData)
         indiziereImpactData impactDataList =
-          List.indexedMap (\index impactData -> (index, impactData)) impactDataList
+          List.indexedMap (\index impactData -> { index = index, data = impactData }) impactDataList
 
-        indexedimpactDataList : List (Int, ImpactData)
+
+        indexedimpactDataList : List (IndexedImpactData)
         indexedimpactDataList = indiziereImpactData model.attribute
 
         attributDaten : ImpactData
@@ -89,11 +102,12 @@ graph model =
         winkelEinteilung : Float
         winkelEinteilung = 2.0 * pi / toFloat anzahlPunkte
 
+        xa = w/2 - padding
+        ya = h/2
 
 
-      {-  combineLists : List Float -> List Float -> List (Float, Float)
-        combineLists list1 list2 =
-            List.map2 Tuple.pair list1 list2
+
+      {-  
 
 
         listYX : List(Float, Float) 
@@ -121,8 +135,7 @@ graph model =
         rK = r listKX
 
 
-        xa = w/2 - padding
-        ya = h/2
+        
 
         
 
@@ -145,63 +158,30 @@ graph model =
             , y (ya - radius)
             , textAnchor TypedSvg.Types.AnchorStart
             ]
-            [ TypedSvg.Core.text xWert ]]
-        , g [ transform [ Translate padding padding ] ]
-            
-            [ circle [ cx (xa+100) , cy (ya), TypedSvg.Attributes.InPx.r (Scatterplot.radius * versetzung rY )]
-            []]
-        , g [ transform [ Translate padding padding ] ]
-            [ circle [ cx xa, cy (ya + 100), TypedSvg.Attributes.InPx.r (Scatterplot.radius * versetzung rZ ) ]
-            []
-            ,text_
-            [ x (xa + radius)
-            , y (ya - radius)
-            , textAnchor TypedSvg.Types.AnchorStart
-            ]
-            [ TypedSvg.Core.text xWert ]]
-        , g [ transform [ Translate padding padding ] ]
-            [ circle [ cx (xa - 100), cy ya, TypedSvg.Attributes.InPx.r (Scatterplot.radius * versetzung rD ) ]
-            []
-            ,text_
-            [ x (xa + radius)
-            , y (ya - radius)
-            , textAnchor TypedSvg.Types.AnchorStart
-            ]
-            [ TypedSvg.Core.text xWert ]]
-        , g [ transform [ Translate padding padding ] ]
-            [ circle [ cx xa, cy (ya - 100), TypedSvg.Attributes.InPx.r (Scatterplot.radius * versetzung rK ) ]
-            []
-            ,text_
-            [ x (xa + radius)
-            , y (ya - radius)
-            , textAnchor TypedSvg.Types.AnchorStart
-            ]
-            [ TypedSvg.Core.text xWert ]]
-        , g [ transform [ Translate padding padding ] ]
-            [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r (Scatterplot.radius * (versetzung r) ) ]
-            []
-            ,text_
-            [ x (xa + radius)
-            , y (ya - radius)
-            , textAnchor TypedSvg.Types.AnchorStart
-            ]
-            [ TypedSvg.Core.text xWert ]]
+            [ ]]
+        , g [transform [ Translate padding padding]]
+             ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung) indexedimpactDataList)
         ]
 
 
-kreis : Float-> Float -> ImpactData-> Int -> ImpactData-> Svg msg
-kreis xa ya xAttribut index datenwerte =
+kreis : Float-> Float -> ImpactData-> Int -> ImpactData->Float ->Svg msg
+kreis xa ya xAttribut index datenwerte winkel=
     let
-        xPosition =
+        xPosition = xa + cos (toFloat index * winkel) * radiusUmkreis
+        yPosition = ya + sin (toFloat index * winkel) * radiusUmkreis
 
-        yPosition = 
+        
+        größe :   Float
+        größe = Maybe.withDefault 0.0 (r (combineLists xAttribut.data datenwerte.data))
+
+        
     in
     g [ TypedSvg.Attributes.class [ "point" ], fontSize <| Px 10.0, fontFamily [ "sans-serif" ] ]
-        [ circle [ cx xa, cy ya, r radius ]
+        [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r (größe) ]
             []
         , text_
-            [ x (xa + radius)
-            , y (ya - radius)
+            [ x (xPosition )
+            , y (yPosition)
             , textAnchor TypedSvg.Types.AnchorStart
             ]
             [ TypedSvg.Core.text datenwerte.name ]
