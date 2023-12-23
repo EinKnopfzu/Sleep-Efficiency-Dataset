@@ -21,7 +21,7 @@ import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
 import Scatterplot exposing (..)
 import ParalleleKoordinatenRoengten exposing (blackbox) 
-import ImpactGraph exposing (graph, ImpactDataList)
+import ImpactGraph exposing (graph, ImpactGraphData)
 
 
 -- MAIN
@@ -397,8 +397,8 @@ view model =
                     }
                     --Interaktion mittels einschränken, welcher Bereich der Daten angezeigt werden sollte. (z.B. Alter einschränken oder Koffein Konsum
                     ,blackbox combinedList_Box
-                    ,graph {xdescriptor = {name= model.droppdown1, data= xList},
-                            attribute = [{name= "Alter", data= filteralter},
+                    ,graph {xdescriptor = {name = model.droppdown1, data = xList},
+                            attribute = [{name = "Alter", data= filteralter},
                              {name= "Geschlecht", data= filtergender},
                              {name= "Koffein", data= filterkoffein},
                              {name= "Alkohol", data= filteralkohol},

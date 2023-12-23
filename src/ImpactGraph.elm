@@ -41,8 +41,8 @@ summe list =
 
 --Correlation von X auf Y 
 
-radiusUmkreis : Float
-radiusUmkreis = 100
+--radiusUmkreis : Float
+--radiusUmkreis = 600
 
 
 type alias ImpactGraphData =
@@ -151,24 +151,25 @@ graph model =
             .point:hover text { display: inline; }
           """ ]
         , g [ transform [ Translate padding padding ] ]
-            [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r Scatterplot.radius ]
+            [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r (Scatterplot.radius * 3) ]
             []
-            ,text_
+            , text_
             [ x (xa + radius)
-            , y (ya - radius)
-            , textAnchor TypedSvg.Types.AnchorStart
+             , y (ya - radius)
+             , textAnchor TypedSvg.Types.AnchorStart
             ]
-            [ ]]
+            [ TypedSvg.Core.text model.xdescriptor.name ] 
+            ]
         , g [transform [ Translate padding padding]]
-             ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung) indexedimpactDataList)
+             ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung 100) indexedimpactDataList)
         ]
 
 
-kreis : Float-> Float -> ImpactData-> Int -> ImpactData->Float ->Svg msg
-kreis xa ya xAttribut index datenwerte winkel=
+kreis : Float-> Float -> ImpactData-> Int -> ImpactData-> Float -> Float -> Svg msg
+kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
     let
-        xPosition = xa + cos (toFloat index * winkel) * radiusUmkreis
-        yPosition = ya + sin (toFloat index * winkel) * radiusUmkreis
+        xPosition = xa + (cos (toFloat index * winkel) * radiusUmkreis)
+        yPosition = ya + (sin (toFloat index * winkel) * radiusUmkreis)
 
         
         größe :   Float
@@ -177,7 +178,7 @@ kreis xa ya xAttribut index datenwerte winkel=
         
     in
     g [ TypedSvg.Attributes.class [ "point" ], fontSize <| Px 10.0, fontFamily [ "sans-serif" ] ]
-        [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r (größe) ]
+        [ circle [ cx xPosition, cy yPosition, TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3) ]
             []
         , text_
             [ x (xPosition )
@@ -185,6 +186,13 @@ kreis xa ya xAttribut index datenwerte winkel=
             , textAnchor TypedSvg.Types.AnchorStart
             ]
             [ TypedSvg.Core.text datenwerte.name ]
+
+        , text_
+            [ x (xPosition + 5 )
+            , y (yPosition + 5)
+            , textAnchor TypedSvg.Types.AnchorStart
+            ]
+            [ TypedSvg.Core.text (Debug.toString größe) ]
         ]
 
 {-
