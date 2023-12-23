@@ -16,6 +16,8 @@ import TypedSvg.Attributes.InPx exposing (y2)
 import TypedSvg.Attributes exposing (x1)
 import Html exposing (..)
 import Scale exposing (ContinuousScale) 
+import Round exposing (round)
+
 
 --etwas hindernd, dass ELM keine Rückewärts kompatibilität erzwingt und man so nicht die neusten Versionen nutzen kann, wenn diese Abhängig sind
 
@@ -61,6 +63,9 @@ type alias IndexedImpactData =
     , data : ImpactData
     }
 
+runden : Float -> Float
+runden nr =
+     Maybe.withDefault 0.0 (String.toFloat (Round.ceiling 4 nr))
 
 type alias ImpactGraphPoint =
     { xPosition: Float
@@ -146,7 +151,7 @@ graph model =
     svg [ viewBox 0 200 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0, 0.4); fill: rgba(255, 255, 255, 0.3); }
-            .point text { display: none; }
+            .point text { display: inline; }
             .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
           """ ]
@@ -171,9 +176,9 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
         xPosition = xa + (cos (toFloat index * winkel) * radiusUmkreis)
         yPosition = ya + (sin (toFloat index * winkel) * radiusUmkreis)
 
-        
+-- Berechnet die Korrelation und rundet sie auf 4 Nachkommastellen. 
         größe :   Float
-        größe = Maybe.withDefault 0.0 (r (combineLists xAttribut.data datenwerte.data))
+        größe = runden (Maybe.withDefault 0.0 ( (r (combineLists xAttribut.data datenwerte.data))))
 
         
     in
@@ -183,16 +188,11 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
         , text_
             [ x (xPosition )
             , y (yPosition)
-            , textAnchor TypedSvg.Types.AnchorStart
+            , textAnchor TypedSvg.Types.AnchorMiddle
             ]
-            [ TypedSvg.Core.text datenwerte.name ]
+            [ TypedSvg.Core.text (datenwerte.name ++ ": "++ String.fromFloat größe) ]
 
-        , text_
-            [ x (xPosition + 5 )
-            , y (yPosition + 5)
-            , textAnchor TypedSvg.Types.AnchorStart
-            ]
-            [ TypedSvg.Core.text (Debug.toString größe) ]
+        
         ]
 
 {-
