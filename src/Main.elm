@@ -208,6 +208,8 @@ view model =
             Html.text "Am Laden..."]
 
         Success  ->
+         
+        
             Html.div [ Html.Attributes.style "display" "flex"
                     , Html.Attributes.style "flex-direction" "column"
                     , Html.Attributes.style "height" "100vh" ]
@@ -224,10 +226,16 @@ view model =
                     , Html.Attributes.style "height" "100%"
                     , Html.Attributes.style "font-family" "Arial"
                   ]
-                  [Html.u[][ Html.text " SETTINGS "]
-                       , Html.br [] []
-                       , Html.br [] []
-                       ,Html.text "Untersuchendes Attribut"  
+                  [Html.u[Html.Attributes.style "font-size" "20px" 
+                         , Html.Attributes.style "font-weight" "bold"]
+                         [ Html.text " Einstellungen " ]
+                         , Html.br [] []
+                         , Html.br [] []
+                         , Html.br [] []
+                         , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Blackbox"]
+                         , Html.br [] []
+                         , Html.br [] []
+                       , Html.span [ Html.Attributes.style "font-size" "16px" ] [Html.text "Untersuchendes Attribut" ]
                        ,Html.br [] []        
                   ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
@@ -245,17 +253,32 @@ view model =
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown1) ] [ Html.text "Sport Einheiten" ]   ]                            
                   , Html.br [] []
                   , Html.br [] []
+                  , Html.text "Min Value"
+                  , Html.br [] []
                   ,input
                     [ type_ "text"
-                    , placeholder "Type something..."
+                    , placeholder "Bitte eingeben..."
          --           , Html.Attributes.value model.minFilter
                     , onInput MinFilterChanged
                   ]
                   []
-                  ,Html.text  (Debug.toString model.minFilter)
+                  , Html.text "Max Value"
+                  , Html.br [] []
+                  ,input
+                    [ type_ "text"
+                    , placeholder "Bitte eingeben..."
+         --           , Html.Attributes.value model.minFilter
+                    , onInput MaxFilterChanged
+                  ]
+                  []
    --             , button [ onClick SubmitInput ] [ text "Submit" ]
                   , Html.br [] []
-                  ,Html.text "BlackBox Links: Y" 
+                  , Html.br [] []
+                  , Html.br [] []
+                  , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Blackbox"]
+                  , Html.br [] []
+                  , Html.br [] []
+                  , Html.text "BlackBox Links: Y" 
                   , Html.br [] []
                , Html.select [ onInput Option2Selected ]
                   [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
@@ -297,84 +320,103 @@ view model =
                   , Html.br [] []
                 ]]                                          
                , let
+
+                   daten : List (Aussortierte_Daten)
+                   daten = 
+                     case model.droppdown1 of
+                      "Geschlecht" ->  model.daten |> List.filter (\d -> d.mygeschlecht >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mygeschlecht <= Maybe.withDefault 4 model.maxFilter)
+                      "Alter" ->  model.daten |> List.filter (\d -> d.myalter >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myalter <= Maybe.withDefault 100 model.maxFilter)
+                      "Schlafdauer" -> model.daten |> List.filter (\d -> d.myschlafdauer >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myschlafdauer <= Maybe.withDefault 100 model.maxFilter)        
+                      "Schlaf Effizienz" -> model.daten |> List.filter (\d -> d.myschlaf_effizienz >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myschlaf_effizienz <= Maybe.withDefault 1 model.maxFilter)         
+                      "REM" -> model.daten |> List.filter (\d -> d.myrem_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myrem_anteil <= Maybe.withDefault 1 model.maxFilter) 
+                      "Tiefschlaf Anteil" -> model.daten |> List.filter (\d -> d.mytiefschlaf_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mytiefschlaf_anteil <= Maybe.withDefault 1 model.maxFilter)        
+                      "Leichtschlaf Anteil" ->  model.daten |> List.filter (\d -> d.myleichtschlaf_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myleichtschlaf_anteil <= Maybe.withDefault 1 model.maxFilter)         
+                      "Erwacht Anzahl" -> model.daten |> List.filter (\d -> d.myerwacht_anzahl >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myerwacht_anzahl <= Maybe.withDefault 100 model.maxFilter)  
+                      "Koffein Konsum" ->  model.daten |> List.filter (\d -> d.mykoffein_konsum >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mykoffein_konsum <= Maybe.withDefault 10000 model.maxFilter)         
+                      "Alkohol Konsum" ->  model.daten |> List.filter (\d -> d.myalkohol_konsum >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myalkohol_konsum <= Maybe.withDefault 10000 model.maxFilter)
+                      "Raucher" -> model.daten |> List.filter (\d -> d.myraucher >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myraucher <= Maybe.withDefault 2 model.maxFilter)
+                      "Sport Einheiten" -> model.daten |> List.filter (\d -> d.mysport >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mysport <= Maybe.withDefault 100 model.maxFilter)
+                      _ -> []                     
+
+
                    xList : List (Float)
                    xList =
                      case model.droppdown1 of
-                      "Geschlecht" -> List.map .mygeschlecht model.daten
-                      "Alter" -> List.map .myalter model.daten
-                      "Schlafdauer" -> List.map .myschlafdauer model.daten
-                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
-                      "REM" -> List.map .myrem_anteil model.daten
-                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
-                      "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil model.daten
-                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
-                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
-                      "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
-                      "Raucher" -> List.map .myraucher model.daten 
-                      "Sport Einheiten" -> List.map .mysport model.daten
+                      "Geschlecht" -> List.map .mygeschlecht daten
+                      "Alter" -> List.map .myalter daten
+                      "Schlafdauer" -> List.map .myschlafdauer daten
+                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz daten
+                      "REM" -> List.map .myrem_anteil daten
+                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil daten
+                      "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil daten
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl daten
+                      "Koffein Konsum" -> List.map .mykoffein_konsum daten
+                      "Alkohol Konsum" -> List.map .myalkohol_konsum daten
+                      "Raucher" -> List.map .myraucher daten 
+                      "Sport Einheiten" -> List.map .mysport daten
                       _ -> []    
      
                    yList : List (Float)
                    yList =
                      case model.droppdown2 of
-                      "Geschlecht" -> List.map .mygeschlecht model.daten 
-                      "Alter" -> List.map .myalter model.daten
-                      "Schlafdauer" -> List.map .myschlafdauer model.daten
-                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
-                      "REM" -> List.map .myrem_anteil model.daten
-                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
-                      "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil model.daten
-                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
-                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
-                      "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
-                      "Raucher" -> List.map .myraucher model.daten 
-                      "Sport Einheiten" -> List.map .mysport model.daten
+                      "Geschlecht" -> List.map .mygeschlecht daten 
+                      "Alter" -> List.map .myalter daten
+                      "Schlafdauer" -> List.map .myschlafdauer daten
+                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz daten
+                      "REM" -> List.map .myrem_anteil daten
+                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil daten
+                      "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil daten
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl daten
+                      "Koffein Konsum" -> List.map .mykoffein_konsum daten
+                      "Alkohol Konsum" -> List.map .myalkohol_konsum daten
+                      "Raucher" -> List.map .myraucher daten 
+                      "Sport Einheiten" -> List.map .mysport daten
                       _ -> []      
 
                    zList : List (Float)
                    zList =
                      case model.droppdown3 of
-                      "Geschlecht" -> List.map .mygeschlecht model.daten 
-                      "Alter" -> List.map .myalter model.daten
-                      "Schlafdauer" -> List.map .myschlafdauer model.daten
-                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
-                      "REM" -> List.map .myrem_anteil model.daten
-                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil model.daten
-                      "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil model.daten
-                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
-                      "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
-                      "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
-                      "Raucher" -> List.map .myraucher model.daten 
-                      "Sport Einheiten" -> List.map .mysport model.daten
+                      "Geschlecht" -> List.map .mygeschlecht daten 
+                      "Alter" -> List.map .myalter daten
+                      "Schlafdauer" -> List.map .myschlafdauer daten
+                      "Schlaf Effizienz" -> List.map  .myschlaf_effizienz daten
+                      "REM" -> List.map .myrem_anteil daten
+                      "Tiefschlaf Anteil" ->  List.map  .mytiefschlaf_anteil daten
+                      "Leichtschlaf Anteil" -> List.map .myleichtschlaf_anteil daten
+                      "Erwacht Anzahl" -> List.map .myerwacht_anzahl daten
+                      "Koffein Konsum" -> List.map .mykoffein_konsum daten
+                      "Alkohol Konsum" -> List.map .myalkohol_konsum daten
+                      "Raucher" -> List.map .myraucher daten 
+                      "Sport Einheiten" -> List.map .mysport daten
                       _ -> []    
 
 -- Verhaltensindikatoren in einzelne Listen aufgebrochen. 
                    filteralter : List Float
                    filteralter =
-                        List.map .myalter model.daten
+                        List.map .myalter daten
 
                    filtergender : List Float
                    filtergender =
-                        (List.map .mygeschlecht model.daten) 
+                        (List.map .mygeschlecht daten) 
                      
                    filterkoffein : List(Float)
                    filterkoffein =
-                      List.map .mykoffein_konsum model.daten
+                      List.map .mykoffein_konsum daten
                     
                    filteralkohol: List(Float)
                    filteralkohol =
-                      List.map .myalter model.daten
+                      List.map .myalter daten
 
                    filterraucher: List(Float)
                    filterraucher =
-                     ( List.map .myraucher model.daten )
+                     ( List.map .myraucher daten )
 
                    filtersport: List(Float)
                    filtersport =
-                      List.map .mysport model.daten
+                      List.map .mysport daten
 
                    name =
-                    List.map .myid_ model.daten
+                    List.map .myid_ daten
 
                    combinedList_Scatter: List ScatterplottPoint 
                    combinedList_Scatter =
