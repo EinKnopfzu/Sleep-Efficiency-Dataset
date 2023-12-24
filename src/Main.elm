@@ -233,6 +233,7 @@ view model =
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown1) ] [ Html.text "Sport Einheiten" ]   ]                            
                   , Html.br [] []
                   , Html.br [] []
+
                   , Html.br [] []
                   ,Html.text "BlackBox Links: Y" 
                   , Html.br [] []
@@ -279,7 +280,7 @@ view model =
                    xList : List (Float)
                    xList =
                      case model.droppdown1 of
-                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
+                      "Geschlecht" -> List.map .mygeschlecht model.daten
                       "Alter" -> List.map .myalter model.daten
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
                       "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
@@ -289,14 +290,14 @@ view model =
                       "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
                       "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
                       "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
-                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
+                      "Raucher" -> List.map .myraucher model.daten 
                       "Sport Einheiten" -> List.map .mysport model.daten
                       _ -> []    
      
                    yList : List (Float)
                    yList =
                      case model.droppdown2 of
-                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
+                      "Geschlecht" -> List.map .mygeschlecht model.daten 
                       "Alter" -> List.map .myalter model.daten
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
                       "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
@@ -306,14 +307,14 @@ view model =
                       "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
                       "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
                       "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
-                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
+                      "Raucher" -> List.map .myraucher model.daten 
                       "Sport Einheiten" -> List.map .mysport model.daten
                       _ -> []      
 
                    zList : List (Float)
                    zList =
                      case model.droppdown3 of
-                      "Geschlecht" -> List.map .mygeschlecht model.daten |> List.map genderToFloat
+                      "Geschlecht" -> List.map .mygeschlecht model.daten 
                       "Alter" -> List.map .myalter model.daten
                       "Schlafdauer" -> List.map .myschlafdauer model.daten
                       "Schlaf Effizienz" -> List.map  .myschlaf_effizienz model.daten
@@ -323,7 +324,7 @@ view model =
                       "Erwacht Anzahl" -> List.map .myerwacht_anzahl model.daten
                       "Koffein Konsum" -> List.map .mykoffein_konsum model.daten
                       "Alkohol Konsum" -> List.map .myalkohol_konsum model.daten
-                      "Raucher" -> List.map .myraucher model.daten |> List.map raucherToFloat
+                      "Raucher" -> List.map .myraucher model.daten 
                       "Sport Einheiten" -> List.map .mysport model.daten
                       _ -> []    
 
@@ -345,7 +346,7 @@ view model =
 
                    filterraucher: List(Float)
                    filterraucher =
-                     ( List.map .myraucher model.daten )|> List.map raucherToFloat
+                     ( List.map .myraucher model.daten )
 
                    filtersport: List(Float)
                    filtersport =
@@ -434,7 +435,7 @@ sleep2Point c =
             Aussortierte_Daten
                 (myid_)
                 (myalter)
-                (mygeschlecht)
+                (genderToFloat mygeschlecht )
                 (myschlafenszeit)
                 (myaufwachzeit)
                 0.0
@@ -445,7 +446,7 @@ sleep2Point c =
                 0.0
                 0.0
                 0.0
-                "NA"
+                0.0
                 0.0
         )
         c.id_
@@ -479,7 +480,7 @@ sleep2Point c =
                          myerwacht_anzahl = myXA,
                          mykoffein_konsum =  myXB, 
                          myalkohol_konsum = myXY,
-                         myraucher = myXV,
+                         myraucher = (myXV |> raucherToFloat),
                          mysport = myXK
                           }
                     )
@@ -508,7 +509,7 @@ genderToFloat value =
 type alias Aussortierte_Daten =
  {myid_ :  String 
  ,myalter : Float
- ,mygeschlecht : String
+ ,mygeschlecht : Float
  ,myschlafenszeitt : String
  ,myaufwachzeit : String
  ,myschlafdauer : Float
@@ -519,7 +520,7 @@ type alias Aussortierte_Daten =
  ,myerwacht_anzahl : Float
  ,mykoffein_konsum : Float
  ,myalkohol_konsum : Float
- ,myraucher : String
+ ,myraucher : Float
  ,mysport : Float
  }
 -- Typ für die unaufgearbeiteten Daten
