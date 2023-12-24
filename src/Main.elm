@@ -3,7 +3,7 @@ module Main exposing (..)
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing(..)
-import Html.Events exposing (onInput)
+import Html.Events exposing (onInput, onClick)
 import Maybe.Extra exposing (isJust)
 import Http
 import Color
@@ -88,7 +88,8 @@ type alias Model
      , droppdown5 : String
      , daten :List (Aussortierte_Daten)
      , pageview : PageState
- }
+     , minFilter : Maybe Float
+     , maxFilter : Maybe Float }
 
 
 
@@ -101,10 +102,12 @@ init _ =
       droppdown3 = "Alter",
       droppdown4 = "",
       droppdown5 = "",
+      minFilter = Nothing,
+      maxFilter = Nothing,
       pageview = Scatterplott
       , daten = [  { myid_ = "Test"
       , myalter = 0.0
-      , mygeschlecht = "NA"
+      , mygeschlecht = 0.0
       , myschlafenszeitt = "NA"
       , myaufwachzeit = "NA"
       , myschlafdauer = 0.0
@@ -115,9 +118,10 @@ init _ =
       , myerwacht_anzahl = 0.0
       , mykoffein_konsum = 0.0
       , myalkohol_konsum = 0.0
-      , myraucher = "NA"
+      , myraucher = 0
       , mysport = 0.0
-                       } ]
+                       }
+      ]
       }
   , Http.get
       { url = "https://raw.githubusercontent.com/EinKnopfzu/Sleep-Efficiency-Dataset/main/Sleep_Efficiency.csv"
@@ -134,6 +138,8 @@ type Msg
   | Option3Selected String
   | Option4Selected String
   | PageChange PageState
+  | MinFilterChanged String
+  | MaxFilterChanged String
   
 
 
@@ -168,6 +174,12 @@ update msg model =
                     ({ model | pageview = Grafik1} , Cmd.none)
                 Grafik2 ->
                     ({ model | pageview = Grafik2} , Cmd.none)
+
+        MinFilterChanged value ->
+            ({ model | minFilter =  (String.toFloat value) }, Cmd.none)
+
+        MaxFilterChanged value ->
+            ({ model | maxFilter =  (String.toFloat value) }, Cmd.none)
 
         
 
@@ -233,7 +245,15 @@ view model =
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown1) ] [ Html.text "Sport Einheiten" ]   ]                            
                   , Html.br [] []
                   , Html.br [] []
-
+                  ,input
+                    [ type_ "text"
+                    , placeholder "Type something..."
+         --           , Html.Attributes.value model.minFilter
+                    , onInput MinFilterChanged
+                  ]
+                  []
+                  ,Html.text  (Debug.toString model.minFilter)
+   --             , button [ onClick SubmitInput ] [ text "Submit" ]
                   , Html.br [] []
                   ,Html.text "BlackBox Links: Y" 
                   , Html.br [] []
@@ -328,13 +348,14 @@ view model =
                       "Sport Einheiten" -> List.map .mysport model.daten
                       _ -> []    
 
+-- Verhaltensindikatoren in einzelne Listen aufgebrochen. 
                    filteralter : List Float
                    filteralter =
                         List.map .myalter model.daten
 
                    filtergender : List Float
                    filtergender =
-                        (List.map .mygeschlecht model.daten) |> List.map genderToFloat
+                        (List.map .mygeschlecht model.daten) 
                      
                    filterkoffein : List(Float)
                    filterkoffein =
