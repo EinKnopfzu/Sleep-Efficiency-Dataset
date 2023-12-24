@@ -232,7 +232,7 @@ view model =
                          , Html.br [] []
                          , Html.br [] []
                          , Html.br [] []
-                         , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Blackbox"]
+                         , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Norm-QQ Plot"]
                          , Html.br [] []
                          , Html.br [] []
                        , Html.span [ Html.Attributes.style "font-size" "16px" ] [Html.text "Untersuchendes Attribut" ]
@@ -324,18 +324,18 @@ view model =
                    daten : List (Aussortierte_Daten)
                    daten = 
                      case model.droppdown1 of
-                      "Geschlecht" ->  model.daten |> List.filter (\d -> d.mygeschlecht >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mygeschlecht <= Maybe.withDefault 4 model.maxFilter)
-                      "Alter" ->  model.daten |> List.filter (\d -> d.myalter >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myalter <= Maybe.withDefault 100 model.maxFilter)
-                      "Schlafdauer" -> model.daten |> List.filter (\d -> d.myschlafdauer >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myschlafdauer <= Maybe.withDefault 100 model.maxFilter)        
-                      "Schlaf Effizienz" -> model.daten |> List.filter (\d -> d.myschlaf_effizienz >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myschlaf_effizienz <= Maybe.withDefault 1 model.maxFilter)         
-                      "REM" -> model.daten |> List.filter (\d -> d.myrem_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myrem_anteil <= Maybe.withDefault 1 model.maxFilter) 
-                      "Tiefschlaf Anteil" -> model.daten |> List.filter (\d -> d.mytiefschlaf_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mytiefschlaf_anteil <= Maybe.withDefault 1 model.maxFilter)        
+                      "Geschlecht" ->  model.daten |> List.filter (\d -> d.mygeschlecht >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mygeschlecht <= Maybe.withDefault 10000 model.maxFilter)
+                      "Alter" ->  model.daten |> List.filter (\d -> d.myalter >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myalter <= Maybe.withDefault 10000 model.maxFilter)
+                      "Schlafdauer" -> model.daten |> List.filter (\d -> d.myschlafdauer >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myschlafdauer <= Maybe.withDefault 10000 model.maxFilter)        
+                      "Schlaf Effizienz" -> model.daten |> List.filter (\d -> d.myschlaf_effizienz >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myschlaf_effizienz <= Maybe.withDefault 10000 model.maxFilter)         
+                      "REM" -> model.daten |> List.filter (\d -> d.myrem_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myrem_anteil <= Maybe.withDefault 10000 model.maxFilter) 
+                      "Tiefschlaf Anteil" -> model.daten |> List.filter (\d -> d.mytiefschlaf_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mytiefschlaf_anteil <= Maybe.withDefault 10000 model.maxFilter)        
                       "Leichtschlaf Anteil" ->  model.daten |> List.filter (\d -> d.myleichtschlaf_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myleichtschlaf_anteil <= Maybe.withDefault 1 model.maxFilter)         
                       "Erwacht Anzahl" -> model.daten |> List.filter (\d -> d.myerwacht_anzahl >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myerwacht_anzahl <= Maybe.withDefault 100 model.maxFilter)  
                       "Koffein Konsum" ->  model.daten |> List.filter (\d -> d.mykoffein_konsum >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mykoffein_konsum <= Maybe.withDefault 10000 model.maxFilter)         
                       "Alkohol Konsum" ->  model.daten |> List.filter (\d -> d.myalkohol_konsum >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myalkohol_konsum <= Maybe.withDefault 10000 model.maxFilter)
-                      "Raucher" -> model.daten |> List.filter (\d -> d.myraucher >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myraucher <= Maybe.withDefault 2 model.maxFilter)
-                      "Sport Einheiten" -> model.daten |> List.filter (\d -> d.mysport >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mysport <= Maybe.withDefault 100 model.maxFilter)
+                      "Raucher" -> model.daten |> List.filter (\d -> d.myraucher >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myraucher <= Maybe.withDefault 10000 model.maxFilter)
+                      "Sport Einheiten" -> model.daten |> List.filter (\d -> d.mysport >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mysport <= Maybe.withDefault 10000 model.maxFilter)
                       _ -> []                     
 
 
@@ -405,7 +405,7 @@ view model =
                     
                    filteralkohol: List(Float)
                    filteralkohol =
-                      List.map .myalter daten
+                      List.map .myalkohol_konsum daten
 
                    filterraucher: List(Float)
                    filterraucher =
