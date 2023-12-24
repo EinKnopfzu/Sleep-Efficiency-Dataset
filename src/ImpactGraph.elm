@@ -4,14 +4,14 @@ import Scatterplot exposing (w, h, padding, radius, tickCount, defaultExtent)
 
 import List exposing (..)
 import JXstat exposing (..)
-import TypedSvg exposing (circle, g, line, rect, style, svg, text_)
+import TypedSvg exposing (circle, g, line, rect, style, svg, text_, tspan)
 import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
-import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y, rx, x1, x2, y1, y2)
+import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y, rx, x1, x2, y1, y2, dy, dx)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
 
 import TypedSvg.Attributes exposing (x1)
-import Html exposing (..)
+import Html exposing (text, br)
 import Scale exposing (ContinuousScale) 
 import Round exposing (round)
 
@@ -129,7 +129,17 @@ graph model =
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorStart
                 ]
-                [ Html.text "Diese Graphen repräsentation soll Ihenn dabei helfen die Korrelation der Verhaltensweisen auf die Merkmale der Schlafqualität zu verstehen."]]
+                [ Html.text "Diese Graphen repräsentation soll Ihenn dabei helfen die Korrelation der Verhaltensweisen auf die Merkmale."
+                 ]]
+       , g [ transform [ Translate padding 0 ] ]
+            [  text_
+                [ x (0)                
+                , y ( padding *(-1)  - 16 )
+                , fontSize (TypedSvg.Types.px 16)
+                , textAnchor TypedSvg.Types.AnchorStart
+                ]
+                [ Html.text "Diese Graphen repräsentation soll Ihenn dabei helfen die Korrelation der Verhaltensweisen auf die Merkmale."
+                 ]]
        , g [ transform [ Translate padding padding ] ]
             [ rect
             [ TypedSvg.Attributes.InPx.x1 (5)
