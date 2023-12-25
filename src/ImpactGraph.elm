@@ -155,6 +155,8 @@ graph model =
             ]
         , g [transform [ Translate padding padding]]
              ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung 100) indexedimpactDataList)
+--        , g [ transform [ Translate padding padding ] ]
+   --          ( List.map (\i -> Pfeil))
 
         , g [ transform [ Translate padding padding ] ]
             [ text_
@@ -180,10 +182,13 @@ graph model =
         ]
 
 
-kreis : Float-> Float -> ImpactData-> Int -> ImpactData-> Float -> Float -> Svg msg
+kreis : Float-> Float -> ImpactData-> Int -> ImpactData-> Float -> Float ->  Svg msg
 kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
     let
+        xPosition : Float
         xPosition = xa + (cos (toFloat index * winkel) * radiusUmkreis)
+
+        yPosition : Float
         yPosition = ya + (sin (toFloat index * winkel) * radiusUmkreis)
 
 -- Berechnet die Korrelation und rundet sie auf die 4 Nachkommastelle auf. 
@@ -198,25 +203,45 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
         colorTon = 
             Scale.convert rgbScale größe
 
+        radiusScale : ContinuousScale Float
+        radiusScale  =
+            Scale.linear ( 9, 1 ) (20, 70)
+
+        scaledRadius : Float
+        scaledRadius = 
+            Scale.convert radiusScale größe
+
         farbe : Color
         farbe = if größe <= 0.0 
-                then  Color.rgba 1 0 0 größe
-                else Color.rgba 0 1 0 größe      
+                then  Color.rgba 1 0 0 colorTon
+                else Color.rgba 0 1 0 colorTon      
 
     in
     g [ ]
         [ circle [ cx xPosition
                   , cy yPosition
-                  , TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3) 
+                  , TypedSvg.Attributes.InPx.r (scaledRadius)
+   --               , TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3 ) 
                   , fill <| Paint <| farbe]
                    []
-            
         , text_
             [ x (xPosition )
             , y (yPosition)
             , textAnchor TypedSvg.Types.AnchorMiddle
             ]
             [ TypedSvg.Core.text (datenwerte.name ++ ": "++ String.fromFloat größe) ]
-        ]
+        , line xa ya xPosition yPosition
+             ]
+
+line : Float -> Float -> Float -> Float -> Svg msg
+line x1 y1 x2 y2 =
+    TypedSvg.line [
+        TypedSvg.Attributes.InPx.x1 (x1)
+       , TypedSvg.Attributes.InPx.y1 (y1)
+       , TypedSvg.Attributes.InPx.x2 (x2)
+       , TypedSvg.Attributes.InPx.y2 (y2)
+       , stroke <| Paint <| Color.rgb 0 0 0
+       ]
+       []
 
 
