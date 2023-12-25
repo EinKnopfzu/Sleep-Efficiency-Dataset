@@ -118,7 +118,7 @@ init _ =
       , myerwacht_anzahl = 0.0
       , mykoffein_konsum = 0.0
       , myalkohol_konsum = 0.0
-      , myraucher = 0
+      , myraucher = 0.0
       , mysport = 0.0
                        }
       ]
@@ -250,7 +250,7 @@ view model =
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown1) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown1) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown1) ] [ Html.text "Tiefschlaf Anteil" ]
-                  , Html.option [ value "Leichtschlaf Anteil", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher" ]  
+                  , Html.option [ value "Leichtschlaf Anteil" , selected ("Leichtschlaf Anteil" == model.droppdown1) ] [ Html.text "Leichtschlaf Anteil" ]  
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown1) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown1) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown1) ] [ Html.text "Alkohol Konsum" ]         
@@ -293,7 +293,7 @@ view model =
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown2) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown2) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown2) ] [ Html.text "Tiefschlaf Anteil" ]
-                  , Html.option [ value "Leichtschlaf Anteil", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher" ]  
+                  , Html.option [ value "Leichtschlaf Anteil", selected ("Leichtschlaf Anteil" == model.droppdown2) ] [ Html.text "Leichtschlaf Anteil" ]  
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown2) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown2) ] [ Html.text "Alkohol Konsum" ]         
@@ -312,7 +312,7 @@ view model =
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown3) ] [ Html.text "Schlaf Effizienz" ]
                   , Html.option [ value "REM", selected ("REM" == model.droppdown3) ] [ Html.text "REM" ]
                   , Html.option [ value "Tiefschlaf Anteil", selected ("Tiefschlaf Anteil" == model.droppdown3) ] [ Html.text "Tiefschlaf Anteil" ]
-                  , Html.option [ value "Leichtschlaf Anteil", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher" ]  
+                  , Html.option [ value "Leichtschlaf Anteil", selected ("Leichtschlaf Anteil" == model.droppdown3) ] [ Html.text "Leichtschlaf Anteil" ]  
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown3) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown3) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown3) ] [ Html.text "Alkohol Konsum" ]         
@@ -339,8 +339,8 @@ view model =
                       "Schlaf Effizienz" -> model.daten |> List.filter (\d -> d.myschlaf_effizienz >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myschlaf_effizienz <= Maybe.withDefault 10000 model.maxFilter)         
                       "REM" -> model.daten |> List.filter (\d -> d.myrem_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myrem_anteil <= Maybe.withDefault 10000 model.maxFilter) 
                       "Tiefschlaf Anteil" -> model.daten |> List.filter (\d -> d.mytiefschlaf_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mytiefschlaf_anteil <= Maybe.withDefault 10000 model.maxFilter)        
-                      "Leichtschlaf Anteil" ->  model.daten |> List.filter (\d -> d.myleichtschlaf_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myleichtschlaf_anteil <= Maybe.withDefault 1 model.maxFilter)         
-                      "Erwacht Anzahl" -> model.daten |> List.filter (\d -> d.myerwacht_anzahl >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myerwacht_anzahl <= Maybe.withDefault 100 model.maxFilter)  
+                      "Leichtschlaf Anteil" ->  model.daten |> List.filter (\d -> d.myleichtschlaf_anteil >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myleichtschlaf_anteil <= Maybe.withDefault 10000 model.maxFilter)         
+                      "Erwacht Anzahl" -> model.daten |> List.filter (\d -> d.myerwacht_anzahl >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myerwacht_anzahl <= Maybe.withDefault 10000 model.maxFilter)  
                       "Koffein Konsum" ->  model.daten |> List.filter (\d -> d.mykoffein_konsum >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mykoffein_konsum <= Maybe.withDefault 10000 model.maxFilter)         
                       "Alkohol Konsum" ->  model.daten |> List.filter (\d -> d.myalkohol_konsum >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myalkohol_konsum <= Maybe.withDefault 10000 model.maxFilter)
                       "Raucher" -> model.daten |> List.filter (\d -> d.myraucher >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myraucher <= Maybe.withDefault 10000 model.maxFilter)
@@ -418,7 +418,7 @@ view model =
 
                    filterraucher: List(Float)
                    filterraucher =
-                     ( List.map .myraucher daten )
+                      List.map .myraucher daten 
 
                    filtersport: List(Float)
                    filtersport =
@@ -432,14 +432,14 @@ view model =
                               (combineLists xList xList name) |> addNV
 
 --Hier werden die Listen in für den Boxplott vorbereitet in diesem Fall istes wichtig, dass die XListe 
---Die Mittlere Liste ist, da wir ansonsten nicht das zu suchende element in der Mitte haben. 
+--Die Mittlere Liste ist, da wir ansonsten nicht das untersuchende Element in der Mitte haben. 
                    combinedList_Box : List MultiDimPoint
                    combinedList_Box = ParalleleKoordinatenRoengten.combineLists_Box name  yList xList zList 
 
                 in
                    div [
                     Html.Attributes.style "margin-left" "15%" 
-                    , Html.Attributes.style "padding" "1.5em"
+                    , Html.Attributes.style "padding" "2em"
 
                     , Html.Attributes.style "height" "900" 
                     , Html.Attributes.style "width" "70%"
@@ -457,13 +457,9 @@ view model =
                              {name= "Alkohol", data= filteralkohol},
                              {name= "Raucher", data= filterraucher},
                              {name= "Sport", data= filtersport}]
-
                             }
                     ,footer]
-                    
-                    
                     ]
-                 --   ,footer
 
                 
 
@@ -560,7 +556,7 @@ sleep2Point c =
                          myerwacht_anzahl = myXA,
                          mykoffein_konsum =  myXB, 
                          myalkohol_konsum = myXY,
-                         myraucher = (myXV |> raucherToFloat),
+                         myraucher = raucherToFloat myXV,
                          mysport = myXK
                           }
                     )
@@ -582,8 +578,8 @@ raucherToFloat value =
 genderToFloat : String -> Float
 genderToFloat value =
     case value of
-        "Male" -> 2
-        "Female" -> 1
+        "Male" -> 1
+        "Female" -> 2
         _ -> 0
 
 type alias Aussortierte_Daten =
