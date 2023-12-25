@@ -119,10 +119,8 @@ graph model =
             .point text { display: inline; }
             .point:hover circle { stroke: rgba(255, 255, 255, 1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
-            .hoverText:hover text { display: inline; stroke: rgba(255, 255, 0, 1.0);  }
-            .hoverText text { display: none; }
-            
-            
+            .hoverText:hover text_ { display: inline; stroke: rgba(255, 255, 0, 1.0);  }
+            .hoverText text_ { display: none; }
           """ ]
        , g [ transform [ Translate padding 0 ] ]
             [  text_
@@ -139,7 +137,7 @@ graph model =
                 , y ( padding *(-1)  - 16 )
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorStart
-                , TypedSvg.Attributes.class ["hoverText"]
+                
                 ]
                 [ Html.text "Diese Graphen repräsentation soll Ihnen dabei helfen die Korrelation der Verhaltensweisen auf die Merkmale."
                  ]]
@@ -157,7 +155,8 @@ graph model =
             [] 
             ]
         , g [transform [ Translate padding padding]]
-             ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung 100) indexedimpactDataList)
+                
+             ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung 130) indexedimpactDataList)
 --        , g [ transform [ Translate padding padding ] ]
    --          ( List.map (\i -> Pfeil))
 
@@ -226,8 +225,6 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
         [ circle [ cx xPosition
                   , cy yPosition
                   , TypedSvg.Attributes.InPx.r (scaledRadius)
-                 
-   --               , TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3 ) 
                   , fill <| Paint <| colorTon
                   ]
                    []
@@ -237,7 +234,7 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
             , textAnchor TypedSvg.Types.AnchorMiddle
             , TypedSvg.Attributes.class ["hoverText"]
             ]
-            [ TypedSvg.Core.text (datenwerte.name )] --++ ": "++ String.fromFloat größe) ]
+            [ TypedSvg.Core.text (datenwerte.name  ++ ": "++ String.fromFloat größe) ]
         , line xa ya xPosition yPosition
              ]
 

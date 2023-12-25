@@ -450,6 +450,7 @@ view model =
                     , data = combinedList_Scatter
                     }      )       
                     ,(blackbox combinedList_Box)
+            --      
                     ,graph {xdescriptor = {name = model.droppdown1, data = xList},
                             attribute = [{name = "Alter", data= filteralter},
                              {name= "Geschlecht", data= filtergender},
