@@ -165,7 +165,7 @@ graph model =
              , textAnchor TypedSvg.Types.AnchorMiddle
              , fontSize (TypedSvg.Types.px 30)
             ]
-            [ ]--TypedSvg.Core.text model.xdescriptor.name ] 
+            [ TypedSvg.Core.text model.xdescriptor.name ] 
             ]
     
         , g [ transform [ Translate padding padding ] ]
@@ -176,8 +176,8 @@ graph model =
              , y (ya - radius)
              , textAnchor TypedSvg.Types.AnchorMiddle
             ]
-            [ TypedSvg.Core.text model.xdescriptor.name ] 
-            ]
+            [-- TypedSvg.Core.text model.xdescriptor.name ] 
+            ]]
 
         ]
 
