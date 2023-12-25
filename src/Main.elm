@@ -60,10 +60,10 @@ footer =
           Html.Attributes.style "color" "white",
           Html.Attributes.style "text-align" "center",
           Html.Attributes.style "padding" "0em",
-          Html.Attributes.style "position" "fixed",
-          Html.Attributes.style "bottom" "0", 
+  --        Html.Attributes.style "position" "fixed",
+          Html.Attributes.style "bottom" "0 + padding", 
           Html.Attributes.style "width" "100%",
-          Html.Attributes.style "height" "10px" ]
+          Html.Attributes.style "height" "4%" ]
         [ p [] [ Html.text "© 2023 Mick Wörner 217246242" ]
         ]
 
@@ -213,8 +213,8 @@ view model =
            Html.div [ Html.Attributes.style "display" "flex"
                     , Html.Attributes.style "flex-direction" "column"
                     , Html.Attributes.style "height" "100vh" ]
-                 [ header
-                  , Html.div [ Html.Attributes.style "display" "flex" ]
+                 [ 
+                  Html.div [ Html.Attributes.style "display" "flex" ]
                 [ Html.div 
                    [ Html.Attributes.style "background-color" "#333"
                     , Html.Attributes.style "color" "white"
@@ -226,7 +226,12 @@ view model =
                     , Html.Attributes.style "height" "100%"
                     , Html.Attributes.style "font-family" "Arial"
                   ]
-                  [Html.u[Html.Attributes.style "font-size" "20px" 
+                  [
+                                      Html.br [] []
+                  , Html.br [] []
+                  , Html.br [] []
+                  , Html.br [] []
+                    , Html.u[Html.Attributes.style "font-size" "20px" 
                          , Html.Attributes.style "font-weight" "bold"]
                          [ Html.text " Einstellungen " ]
                          , Html.br [] []
@@ -316,9 +321,13 @@ view model =
                   , Html.br [] []
                   , Html.br [] []
                   , Html.br [] []
-                  , Html.text "Graph Einflüsse:"
+    --              , Html.text 
                   , Html.br [] []
-                ]]                                          
+                ]]   
+                ,  div []
+                       
+                    [header]
+                                                    
                , let
 
                    daten : List (Aussortierte_Daten)
@@ -430,20 +439,17 @@ view model =
                 in
                    div [
                     Html.Attributes.style "margin-left" "15%" 
-                    , Html.Attributes.style "padding" "1em"
+                    , Html.Attributes.style "padding" "1.5em"
 
-                    , Html.Attributes.style "height" "700" 
+                    , Html.Attributes.style "height" "900" 
                     , Html.Attributes.style "width" "70%"
                     , Html.Attributes.style "font-family" "Arial"] 
-                    [ scatterplot 
+                    [ (scatterplot 
                     { xDescription = "Normalverteilung"
                     , yDescription = model.droppdown1
                     , data = combinedList_Scatter
-                    }
-                    
-
-                    --Interaktion mittels einschränken, welcher Bereich der Daten angezeigt werden sollte. (z.B. Alter einschränken oder Koffein Konsum
-                    ,blackbox combinedList_Box
+                    }      )       
+                    ,(blackbox combinedList_Box)
                     ,graph {xdescriptor = {name = model.droppdown1, data = xList},
                             attribute = [{name = "Alter", data= filteralter},
                              {name= "Geschlecht", data= filtergender},
@@ -451,11 +457,21 @@ view model =
                              {name= "Alkohol", data= filteralkohol},
                              {name= "Raucher", data= filterraucher},
                              {name= "Sport", data= filtersport}]
-                            }]
+
+                            }
+                    ,footer]
+                    
+                    
+                    ]
+                 --   ,footer
+
+                
 
                     
-                   , footer
-                ]
+                    
+                
+                
+                
 
   
 
