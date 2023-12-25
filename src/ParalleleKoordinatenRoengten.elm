@@ -106,8 +106,8 @@ blackbox model =
             .point text { display: inline; }
             .point:hover circle { stroke: rgba(1, 0, 0,1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
-            .line { stroke: rgba(255, 255, 255,0.6); stroke-width: 2px; fill: rgb(118, 214, 78); }
-            .line:hover { stroke: rgba(255, 0, 0 ,1.0); stroke-width: 1px; fill: rgb(118, 214, 78); }
+            .line { stroke: rgba(255, 255, 0,1); stroke-width: 1px; fill: rgba(255, 255, 0 , 1); }
+            .line:hover { stroke: rgba(255, 255, 0 ,1.0); stroke-width: 1px; fill: rgb(255, 255, 0,1); }
           """ ]
         , g [ transform [ Translate padding 0 ] ]
             [  text_
