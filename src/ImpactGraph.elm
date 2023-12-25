@@ -213,8 +213,8 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
 
         farbe : Color
         farbe = if größe <= 0.0 
-                then  Color.rgba 1 0 0 colorTon
-                else Color.rgba 0 1 0 colorTon      
+                then  Color.rgba 1 0 0 größe
+                else Color.rgba 0 1 0 größe      
 
     in
     g [ ]
