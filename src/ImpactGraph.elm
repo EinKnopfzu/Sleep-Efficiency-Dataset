@@ -5,7 +5,7 @@ import Scatterplot exposing (w, h, padding, radius, tickCount, defaultExtent)
 import List exposing (..)
 import JXstat exposing (..)
 import TypedSvg exposing (circle, g, line, rect, style, svg, text_, tspan)
-import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
+import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox, title)
 import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y, rx, x1, x2, y1, y2, dy, dx)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
@@ -117,8 +117,12 @@ graph model =
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0, 0.4); fill: rgba(255, 255, 255, 0.3); }
             .point text { display: inline; }
-            .point:hover circle { stroke: rgba(0, 0, 0, 1.0); fill: rgb(118, 214, 78); }
+            .point:hover circle { stroke: rgba(255, 255, 255, 1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
+            .hoverText:hover text { display: inline; stroke: rgba(255, 255, 0, 1.0);  }
+            .hoverText text { display: none; }
+            
+            
           """ ]
        , g [ transform [ Translate padding 0 ] ]
             [  text_
@@ -135,8 +139,9 @@ graph model =
                 , y ( padding *(-1)  - 16 )
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorStart
+                , TypedSvg.Attributes.class ["hoverText"]
                 ]
-                [ Html.text "Diese Graphen repräsentation soll Ihenn dabei helfen die Korrelation der Verhaltensweisen auf die Merkmale."
+                [ Html.text "Diese Graphen repräsentation soll Ihnen dabei helfen die Korrelation der Verhaltensweisen auf die Merkmale."
                  ]]
        , g [ transform [ Translate padding padding ] ]
             [ rect
@@ -189,6 +194,9 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
         yPosition : Float
         yPosition = ya + (sin (toFloat index * winkel) * radiusUmkreis)
 
+        unterOberIndikator : Float
+        unterOberIndikator = (sin (toFloat index * winkel) * radiusUmkreis)
+
 -- Berechnet die Korrelation und rundet sie auf die 4 Nachkommastelle auf. 
         größe :   Float
         größe = runden (Maybe.withDefault 0.0 ( (r (combineLists xAttribut.data datenwerte.data))))
@@ -214,20 +222,22 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
                 else greensInterpolator größe      
 
     in
-    g [ ]
+    g [  ]
         [ circle [ cx xPosition
                   , cy yPosition
                   , TypedSvg.Attributes.InPx.r (scaledRadius)
+                 
    --               , TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3 ) 
-                  , fill <| Paint <| colorTon]
+                  , fill <| Paint <| colorTon
+                  ]
                    []
         , text_
-            [ x (xPosition )
-            , y (yPosition)
+            [ x (xPosition  )
+            , y (if unterOberIndikator <= 0.1 then (yPosition - 8) else (yPosition + 20))-- scaledRadius)
             , textAnchor TypedSvg.Types.AnchorMiddle
-   --         , 
+            , TypedSvg.Attributes.class ["hoverText"]
             ]
-            [ TypedSvg.Core.text (datenwerte.name ++ ": "++ String.fromFloat größe) ]
+            [ TypedSvg.Core.text (datenwerte.name )] --++ ": "++ String.fromFloat größe) ]
         , line xa ya xPosition yPosition
              ]
 
