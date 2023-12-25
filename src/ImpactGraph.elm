@@ -9,15 +9,13 @@ import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, s
 import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y, rx, x1, x2, y1, y2, dy, dx)
 import TypedSvg.Core exposing (Svg, text)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
-
 import TypedSvg.Attributes exposing (x1)
 import Html exposing (text, br)
 import Scale exposing (ContinuousScale) 
 import Round exposing (round)
-
-import Color exposing (rgba)
-import Color exposing (Color)
+import Color exposing (Color, rgba)
 import TypedSvg.Types exposing (px)
+import Scale.Color exposing (redsInterpolator, greensInterpolator)
 
 --etwas hindernd, dass ELM keine Rückewärts kompatibilität erzwingt und man so nicht die neusten Versionen nutzen kann, wenn diese Abhängig sind
 
@@ -145,7 +143,7 @@ graph model =
             [ TypedSvg.Attributes.InPx.x1 (5)
             , TypedSvg.Attributes.InPx.y1 (5)
             , TypedSvg.Attributes.InPx.width (w - padding - 5 )
-            , TypedSvg.Attributes.InPx.height (h - 5)
+            , TypedSvg.Attributes.InPx.height (h - padding - 5)
             , rx 15
             , stroke <| Paint <| Color.rgb 0 0 0 
             ,fill PaintNone
@@ -199,22 +197,21 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
         rgbScale  =
             Scale.linear ( 0, 255 ) (0, 1)
 
-        colorTon : Float
-        colorTon = 
-            Scale.convert rgbScale größe
+        
+          
 
         radiusScale : ContinuousScale Float
         radiusScale  =
-            Scale.linear ( 9, 1 ) (20, 70)
+            Scale.linear ( 20 , 50 ) (0, 1)
 
         scaledRadius : Float
         scaledRadius = 
             Scale.convert radiusScale größe
 
-        farbe : Color
-        farbe = if größe <= 0.0 
-                then  Color.rgba 1 0 0 größe
-                else Color.rgba 0 1 0 größe      
+        colorTon : Color
+        colorTon = if größe <= 0.0 
+                then  redsInterpolator größe
+                else greensInterpolator größe      
 
     in
     g [ ]
@@ -222,12 +219,13 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
                   , cy yPosition
                   , TypedSvg.Attributes.InPx.r (scaledRadius)
    --               , TypedSvg.Attributes.InPx.r (sqrt(größe * größe) * Scatterplot.radius*3 ) 
-                  , fill <| Paint <| farbe]
+                  , fill <| Paint <| colorTon]
                    []
         , text_
             [ x (xPosition )
             , y (yPosition)
             , textAnchor TypedSvg.Types.AnchorMiddle
+   --         , 
             ]
             [ TypedSvg.Core.text (datenwerte.name ++ ": "++ String.fromFloat größe) ]
         , line xa ya xPosition yPosition
