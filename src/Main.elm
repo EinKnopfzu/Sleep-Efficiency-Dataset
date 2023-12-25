@@ -221,9 +221,12 @@ view model =
                     , Html.Attributes.style "text-align" "center"
                     , Html.Attributes.style "padding" "1em"
                     , Html.Attributes.style "position" "fixed"
+                    , Html.Attributes.style "margin-top" "6rem"
                     , Html.Attributes.style "left" "0"
                     , Html.Attributes.style "width" "10%"
                     , Html.Attributes.style "height" "100%"
+                    , Html.Attributes.style "min-height" "100vh"
+                    -- , Html.Attributes.style "border" "solid 5px red"
                     , Html.Attributes.style "font-family" "Arial"
                   ]
                   [Html.u[Html.Attributes.style "font-size" "20px" 
@@ -429,8 +432,9 @@ view model =
 
                 in
                    div [
-                    Html.Attributes.style "margin-left" "20%" 
+                    Html.Attributes.style "margin-left" "10%" 
                     , Html.Attributes.style "padding" "1em"
+
                     , Html.Attributes.style "height" "400" 
                     , Html.Attributes.style "width" "600"
                     , Html.Attributes.style "font-family" "Arial"] 
