@@ -60,7 +60,9 @@ Beschreiben Sie vorhandenen Daten.
 \textbf{Der verwendete Datensatz besteht aus: 452 Personen, welche durch Ihre ID identifiziert werden. Ob die ID nur den Datenpunkt oder die Person Identifiziert ist unklar. Daher lässt sich nicht sagen ob Schlafdaten einer Person mehrfach erfasst weurden sind. 
 Auf der Kaggle Seite wurde nach angaben des Authors erwähnt, dass der Datensatz im Kontext einer Studie von der ENSIAS, Marroco gesammelt wurde.
 Innerhalb einer eingeschränkten Recherche konnten weder auf der Webseite der ENSIAS noch in weitergehender Literaturrecherche eine Quelle identifiziert werden. Daher sollten die Daten und daraus entwickelten Ergebnisse, nicht unreflektiert übernommen werden. 
-Der Datensatz hat 15 Attribute, diese werden in drei Gruppen eingeteilt. Erste Gruppe: Identifikatoren, sind zur eindeutigen bestimmung eines Datentupels oder Person. Dieser Gruppe gehöhrt nur die ''ID'' an.
+Der Datensatz hat 15 Attribute, Nominale (Id, Gender und Raucher) und Quantitative (Rest) .\\
+
+Erste Gruppe: Identifikatoren, sind zur eindeutigen bestimmung eines Datentupels oder Person. Dieser Gruppe gehöhrt nur die ''ID'' an.
 Die ID identifiziert eine Person einmalig. Da keine ID wurde mehrfach aufgeführt wird ist anzunehmen, das jede Person nur einmalig an der Studie teilgenommen hat. Die ID wird als Integer bereitgestellt. Der Datenbereich geht von [1-452]
 \\ Age: Gibt das Alter an, welches die Person zum Zeitpunkt der Erfassung hatte. Das Alter wird als Integer angegben uns ist dahingehend Diskret z.B. 43 Jahre. Die Verteilung des Datenbereiches, werden im folgendem in diesem Formati angegeben. (Quantile [Min, 25, 50, 75, Max]), Quantile [9, 29, 40, 52, 69]
 \\ Gender: Das Geschlecht wird als String abgespeichert nimmt aber nur zwei Werte an: ''Male'' oder ''Female''. Dabei gibt es einen  Anteil von 50 Prozent Männern und 50 Prozent Frauen. 
@@ -98,18 +100,25 @@ Die Daten sind in dem Github Repository abgepeichert, dies ermöglicht eine zent
  mit 0.1 in Prozente übertragen wurden und dann mit der Schlafeffizienz und Schlandauer multipliziert.
  Dies ist besser, da somit die interpretation erleichtert wird, und die Vergleichbarkeit wird hergestellt. Vor der Transformation waren die Schlafphasen einer Person die 5 Stunden schläft und einer Person die 10 Stunden schläft nicht unterscheidbar. Jetzt läsäst sich klar anzeigen wie viel die Personen in den Schlafphasen verbracht haben.
  Gender und Raucher werden von einem String zu einem Float mittels case handeling konvertiert (genderToFloat und raucherToFloat). Dies ermöglicht es mit den Daten zu rechnen und erleichtert das weiter visualisieren. 
- Die Funktion sleep2Point hat einen Output von Typ Alias ''Aussortierte_Daten''.
+ Die Funktion sleep2Point hat einen Output von Typ Alias ''Aussortierte Daten''.
  Weiter werden die Attribute Bedtime und Wakeuptime in den aktuellen Visualisierungen nicht benutzt, könnte es bei der Weiterentwicklung interessant werden, daher wurden Sie im Datenkonstrukt belassen aber nicht weiter behandelt. Man könnte von einer sanften Projektion sprechen.
- Innerhalb der Einstellungen kann der Anwender eine Selektion durchführen und Einschränkungen auf das zu untersuchende Attribut anwenden. So werden nur Datentupel an die Visualisierungen übergeben die den Filterkriterien entsprechen.
+ Innerhalb der Einstellungen kann der Anwender eine Selektion durchführen und Einschränkungen auf das zu untersuchende Attribut anwenden.
+  So werden nur Datentupel an die Visualisierungen übergeben die dem Kriterium entsprechen.
 
-}
 
    
 
 \section{Visualisierungen}
 \subsection{Analyse der Anwendungsaufgaben}
 Die Aufgaben die durch die Visualisierung gelöst werden sollen: \\ 
-\textbf{ Das Problem ist folgendes: In hochkomplexen Systemen sind die Einflussfaktoren
+\textbf{ 
+ Handelt sich um explorative Visualisierung 
+
+ Expressivität
+  Effektivität
+  Angemessenheit
+Die ersten beiden Qualität der Daten zu überprüfen, die Interaktion und zusammenhänge zu identifizieren und einflüssel des verhaltens auf die Attribute zu identifizieren. 
+Das Problem ist folgendes: In hochkomplexen Systemen sind die Einflussfaktoren
  die die Ausprägung eines Merkmals beeinflussen nicht immer klar. Daher ist es wichtig, 
  dass wir die Daten visualisieren um die Zusammenhänge zu erkennen.\\
 Die Visualisierung soll uns also erlauben den Einfluss von multiplen Verhaltensindikatoren
