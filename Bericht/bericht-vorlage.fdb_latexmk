@@ -1,18 +1,18 @@
 # Fdb version 4
-["biber bericht-vorlage"] 1703605529 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1703611228 0
+["biber bericht-vorlage"] 1703605529 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1703612883 0
   "./literatur.bib" 1702836148 1681 8dc34e7b8306256f9952c9c56902c339 ""
-  "bericht-vorlage.bcf" 1703611226 107822 7780b8ee0010d5f413eb480b2d6f4fc4 "pdflatex"
+  "bericht-vorlage.bcf" 1703612882 107822 7780b8ee0010d5f413eb480b2d6f4fc4 "pdflatex"
   (generated)
   "bericht-vorlage.bbl"
   "bericht-vorlage.blg"
   (rewritten before read)
-["pdflatex"] 1703611222 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1703611228 0
-  "bericht-vorlage.aux" 1703611226 10187 05df93422017ac37f3fe9dcf454badb3 "pdflatex"
+["pdflatex"] 1703612877 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1703612883 0
+  "bericht-vorlage.aux" 1703612882 10187 9aec9e025b54ea5cdaa1c3b4df77660f "pdflatex"
   "bericht-vorlage.bbl" 1703605532 4044 ecf0a1d313e6f872dd067cf240211641 "biber bericht-vorlage"
-  "bericht-vorlage.out" 1703611226 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "bericht-vorlage.run.xml" 1703611226 2411 91f4544ee2047fdb431c3c2af033003e "pdflatex"
-  "bericht-vorlage.tex" 1703611220 19883 350c99fda14ce9632c5710d12c0a4392 ""
-  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1703611220 19883 350c99fda14ce9632c5710d12c0a4392 ""
+  "bericht-vorlage.out" 1703612881 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "bericht-vorlage.run.xml" 1703612882 2411 91f4544ee2047fdb431c3c2af033003e "pdflatex"
+  "bericht-vorlage.tex" 1703612870 20067 68a054e1aed1e3177bf82e665ddacc89 ""
+  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1703612870 20067 68a054e1aed1e3177bf82e665ddacc89 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1691421962 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1691420818 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1691420393 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
