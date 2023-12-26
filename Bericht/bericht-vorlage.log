@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  26 DEC 2023 20:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  26 DEC 2023 21:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -593,6 +593,7 @@ LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 Package hyperref Info: Link coloring OFF on input line 16.
+ (./bericht-vorlage.out) (./bericht-vorlage.out)
 \@outlinefile=\write4
 \openout4 = `bericht-vorlage.out'.
 
@@ -745,83 +746,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--85
 
  []
 
-[2] [3] [4]
-Runaway argument?
-{Der Datensatz wurde auf \href {https://www.kaggle.com/datasets/equil\ETC.
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:99: Paragraph ended before \text@command was complete.
-<to be read again> 
-                   \par 
-l.99  }
-       
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:99: Too many }'s.
-<recently read> \egroup 
-                        
-l.99  }
-       
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 104--120
+[2] [3] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 103--119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--120
+Underfull \hbox (badness 10000) in paragraph at lines 103--119
 
  []
 
-[5] [6] [7] [8]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 199.
+[6] [7] [8]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 198.
  (c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 199.
+(Font)              <10.95> on input line 198.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 199.
+(Font)              <8> on input line 198.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 199.
+(Font)              <6> on input line 198.
  [9] (./bericht-vorlage.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-Package rerunfilecheck Warning: File `bericht-vorlage.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `bericht-vorlage.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                bericht-vorlage
-(biblatex)                and rerun LaTeX afterwards.
-
+Package rerunfilecheck Info: File `bericht-vorlage.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package logreq Info: Writing requests to 'bericht-vorlage.run.xml'.
 \openout1 = `bericht-vorlage.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21416 strings out of 475187
- 393573 string characters out of 5767784
+ 21421 strings out of 475187
+ 393688 string characters out of 5767784
  1935248 words of memory out of 5000000
- 42429 multiletter control sequences out of 15000+600000
+ 42430 multiletter control sequences out of 15000+600000
  616644 words of font info for 81 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,107p,11024b,2371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on bericht-vorlage.pdf (9 pages, 238950 bytes).
+Output written on bericht-vorlage.pdf (9 pages, 240744 bytes).
 PDF statistics:
  187 PDF objects out of 1000 (max. 8388607)
  158 compressed objects within 2 object streams

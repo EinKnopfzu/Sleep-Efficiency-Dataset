@@ -173,6 +173,12 @@ INPUT ./bericht-vorlage.aux
 INPUT ./bericht-vorlage.aux
 INPUT bericht-vorlage.aux
 OUTPUT bericht-vorlage.aux
+INPUT ./bericht-vorlage.out
+INPUT ./bericht-vorlage.out
+INPUT bericht-vorlage.out
+INPUT bericht-vorlage.out
+INPUT ./bericht-vorlage.out
+INPUT ./bericht-vorlage.out
 OUTPUT bericht-vorlage.out
 OUTPUT bericht-vorlage.pdf
 INPUT c:/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
