@@ -1,18 +1,18 @@
 # Fdb version 4
-["biber bericht-vorlage"] 0 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1703631650 -1
+["biber bericht-vorlage"] 0 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1703634684 -1
   "./literatur.bib" 1702836148 1681 8dc34e7b8306256f9952c9c56902c339 ""
-  "bericht-vorlage.bcf" 1703631648 107822 7780b8ee0010d5f413eb480b2d6f4fc4 "pdflatex"
+  "bericht-vorlage.bcf" 1703634683 107822 7780b8ee0010d5f413eb480b2d6f4fc4 "pdflatex"
   (generated)
   "bericht-vorlage.bbl"
   "bericht-vorlage.blg"
   (rewritten before read)
-["pdflatex"] 1703631643 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1703631650 2
-  "bericht-vorlage.aux" 1703631648 10193 b8d94a06b56b49fb2ece6d914e4ff6be "pdflatex"
+["pdflatex"] 1703634678 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1703634684 2
+  "bericht-vorlage.aux" 1703634683 10193 335d7d510cfb7b67f500f4b4093f41ff "pdflatex"
   "bericht-vorlage.bbl" 1703605532 4044 ecf0a1d313e6f872dd067cf240211641 "biber bericht-vorlage"
-  "bericht-vorlage.out" 1703631647 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "bericht-vorlage.run.xml" 1703631648 2411 a99c109aa5a06ecdca85bbb679d88246 "pdflatex"
-  "bericht-vorlage.tex" 1703631634 21912 d943843273b968c3b50aa7ec897aa8c3 ""
-  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1703631634 21912 d943843273b968c3b50aa7ec897aa8c3 ""
+  "bericht-vorlage.out" 1703634682 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "bericht-vorlage.run.xml" 1703634683 2411 a99c109aa5a06ecdca85bbb679d88246 "pdflatex"
+  "bericht-vorlage.tex" 1703634668 21920 42dbf1b14f5f4d43e66024cfe2622e60 ""
+  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1703634668 21920 42dbf1b14f5f4d43e66024cfe2622e60 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1691421962 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1691421962 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1691420818 3524 cb3e574dea2d1052e39280babc910dc8 ""

@@ -3,25 +3,16 @@ module Main exposing (..)
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing(..)
-import Html.Events exposing (onInput, onClick)
-import Maybe.Extra exposing (isJust)
+import Html.Events exposing (onInput)
+
 import Http
-import Color
 import List exposing (filter, sum)
 import Csv.Decode as Decode exposing (Decoder)
-import Debug exposing (toString)
-import Scale exposing (ContinuousScale)
-import Axis
-import Stat
-import Statistics exposing (extent, quantile)
-import TypedSvg exposing (circle, g, line, rect, style, svg, text_)
-import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
-import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
-import TypedSvg.Core exposing (Svg, text)
+
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
 import Scatterplot exposing (..)
 import ParalleleKoordinatenRoengten exposing (blackbox) 
-import ImpactGraph exposing (graph, ImpactGraphData)
+import ImpactGraph exposing (graph)
 
 
 -- MAIN
@@ -484,10 +475,11 @@ view model =
                              {name= "Raucher", data= filterraucher},
                              {name= "Sport", data= filtersport},
                              {name = model.droppdown3, data = zList},
-                             {name = model.droppdown2, data = yList}]
-                            } 
-                    ,footer]
+                             {name = model.droppdown2, data = yList}]}
+
+                   ,footer]
                     ]
+
 
                 
 
