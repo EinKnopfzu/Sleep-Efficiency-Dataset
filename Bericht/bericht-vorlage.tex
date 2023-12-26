@@ -77,15 +77,19 @@ Die Interprettation der Sleep Duration wird weiter dadurch erschwert, dass im we
 \\ Caffeine Intake = Gibt an wie viel Koffeein die Person in den letzten 24 Stunden zu sich genommen hat. Die Maßeinheit hierbei beträgt mg. Die Daten werden als Float abgespeichert und haben Quantile von  [0.0, 0.0, 25.0, 50.0, 200.0].
 \\ Alcohol Intake = Gibt an wie viel Alkohol die Personen ind en letzten 24 Stunden zu sich genommen hat in Oz. Die Daten haben Quantile von [0.0, 0.0, 0.0, 2.0, 5.0]
 \\ Tobacco Intake = Gibt an ob die Person Raucht. Die Daten sind als String abgespeichert: Yes für Raucher und No für Nichtgeraucht. 154 Personen geben an zu Rauchen und 298 geben an NichtRaucher zu sein. 
-\\ Exercise Intake = Gibt an wie viele Einheiten Sport die Person in der Woche macht. Dabei ist nicht angeben welche Maßeinheit diese Einehiten Sport haben.  Die Daten haben Quantile von [0, 0, 2, 3 , 5], es gibt 6 fehlende Werte.     \\ }
+\\ Exercise Intake = Gibt an wie viele Einheiten Sport die Person in der Woche macht. Dabei ist nicht angeben welche Maßeinheit diese Einehiten Sport haben.  Die Daten haben Quantile von [0, 0, 2, 3 , 5], es gibt 6 fehlende Werte.     \\ }\\
 Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen.
-\textbf{Bei Annahme, dass die Daten legitim sind und die  angegebene Interpettation der Attribute korrekt ist, ermöglicht dieser Datensatz geneu Einblicke in die Schlafqualität vorallem die Schlafphasen und Dauer dieser. Zusätzlich werden relevante Verhaltsweisen und Einflüsse erfasst. Die Erfassung der Einnahme von Kaffee und Alkohol ist, suboptimal, da die beiden Substanzen innerhalb des im menschlichen Körpers eine geringe Halbwertszeit aufweisen. Dahingehend wäre der zeitpunkt der Einnahme relevant. Weitere Faktoren die die Schlafqualität beinflussen werden nicht erfasst und die länge der Unterbrechungen werden nicht differenziert und nicht den Schlafphasen zugeordnet. So wäre es Interessant, zu wissen welche der Schlafphasen durch welche Verhaltensweisen gestört werden. Weiter lässt sich argumentiern, dass die verteilung der Verhaltensweisen sehr linksseitig ist. Dies mag auf kulturelle Untershciede zurückzuführen sein. Daher muss die Aussagekräftigkeit des Datensatzen auf den Marrokanischen Lebensstil relativiert werden. }
+\textbf{Bei Annahme, dass die Daten legitim sind und die  angegebene Interpettation der Attribute korrekt ist, ermöglicht dieser Datensatz geneu Einblicke in die Schlafqualität vorallem die Schlafphasen und Dauer dieser. Zusätzlich werden relevante Verhaltsweisen und Einflüsse erfasst. Die Erfassung der Einnahme von Kaffee und Alkohol ist, suboptimal, da die beiden Substanzen innerhalb des im menschlichen Körpers eine geringe Halbwertszeit aufweisen. Dahingehend wäre der Zeitpunkt der Einnahme relevant. Weitere Faktoren die die Schlafqualität beinflussen werden nicht erfasst weiter werden die länge der individuellen Schlafunterbrechungen nicht differenziert und den drei Schlafphasen nicht zugeordnet. So könnte es für den Anwender von Interesse zu sein, welche der Schlafphasen durch welche Verhaltensweisen gestört werden. Weiter lässt sich argumentiern, dass die Verteilung der Verhaltensweisen sehr linksseitig ist. Dies mag auf kulturelle Unterschiede zurückzuführen sein. Daher muss die Aussagekräftigkeit des Datensatzen auf den Marrokanischen Lebensstil eingeschränkt werden. }
  Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
 Erklären sie die technische Bereitstellung der Daten.
 
-\textbf{Daten werden als amerikanisches CSV auf Kaggle.com bereitgestellt. (MICK: Genauen Typ der CSV herausfinden. (trennung mit , statt dem Europäischem ;))}
 
 \textbf{ Die Daten }
+\textbf{Der Datensatz wurde auf  \href{https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency/data}{Kaggle} 
+veröffentlicht und unterliegem keinem Copyright Schutz. Die Daten sind als CSV mit einer Größe von 9kB zugänglich.
+Die Daten sind im Github Repository abgepeichert um auf Sie mit einem Http request zugänglich zu machen. 
+}
+
 Wie sind die Daten zugänglich? Welche Formate werden genutzt. Gibt es Besonderheiten beim Lesen der Formate?
 Beschreiben sie die Datenvorverarbeitung.
  Welche Datenvorverarbeitungsschritte sind notwendig?
