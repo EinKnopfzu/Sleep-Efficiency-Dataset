@@ -60,16 +60,17 @@ Beschreiben Sie vorhandenen Daten.
 \textbf{Der verwendete Datensatz besteht aus: 452 Personen, welche durch Ihre ID identifiziert werden. Ob die ID nur den Datenpunkt oder die Person Identifiziert ist unklar. Daher lässt sich nicht sagen ob Schlafdaten einer Person mehrfach erfasst weurden sind. 
 Auf der Kaggle Seite wurde nach angaben des Authors erwähnt, dass der Datensatz im Kontext einer Studie von der ENSIAS, Marroco gesammelt wurde.
 Innerhalb einer eingeschränkten Recherche konnten weder auf der Webseite der ENSIAS noch in weitergehender Literaturrecherche eine Quelle identifiziert werden. Daher sollten die Daten und daraus entwickelten Ergebnisse, nicht unreflektiert übernommen werden. 
-Der Datensatz hat 18 Attribute. 
- Umgang mit den leeren Feldern-> Mit List.map (Bei einem Nothing, wird der Tupel komplett gelöscht. ), da wir somit nur mit einem sauberem Datensatz arbeiten. Datensatz hat nur Fehlende werte bei gewisse Datenpunkten. (Koffeein, Alkohol, Tabak, Sport).
-\\ ID\@ : Identifikator der eine Reihe eindeutig Identifiziert. -> Unique identifier keine Person wird zweimal erfasst. -> keine Zeitentwicklung. -> 452 Personen erfasst. Type : Integer.
-\\ Age: Gibt das Alter der Person zum zeitpunkt der erfassung hatte.-> Type : Integer   Datenreichweite 9-69 Jahre. Diskreter Wert.
-\\ Gender: Gibt das Geschlecht der Person mittels ``Male'' oder ``Female'' wieder. Type : String : Boolean Wert.
-\\ Bedtime: Gibt die Uhrzeit an zu der die Person ins Bett gegangen ist. Type : DateTime: Diskreter Wert. Halbe Stunde Schritte
-\\ WakeUp Time = Gibt das Datum und die Uhrzeit an an dem die Person erwacht ist.  Type : DateTime
-\\ Sleep Duration = Gibt die Stunden an, die die Person im Bett schlafend verbracht hat in Stunden. Type: Float 
-\\  Schlaf Effizienz = Gibt die Zeit an die im Bett schlafend verbracht wurde. Type: Float -> In Prozent -> Interpretation nur in combination mit Anzahl erwacht möglich. -> MICK müssen wir das noch Transmutieren? -> Nacher drüber nachdenken.
-\\ REM Sleep percentage = Gibt den Prozentualen Anteil an, der im REM Schlaf verbracht wurde. Type: Integer WICHTIG: In Prozent. 
+Der Datensatz hat 15 Attribute, diese werden in drei Gruppen eingeteilt. Erste Gruppe: Identifikatoren, sind zur eindeutigen bestimmung eines Datentupels oder Person. Dieser Gruppe gehöhrt nur die ''ID'' an.
+Die ID identifiziert eine Person einmalig. Da keine ID wurde mehrfach aufgeführt wird ist anzunehmen, das jede Person nur einmalig an der Studie teilgenommen hat. Die ID wird als Integer bereitgestellt. Der Datenbereich geht von [1-452]
+\\ Age: Gibt das Alter an, welches die Person zum Zeitpunkt der Erfassung hatte. Das Alter wird als Integer angegben uns ist dahingehend Diskret z.B. 43 Jahre. Der Datenbereich geht von [9-69].
+\\ Gender: Das Geschlecht wird als String abgespeichert nimmt aber nur zwei Werte an: ''Male'' oder ''Female''. Dabei gibt es einen  Anteil von 50 Prozent Männern und 50 Prozent Frauen. 
+\\ Bedtime: Gibt die Uhrzeit an zu der die Person ins Bett gegangen ist hierbei ist nicht klar ob damit der Zeitpunkt gemeinst ist, zu dem die Person eingeschlafen ist oder zu dem die Person sich ins Bett gelegt hat.
+ Die Information wird als DateTime angegeben. Die Daten steigen in 30 Minuten schritten und ist trotz DateTime somit Diskret. 
+\\ WakeUp Time = Gibt das Datum und die Uhrzeit an zu dem die Person erwacht steigt analog zu der Bedtime in halben Stunden Schritten an. Das Datum ist bei beiden DATTime formaten nicht von weiterem interesse, da es keine zeitliche Entwicklung der erfassten Personen gibt. 
+\\ Sleep Duration: Die Schlafdauer ist wie die Bed Time unklar in Ihrer interpretation, da sich der Wert immer aus der Differenz zwischen bedtime und WakeupTime berechnet. Daher ist unklar ob es sich um die geschlafene oder um die im Bett verbrachte Zeit handelt. Die Spalte wird als Float angegeben und steigt aufgrund der halbstündlichen Sprünge der BedTime und WakeupTime auch in 0.5 Schritten. Die Daten reichen von [5, 10] Studunden.
+Die Interprettation der Sleep Duration wird weiter dadurch erschwert, dass im weiterem Datensatz die Anzahl angegeben wird wie oft eine Person in der Nacht wach wird. Aber ohne Anganbe wie lange diese "Schlafpausen" spezifisch sind.
+\\ Schlaf Effizienz = Gibt den prozentualen Anteil an, die eine Person Schlafend im Bett verbracht hat. Die Daten werden als Float mit zwei Nachkommastellen angeben. Eine Person die 5 Stunden im Bett verbracht hat und davon eine Stunde wach war. Hat also eine Schlafeffizienz von 80 Prozent. Da hier wieder die Interpetations problematik besteht. Wird im weiteren davon ausgegangen, dass die Schlafeffizienz angibt welchen Anteil die person nach dem Einschlafen schlafend, also in einem der drei Schlafzyklen verbracht hat.
+\\ REM Sleep percentage = Die REM steht für Rapid Eye Movement Schlaf, dies ist einer der drei Schlafzyklen die ein Mensch im Schlaf durchführt. Die CSC empfiehlt einen Anteil von 25 Prozent  \href{https://www.healthline.com/health/how-much-deep-sleep-do-you-need}{Healthline} sollte.  Der REM Percentage gibt den Prozentualen Anteil an den die schlafende Person im REM Verbracht hat. Also Anteil REM an Schlaff Effizienz. Die Daten werden als Integer abgespeichert. 
 \\ Deep sleep percentage? = Gibt den Prozentualen Anteil an, der im Tiefschlaf verbracht wurde. Type: Integer WICHTIG : In Prozent.
 \\ Light sleep percentage = Gibt den Prozentualen Anteil an, der im Leichtschlaf verbracht wurde. Type: Integer WICHTIG: In Prozent.
 \\ Awakenings = Absolute Anzahl an, wie oft eine Person aufgewacht ist. Interpretation -> 0.0 bedeutet, ungestörter Schlaf. -> Lässt an der validität des Datensatzes zweifeln. Da, bei "0.0" mal aufgewacht die person im Schlaf gestorben ist.
@@ -92,8 +93,8 @@ Beschreiben sie die Datenvorverarbeitung.
  Welche Datenvorverarbeitungsschritte sind notwendig?
  \textbf{ Einspielen des CSV als String, -> Werden aus dme Github Repository gezogen.  }
   Beschreiben Sie die einzelnen Schritte und begründen sie sie, z.B. warum werden manche Daten weggelassen, über welche Mengen werden Durchschnitte berechnet, warum sind die so berechneten Werte aussagekräftiger als andere Werte. Wenn möglich sollen sie die Datenvorverarbeitung in Elm programmieren, so dass ihre Anwendung auf eine Änderung der Rohdaten reagieren kan.
- 
- 
+  \textbf{Umgang mit den leeren Feldern-> Mit List.map (Bei einem Nothing, wird der Tupel komplett gelöscht. ), da wir somit nur mit einem sauberem Datensatz arbeiten. Datensatz hat nur Fehlende werte bei gewisse Datenpunkten. (Koffeein, Alkohol, Tabak, Sport).
+  }
   Realisiert eine Daten-zu-Daten-Abbildung\\
  \textbf{ Mögliche Operationen:\\
     - Vervollständigung, Interpolation\\
