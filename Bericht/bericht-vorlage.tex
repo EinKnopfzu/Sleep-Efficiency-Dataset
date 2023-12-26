@@ -85,7 +85,7 @@ Erklären sie die technische Bereitstellung der Daten.
 
 
 \textbf{ Die Daten }
-\textbf{Der Datensatz wurde auf  \href{https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency/data}{Kaggle} 
+Der Datensatz wurde auf  \href{https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency/data}{Kaggle} 
 veröffentlicht und unterliegem keinem Copyright Schutz. Die Daten sind als CSV mit einer Größe von 9kB zugänglich.
 Die Daten sind in dem Github Repository abgepeichert, dies ermöglicht eine zentrale aktualisierung der Daten, falls dies Nötig sein sollte.  
  Das Programm ruft die CVS Datei  mittels eines Http.get request auf und speichert diese als einen String ab.  
@@ -94,30 +94,16 @@ Die Daten sind in dem Github Repository abgepeichert, dies ermöglicht eine zent
  Auf den String wird die Funktion ''stringtoUnverarbeitete'' , deren Ziel es ist den String in eine List(UnverarbeiteteDaten) zu transformieren.
  Die Funktion benutzt das  Paket BrianHicks/elm-csv (Im Code als Decode)  Diese zieht die Namen der Felder aus der ersten Reihe in dem String. Die Funktion decode decodiert die Inputdaten, relevant hierbei ist das, auch leere Felder in dem String vorkommen dürfen. Die Funktion Decode.blank gibt ein  ''Nothing'' zurück, falls das Feld leer sein sollte.
  Wenn es doch zu einem Fehler kommen sollte gibt die Funktion stringtoUnverarbeitete eine leere Liste zurück an das Modell.
- Wenn die Daten nun in der Form Unverarbeitete Daten sind wird die Funktion ''sleep2Point'' angewandt. Diese entfernt einen Tupel, wenn eines seiner Felder ein ''Nothing'' beinhaltet. Weiter werden die Werte für REM, Tiefschlaf und Leitschlaf in wirklich in diesen verbrachten Stunden transformiert indem diese, mit 0.1 in Prozente übertragen wurden und dann mit der Schlafeffizienz und Schlandauer multipliziert.
+ Wenn die Daten nun in der Form Unverarbeitete Daten sind wird die Funktion ''sleep2Point'' angewandt. Diese entfernt einen Tupel, wenn eines seiner Felder ein ''Nothing'' beinhaltet. Weiter werden die Werte für REM, Tiefschlaf und Leitschlaf in wirklich in diesen verbrachten Stunden transformiert indem diese, 
+ mit 0.1 in Prozente übertragen wurden und dann mit der Schlafeffizienz und Schlandauer multipliziert.
  Dies ist besser, da somit die interpretation erleichtert wird, und die Vergleichbarkeit wird hergestellt. Vor der Transformation waren die Schlafphasen einer Person die 5 Stunden schläft und einer Person die 10 Stunden schläft nicht unterscheidbar. Jetzt läsäst sich klar anzeigen wie viel die Personen in den Schlafphasen verbracht haben.
- Gender und Raucher werden von einem String zu einem Float mittels case handeling transformiert (genderToFloat und raucherToFloat). Dies ermöglicht es mit den Daten zu rechnen und erleichtert das weiter verarbeiten. 
- Weiter werden die Attribute Bedtime und Wakeuptime in den aktuellen Visualisierungen nicht benutzt, könnte es bei der Weiterentwicklung interessant werden, daher wurden Sie im Datenkonstrukt belassen aber nicht weiter behandelt.
- }
- 
-\textbf{ Fehlende Datenpunkte (Sport, Alkohol, Taback...)}
- \textbf{ Einspielen des CSV als String, -> Werden aus dme Github Repository gezogen.  }
-  Beschreiben Sie die einzelnen Schritte und begründen sie sie, z.B. warum werden manche Daten weggelassen, 
-  über welche Mengen werden Durchschnitte berechnet,
-   warum sind die so berechneten Werte aussagekräftiger als andere Werte.
-    Wenn möglich sollen sie die Datenvorverarbeitung in Elm programmieren, so dass ihre Anwendung auf eine Änderung der Rohdaten reagieren kan.
-  \textbf{Umgang mit den leeren Feldern-> Mit List.map (Bei einem Nothing, wird der Tupel komplett gelöscht. ), da wir somit nur mit einem sauberem Datensatz arbeiten. Datensatz hat nur Fehlende werte bei gewisse Datenpunkten. (Koffeein, Alkohol, Tabak, Sport).
-  }
-  Realisiert eine Daten-zu-Daten-Abbildung\\
- \textbf{ Mögliche Operationen:\\
-    - Vervollständigung, Interpolation\\
-    - Projektion (Reduzierung der Variablen)\\
-    - Selektion (Anwendung von Filterkriterien, Glättung,Ausreißereliminierung)\\
-    - Berechnung impliziter Eigenschaften (z.B. Maximum,Gradient)\\
-    - Konvertierung\\
-    \\}
+ Gender und Raucher werden von einem String zu einem Float mittels case handeling konvertiert (genderToFloat und raucherToFloat). Dies ermöglicht es mit den Daten zu rechnen und erleichtert das weiter visualisieren. 
+ Die Funktion sleep2Point hat einen Output von Typ Alias ''Aussortierte_Daten''.
+ Weiter werden die Attribute Bedtime und Wakeuptime in den aktuellen Visualisierungen nicht benutzt, könnte es bei der Weiterentwicklung interessant werden, daher wurden Sie im Datenkonstrukt belassen aber nicht weiter behandelt. Man könnte von einer sanften Projektion sprechen.
+ Innerhalb der Einstellungen kann der Anwender eine Selektion durchführen und Einschränkungen auf das zu untersuchende Attribut anwenden. So werden nur Datentupel an die Visualisierungen übergeben die den Filterkriterien entsprechen.
 
-\textbf{ Die Daten sollten so konvertiert werden, dass Sie den Visualisierungsanwendungen entsprechen. Veränderung der Merkmalsausprägungs Daten alle Strings außer ID in eine Interpretierbaren Wert. Unsere Strings sind Boolean, male oder female und Raucher Yes und No }
+}
+
    
 
 \section{Visualisierungen}
