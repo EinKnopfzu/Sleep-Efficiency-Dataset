@@ -16,7 +16,7 @@
 \begin{document}
 % ----------------------------------------------------------------------------
 \subject{Projektbericht zum Modul Information Retrieval und Visualisierung Sommersemester 2023}
-\title{Visualisierungen zur analyse der Schlaf Effizienz}
+\title{Visualisierungen zur Analyse von Einflussfaktoren auf die Schlaff Effizienz}
 %\subtitle{Untertitel}% optional
 \author{Mick Stewart Wörner}% obligatorisch
 %\date{10.9.2023}
@@ -40,18 +40,28 @@ I effektiv (Effektivität hängt nicht nur von den Daten ab, sondern auch von:\\
 3. Eine effektive Visualisierung versucht die Inhalte auf intuitivenWegen zu präsentierten)
 I angemessen sein (Angemessenheit beschreibt den Verbrauch an Ressourcen zur Erzeugung der Visualisierung)}
 \subsection{Zielgruppen}
-\textbf{Die Visualsierung soll dabei helfen die Einflüsse von Unterschiedlichen Verhaltensweisen auf in der Lebensweise zu analysieren. Hierbei werden Lebensstile anhand von Koffeein, alkohol, Tabak Konsum und Sport verhalten analysiert. Das  soll Forschern als auch der privatperson dabei Helfen, risikoreiche verhaltensweisen zu identifizieren um die Lebensqualität zu verbessern: Die Schlafqualität hat einen hohen einfluss auf die Lebensqualität }
+\textbf{Die Schlafqualität hat einen signifikanten positiven Einfluss auf die Lebensqualität von Menschen.  \cite*[The association between sleep quality and quality of life: a population-based study Sujin Lee a , Ji Hyun Kim c , Jae Ho Chung b, ]{2}  
+Das Menschliche schlafsystem ist allerdings ein hochkompliziertes System das von Multiplen externen Faktoren beeinflusst werden kann.
+Die in diesem Projekt dargestellten Visualisierungen sollen dabei helfen Einflüsse und Zusammenhänge bei der Schlafqualität zu erkennen und Forschern sowie Privatpersonen dabei zu helfen den Einfluss von Lebensstilen auf verschiedene Maße von Schlafqualität zu erkennen.
+Die untersuchten Attribute sind der Koffeein, Alkohol, Tabak Konsum und Sport sowie das Alter und Geschlecht der Personen.
+Dies sollte Personen hefen die Verhaltensweisen zu identifizieren, mit denen Sie den größten Einfluss auf Ihre Schlafqualität haben könnten. 
+Dabei kann ausgegengen werden, dass die Benutzer wissen, dass die Datenlage kritisch in hinblick auf die Aussagekräftigkeit und praktische implikationen reflektiert werden muss. 
+Dies ist wichtig, da der benutze Datensatz  n < XXXX Datenpunkte besetitz, welche durch den eingebauten Filter weiter reduziert werden können. ab n<30 ist die Statistische Aussagekraft ncihtmehr gegeben.  klein ist.  }
 Beschreiben sie die Personengruppe oder Personengruppen, die das von ihnen benannte Anwendungsproblem lösen möchte.
  Auf welches Vorwissen können sie in dieser Gruppen von Anwenderinnen aufbauen? 
  Welche Informations"-bedürf"-nisse werden durch die Visualisierungen adressiert?:
 \textbf{Überarbeiten: \\ The data was then analyzed to understand the relationship between lifestyle factors 
   and sleep patterns and to identify any potential areas for intervention to improve sleep \\}
 \subsection{Überblick und Beiträge}
-In diesem Abschnitt geben sie einen kurzen Überblick über die Daten und verwendeten Visualisierungen. Dann benennen sie die Beiträge ihres Projekts. Diese Beiträge müssen sie in den hinteren Teilen des Berichts genauer ausführen und belegen.
+\textbf{Im diesem Abschnitt wird eine Überblick auf die Daten und verwendeten Visualisierungstechniken. }In diesem Abschnitt geben sie einen kurzen Überblick über die Daten und verwendeten Visualisierungen. Dann benennen sie die Beiträge ihres Projekts. Diese Beiträge müssen sie in den hinteren Teilen des Berichts genauer ausführen und belegen.
 
 \section{Daten}
 Beschreiben Sie vorhandenen Daten. 
-\textbf{Input Daten ist csv Datei mit teilweise leeren Datenpunkten. Umgang mit den leeren Feldern-> Mit List.map (Bei einem Nothing, wird der Tupel komplett gelöscht. ), da wir somit nur mit einem sauberem Datensatz arbeiten. Datensatz hat nur Fehlende werte bei gewisse Datenpunkten. (Koffeein, Alkohol, Tabak, Sport).
+\textbf{Der verwendete Datensatz besteht aus: 452 Personen, welche durch Ihre ID identifiziert werden. Ob die ID nur den Datenpunkt oder die Person Identifiziert ist unklar. Daher lässt sich nicht sagen ob Schlafdaten einer Person mehrfach erfasst weurden sind. 
+Auf der Kaggle Seite wurde nach angaben des Authors erwähnt, dass der Datensatz im Kontext einer Studie von der ENSIAS, Marroco gesammelt wurde.
+Innerhalb einer eingeschränkten Recherche konnten weder auf der Webseite der ENSIAS noch in weitergehender Literaturrecherche eine Quelle identifiziert werden. Daher sollten die Daten und daraus entwickelten Ergebnisse, nicht unreflektiert übernommen werden. 
+Der Datensatz hat 18 Attribute. 
+ Umgang mit den leeren Feldern-> Mit List.map (Bei einem Nothing, wird der Tupel komplett gelöscht. ), da wir somit nur mit einem sauberem Datensatz arbeiten. Datensatz hat nur Fehlende werte bei gewisse Datenpunkten. (Koffeein, Alkohol, Tabak, Sport).
 \\ ID\@ : Identifikator der eine Reihe eindeutig Identifiziert. -> Unique identifier keine Person wird zweimal erfasst. -> keine Zeitentwicklung. -> 452 Personen erfasst. Type : Integer.
 \\ Age: Gibt das Alter der Person zum zeitpunkt der erfassung hatte.-> Type : Integer   Datenreichweite 9-69 Jahre. Diskreter Wert.
 \\ Gender: Gibt das Geschlecht der Person mittels ``Male'' oder ``Female'' wieder. Type : String : Boolean Wert.
@@ -62,14 +72,15 @@ Beschreiben Sie vorhandenen Daten.
 \\ REM Sleep percentage = Gibt den Prozentualen Anteil an, der im REM Schlaf verbracht wurde. Type: Integer WICHTIG: In Prozent. 
 \\ Deep sleep percentage? = Gibt den Prozentualen Anteil an, der im Tiefschlaf verbracht wurde. Type: Integer WICHTIG : In Prozent.
 \\ Light sleep percentage = Gibt den Prozentualen Anteil an, der im Leichtschlaf verbracht wurde. Type: Integer WICHTIG: In Prozent.
-\\ Awakenings = Absolute Anzahl an , wie oft eine Person aufgewacht ist. Interpretation -> 0.0 bedeutet, ungestörter Schlaf. -> Lässt an der validität des Datensatzes zweifeln. Da, bei "0.0" mal aufgewacht die person im Schlaf gestorben ist.
+\\ Awakenings = Absolute Anzahl an, wie oft eine Person aufgewacht ist. Interpretation -> 0.0 bedeutet, ungestörter Schlaf. -> Lässt an der validität des Datensatzes zweifeln. Da, bei "0.0" mal aufgewacht die person im Schlaf gestorben ist.
 \\ Caffeine Intake = Gibt an wie viel Koffeein die Person zu sich genommen hat in den letzten 24 Studenen (In mg) ( Frage für Mick: Halbwertszeit von Koffein? (Adenosin rezeptoren block.) -> Problematik bei der Interpretation. Hoher kofeein intake in the Morining might not have th esame effect as the koffeein intake in the evening, Surge of adenosin before going to bed -> More sleep? Or maybe worse sleep?: Datentyp: VERHALTEN ). 
 \\ Alcohol Intake = Gibt an wie viel Alkohol die Personen ind en letzten 24 Stundne zu sich genommen hat. (In OZ)  Maßeinheit. Alkohol-> Nerven gift -> Blockierung der REM Tiefschlafphase? 
 \\ Tobacco Intake = Gibt an wie viel Tabak die Person zu sich genommen hat. ->Boolean Wert. Raucht die Person ja oder nein. (Datensatz wurde angeblich in einem Paper produziert.)
 \\ Exercise Intake = Gibt an wie viel Sport die Person getrieben hat. Sporteinheiten pro Woche. (Gibt nur die Absolute Anzahl an, das Problem liegt darin, dass die Daten nicht nach Minute aufgeteilt sind. ) \\ }
 Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen.
 \textbf{es ist nciht klar ob die Daten legitim sind. Die Quelle auf Kaggle ist nicht angegeben.-> 
-Eignet sich besonders gut für unseren Zweck, da wir die Datenverteilung und das Verhalten von der Variablen zueinander untersuchen wollen. }
+Eignet sich besonders gut für unseren Zweck, da wir die Datenverteilung und das Verhalten von der Variablen zueinander untersuchen wollen.
+Andere Einflussfaktoen werden nicht aufgenommen, Datensatz ist etwas klein. Messeinheiten sind nciht ordentlich erfssst.  }
  Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
 Erklären sie die technische Bereitstellung der Daten.
 
@@ -97,12 +108,16 @@ Beschreiben sie die Datenvorverarbeitung.
 
 \section{Visualisierungen}
 \subsection{Analyse der Anwendungsaufgaben}
-Die Aufgaben die durch dei Visualisierung gelöst werden sollen: \\ 
-\textbf{ Das Problem ist folgendes: In hochkomplexen Systemen sind die Einflussfaktoren die die ausprägung eines Merkmals beeinflussen nicht immer klar. Daher ist es wichtig, dass wir die Daten visualisieren um die Zusammenhänge zu erkennen.\\
-Die Visualisierung soll uns also erlauben den Einfluss von multiplen Verhaltensindikatoren auf die Ausprägung eines Merkmales zu schätzen. 
+Die Aufgaben die durch die Visualisierung gelöst werden sollen: \\ 
+\textbf{ Das Problem ist folgendes: In hochkomplexen Systemen sind die Einflussfaktoren
+ die die Ausprägung eines Merkmals beeinflussen nicht immer klar. Daher ist es wichtig, 
+ dass wir die Daten visualisieren um die Zusammenhänge zu erkennen.\\
+Die Visualisierung soll uns also erlauben den Einfluss von multiplen Verhaltensindikatoren
+ auf die Ausprägung eines Merkmales zu schätzen. 
 Die klassische Herangehensweise in den Einfluss zu überprüfen sind hochkomplizierte und benötigen
-statistisches Hintergrundwissen auf Seiten des Anwenders. Die Visualisierungsanwendung soll es dem Anwender ermöglichen den Datensatz und die Merkmale derer zu untersuchen und Rückschlüsse auf die Beziehungen von Ausprägungen untereinander und mit Verhaltensindikatoren und zu treffen.
- In dem Anwendugsfall bei der  \\  }
+ statistisches Hintergrundwissen auf Seiten des Anwenders. Die Visualisierungsanwendung soll es dem Anwender ermöglichen
+ den Datensatz und die Merkmale derer zu untersuchen und Rückschlüsse auf die Beziehungen von Ausprägungen untereinander
+  und mit Verhaltensindikatoren und zu treffen. Dies ermöglicht dem Anweder die Daten auf Validität zu überprüfen und die  \\  }
 Analysieren sie die konkreten Anwendungsaufgaben, die die Lösung des Zielproblems durch die Anwender:innen bearbeitet werden müssen. 
 
 Welche sinnvollen mentale Modelle helfen den Personen bei der Bearbeitung. 
