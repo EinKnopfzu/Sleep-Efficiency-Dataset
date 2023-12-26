@@ -94,7 +94,7 @@ Die Daten sind in dem Github Repository abgepeichert, dies ermöglicht eine zent
  Auf den String wird die Funktion ''stringtoUnverarbeitete'' , deren Ziel es ist den String in eine List(UnverarbeiteteDaten) zu transformieren.
  Die Funktion benutzt das  Paket BrianHicks/elm-csv (Im Code als Decode)  Diese zieht die Namen der Felder aus der ersten Reihe in dem String. Die Funktion decode decodiert die Inoutdaten, relavnt hierbei ist das, auch leere Felder in dem String vorkommen dürfen. Die Funktion Decode.blank gibt ein  ''Nothing'' zurück, falls das Feld leer sein sollte.
  Wenn es doch zu einem Fehler kommen sollte gibt die Funktion stringtoUnverarbeitete eine leere Liste zurück an das Modell.
- Wenn die Daten nun in der Form Unverarbeitete Daten sind wird die Funktion ''sleep2Point'' angewandt. Diese 
+ Wenn die Daten nun in der Form Unverarbeitete Daten sind wird die Funktion ''sleep2Point'' angewandt. Diese entfernt einen Tupel, wenn eines seiner Felder ein ''Nothing'' beinhaltet. Weiter werden die Werte für REM, Tiefschlaf und Leitschlaf in wirklich in diesen verbrachten Stunden transformiert indem diese, mit 0.1 in Prozente übertragen wurden und dann mit der Schlafeffizienz und Schlandauer multipliziert.
  
  }
 
