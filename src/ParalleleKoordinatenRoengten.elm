@@ -100,7 +100,7 @@ blackbox model =
 
     
     in
-    svg [ viewBox 0 150 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 0 (w) ( h ), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(1, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: inline; }
@@ -109,14 +109,6 @@ blackbox model =
             .line { stroke: rgba(255, 255, 0,1); stroke-width: 1px; fill: rgba(255, 255, 0 , 1); }
             .line:hover { stroke: rgba(255, 255, 0 ,1.0); stroke-width: 1px; fill: rgb(255, 255, 0,1); }
           """ ]
-        , g [ transform [ Translate padding 0 ] ]
-            [  text_
-                [ x (0)                
-                , y ( padding * -1 )
-                , fontSize (TypedSvg.Types.px 16)
-                , textAnchor TypedSvg.Types.AnchorStart
-                ]
-                [ Html.text "Der Roengtenplott soll Ihnen dabei helfen die Attribute mit anderen Attributen zu vergleichen. Und beziehungen festzustellen "]]
         , g [transform [Translate padding padding ] ]
             [rect
                 [ x ( 5)
@@ -138,7 +130,7 @@ blackbox model =
             , class [ "y-axis" ]
             ]
             [ text_
-                [ x (padding *0.5 - 5)
+                [ x (padding  - 5)
                 , y -15
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorStart
@@ -150,7 +142,7 @@ blackbox model =
             , class [ "y-axis" ]
             ]
             [ text_
-                [ x (w/2 - padding*0.5 - 5 )
+                [ x (w - padding - 5 )
                 , y -15
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle

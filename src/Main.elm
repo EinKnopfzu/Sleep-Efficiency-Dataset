@@ -427,9 +427,17 @@ view model =
                    name =
                     List.map .myid_ daten
 
-                   combinedList_Scatter: List ScatterplottPoint 
-                   combinedList_Scatter =
+                   combinedListX_Scatter: List ScatterplottPoint 
+                   combinedListX_Scatter =
                               (combineLists xList xList name) |> addNV
+
+                   combinedListY_Scatter: List ScatterplottPoint 
+                   combinedListY_Scatter =
+                              (combineLists yList yList name) |> addNV
+
+                   combinedListZ_Scatter: List ScatterplottPoint 
+                   combinedListZ_Scatter =
+                              (combineLists zList zList name) |> addNV
 
 --Hier werden die Listen in für den Boxplott vorbereitet in diesem Fall istes wichtig, dass die XListe 
 --Die Mittlere Liste ist, da wir ansonsten nicht das untersuchende Element in der Mitte haben. 
@@ -441,14 +449,31 @@ view model =
                     Html.Attributes.style "margin-left" "15%" 
                     , Html.Attributes.style "padding" "2em"
 
-                    , Html.Attributes.style "height" "900" 
-                    , Html.Attributes.style "width" "70%"
+                    , Html.Attributes.style "height" "100%"
+                    , Html.Attributes.style "width" "80%"
                     , Html.Attributes.style "font-family" "Arial"] 
-                    [ (scatterplot 
+                    [ scatterplot 
                     { xDescription = "Normalverteilung"
                     , yDescription = model.droppdown1
-                    , data = combinedList_Scatter
-                    }      )       
+                    , data = combinedListX_Scatter
+                    }
+                    , div [ Html.Attributes.style "height" "50%"
+                         , Html.Attributes.style "width" "80%"
+                         , Html.Attributes.style "display" "flex"
+                         ,Html.Attributes.style "margin-left" "15%"
+                         , Html.Attributes.style "padding" "2em" ]
+                     [scatterplot 
+                     { xDescription = "Normalverteilung"
+                        , yDescription = model.droppdown2
+                    , data = combinedListY_Scatter
+                      }
+                      ,scatterplot 
+                       { xDescription = "Normalverteilung"
+                         , yDescription = model.droppdown3
+                       , data = combinedListZ_Scatter
+                        }]
+                          
+                         
                     ,(blackbox combinedList_Box)
             --      
                     ,graph {xdescriptor = {name = model.droppdown1, data = xList},
@@ -457,24 +482,10 @@ view model =
                              {name= "Koffein", data= filterkoffein},
                              {name= "Alkohol", data= filteralkohol},
                              {name= "Raucher", data= filterraucher},
-                             {name= "Sport", data= filtersport}]
-                            }
-                    ,graph {xdescriptor = {name = model.droppdown2, data = yList},
-                            attribute = [{name = "Alter", data= filteralter},
-                             {name= "Geschlecht", data= filtergender},
-                             {name= "Koffein", data= filterkoffein},
-                             {name= "Alkohol", data= filteralkohol},
-                             {name= "Raucher", data= filterraucher},
-                             {name= "Sport", data= filtersport}]
+                             {name= "Sport", data= filtersport},
+                             {name = model.droppdown3, data = zList},
+                             {name = model.droppdown2, data = yList}]
                             } 
-                    ,graph {xdescriptor = {name = model.droppdown3, data = yList},
-                            attribute = [{name = "Alter", data= filteralter},
-                             {name= "Geschlecht", data= filtergender},
-                             {name= "Koffein", data= filterkoffein},
-                             {name= "Alkohol", data= filteralkohol},
-                             {name= "Raucher", data= filterraucher},
-                             {name= "Sport", data= filtersport}]
-                            }     
                     ,footer]
                     ]
 

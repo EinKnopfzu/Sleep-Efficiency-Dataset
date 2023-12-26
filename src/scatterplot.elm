@@ -36,7 +36,7 @@ w =
 
 h : Float
 h =
-    550
+    600
 
 
 padding : Float
@@ -259,14 +259,14 @@ scatterplot model =
             ]   
                
     in
-    svg [ viewBox 0 150 (w)  (h - 200) , TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 0 (w)  (h ) , TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 80 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 255, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }
             .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
           """ ]
-        , g [ transform [ Translate padding 0 ] ]
+        , g [ transform [ Translate padding padding ] ]
             [  text_
                 [ x (0)                
                 , y ( padding * -1 )

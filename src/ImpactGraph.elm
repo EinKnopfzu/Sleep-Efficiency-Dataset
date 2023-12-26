@@ -113,7 +113,7 @@ graph model =
 
 
     in
-    svg [ viewBox 0 0 (w) ( h - 300), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 0 0 (w) ( h ), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 0, 0, 0.4); fill: rgba(255, 255, 255, 0.3); }
             .point text { display: inline; }
@@ -122,26 +122,9 @@ graph model =
             .hoverText:hover text_ { display: inline; stroke: rgba(255, 255, 0, 1.0);  }
             .hoverText text_ { display: none; }
           """ ]
-       , g [ transform [ Translate padding 0 ] ]
-            [  text_
-                [ x (0)                
-                , y ( padding * -1 )
-                , fontSize (TypedSvg.Types.px 16)
-                , textAnchor TypedSvg.Types.AnchorStart
-                ]
-                [ Html.text "Diese Graphen repräsentation soll Ihenn dabei helfen die Korrelation der Verhaltensweisen auf die Merkmale."
-                 ]]
-       , g [ transform [ Translate padding 0 ] ]
-            [  text_
-                [ x (0)                
-                , y ( padding *(-1)  - 16 )
-                , fontSize (TypedSvg.Types.px 16)
-                , textAnchor TypedSvg.Types.AnchorStart
-                
-                ]
-                [ Html.text "Diese Graphen repräsentation soll Ihnen dabei helfen die Korrelation der Verhaltensweisen auf die Merkmale."
-                 ]]
-       , g [ transform [ Translate padding padding ] ]
+       
+
+       , g [ transform [ Translate padding 0] ]
             [ rect
             [ TypedSvg.Attributes.InPx.x1 (5)
             , TypedSvg.Attributes.InPx.y1 (5)
@@ -154,13 +137,13 @@ graph model =
             ]
             [] 
             ]
-        , g [transform [ Translate padding padding]]
+        , g [transform [ Translate padding 0]]
                 
              ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung 130) indexedimpactDataList)
 --        , g [ transform [ Translate padding padding ] ]
    --          ( List.map (\i -> Pfeil))
 
-        , g [ transform [ Translate padding padding ] ]
+        , g [ transform [ Translate padding 0 ] ]
             [ text_
             [ x (xa )
              , y (headerY)
@@ -170,7 +153,7 @@ graph model =
             [ TypedSvg.Core.text model.xdescriptor.name ] 
             ]
     
-        , g [ transform [ Translate padding padding ] ]
+        , g [ transform [ Translate padding 0 ] ]
             [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r (Scatterplot.radius * 3) ]
             []
             , text_
