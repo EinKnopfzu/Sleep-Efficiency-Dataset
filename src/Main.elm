@@ -538,9 +538,9 @@ sleep2Point c =
                         { cX | 
                          myschlafdauer =  myXA,
                          myschlaf_effizienz =myXB, 
-                         myrem_anteil = myXY,
-                         mytiefschlaf_anteil = myXV,
-                         myleichtschlaf_anteil = myXK
+                         myrem_anteil = myXY * myXB * myXA,
+                         mytiefschlaf_anteil = myXV * myXB * myXA,
+                         myleichtschlaf_anteil = myXK * myXB * myXA
                           }
                     )
                     c.schlafdauer
