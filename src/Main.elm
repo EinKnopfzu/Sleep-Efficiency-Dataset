@@ -459,6 +459,22 @@ view model =
                              {name= "Raucher", data= filterraucher},
                              {name= "Sport", data= filtersport}]
                             }
+                    ,graph {xdescriptor = {name = model.droppdown2, data = yList},
+                            attribute = [{name = "Alter", data= filteralter},
+                             {name= "Geschlecht", data= filtergender},
+                             {name= "Koffein", data= filterkoffein},
+                             {name= "Alkohol", data= filteralkohol},
+                             {name= "Raucher", data= filterraucher},
+                             {name= "Sport", data= filtersport}]
+                            } 
+                    ,graph {xdescriptor = {name = model.droppdown3, data = yList},
+                            attribute = [{name = "Alter", data= filteralter},
+                             {name= "Geschlecht", data= filtergender},
+                             {name= "Koffein", data= filterkoffein},
+                             {name= "Alkohol", data= filteralkohol},
+                             {name= "Raucher", data= filterraucher},
+                             {name= "Sport", data= filtersport}]
+                            }     
                     ,footer]
                     ]
 

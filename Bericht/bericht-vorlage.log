@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  26 DEC 2023 22:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  26 DEC 2023 23:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -571,7 +571,8 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 16.
 (c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (./bericht-vorlage.aux)
+)
+No file bericht-vorlage.aux.
 \openout1 = `bericht-vorlage.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -604,7 +605,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
 (scrartcl)           before \begin{document} on input line 16.
- (c:/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
+(c:/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
  (c:/texlive/2023/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
@@ -746,8 +747,8 @@ Runaway argument?
 c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:82: Paragraph ended before \text@command was complete.
 <to be read again> 
                    \par 
-l.82 ...3 , 5], es gibt 6 fehlende Werte.     \\ }
-                                                  \\
+l.82 ...0, 0, 2, 3, 5], es gibt 6 fehlende Werte.}
+                                                  
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
@@ -761,54 +762,76 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--82
 c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:82: Too many }'s.
 <recently read> \egroup 
                         
-l.82 ...3 , 5], es gibt 6 fehlende Werte.     \\ }
-                                                  \\
+l.82 ...0, 0, 2, 3, 5], es gibt 6 fehlende Werte.}
+                                                  
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 82--87
-
- []
 
 [4] [5] [6]
 Runaway argument?
 { Handelt sich um explorative Visualisierung 
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:129: Paragraph ended before \text@command was complete.
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:130: Paragraph ended before \text@command was complete.
 <to be read again> 
                    \par 
-l.129 ...Validität zu überprüfen und die  \\  }
+l.130 ...Validität zu überprüfen und die  \\  }
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--129
+Underfull \hbox (badness 10000) in paragraph at lines 114--130
 
  []
 
 [7]
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:129: Too many }'s.
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:130: Too many }'s.
 <recently read> \egroup 
                         
-l.129 ...Validität zu überprüfen und die  \\  }
+l.130 ...Validität zu überprüfen und die  \\  }
                                                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-[8] [9]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 193.
+[8]
+
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:168: LaTeX Error: Unicode character σ (U+03C3)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.168 Anstieg der Gerade ist σ
+                               , Verschiebung der Gerade ist μ.
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:168: LaTeX Error: Unicode character μ (U+03BC)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.168 ...de ist σ, Verschiebung der Gerade ist μ
+                                                  .
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+[9] [10]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 208.
  (c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 193.
+(Font)              <10.95> on input line 208.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 193.
+(Font)              <8> on input line 208.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 193.
- [10] [11] (./bericht-vorlage.aux)
+(Font)              <6> on input line 208.
+ [11] (./bericht-vorlage.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
@@ -835,15 +858,15 @@ Package logreq Info: Writing requests to 'bericht-vorlage.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21418 strings out of 475187
- 393587 string characters out of 5767784
- 1934248 words of memory out of 5000000
- 42429 multiletter control sequences out of 15000+600000
+ 21417 strings out of 475187
+ 393525 string characters out of 5767784
+ 1933248 words of memory out of 5000000
+ 42430 multiletter control sequences out of 15000+600000
  616644 words of font info for 81 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,7n,107p,11024b,2371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on bericht-vorlage.pdf (11 pages, 245451 bytes).
+Output written on bericht-vorlage.pdf (11 pages, 246318 bytes).
 PDF statistics:
  196 PDF objects out of 1000 (max. 8388607)
  165 compressed objects within 2 object streams

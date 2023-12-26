@@ -79,7 +79,8 @@ Die Interprettation der Sleep Duration wird weiter dadurch erschwert, dass im we
 \\ Caffeine Intake = Gibt an wie viel Koffeein die Person in den letzten 24 Stunden zu sich genommen hat. Die Maßeinheit hierbei beträgt mg. Die Daten werden als Float abgespeichert und haben Quantile von  [0.0, 0.0, 25.0, 50.0, 200.0].
 \\ Alcohol Intake = Gibt an wie viel Alkohol die Personen ind en letzten 24 Stunden zu sich genommen hat in Oz. Die Daten haben Quantile von [0.0, 0.0, 0.0, 2.0, 5.0]
 \\ Tobacco Intake = Gibt an ob die Person Raucht. Die Daten sind als String abgespeichert: Yes für Raucher und No für Nichtgeraucht. 154 Personen geben an zu Rauchen und 298 geben an NichtRaucher zu sein. 
-\\ Exercise Intake = Gibt an wie viele Einheiten Sport die Person in der Woche macht. Dabei ist nicht angeben welche Maßeinheit diese Einehiten Sport haben.  Die Daten haben Quantile von [0, 0, 2, 3 , 5], es gibt 6 fehlende Werte.     \\ }\\
+\\ Exercise Intake = Gibt an wie viele Einheiten Sport die Person in der Woche macht. Dabei ist nicht angeben welche Maßeinheit diese Einehiten Sport haben. Die Daten haben Quantile von [0, 0, 2, 3, 5], es gibt 6 fehlende Werte.}
+
 Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen.
 \textbf{Bei Annahme, dass die Daten legitim sind und die  angegebene Interpettation der Attribute korrekt ist, ermöglicht dieser Datensatz geneu Einblicke in die Schlafqualität vorallem die Schlafphasen und Dauer dieser. Zusätzlich werden relevante Verhaltsweisen und Einflüsse erfasst. Die Erfassung der Einnahme von Kaffee und Alkohol ist, suboptimal, da die beiden Substanzen innerhalb des im menschlichen Körpers eine geringe Halbwertszeit aufweisen. Dahingehend wäre der Zeitpunkt der Einnahme relevant. Weitere Faktoren die die Schlafqualität beinflussen werden nicht erfasst weiter werden die länge der individuellen Schlafunterbrechungen nicht differenziert und den drei Schlafphasen nicht zugeordnet. So könnte es für den Anwender von Interesse zu sein, welche der Schlafphasen durch welche Verhaltensweisen gestört werden. Weiter lässt sich argumentiern, dass die Verteilung der Verhaltensweisen sehr linksseitig ist. Dies mag auf kulturelle Unterschiede zurückzuführen sein. Daher muss die Aussagekräftigkeit des Datensatzen auf den Marrokanischen Lebensstil eingeschränkt werden.}
  Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
@@ -91,16 +92,16 @@ Der Datensatz wurde auf  \href{https://www.kaggle.com/datasets/equilibriumm/slee
 veröffentlicht und unterliegem keinem Copyright Schutz. Die Daten sind als CSV mit einer Größe von 9kB zugänglich.
 Die Daten sind in dem Github Repository abgepeichert, dies ermöglicht eine zentrale aktualisierung der Daten, falls dies Nötig sein sollte.  
  Das Programm ruft die CVS Datei  mittels eines Http.get request auf und speichert diese als einen String ab.  
- Falls der requst klappt wird die Message ''Got Text Ok fulltext'' an die Funktion ''update'' gesendet.  Der String ist hierbei repräsentiert durch ''fullText''.
- Daraufhin wird im ''Model'' das  ''datenladen'' auf Success gesetzt. 
- Auf den String wird die Funktion ''stringtoUnverarbeitete'' , deren Ziel es ist den String in eine List(UnverarbeiteteDaten) zu transformieren.
- Die Funktion benutzt das  Paket BrianHicks/elm-csv (Im Code als Decode)  Diese zieht die Namen der Felder aus der ersten Reihe in dem String. Die Funktion decode decodiert die Inputdaten, relevant hierbei ist das, auch leere Felder in dem String vorkommen dürfen. Die Funktion Decode.blank gibt ein  ''Nothing'' zurück, falls das Feld leer sein sollte.
+Falls der requst klappt wird die Message `Got Text Ok fulltext' an die Funktion `update' gesendet. Der String ist hierbei repräsentiert durch `fullText'.
+Daraufhin wird im `Model' das `datenladen' auf Success gesetzt.
+ Auf den String wird die Funktion `stringtoUnverarbeitete', deren Ziel es ist den String in eine List(UnverarbeiteteDaten) zu transformieren.
+ Die Funktion benutzt das  Paket BrianHicks/elm-csv (Im Code als Decode)  Diese zieht die Namen der Felder aus der ersten Reihe in dem String. Die Funktion decode decodiert die Inputdaten, relevant hierbei ist das, auch leere Felder in dem String vorkommen dürfen. Die Funktion Decode.blank gibt ein  `Nothing' zurück, falls das Feld leer sein sollte.
  Wenn es doch zu einem Fehler kommen sollte gibt die Funktion stringtoUnverarbeitete eine leere Liste zurück an das Modell.
- Wenn die Daten nun in der Form Unverarbeitete Daten sind wird die Funktion ''sleep2Point'' angewandt. Diese entfernt einen Tupel, wenn eines seiner Felder ein ''Nothing'' beinhaltet. Weiter werden die Werte für REM, Tiefschlaf und Leitschlaf in wirklich in diesen verbrachten Stunden transformiert indem diese, 
+ Wenn die Daten nun in der Form Unverarbeitete Daten sind wird die Funktion `sleep2Point' angewandt. Diese entfernt einen Tupel, wenn eines seiner Felder ein `Nothing' beinhaltet. Weiter werden die Werte für REM, Tiefschlaf und Leitschlaf in wirklich in diesen verbrachten Stunden transformiert indem diese, 
  mit 0.1 in Prozente übertragen wurden und dann mit der Schlafeffizienz und Schlandauer multipliziert.
  Dies ist besser, da somit die interpretation erleichtert wird, und die Vergleichbarkeit wird hergestellt. Vor der Transformation waren die Schlafphasen einer Person die 5 Stunden schläft und einer Person die 10 Stunden schläft nicht unterscheidbar. Jetzt läsäst sich klar anzeigen wie viel die Personen in den Schlafphasen verbracht haben.
  Gender und Raucher werden von einem String zu einem Float mittels case handeling konvertiert (genderToFloat und raucherToFloat). Dies ermöglicht es mit den Daten zu rechnen und erleichtert das weiter visualisieren. 
- Die Funktion sleep2Point hat einen Output von Typ Alias ''Aussortierte Daten''.
+ Die Funktion sleep2Point hat einen Output von Typ Alias `Aussortierte Daten'.
  Weiter werden die Attribute Bedtime und Wakeuptime in den aktuellen Visualisierungen nicht benutzt, könnte es bei der Weiterentwicklung interessant werden, daher wurden Sie im Datenkonstrukt belassen aber nicht weiter behandelt. Man könnte von einer sanften Projektion sprechen.
  Innerhalb der Einstellungen kann der Anwender eine Selektion durchführen und Einschränkungen auf das zu untersuchende Attribut anwenden.
   So werden nur Datentupel an die Visualisierungen übergeben die dem Kriterium entsprechen.
@@ -146,22 +147,76 @@ Typische Argumente würden hier auf Wahrnehmungsprinzipien und Theorie über Inf
 Die besten Begründungen diskutieren explizit die konkrete Auswahl der Visualisierungen im Kontext von mehreren verschiedenen Alternativen. 
 Machen sie hier nicht den Fehler, einfach nur Visualisierung aus den vorgegebenen Bereichen zu diskutieren, weil das in der Regel nicht sinnvoll ist.
 Wenn sie sich für einen Scatterplot entschieden haben, ist ein Zeitreihendiagramm in der Regel keine Alternative.
-Diskutieren sie also nicht einfach Zeitreihendiagramme, weil sie in den Anforderungenen an das Projekt neben Scatterplots stehen, sondern suchen sie nach echten alternativen Visualisierungen, die zum Aufbau eines vergleichbaren mentalen Modells führen. 
+Diskutieren sie also nicht einfach Zeitreihendiagramme, weil sie in den Anforderungenen an das Projekt neben Scatterplots 
+stehen, sondern suchen sie nach echten alternativen Visualisierungen, die zum Aufbau eines vergleichbaren
+ mentalen Modells führen. 
+
 Diskutieren sie die Expressivität und die Effektivität der einzelnen Visualisierungen. 
 
 Die eben beschriebenen Präsentationen und Begründungen sollen für jede der drei folgenden Visualisierungen durchgeführt werden. 
+
+
 \subsubsection{Visualisierung Eins: QQ-Plot Datenlage Normalverteilt?}
+\textbf{
+Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
+Wieso sind diese gut und erfüllen die Anforderungen an das Design?
+
+Wieso erfüllt di eVisualisierung den anfordeurngen der Anwender?
+
+Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen.
+
+Wieso diese Visualisierung und nicht andere? Wir wollen echte mögliche 
+Alternativen die zu einem ähnlichem mentalem Modell führen.
+
+Expressivität und Effektivität der Visualisierung diskutieren.}
+\textbf{Die Visualisierung ist sinnvoll, da sie es dem Anwender ermöglicht sich mit den hinterliegendne 
+Daten vertraut zu machen und die verschiedenen Ausprägungen zu analysieren und auf ihre Güte zu überprüfen.
+ Datenlage zu überprüfen.}
+
+Falls im Normal-Q-Q-Plot sich eine Gerade ergibt, ist die
+empirische Verteilung etwa normalverteilt
+Anstieg der Gerade ist \sigma, Verschiebung der Gerade ist \mu.
 
 \subsubsection{Visualisierung Zwei: Boxplott}
-Ziel der Visualisierung: 
-Erklärung, wie diese aufgebaut sind. Daher 
+
+\textbf{
+Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
+Wieso sind diese gut und erfüllen die Anforderungen an das Design?
+
+Wieso erfüllt di eVisualisierung den anfordeurngen der Anwender?
+
+Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen.
+
+Wieso diese Visualisierung und nicht andere? Wir wollen echte mögliche 
+Alternativen die zu einem ähnlichem mentalem Modell führen.
+
+Expressivität und Effektivität der Visualisierung diskutieren.
+}
+
 \subsubsection{Visualisierung Drei: Force Graph.}
-Ziel der Visualisierung: 
-Erklärung, wie diese aufgebaut sind. 
+\textbf{
+Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
+Wieso sind diese gut und erfüllen die Anforderungen an das Design?
+
+Wieso erfüllt di eVisualisierung den anfordeurngen der Anwender?
+
+Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen: Wir bauen ein 
+Kausales Mentales Modell auf, Diese verhaltensweisen beinflussen dieses Attribut in dieser Art und weise.
+
+Wieso diese Visualisierung und nicht andere? Wir wollen echte mögliche 
+Alternativen die zu einem ähnlichem mentalem Modell führen.
+
+Expressivität und Effektivität der Visualisierung diskutieren.}
+
+\textbf{Kausales Mentales Modell}
+
+
 \subsection{Interaktion}
 Die präsentierten Visualisierungstechniken müssen interaktiv zu einer Anwendung verknüpft werden.
 Die Interaktion mit einer Visualisierung soll in den anderen Visualisierungen zu einer Änderung führen. 
-Erklären sie die möglichen Interaktionen mit den einzelnen Visualisierungen und die möglichen Verknüpfungen zwischen ihnen. Begründen Sie warum die konkreten Interaktionen umgesetzt wurden und welche Zwecke für die Anwenderinnen mit ihnen unterstützt werden. Begründen sie ebenfalls warum sie andere Interaktionsmöglichkeiten nicht umgesetzt haben. Wenn sie keine der geforderten Interaktionen umsetzen, erhalten Sie im gesamten Projekt deutlichen Punktabzug. 
+Erklären sie die möglichen Interaktionen mit den einzelnen Visualisierungen und die möglichen Verknüpfungen zwischen ihnen.
+ Begründen Sie warum die konkreten Interaktionen umgesetzt wurden und welche Zwecke für die Anwenderinnen mit ihnen unterstützt werden.
+ Begründen sie ebenfalls warum sie andere Interaktionsmöglichkeiten nicht umgesetzt haben. Wenn sie keine der geforderten Interaktionen umsetzen, erhalten Sie im gesamten Projekt deutlichen Punktabzug. 
 
 \section{Implementierung}
 Beschreiben Sie die Implementierung ihrer Visualisierungsanwendung in Elm. Stellen die Gliederung ihres Quellcodes vor. Haben Sie verschiedene Elm-Module erstellt. Was war aufwändig umzusetzen, was ließ sich mit dem vorhanden Code aus den Übungen relativ einfach umsetzen? 
