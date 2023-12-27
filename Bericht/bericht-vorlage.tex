@@ -196,7 +196,7 @@ Die Zielgruppe der Visualisierungen sind Nutzer mit einem Interesse an den zu gr
 
 
 
-\subsubsection{Visualisierung Zwei: Boxplott}
+\subsubsection{Visualisierung Zwei: Parallele Koordinaten}
 Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
 3 Dimensionen werden abgebildet. Die in QQ-Plott ausgewählte sowie zwei Weitere Atrribute. Die Achsen sind Parallel zueinander angelegt und gleich groß. Die Ausprägungen eines Datupels werden dargestellt, indem man die Ausprägung den der Tupel am Attribut hat auf die Y achse Skaliert. Dann wird eine gerade linie zwischen den positionen auf den anliegenden Achsen gezogen. 
 Die Endpunkte der Liniensegmente korrespondieren also mit den Attributwerten.
@@ -219,24 +219,27 @@ Wieso sind diese gut und erfüllen die Anforderungen an das Design?
 
 
 Wieso erfüllt die Visualisierung den Anforderungen der Anwender?
- Der Anwender hat ein Interesse die zusammenhänge zwischen dem Hauptattribut und den anderen Attributen zu untersuchen. Er
- Durch die Betrachtung der Muster und Formen der Linien können Muster, Trends oder Gruppierungen in den Daten identifiziert werden.
+
+ Der Anwender hat ein Interesse die Zusammenhänge zwischen dem Hauptattribut und den anderen Attributen zu untersuchen, die nicht leicht mit statsitischen Test erkannt werden können.
+  Durch die Betrachtung der Linien können Muster, Trends oder Gruppierungen in den Daten identifiziert werden, die auf Beziehungen zwischen den attributen Hinweisen.
   Zum Beispiel können parallele Linien auf eine starke Korrelation zwischen den entsprechenden Variablen hinweisen. 
   Der Anwender kann somit Rückschlüsse auf den zusammenhang von Attributen ausbilden und diese mithilfe von Visualisierung NR. 3 
   Rückschlüsse auf die, hinterden Daten liegenden Mechanismen schließen und somit sein Verständnis von Schlafqualität zu verbessern.
- Die untersuchung der Attribut eund das Visualisieren kann mittels eines interaktiven anpassens der Pixelgröße und RGBA Werte erfolgen, dies ist vorallem nützlich, da man durch die Clusterung der Inputdaten, dennoch interessante Muster erkennen kann. So kann der Benutzer basierend auf seinen eigenen visuellen Bedürfnissen anpassungen vornehmen.
-
+ Die Untersuchung der Attribute und das Visualisieren kann mittels eines interaktiven anpassens der Pixelgröße und RGBA Werte erfolgen, dies ist vorallem nützlich, da viele der Inputdaten wenige unterschiedliche Wertausprägungen haben, was die Clusterung der Inputdaten erschwert. Um dennoch interessante Muster erkennen kann. So kann der Benutzer basierend auf seinen eigenen visuellen Bedürfnissen anpassungen vornehmen. In Bild 3 wird dies vorgestellt.
  
 \begin{figure}[h]
   \centering
   \includegraphics [width = 0.8\textwidth]{ParalleleBSPPixel.JPG}
   \caption{Visualisierung Zwei: Parallele Koordinaten:Pixel 30, RGBA (255, 255, 255, 0.006) }
 \end{figure}
-Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen.
-Die Visualiserung gibt die Daten un
+Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen:
+Clusterin, Farbwahrnehmung  und Abstrahierung
+
 
 Wieso diese Visualisierung und nicht andere? Wir wollen echte mögliche 
-Alternativen die zu einem ähnlichem mentalem Modell führen.
+Alternativen die zu einem ähnlichem mentalem Modell führen: 
+
+Streuudiagramm Matrix,
 
 Expressivität und Effektivität der Visualisierung diskutieren.\\
 
@@ -255,12 +258,19 @@ Alternativen die zu einem ähnlichem mentalem Modell führen.
 
 Expressivität und Effektivität der Visualisierung diskutieren.\\
 
-
 \textbf{Kausales Mentales Modell}
 
 
 \subsection{Interaktion}
 Die präsentierten Visualisierungstechniken müssen interaktiv zu einer Anwendung verknüpft werden.
+
+1 erste Visualisierung: Auswahl des Attributs -> Hauptattribut der beiden anderen Visualisierungen
+Filtern des Datenbereiches. -> Schränkt die Datenmenge ein auf die Sich die anderen Beziehen.
+
+2. zweite Visualisierung: Auswahl der Attribute -> In 1 werden Junior QQ plots aufgerufen. 
+-> Und an die "Schneeflocke" übergeben.
+
+
 Die Interaktion mit einer Visualisierung soll in den anderen Visualisierungen zu einer Änderung führen. 
 Erklären sie die möglichen Interaktionen mit den einzelnen Visualisierungen und die möglichen Verknüpfungen zwischen ihnen.
 Begründen Sie warum die konkreten Interaktionen umgesetzt wurden und welche Zwecke für die Anwenderinnen mit ihnen unterstützt werden.
