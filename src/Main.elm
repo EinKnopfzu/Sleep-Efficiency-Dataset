@@ -10,6 +10,7 @@ import Csv.Decode as Decode exposing (Decoder)
 import Scatterplot exposing (..)
 import ParalleleKoordinatenRoengten exposing (blackbox) 
 import ImpactGraph exposing (graph)
+import String exposing (toFloat)
 
 
 -- MAIN
@@ -66,6 +67,12 @@ type PageState
   | Grafik1
   | Grafik2
 
+type alias ParalleleLayout
+    = { pixelgröße : Float
+        , rgb1 :  Float
+        , rgb2 :  Float
+        , rgb3 :  Float
+        }
 
 type alias Model
  = { datenladen : Zustand
@@ -75,7 +82,11 @@ type alias Model
      , droppdown4 : String
      , droppdown5 : String
      , daten :List (Aussortierte_Daten)
-     , pageview : PageState
+     , pixel : Float
+     ,rgb1 : Float
+     ,rgb2 : Float
+     ,rgb3 : Float
+     , oppacity : Float
      , minFilter : Maybe Float
      , maxFilter : Maybe Float }
 
@@ -91,8 +102,12 @@ init _ =
       droppdown4 = "",
       droppdown5 = "",
       minFilter = Nothing,
-      maxFilter = Nothing,
-      pageview = Scatterplott
+      maxFilter = Nothing
+      ,pixel = 2
+      , rgb1 = 0
+      , rgb2 = 0
+      , rgb3 = 0
+      ,oppacity = 0.08
       , daten = [  { myid_ = "Test"
       , myalter = 0.0
       , mygeschlecht = 0.0
@@ -125,7 +140,11 @@ type Msg
   | Option2Selected String
   | Option3Selected String
   | Option4Selected String
-  | PageChange PageState
+  | Pixelchange String
+  | Rgb1change String
+  | Rgb2change String
+  | Rgb3change String 
+  | OppacityChange String
   | MinFilterChanged String
   | MaxFilterChanged String
   
@@ -154,14 +173,20 @@ update msg model =
         Option4Selected value -> 
             ({ model | droppdown4 = value }, Cmd.none)
 
-        PageChange value ->
-            case value of
-                Scatterplott ->
-                    ({ model | pageview = Scatterplott} , Cmd.none)
-                Grafik1 ->
-                    ({ model | pageview = Grafik1} , Cmd.none)
-                Grafik2 ->
-                    ({ model | pageview = Grafik2} , Cmd.none)
+        Pixelchange value ->
+            ({ model | pixel = Maybe.withDefault 3 (String.toFloat value) }, Cmd.none)       
+
+        Rgb1change value ->
+            ({ model | rgb1 = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none)
+
+        Rgb2change value ->
+            ({ model | rgb2 = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none)
+
+        Rgb3change value ->
+            ({ model | rgb3 = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none)     
+
+        OppacityChange value ->
+            ({ model | oppacity = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none)  
 
         MinFilterChanged value ->
             ({ model | minFilter =  (String.toFloat value) }, Cmd.none)
