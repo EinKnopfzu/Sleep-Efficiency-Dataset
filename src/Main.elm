@@ -90,6 +90,45 @@ type alias Model
      , minFilter : Maybe Float
      , maxFilter : Maybe Float }
 
+type alias Aussortierte_Daten =
+ {myid_ :  String 
+ ,myalter : Float
+ ,mygeschlecht : Float
+ ,myschlafenszeitt : String
+ ,myaufwachzeit : String
+ ,myschlafdauer : Float
+ ,myschlaf_effizienz : Float
+ ,myrem_anteil : Float
+ ,mytiefschlaf_anteil : Float
+ ,myleichtschlaf_anteil : Float
+ ,myerwacht_anzahl : Float
+ ,mykoffein_konsum : Float
+ ,myalkohol_konsum : Float
+ ,myraucher : Float
+ ,mysport : Float
+ }
+-- Typ für die unaufgearbeiteten Daten
+type alias Unverarbeitete_Daten =  
+ {id_ :  Maybe String 
+ ,alter : Maybe Float
+ ,geschlecht :  Maybe String
+ ,schlafenszeitt :  Maybe String
+ ,aufwachzeit :  Maybe String
+ ,schlafdauer : Maybe Float
+ ,schlaf_effizienz : Maybe Float
+ ,rem_anteil : Maybe Float
+ ,tiefschlaf_anteil : Maybe Float
+ ,leichtschlaf_anteil : Maybe Float
+ ,erwacht_anzahl : Maybe Float
+ ,koffein_konsum : Maybe Float
+ ,alkohol_konsum : Maybe Float
+ ,raucher :  Maybe String
+ ,sport : Maybe Float
+ }
+
+type alias MultiDimPoint =
+    { pointName : String, value : List Float }
+
 type Msg
   = GotText (Result Http.Error String)
   | Option1Selected String
@@ -103,6 +142,8 @@ type Msg
   | OppacityChange String
   | MinFilterChanged String
   | MaxFilterChanged String
+-- SUBSCRIPTIONS
+
   
   
 subscriptions : Model -> Sub Msg
@@ -152,9 +193,6 @@ init _ =
 
 -- UPDATE
 
-
-
-
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of
@@ -199,16 +237,6 @@ update msg model =
         MaxFilterChanged value ->
             ({ model | maxFilter =  (String.toFloat value) }, Cmd.none)
         
-
-        
-
-      
-
-
-
--- SUBSCRIPTIONS
-
-
 
 -- VIEW
 
@@ -545,20 +573,8 @@ view model =
                    ,footer]
                     ]
 
-  
-                
 
-                    
-viewInput : String -> String -> String -> (String -> msg) -> Html msg
-viewInput t p v toMsg =
-  input [ type_ t, placeholder p, value v, onInput toMsg ] []        
-                
-                
-
-  
-
-
---Dieser Bereich ist zum Aufarbeiten der Daten 
+--Verarbeitung der Daten
 
 decode : Decoder Unverarbeitete_Daten
 decode =
@@ -668,44 +684,7 @@ genderToFloat value =
         "Female" -> 2
         _ -> 0
 
-type alias Aussortierte_Daten =
- {myid_ :  String 
- ,myalter : Float
- ,mygeschlecht : Float
- ,myschlafenszeitt : String
- ,myaufwachzeit : String
- ,myschlafdauer : Float
- ,myschlaf_effizienz : Float
- ,myrem_anteil : Float
- ,mytiefschlaf_anteil : Float
- ,myleichtschlaf_anteil : Float
- ,myerwacht_anzahl : Float
- ,mykoffein_konsum : Float
- ,myalkohol_konsum : Float
- ,myraucher : Float
- ,mysport : Float
- }
--- Typ für die unaufgearbeiteten Daten
-type alias Unverarbeitete_Daten =  
- {id_ :  Maybe String 
- ,alter : Maybe Float
- ,geschlecht :  Maybe String
- ,schlafenszeitt :  Maybe String
- ,aufwachzeit :  Maybe String
- ,schlafdauer : Maybe Float
- ,schlaf_effizienz : Maybe Float
- ,rem_anteil : Maybe Float
- ,tiefschlaf_anteil : Maybe Float
- ,leichtschlaf_anteil : Maybe Float
- ,erwacht_anzahl : Maybe Float
- ,koffein_konsum : Maybe Float
- ,alkohol_konsum : Maybe Float
- ,raucher :  Maybe String
- ,sport : Maybe Float
- }
 
-type alias MultiDimPoint =
-    { pointName : String, value : List Float }
 
  
 --Dieser Bereich ist für das Vorbereiten der Daten für den Scatterplott.--Variablen zur Beeinflussung der Dartstellungen
