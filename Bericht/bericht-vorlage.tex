@@ -115,7 +115,7 @@ Die konkreten Anwendungsaufgaben, die von den Anwendern bearbeitet werden müsse
   \end{itemize}
   \item Vergleich von Attributen:
   \begin{itemize}
-    \item Nach der Bewertung der Güte der Attribute, soll ein Nutzer den Zusammenhang dieser mit anderen Attributen verstehen. Es soll hierbei auch auf versteckte Zusammenhänge stoßen können und die indirekte Beziehungen erkennen. Die Visualisierungen unterstützen dabei, Muster und Trends in den Daten zu identifizieren.
+    \item Nach der Bewertung der Güte der Attribute, soll ein Nutzer den Zusammenhang dieser mit anderen Attributen verstehen. Es soll hierbei auch auf versteckte Zusammenhänge stoßen können und die indirekte Beziehungen erkennen. 
   \end{itemize}
   \item Analyse der Einflüsse des Verhaltens:
   \begin{itemize}
@@ -141,34 +141,32 @@ Bei diesen Aufgabe sind die folgenden mentalen Modelle von Bedeutung:
 
 
 \subsection{Anforderungen an die Visualisierungen}
-Leiten sie Anforderungen an das Design der Visualisierungen ab, die sich durch ihre Analyse des Zielproblems ergeben.
-
+Die Visualisierungen müssen die Anwenderinnen bei der explorativen Analyse unterstützen. Somit müssen die Daten expressiv und effektiv dargestellt werden. 
+Die Visualiserung muss die Daten korrekt wieder geben,, dabei den Anwender  unterstützen, Muster und Trends in den Daten zu identifizieren.
+Weiter müssen die Attribute sinnahfting auf Ihre Beziehungen unteinander Darsgestellt werden und die Anwenderin dabei unterstützen auch indirekte Beziehungen zu erkennen. 
+Ausßerdem müssen die Visualisierungen die Einflüsse der Verhaltensweisen auf die Schlafqualität leicht interpretierbar darstellen.
+Die Visualisierungen sollten barrierefrei gestaltet sein, um sicherzustellen, dass Benutzer mit unterschiedlichen visuellen Fähigkeiten die Informationen analysieren können.
 
 
 \textbf{ Anforderungen an das Design. }
 \subsection{Präsentation der Visualisierungen}
 
-
-
-
-
+Im folgenden Abschnitt weren die drei verwendeten Visualiseungs Techniken vorgestellt, deren Nutzen für den Anwender dargelegt und alternative Visualisierungen besprochen.
 
 \subsubsection{Visualisierung Eins: QQ-Plot Datenlage Normalverteilt?}
 
-Die erste Visualsierung ist die Darstellung der Daten in einem Scatterplott. Spezifisch der eines Normalverteilung QQ Plots. 
-Ein QQ-Plot (Quantile-Quantile-Plot) ist ein nützliches grafisches Werkzeug in der statistischen Datenanalyse, insbesondere wenn es darum geht, die Verteilung von Daten zu überprüfen und mit einer theoretischen Verteilung zu vergleichen, in der Anwendung wird, Aufgrund des Implementationaufwandes, nur der vergleich mit der Normalverteilung vorgenommen. 
-Die Visualisierung zeigt den Wert auf der Y achse an, den ein Datenpunkt hätte, falls der Datensatz einer Normalverteilung folgen würde.
-Diese werden dann auf einem zwei dimensionalem Diagramm dargestellt. Die X Achse zeigt die Quantile der Daten an, die Y Achse zeigt die Quantile der Normalverteilung an.
+Die erste Visualisierung ist die Darstellung der Daten in einem zweidimensionalen Diagramm, spezifisch eines Normalverteilungs-QQ-Plots.
 
-Die Typischen Aufgabenfelder eines QQ Plots sind die Normalitätsüberprüfung, die Identifikation von Abweichungen, die Bestätigung der Normalverteilungshypothese und Identifikation von Ausreißern.
-Bei der Normalitätsüberprüfung, der primäre Zweck eines QQ-Plots, geht es darum zu überprüfen ob ein Attribut 
-einer Normalverteilung folgt. Ein perfekter QQ-Plot würde alle Punkte auf der Linie der Gleichverteilung platzieren.
- Abweichungen von dieser Linie deuten auf Abweichungen von der Normalverteilung hin. Der Anwender kann in der Visualisierung
- sehen ob die Attribute einer Normalverteilung folgen. Falls diese Perfekt Normalverteilt sein sollten, liegen die Datenpunkte 
- direkt auf der schwarzen Linie. Die in der Grafik eingezeichnete rote Line ist vom 25 Quantil bis zum 75 Quantil gezogen. Dies lässt den Anwender überprüfen ob es eine additive verschiebung gibt. 
-Die Identifikation von Ausreisern, können im Normal QQ-Plot, an den visuellen Enden identifiziert werden. Starke abweichungen sind durch eine große Distanz zur schwarzen Linie identifizierbar. Diese können durch das Filtern des Datenbereiches entfernt werden. 
-weiter ist es möglich einen Vergleich verschiedener Verteilungena anzustellen. Dies ist aufgrund des Umfang des Projektes nicht in der Anwendung implementiert
-Dies Ermöglicht es dem Anwender die Daten und interpretierbarkeit einzuschätzen und diese in geringem Maße mit den Filtern zu Selektieren. Dies erlaubt es dem Anwender die aussagekräftigen Attribute von den aussageschwachen zu unterscheiden.
+Ein QQ-Plot (Quantile-Quantile-Plot) ist ein nützliches grafisches Werkzeug in der statistischen Datenanalyse, insbesondere wenn es darum geht, die Verteilung von Daten zu überprüfen und diese mit einer theoretischen Verteilung zu vergleichen. In der Anwendung wird aufgrund des Implementierungsaufwandes nur der Vergleich mit der Normalverteilung vorgenommen. Hierzu werden die Daten berechnet, die Verteilung der Daten berechnet, die das Attribut hätte, falls es einer Normalverteilung folgen würde, und in einem Scatterplot dargestellt.
+
+Die typischen Aufgabenfelder eines QQ-Plots sind die Normalitätsüberprüfung, die Identifikation von Abweichungen, die Bestätigung der Normalverteilungshypothese und Identifikation von Ausreißern.
+
+Die Visualisierung zeigt den Wert auf der Y-Achse an, den ein Datenpunkt hätte, falls der Datensatz einer Normalverteilung folgen würde. Die X-Achse zeigt den Wert des Datenpunktes an. Dann werden die Datenpunkte basierend auf ihrer Reihenfolge im Scatterplot gezeichnet. Ein perfekt normalverteiltes Attribut würde somit eine gerade Linie im 45-Grad-Winkel ergeben.
+
+Dies ermöglicht dem Anwender eine Normalitätsüberprüfung durchzuführen. Somit kann dieser sich ein eigenes Bild darüber machen, ob das Attribut normalverteilt ist und seinen Anforderungen entspricht. Bei einem perfekt normalverteilten Attribut würden im QQ-Plot alle Punkte auf einer 'f(x) = x'-Linie liegen. Abweichungen von dieser Linie deuten auf Abweichungen von der Normalverteilung hin; Krümmungen und Biegungen weisen auf Verschiebungen hin. Hier ist es an dem Anwender, diese zu interpretieren. Die hypothetische 'f(x) = x'-Linie ist zur Orientierung auch eingezeichnet. Weiter ist eine rote Linie vom 25. Quantil bis zum 75. Quantil eingezeichnet. Dies erleichtert dem Benutzer den Datensatz zu überprüfen und einer Verunsicherung durch die Abweichungen an den Extrema entgegenzuwirken.
+
+Die Identifikation von Ausreißern kann im Normal QQ-Plot an den visuellen Enden identifiziert werden. Starke Abweichungen sind durch eine große Distanz zur schwarzen Linie erkennbar. Diese können durch das Filtern des Datenbereichs entfernt werden. Weiter ist es möglich, einen Vergleich verschiedener Verteilungen anzustellen. Dies ist aufgrund des Umfangs des Projektes nicht in der Anwendung implementiert, könnte dem Anwender aber einen Mehrwert bieten. Somit sollte der Anwender durch den Scatterplot in der Lage sein, die Datenverteilung und Interpretierbarkeit einzuschätzen und diese in geringem Maße mit den Filtern zu selektieren.
+
 
 
 \begin{figure}[h]
@@ -177,7 +175,7 @@ Dies Ermöglicht es dem Anwender die Daten und interpretierbarkeit einzuschätze
   \caption{Visualisierung Eins  Norm QQ-Plot REM }
 \end{figure}
 
-Das oben Auswählen und das Filtern geschieht in der Seitenleiste, hier kann der Benutzer das Atrribut auswählen, dass er untersuchen möchte und direkt darunter dieses in seinem Wertebereich filtern. 
+Das oben erwähnte Auswählen und das Filtern geschieht in der Seitenleiste, hier kann der Benutzer das Atrribut auswählen, dass er untersuchen möchte und direkt darunter dieses in seinem Wertebereich filtern. Die Seitenleiste wird im Abschnitt: Interaktiongenauer erklärt.
 Der eingeschränkte Datenbereich wird dann in den anderen Visualisierungen verwendet.
 Der Benutzer kann in der zweiten Visualisierung zwei weitere Attribute zum untersuchen auswählen. Diese werden darufhin unter dem Hauptscatterplott als kleinere QQ-Plott dargestellt und ermöglichen eine schnelle Einschätzung der Güte. 
 Hier mit wird vissualisiert, dass die Attribute mit denen verglichen wird den gleichen Ansprüchen gegenüberstehen muss wie das Hauptattribut.
@@ -198,6 +196,7 @@ Die Zielgruppe der Visualisierungen sind Nutzer mit einem Interesse an den zu gr
 
 \subsubsection{Visualisierung Zwei: Parallele Koordinaten}
 Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
+
 3 Dimensionen werden abgebildet. Die in QQ-Plott ausgewählte sowie zwei Weitere Atrribute. Die Achsen sind Parallel zueinander angelegt und gleich groß. Die Ausprägungen eines Datupels werden dargestellt, indem man die Ausprägung den der Tupel am Attribut hat auf die Y achse Skaliert. Dann wird eine gerade linie zwischen den positionen auf den anliegenden Achsen gezogen. 
 Die Endpunkte der Liniensegmente korrespondieren also mit den Attributwerten.
 Das Hauptattribut, welches in Visualisierung 1. ausgewählt wurde ist in der Mitte anglegegt. Das Y Attribut zu der linken und das Z Attribut zu der rechten Seite.
