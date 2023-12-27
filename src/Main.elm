@@ -4,12 +4,9 @@ import Browser
 import Html exposing (..)
 import Html.Attributes exposing(..)
 import Html.Events exposing (onInput)
-
 import Http
 import List exposing (filter, sum)
 import Csv.Decode as Decode exposing (Decoder)
-
-import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..),YesNo(..))
 import Scatterplot exposing (..)
 import ParalleleKoordinatenRoengten exposing (blackbox) 
 import ImpactGraph exposing (graph)
@@ -289,7 +286,8 @@ view model =
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown2) ] [ Html.text "Alkohol Konsum" ]         
                   , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher" ]  
-                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown2) ] [ Html.text "Sport Einheiten" ] ]
+                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown2) ] [ Html.text "Sport Einheiten" ]
+                  , Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Leer" ] ]
                   , Html.br [] []
                   , Html.br [] []
                   , Html.br [] []
@@ -308,7 +306,8 @@ view model =
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown3) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown3) ] [ Html.text "Alkohol Konsum" ]         
                   , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher" ]  
-                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]  ]                 
+                  , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]
+                  , Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Leer" ]   ]                 
                   , Html.br [] []
                   , Html.br [] []
                   , Html.br [] []
@@ -473,14 +472,15 @@ view model =
                              {name= "Koffein", data= filterkoffein},
                              {name= "Alkohol", data= filteralkohol},
                              {name= "Raucher", data= filterraucher},
-                             {name= "Sport", data= filtersport},
-                             {name = model.droppdown3, data = zList},
-                             {name = model.droppdown2, data = yList}]}
+                             {name= "Sport", data= filtersport}
+                             ]
+                             ++ if model.droppdown2 /= "" then [{name = model.droppdown2, data = yList}] else []
+                             ++ if model.droppdown3 /= "" then [{name = model.droppdown3, data = zList}] else []}
 
                    ,footer]
                     ]
 
-
+  
                 
 
                     
