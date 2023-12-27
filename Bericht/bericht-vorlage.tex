@@ -91,7 +91,7 @@ Der Datensatz hat drei Nominale (Id, Gender und Raucher) und zwölf Quantitative
 \end{itemize}
 
 Unter der Annahme, dass die Daten valide sind und die angegebene Interpretation der Attribute korrekt ist, gewährt dieser Datensatz detaillierte Einblicke in die Schlafqualität, insbesondere hinsichtlich der Schlafphasen und ihrer Dauer. Allerdings weist die Erfassung der Kaffee- und Alkoholeinnahme Schwächen auf, da diese Substanzen im menschlichen Körper eine geringe Halbwertszeit haben, und somit der zeitliche Kontext der Einnahme relevant wäre. Weitere Einflussfaktoren auf die Schlafqualität werden nicht erfasst, ebenso wenig wird die Länge individueller Schlafunterbrechungen differenziert oder den drei Schlafphasen zugeordnet. Daher könnte es für den Anwender von Interesse sein zu erfahren, welche der Schlafphasen durch bestimmte Verhaltensweisen gestört werden. Zudem lässt sich argumentieren, dass die Verteilung der Verhaltensweisen sehr linksseitig ist, dies ist möglicherweise auf kulturelle Unterschiede zurückzuführen. Daher sollte die Aussagekraft des Datensatzes auf den marokkanischen Lebensstil eingeschränkt werden.
-\textbf{ Die Daten }
+\section{Die Daten}
   Der Datensatz wurde auf \href{https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency/data}{Kaggle} veröffentlicht und ist die dritte Version. Die Daten sind als CSV mit einer Größe von 9 kB zugänglich. Sie sind im GitHub-Repository abgelegt, was eine zentrale Aktualisierung der Daten ermöglicht, falls dies notwendig sein sollte.
 
  Das Programm ruft die CSV-Datei mittels eines HTTP-GET-Requests auf und speichert sie als einen String ab. Falls der Request erfolgreich ist, wird die Nachricht `Got Text Ok fulltext' an die Funktion `update` gesendet. Der String wird dabei durch `fullText' repräsentiert. Daraufhin wird im `Model' das `datenladen' auf `Success' gesetzt.
@@ -354,7 +354,41 @@ Weiter kann man erkennen, dass die Standardmäßig angezeigten Verhaltensweisens
 
 
 \section{Verwandte Arbeiten}
-Führen sie eine kurze Literatursuche in der wissenschaftlichen Literatur zu Informationsvisualisierung und Visual Analytics nach ähnlichen Anwendungen durch. Diskutieren sie mindestens zwei Artikel. Stellen sie Gemeinsamkeiten und Unterschiede dar.
+Um eine kurze Literaturrecherche durchzuführen, wurde die Datenbank des ScienceDirect\footnote{\url{sciencedirect.com}} mit dem folgenden Suchstring durchsucht: \newline
+{   
+    \centering
+    \framebox[\textwidth]{
+      \label{suchstring}
+        \parbox{\textwidth}{
+            \centering
+            (
+                \enquote{informationvisualization} $\lor$ \enquote{visual analytics}
+            ) $\land$ (
+                \enquote{sleep} $\lor$ \enquote{sleep data} $\lor$ \enquote{sleep efficiency}
+            )
+        },
+    }
+}
+\newline
+Um die gefundenen Ergebnisse weiter einzugrenzen, wurden lediglich Artikel aus dem aktuellen Jahr 2023 betrachtet, 
+welche über das für diese Anwendung passende Journal \enquote{Sleep Health} veröffentlich wurden. Im Folgenden werden die beiden Artikel \enquote{Race and sex differences in the longitudinal changes in multidimensional self-reported sleep health characteristics in aging older adults} von Tapia et al.\cite{Tapia2023} und \enquote{The thief of (bed)time: Examination of the daily associations between bedtime procrastination and multidimensional sleep health} von Carlson et al.\cite{Carlson2023} betrachtet.
+\newline
+Zwei unabhängige Studien zum Thema Schlafgesundheit wurden analysiert, wobei Gemeinsamkeiten und Unterschiede hervorgehoben wurden.
+ Die erste Studie von Tapia et al. umfasste eine umfangreiche Stichprobe von über 3000 Teilnehmern und legte besonderen Fokus auf
+  demografische Merkmale wie Geschlecht und Rasse. Deskriptive Statistiken wurden präsentiert, wobei Teilnehmermerkmale wie Bildungsniveau,
+   Alkoholkonsum und der frühe sozioökonomische Status berücksichtigt wurden. Die Studie analysierte Schlafgesundheitsdimensionen wie Schlafzufriedenheit, 
+   Tagesmüdigkeit, Probleme beim Ein- und Durchschlafen sowie die Schlafdauer. Interessanterweise wurden signifikante Wechselwirkungen zwischen Alter, Geschlecht und Rasse identifiziert, die Auswirkungen auf verschiedene Schlafcharakteristika hatten.
+\newline
+Die zweite Studie von Carlson et al. konzentrierte sich auf eine kleinere Stichprobe und untersuchte spezifisch 
+Schlafprokrastination in Verbindung mit Chronotyp und anderen Schlafgesundheitsmaßen.
+ Durchschnittliche tägliche Schlafmessungen wurden präsentiert, und 
+ bivariate Korrelationsanalysen zeigten Assoziationen zwischen Schlafprokrastination, Chronotyp und verschiedenen Schlafindikatoren. 
+ Multilevel-Analysen verdeutlichten, dass höhere Schlafprokrastinationswerte mit schlechterer Schlafgesundheit auf täglicher 
+ Ebene verbunden waren. Interessanterweise unterschieden sich die beiden Studien auch hinsichtlich ihrer Fokussierung auf 
+ zusätzliche Variablen; die erste Studie berücksichtigte sozioökonomische und demografische Aspekte, während die zweite Studie tiefer
+  in die Untersuchung von Schlafprokrastination eintauchte.
+\newline
+Zusammenfassend reflektieren diese Studien die Vielfalt der Fragestellungen in der Schlafforschung. Während die erste einen breiten Überblick über die Schlafgesundheit unter Berücksichtigung verschiedener Einflussfaktoren bot, konzentrierte sich die zweite auf die detaillierte Analyse von Schlafprokrastination und deren Beziehung zu anderen Schlafcharakteristika. Beide trugen zum Verständnis der komplexen Zusammenhänge bei, betonten jedoch unterschiedliche Schwerpunkte in Bezug auf Stichprobengröße, Variablenauswahl und Analysemethoden.
 
 \section{Zusammenfassung und Ausblick}
 Fassen sie die Beiträge ihre Visualisierungsanwendung zusammen. Wo bietet sie für die Personen der Zielgruppe einen echten Mehrwert.
