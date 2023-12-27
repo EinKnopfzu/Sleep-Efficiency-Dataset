@@ -245,23 +245,11 @@ Die dritte Visualisierung wird durch die beiden anderen beeinflusst. So ist das 
 
 
 \section{Implementierung}
-Die Visualisierung ist als One Page Application konzipiert, dies ist Aufgrund der benötigten Interaktion mit den Filtern und häufiger auswah der Attribute nützlich.
-Das Main.elm ruf zu beginn die Init Funktion auf, welche den type Alias Modell zunächst standard werde übergibt und die Daten einliest. 
-Die Kommunikation mit dem View erfolgt über den Typ Msg der verschiedene Ausprängungen über Änderungen an dem Modell an die Update Funktion weitergibt. 
-Die Update Funktion gibt die angehangene Information and das Model zurück.
-Besonderer Erklärung bedarf es hier der Abspeicherung des Datensatzes, dieser wird im Model direkt als List (Aussortierte_Daten) abgespeichert.
-Der typ Aussortierte_Daten ist ein Tupel der die Merkmalsausprägungen abspeichert hierebi werden nur die ID, Schlafenszeit und die Aufwachzeit als String abgelegt. Die Anderen Attribute sind alle in Floats transformiert.
-
-Die im Main wichtigste Funktion ist das View. Hier werden verschiedene div erzeugt in denen die Interaktionen und Visualisierungen erzeugt sind,
-Die Auswahl der Attribute erfolgt über ein Droppdown. Dieses übergibt einen Sting ans Main und die Variable bezieht nimmt mittels case Handeling den gewünschen Wert an.
-
-Die in Visualisierung 1 gewählter Filter bereich wird als `daten' an die anderen Funktionen übergeben.
-Die so gefilterten Daten werden in einzelne Listen aufgebrochen und die benötigten Attribute wieder zusammengesetzt. 
-(combined... Funktionen)
 
 
-Die Daten werden dann im div an die in den anderen Modulen definierten Funktionen zum Zeichnen der Visualiserungen übergeben. 
-Optional werden auch Zustände aus dem Model an mit übergeben.
+Die Visualisierung ist als One-Page-Application konzipiert, was aufgrund der benötigten Interaktion mit den Filtern und der häufigen Auswahl der Attribute nützlich ist. Das `Main.elm` ruft zu Beginn die `Init`-Funktion auf, die den Type Alias `Modell` zunächst auf den Standardwert setzt und die Daten einliest. Die Kommunikation mit dem View erfolgt über den Typ `Msg`, der verschiedene Ausprägungen über Änderungen am Modell an die `Update`-Funktion weitergibt. Die `Update`-Funktion gibt die angehängte Information an das Modell zurück. Besonderer Erklärung bedarf hier die Abspeicherung des Datensatzes, dieser wird im Modell direkt als `List (Aussortierte_Daten)` abgespeichert. Der Typ `Aussortierte_Daten` ist ein Tupel, das die Merkmalsausprägungen abspeichert. Hierbei werden nur die ID, Schlafenszeit und die Aufwachzeit als String abgelegt. Die anderen Attribute sind alle in Floats transformiert. Da die Interaktion vor allem durch Projektion und Selektion umgesetzt ist, erfolgt dies in der Anwendung durch die Filter und die Auswahl der Attribute, die im Modell gespeichert werden.
+
+Die im `Main` wichtigste Funktion ist das `View`. Hier werden verschiedene `div` erzeugt, in denen die Interaktionen und Visualisierungen erstellt sind. Die Auswahl der Attribute erfolgt über ein Dropdown. Dieses übergibt einen String an das `Main` und die Variable bezieht mithilfe eines `case`-Handlings den gewünschten Wert. Der in Visualisierung 1 gewählte Filterbereich wird als `daten` an die anderen Funktionen übergeben. Die so gefilterten Daten werden in einzelne Listen aufgebrochen und die benötigten Attribute wieder zusammengesetzt (Funktionen wie `combined...`). Die Daten werden dann im `div` an die in den anderen Modulen definierten Funktionen zum Zeichnen der Visualisierungen übergeben. Optional werden auch Zustände aus dem Modell mit übergeben.
 
 \subsubsection{QQ Plott}
 Der QQ-Plott (scatterplott.elm) definiert zwei wichtige Funktionen die erzeugung von Normalverteilten Daten und das zeichnen des Plotts.
@@ -277,14 +265,13 @@ Die Funktion `addNV' funtkioniert wie folgt:
   \item Ein QQ-Plot wird erstellt, indem die transformierten Werte gegen die ursprünglichen Datenpunkte aufgetragen werden.
 \end{enumerate}
 
-Die Funktion draw Scatterplott skaliert die Datenpunkte auf Ihre relative XY Position und zeichnet diese in einem SVG. 
-Die rote linie wird zwischen dem 25 und 75 Quantil Punkt gezogen und die schwarze Linie folgt bildet die Funktion  f(x) = x indirekt ab.
-Da diese Funktion aus der Übung bekannt ist wird diese hier nicht weiter erläutert.
+Die Funktion "drawScatterplot" skaliert die Datenpunkte auf ihre relative XY-Position und zeichnet diese in einem SVG. Eine rote Linie wird zwischen dem 25. und 75. Quantilpunkt gezogen, während die schwarze Linie die Funktion f(x)=xf(x)=x indirekt abbildet. Da diese Funktion aus der Übung bekannt ist, wird sie hier nicht weiter erläutert.
 
 \subsubsection{Parallele Koordinaten}
+
 Die Funktion `blackbox' zeichnet die Parallele Koordinaten Visualisierung.
 
-\begin {enumerate}
+\begin{enumerate}
 \item Die Funktion nimmt eine Liste von mehrdimensionalen Punkten (model), Pixelgröße (pixel), sowie RGB- und Opazitätswerte für die Farbe entgegen.
 \item Die Min Max werden berechnet um eine Skalierung zu ermöglichen.
 \item Die Daten werden auf Ihre basierend auf der Dimension skaliert und auf die entsprechenden Achsen projiziert.
@@ -292,7 +279,7 @@ Die Funktion `blackbox' zeichnet die Parallele Koordinaten Visualisierung.
 \item Die Farbgebung und Opazität der Linien können durch die Parameter rgb1, rgb2, rgb3 und opacity aus dem Main.Model gesteuert werden.
 \end{enumerate}
 
-Die Funktionen zur berechnung der Quantile wurden belassen um bei zukünftiger weiter Entwicklung diese Möglichkeit dem Anwender zu bieten.
+Die Funktionen zur Berechnung der Quantile, hat ungenutzte Funktionen um die Quantile in in einer anderen Art zu berechnen. Diese wurden im Programm belassen, um diese Funktion dem Anwender später zu ermöglichen.
 
 \subsubsection{Weihnachtsstern}
 Die Funktion `graph' zeichnet die Weihnachtsstern Visualisierung.
@@ -303,42 +290,33 @@ Hierbei werden die Informationen (Hauptattribut, Verhaltensweisen und ausgewähl
 \begin{figure}[h]
   \centering
   \includegraphics [width = 0.8\textwidth]{ImpactGraphData.JPG}
-  \caption{Visualisierung Drei: WeihnachtsStern: Anzahl Erwachungen }
+  \caption{ type Alias ImpactGraphData und ImpactData}
 \end{figure}
 
-Hier herzuheben ist die reaktive Positionierung der Kreise um das `Hauptattribut' herum.
+Hier hervorzuheben ist die reaktive Positionierung der Kreise um das `Hauptattribut' herum.
 Die Funktion winkelEinteilung berechnet gleichverteilte Winkelschritte mit : 2 * pi / (length data + 1) 
-Die Funtkion Kreis übernimmt relvante Informationen über die größe und Positionierung der Elemente. 
+Die Funtkion Kreis übernimmt diese und weitere relvante Informationen über die Größe und Positionierung der Kreise. 
 Hervorzustellen sind hierbei die Funktionen xPosition und yPositon welche basierend auf dem Index einer Liste eine relative Positionierung um den Kreise berechnen. 
 
+\begin{figure}[h]
+  \centering
+  \includegraphics [width = 0.8\textwidth]{Relative XY Positionierung der Kreise.JPG}
+  \caption{Relative XY Positionierung der Kreise. }
+\end{figure}
 
 
 Da Elm keine Rückwärts kompatibilität erzwingt, ist es manchmal nicht möglich die neuste version eines Paketes zu verwenden. 
 Dies ist allerdings etwas frustrierend, wenn man ein Nützliches paket gefunden hat. Es ist allerdings mögloich den Quellcode auf 
 Github, lokal abzuspecihern und als anderes Paket zu importieren, solange die Abhängigkeiten erfüllt sind. Das Modul JXStat ist das Paket Stat aus dem \href{https://github.com/jxxcarlson/elm-stat/blob/6.0.2/src/Stat.elm}{Elm-Stat 6.0.2}. 
 
- Haben Sie verschiedene Elm-Module erstellt. Was war aufwändig umzusetzen, 
-
- was ließ sich mit dem vorhanden Code aus den Übungen relativ einfach umsetzen? 
-
-Wie sieht die Elm-Datenstruktur für das Model aus, in dem die verschiedenen Zustände der Interaktion gespeichert werden können.
-
-Die interaktion werden im Modell als einfache String oder Floats abgespeichert. Der Datensatz wird also nach seiner Transformierung in der Init  nicht weiter verarbeitet.
-
-Da die Interaktion ist vorallem durch Projektion und Selektion umgesetzt, dies ist in der Anwendung durch die Filter und die Auswahl der Attribute umgesetzt.
-Die angepassung der Daten an die Anforderungen der Visualiserungen erfolgt im Main vor der übergabe in die Grafiken. 
+Für die Zeichnung des Scatterplott und die Implementierung der Parallelen Koordinaten waren die Übungen sehr hilfreich. Die Implemnetierung der Datenübergabe, Maniulation und auch Visuell anprechende Darstellung war auf persönlicher Ebene am schwierigsten.
 
 
 
 \section{Anwendungsfälle}
-Präsentieren sie für jede der drei Visualisierungen einen sinnvollen Anwendungsfall 
-in dem ein bestimmter Fakt, ein Muster oder die Abwesenheit eines Musters visuell festgestellt wird.
 
+Im folgendem wird die Anwendung der Visualisierungen anhand von Beispielen erläutert.
 
-Begründen sie warum dieser Anwendungsfall wichtig für die Zielgruppe der Anwenderinnen ist.
-Diskutieren sie weiterhin, ob die oben beschriebene Information auch mit anderen 
-Visualisierungstechniken hätte gefunden werden können.
-Falls dies möglich wäre, vergleichen sie die den Aufwand und die Schwierigkeiten ihres Ansatzes und der Alternativen. 
 \subsection{Anwendung Visualisierung Eins}
 
 \begin{figure}[h]
