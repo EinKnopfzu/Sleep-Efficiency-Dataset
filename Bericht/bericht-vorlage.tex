@@ -163,11 +163,9 @@ Die typischen Aufgabenfelder eines QQ-Plots sind die Normalitätsüberprüfung, 
 
 Die Visualisierung zeigt den Wert auf der Y-Achse an, den ein Datenpunkt hätte, falls der Datensatz einer Normalverteilung folgen würde. Die X-Achse zeigt den Wert des Datenpunktes an. Dann werden die Datenpunkte basierend auf ihrer Reihenfolge im Scatterplot gezeichnet. Ein perfekt normalverteiltes Attribut würde somit eine gerade Linie im 45-Grad-Winkel ergeben.
 
-Dies ermöglicht dem Anwender eine Normalitätsüberprüfung durchzuführen. Somit kann dieser sich ein eigenes Bild darüber machen, ob das Attribut normalverteilt ist und seinen Anforderungen entspricht. Bei einem perfekt normalverteilten Attribut würden im QQ-Plot alle Punkte auf einer 'f(x) = x'-Linie liegen. Abweichungen von dieser Linie deuten auf Abweichungen von der Normalverteilung hin; Krümmungen und Biegungen weisen auf Verschiebungen hin. Hier ist es an dem Anwender, diese zu interpretieren. Die hypothetische 'f(x) = x'-Linie ist zur Orientierung auch eingezeichnet. Weiter ist eine rote Linie vom 25. Quantil bis zum 75. Quantil eingezeichnet. Dies erleichtert dem Benutzer den Datensatz zu überprüfen und einer Verunsicherung durch die Abweichungen an den Extrema entgegenzuwirken.
+Dies ermöglicht dem Anwender eine Normalitätsüberprüfung durchzuführen. Somit kann dieser sich ein eigenes Bild darüber machen, ob das Attribut normalverteilt ist und seinen Anforderungen entspricht. Bei einem perfekt normalverteilten Attribut würden im QQ-Plot alle Punkte auf einer `f(x) = x'-Linie liegen. Abweichungen von dieser Linie deuten auf Abweichungen von der Normalverteilung hin; Krümmungen und Biegungen weisen auf Verschiebungen hin. Hier ist es an dem Anwender, diese zu interpretieren. Die hypothetische `f(x) = x' - Linie ist zur Orientierung auch eingezeichnet. Weiter ist eine rote Linie vom 25. Quantil bis zum 75. Quantil eingezeichnet. Dies erleichtert dem Benutzer den Datensatz zu überprüfen und einer Verunsicherung durch die Abweichungen an den Extrema entgegenzuwirken.
 
 Die Identifikation von Ausreißern kann im Normal QQ-Plot an den visuellen Enden identifiziert werden. Starke Abweichungen sind durch eine große Distanz zur schwarzen Linie erkennbar. Diese können durch das Filtern des Datenbereichs entfernt werden. Weiter ist es möglich, einen Vergleich verschiedener Verteilungen anzustellen. Dies ist aufgrund des Umfangs des Projektes nicht in der Anwendung implementiert, könnte dem Anwender aber einen Mehrwert bieten. Somit sollte der Anwender durch den Scatterplot in der Lage sein, die Datenverteilung und Interpretierbarkeit einzuschätzen und diese in geringem Maße mit den Filtern zu selektieren.
-
-
 
 \begin{figure}[h]
   \centering
@@ -175,56 +173,37 @@ Die Identifikation von Ausreißern kann im Normal QQ-Plot an den visuellen Enden
   \caption{Visualisierung Eins  Norm QQ-Plot REM }
 \end{figure}
 
-Das oben erwähnte Auswählen und das Filtern geschieht in der Seitenleiste, hier kann der Benutzer das Atrribut auswählen, dass er untersuchen möchte und direkt darunter dieses in seinem Wertebereich filtern. Die Seitenleiste wird im Abschnitt: Interaktiongenauer erklärt.
+
+Aufgrund des Anspruchs, die Interaktion von Daten analysieren zu können, sind zwei weitere Scatterplots unter dem des Hauptattributes dargestellt. Deren Funktion ist ebenfalls die Interpretation der Güte.
+
+Das oben erwähnte Auswählen und das Filtern geschieht in der Seitenleiste. Hier kann der Benutzer das Attribut auswählen, das er untersuchen möchte, und direkt darunter dieses in seinem Wertebereich filtern. Die Seitenleiste wird im Abschnitt `Interaktion' genauer erklärt.
 Der eingeschränkte Datenbereich wird dann in den anderen Visualisierungen verwendet.
-Der Benutzer kann in der zweiten Visualisierung zwei weitere Attribute zum untersuchen auswählen. Diese werden darufhin unter dem Hauptscatterplott als kleinere QQ-Plott dargestellt und ermöglichen eine schnelle Einschätzung der Güte. 
-Hier mit wird vissualisiert, dass die Attribute mit denen verglichen wird den gleichen Ansprüchen gegenüberstehen muss wie das Hauptattribut.
+Der Benutzer kann in der zweiten Visualisierung zwei weitere Attribute zum Untersuchen auswählen. Diese werden daraufhin unter dem Haupt-Scatterplot als kleinere QQ-Plots dargestellt. Dies ermöglicht auch für sie eine schnelle Einschätzung der Güte.
 
-
-Alternativ hätte auch ein Histogramm verwendetwerden können, bei diesel hätte ein Distributionfitting leichter stattfinden können. 
-\\
-
-Expressivität und Effektivität der Visualisierung diskutieren.\\
-
-Die Zielgruppe der Visualisierungen sind Nutzer mit einem Interesse an den zu grundeliegenden Daten. 
-
-
-
-
+Die Visualisierung mittels Scatterplot ist im Kontext der Datenbewertung effektiv, da sie die zugrunde liegenden Fragestellungen visuell gut unterstützt und dem Anwender bei multiplen Fragestellungen Antworten liefern kann. Die Expressivität ist limitiert, da die Interpretation nicht ohne Kenntnis der Interpretation von QQ-Plots möglich ist und möglicherweise die Attribute, welche in den kleinen Scatterplots eine Unterordnung zum Haupt-Scatterplot impliziert.
+Alternativ hätte auch ein Histogramm verwendet werden können. Bei diesem hätte man die Hürde zur Analyse reduziert, aber die Identifikation von Ausreißern erschwert.
 
 
 
 \subsubsection{Visualisierung Zwei: Parallele Koordinaten}
 Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
 
-3 Dimensionen werden abgebildet. Die in QQ-Plott ausgewählte sowie zwei Weitere Atrribute. Die Achsen sind Parallel zueinander angelegt und gleich groß. Die Ausprägungen eines Datupels werden dargestellt, indem man die Ausprägung den der Tupel am Attribut hat auf die Y achse Skaliert. Dann wird eine gerade linie zwischen den positionen auf den anliegenden Achsen gezogen. 
-Die Endpunkte der Liniensegmente korrespondieren also mit den Attributwerten.
-Das Hauptattribut, welches in Visualisierung 1. ausgewählt wurde ist in der Mitte anglegegt. Das Y Attribut zu der linken und das Z Attribut zu der rechten Seite.
-Es wurde bewusst darauf verzichtet weitere Attributsdimensionen hinzuzufügen, da es einerseits der Anwender einen Fokus auf die Analyse des Hauptattributes hat und andererseits, bei mehr als 3 Attributen zusammenhänge suggeriert werden könnten, die nicht unbedingt vorhanden sein müssen. Nur weil eine Clusterung zwischen Dimension 1 und 2 und zwischen 2 und 3 beseteht. Bedueted das nicht immer, dass es eine Clusterung zwischen 1 und 3 gibt. 
- Dies ist der Effektivität abträglich, da so zusammenhänge suggeriert werden könnten di enicht intendiert sind.
+In der Visualisierung werden drei Dimensionen abgebildet: das im QQ-Plot ausgewählte Hauptattribut sowie zwei weitere Attribute. Die Achsen sind parallel zueinander angeordnet und gleich groß. Um die Ausprägungen eines Datentupels darzustellen, wird die Ausprägung des Tupels am jeweiligen Attribut auf die Y-Achse skaliert. Anschließend wird eine gerade Linie zwischen den Positionen auf den benachbarten Achsen gezogen, wobei die Endpunkte der Liniensegmente mit den Attributwerten korrespondieren.
 
-Die Parallelen Koordinaten eignen sich gut für mehrdimensionale, quantitative und endliche Daten. 
-(Dimension< 20)
+Das Hauptattribut, das in Visualisierung 1 ausgewählt wurde, befindet sich in der Mitte, das Y-Attribut auf der linken und das Z-Attribut auf der rechten Seite. Es wurde bewusst darauf verzichtet, weitere Attributsdimensionen hinzuzufügen. Dies dient einerseits dazu, dass der Anwender seinen Fokus auf die Analyse des Hauptattributes legt, und andererseits könnten bei mehr als 3 Attributen suggerierte Zusammenhänge entstehen, die nicht zwangsläufig vorhanden sein müssen. Eine Clusterung zwischen Dimension 1 und 2 sowie zwischen 2 und 3 bedeutet nicht zwangsläufig eine Clusterung zwischen 1 und 3. Dies wäre der Effektivität abträglich, da so Zusammenhänge suggeriert werden könnten, die nicht beabsichtigt sind.
+
+Parallele Koordinaten eignen sich besonders gut für mehrdimensionale, quantitative und endliche Daten. Diese sind in unserem Datensatz gegeben. Die Visualisierung ermöglicht es dem Anwender, Muster und Trends in den Daten zu identifizieren, die auf Beziehungen zwischen den Attributen hinweisen. Zum Beispiel können parallele Linien auf eine starke Korrelation zwischen den entsprechenden Variablen hinweisen. Die Visualisierung ermöglicht es dem Anwender, Rückschlüsse auf den Zusammenhang von Attributen zu ziehen und diese mit Visualisierung 1 zu vergleichen. Die Untersuchung der Attribute und das Visualisieren kann mittels eines interaktiven Anpassens der Pixelgröße und RGBA-Werte erfolgen, dies ist nützlich, da viele der Inputdaten wenige unterschiedliche Wertausprägungen haben, was die Clusterung der Inputdaten erschwert. Um dennoch interessante Muster erkennen kann. So kann der Benutzer basierend auf seinen eigenen visuellen Bedürfnissen Anpassungen vornehmen. In Bild 3 wird dies vorgestellt.
+
 
 
 \begin{figure}[h]
   \centering
   \includegraphics [width = 0.8\textwidth]{RoengtenBSP.JPG}
-  \caption{Visualisierung Eins  Norm QQ-Plot REM }
+  \caption{Visualisierung Zwei:  Parallele Koordinaten REM,  }
 \end{figure}
 
-Wieso sind diese gut und erfüllen die Anforderungen an das Design?
 
 
-
-Wieso erfüllt die Visualisierung den Anforderungen der Anwender?
-
- Der Anwender hat ein Interesse die Zusammenhänge zwischen dem Hauptattribut und den anderen Attributen zu untersuchen, die nicht leicht mit statsitischen Test erkannt werden können.
-  Durch die Betrachtung der Linien können Muster, Trends oder Gruppierungen in den Daten identifiziert werden, die auf Beziehungen zwischen den attributen Hinweisen.
-  Zum Beispiel können parallele Linien auf eine starke Korrelation zwischen den entsprechenden Variablen hinweisen. 
-  Der Anwender kann somit Rückschlüsse auf den zusammenhang von Attributen ausbilden und diese mithilfe von Visualisierung NR. 3 
-  Rückschlüsse auf die, hinterden Daten liegenden Mechanismen schließen und somit sein Verständnis von Schlafqualität zu verbessern.
- Die Untersuchung der Attribute und das Visualisieren kann mittels eines interaktiven anpassens der Pixelgröße und RGBA Werte erfolgen, dies ist vorallem nützlich, da viele der Inputdaten wenige unterschiedliche Wertausprägungen haben, was die Clusterung der Inputdaten erschwert. Um dennoch interessante Muster erkennen kann. So kann der Benutzer basierend auf seinen eigenen visuellen Bedürfnissen anpassungen vornehmen. In Bild 3 wird dies vorgestellt.
  
 \begin{figure}[h]
   \centering
@@ -233,32 +212,20 @@ Wieso erfüllt die Visualisierung den Anforderungen der Anwender?
 \end{figure}
 Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen:
 Clusterin, Farbwahrnehmung  und Abstrahierung
+Alternativ hätte eine Radviz Visualisierung angewandt werden können, diese hätte allerdings den Fokus weg vom zu untersuchendem Hauptattribut gelenkt. Daher ist Sie keine alternative gewesen obwohl Sie die gleichen Daten darstellt und zu ähnlichen Mentalen modellen führt basiert.
+Die Visualisierung ist weniger effektiv, da der Anwender verschiedene Kombinationen von Attributen und Pixel ausprobieren muss um sich ein Bild zu machen. Dies ist allerdings auch der Stärke der Visualisierung, da der Anwender sich die Visualisierung so anpassen kann, dass Sie seinen Bedürfnissen entspricht. Hinsichtlich der Expressivität, kann es dazu kommen, dass der Anwender durch Farbgebungen z.b. Rote Linien. Eine nicht intendierte Interpretation erzeugt.
 
+\subsubsection{Visualisierung Drei: Weihnachts Stern} \\
+Die dritte Visualisierung lässt sich wohl den pixelorientierten Techniken zuordnen. Dabei werden die im Abschnitt Daten erwähnten Verhaltensweisen und Attribute wie Alter, Geschlecht, Koffeinkonsum, Alkoholkonsum, Tabakkonsum und Sporteinheiten kreisförmig um das Hauptattribut angeordnet. Basierend auf ihrer Korrelation zu diesem Hauptattribut werden sie sowohl farblich als auch in ihrer Größe modifiziert. Die in Visualisierung 2 hinzugefügten Attribute können ebenfalls integriert werden. Somit wird die Korrelation doppelt dargestellt. Die Farbgebung erfolgt durch die Skalierung der Korrelation auf ein Farbschema: negativ wird durch Rot dargestellt, positiv durch Grün. Die Intensität der Farbe wird positiv durch die Korrelation beeinflusst, während der Betrag der Korrelation die Größe des Kreises beeinflusst. Dadurch werden Daten mit hoher Korrelation besonders hervorgehoben. Um die Expressivität beizubehalten, sind die Merkmale und ihre Korrelation als Schriftzug eingefügt. Es sollte jedoch beachtet werden, dass eine qualitative Interpretation suggeriert werden könnte. In der Abbildung ist beispielsweise die Anzahl der Erwachungen dargestellt.
+\begin{figure}[h]
+  \centering
+  \includegraphics [width = 0.8\textwidth]{RoengtenBSP.JPG}
+  \caption{Visualisierung Drei: WeihnachtsStern: Anzahl Erwachungen }
+\end{figure}
+Obwohl das Erwachen in der nacht keine Steigerung der lebensqualität ist, könnte angenommen werden, dass die geröteten Attribute grundsätzlich Negativ sind.
 
-Wieso diese Visualisierung und nicht andere? Wir wollen echte mögliche 
-Alternativen die zu einem ähnlichem mentalem Modell führen: 
-
-Streuudiagramm Matrix,
-
-Expressivität und Effektivität der Visualisierung diskutieren.\\
-
-
-\subsubsection{Visualisierung Drei: Force Graph} Test\\
-Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
-Wieso sind diese gut und erfüllen die Anforderungen an das Design?
-
-Wieso erfüllt di eVisualisierung den anfordeurngen der Anwender?
-
-Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen: Wir bauen ein 
-Kausales Mentales Modell auf, Diese verhaltensweisen beinflussen dieses Attribut in dieser Art und weise.
-
-Wieso diese Visualisierung und nicht andere? Wir wollen echte mögliche 
-Alternativen die zu einem ähnlichem mentalem Modell führen.
-
-Expressivität und Effektivität der Visualisierung diskutieren.\\
-
-\textbf{Kausales Mentales Modell}
-
+Der Anwender kann somit mithilfe dieser Visualisierung schnell Rückschlüsse auf den Einfluss des Verhaltens auf das untersuchte Hauptattribut ziehen. Wichtig dabei ist zu verstehen, dass Korrelation nicht gleichbedeutend mit Kausalität ist.
+Alternativ hätte eine Korrelationsmatrix genutzt werden können um die Korrelation darzustellen. Dies wäre auch zu einem änhöichen Mentalem Modell geführt.
 
 \subsection{Interaktion}
 Die präsentierten Visualisierungstechniken müssen interaktiv zu einer Anwendung verknüpft werden.
