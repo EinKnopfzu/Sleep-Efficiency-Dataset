@@ -182,8 +182,10 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
             Scale.linear ( 20 , 50 ) (0, 1)
 
         scaledRadius : Float
-        scaledRadius = 
-            Scale.convert radiusScale größe
+        scaledRadius = if größe <= 0.0000001
+                then   Scale.convert radiusScale (größe * -1)
+                else  Scale.convert radiusScale größe
+           
 
         colorTon : Color
         colorTon = if größe <= 0.0 
