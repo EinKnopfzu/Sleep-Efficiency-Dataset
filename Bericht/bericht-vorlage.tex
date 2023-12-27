@@ -291,8 +291,14 @@ Der Code besteht aus einem Main Modul, welches die anderen Module importiert, di
 Die drei Visualisierungen sind in jeweils einem anderem Modul implementiert, dabei werden die benötigten Informationen übergeben.
 
 Das Model besteht aus speichert die Ausprägungen ab, der zustand des Einladens, 
-die Wahl der Attribute in den droppdown, die Daten werden als List (Aussortierte_Daten Abgespeichert) ,
- die Filter und die Pixelgröße und die RGBA Werte werden als einfache Float abgespeichert.
+die Wahl der Attribute in den droppdown, die Daten werden als List Aussortierte Daten abgespeichert.
+
+
+Die Filter und die Pixelgröße und die RGBA Werte werden als einfache Float abgespeichert.
+
+Da Elm keine Rückwärts kompatibilität erzwingt, ist es manchmal nicht möglich die neuste version eines Paketes zu verwenden. 
+Dies ist allerdings etwas frustrierend, wenn man ein Nützliches paket gefunden hat. Es ist allerdings mögloich den Quellcode auf 
+Github, lokal abzuspecihern und als anderes Paket zu importieren, solange die Abhängigkeiten erfüllt sind. Das Modul JXStat ist das Paket Stat aus dem \href{https://github.com/jxxcarlson/elm-stat/blob/6.0.2/src/Stat.elm}{Elm-Stat 6.0.2}. 
 
  Haben Sie verschiedene Elm-Module erstellt. Was war aufwändig umzusetzen, 
 

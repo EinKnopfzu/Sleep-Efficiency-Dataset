@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 17:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 17:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -611,6 +611,7 @@ LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 Package hyperref Info: Link coloring OFF on input line 17.
+ (./bericht-vorlage.out) (./bericht-vorlage.out)
 \@outlinefile=\write4
 \openout4 = `bericht-vorlage.out'.
 
@@ -829,43 +830,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 259--260
 
  []
 
-[11 <./ParalleleBSPPixel.JPG>]
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:294: Missing $ inserted.
-<inserted text> 
-                $
-l.294 ... die Daten werden als List (Aussortierte_
-                                                  Daten Abgespeichert) ,
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+[11 <./ParalleleBSPPixel.JPG>] [12]
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 294.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 294.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 294.
-
-LaTeX Warning: Command \" invalid in math mode on input line 295.
-
-
-LaTeX Warning: Command \ss invalid in math mode on input line 295.
-
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:296: Missing $ inserted.
-<inserted text> 
-                $
-l.296 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (391.93169pt too wide) in paragraph at lines 293--296
-\T1/lmr/m/n/10.95 At-tri-bu-te in den dropp-down, die Da-ten wer-den als List (Aussortierte$[]\OML/lmm/m/it/10.95 atenAbgespeichert\OT1/lmr/m/n/10.95 )\OML/lmm/m/it/10.95 ; dieFilterunddiePixelgr\OT1/lmr/m/n/10.95 öÿ\OML/lmm/m/it/10.95 eunddieRGBAWertewerdenalseinfacheFloatabgespeichert:$ 
- []
-
-[12{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
-
-LaTeX Warning: Empty bibliography on input line 333.
+LaTeX Warning: Empty bibliography on input line 339.
 
 [13] (./bericht-vorlage.aux)
  ***********
@@ -876,14 +843,8 @@ L3 programming layer <2023-08-03>
 
 LaTeX Warning: There were undefined references.
 
-
-Package rerunfilecheck Warning: File `bericht-vorlage.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `bericht-vorlage.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `bericht-vorlage.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                bericht-vorlage
@@ -894,18 +855,18 @@ Package logreq Info: Writing requests to 'bericht-vorlage.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21934 strings out of 475187
- 402301 string characters out of 5767784
+ 21914 strings out of 475187
+ 402117 string characters out of 5767784
  1931248 words of memory out of 5000000
- 42938 multiletter control sequences out of 15000+600000
- 609267 words of font info for 78 fonts, out of 8000000 for 9000
+ 42922 multiletter control sequences out of 15000+600000
+ 597235 words of font info for 63 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,107p,11019b,2371s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on bericht-vorlage.pdf (13 pages, 972030 bytes).
+<c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
+Output written on bericht-vorlage.pdf (13 pages, 957721 bytes).
 PDF statistics:
- 211 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
+ 197 PDF objects out of 1000 (max. 8388607)
+ 164 compressed objects within 2 object streams
  38 named destinations out of 1000 (max. 500000)
  176 words of extra memory for PDF output out of 10000 (max. 10000000)
 
