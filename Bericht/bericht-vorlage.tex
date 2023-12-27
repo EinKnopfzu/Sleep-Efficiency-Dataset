@@ -112,26 +112,44 @@ Daraufhin wird im `Model' das `datenladen' auf Success gesetzt.
 \section{Visualisierungen}
 \subsection{Analyse der Anwendungsaufgaben}
 Die Aufgaben die durch die Visualisierung gelöst werden sollen: \\ 
-\textbf{ 
- Handelt sich um explorative Visualisierung 
+\textbf{  Die Hauptaufgabe der visualisierungen ist es dem Nutzer dabei behilflich zu sein sich 
+einen Überblick über die gegebenen Daten zu machen, und die Attribute auf Ihren zusammenhang zu anderen
+zu analysieren und dann die größe der Einflüsse der Verhaltensweisen auf das untersuchte Attrbiut zu differenzieren. 
+Der Anwender muss zunächst die Datenlage kritisch analysieren und die güte der einzelnen Attribute auf Ihre Aussagekräftigkeit zu bewerten. 
+Nach Bewertung der Attribute vergleicht er diese mit anderen Attributen und kann so komplexe Zusammenhänge und Beziehungen erkennen. 
+Daraufhin müssen die Einflüsse des Verhaltens auf die Attribute analysiert werden.
+Dabei muss der Anwender die Grundlagen der statistischen Interpretation und relevanz
+von Normalverteilungen für die Interpretation von Datenlagen kennen. Er sollte also wissen, dass die Datenlage normalverteilt sein sollte, um statistische Aussagen treffen zu können.
+Weiter ist es von Nutzen die Korrelation interpretieren zu können. 
+Die Interpreatation von Rot als negative und Grün als positive ist von Nutzen um die ergebnisse schneller zu erfassen, ist allerdings nicht notwendig.
 
- Expressivität
-  Effektivität
-  Angemessenheit
+
+Mentale Modelle
+Expressivität
+Effektivität
+
 Die ersten beiden Qualität der Daten zu überprüfen, die Interaktion und zusammenhänge zu identifizieren und einflüssel des verhaltens auf die Attribute zu identifizieren. 
 Das Problem ist folgendes: In hochkomplexen Systemen sind die Einflussfaktoren
  die die Ausprägung eines Merkmals beeinflussen nicht immer klar. Daher ist es wichtig, 
  dass wir die Daten visualisieren um die Zusammenhänge zu erkennen.\\
 Die Visualisierung soll uns also erlauben den Einfluss von multiplen Verhaltensindikatoren
- auf die Ausprägung eines Merkmales zu schätzen. 
-Die klassische Herangehensweise in den Einfluss zu überprüfen sind hochkomplizierte und benötigen
- statistisches Hintergrundwissen auf Seiten des Anwenders. Die Visualisierungsanwendung soll es dem Anwender ermöglichen
- den Datensatz und die Merkmale derer zu untersuchen und Rückschlüsse auf die Beziehungen von Ausprägungen untereinander und mit Verhaltensindikatoren und zu treffen. Dies ermöglicht dem Anweder die Daten auf Validität zu überprüfen und die  }
+ auf die Ausprägung eines Merkmales zu schätzen. }
 Analysieren sie die konkreten Anwendungsaufgaben, die die Lösung des Zielproblems durch die Anwender:innen bearbeitet werden müssen. 
 
 Welche sinnvollen mentale Modelle helfen den Personen bei der Bearbeitung. 
-\textbf{Aufgabenstellung: Analyse der Variablen und den Einfuss der Verhaltensindikatoren}
+\textbf{Aufgabenstellung: Analyse der Variablen und den Einfuss der Verhaltensindikatoren
 %Welche Visualisierungen helfen den Personen, die die Software verwenden, sinnvolle mentale Modelle aufzubauen. 
+Handelt sich um explorative Visualisierung 
+Menatle Modelle: Was ist eine Normalverteilung? 
+Abweichungen von der Linie:
+  Ein Verständnis dafür, wie Abweichungen von der diagonalen Linie im QQ-Plot auf nicht-normale Verteilungen oder systematische Abweichungen hinweisen können.
+  Schwänze und Spitzen:
+
+
+Das mentale Modell von Schwänzen und Spitzen in einer Verteilung hilft dabei zu verstehen,
+wie sich Ausreißer oder starke Konzentrationen von Werten auf den QQ-Plot auswirken können.}
+
+
 Sind diese mentalen Modelle für sie notwendig, um die Aufgaben lösen zu können? 
 Gehen sie bei ihrer Argumentation von den Anwendungsaufgaben aus und kommen sie dann zu den mentalen Modellen, deren Aufbau durch Visualisierungen unterstützt wird. 
 \subsection{Anforderungen an die Visualisierungen}
@@ -141,7 +159,7 @@ Leiten sie Anforderungen an das Design der Visualisierungen ab, die sich durch i
 \subsection{Präsentation der Visualisierungen}
 
 \subsubsection{Visualisierung Eins: QQ-Plot Datenlage Normalverteilt?}
-\textbf{
+
 Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
 Wieso sind diese gut und erfüllen die Anforderungen an das Design?
 
@@ -151,15 +169,22 @@ Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen.
 
 Wieso diese Visualisierung und nicht andere? Wir wollen echte mögliche 
 Alternativen die zu einem ähnlichem mentalem Modell führen.
- Expressivität und Effektivität der Visualisierung diskutieren.}
+\textbf{
+ Expressivität und Effektivität der Visualisierung diskutieren.
+ Die Zielgruppe der Visualisierungen sind Nutzer mit einem Interesse an den zu grundeliegenden Daten. 
+ Es soll also nicht einfach Ergebnisse präsentiert werden sondern die hinterlegten Inputdaten dargestellt werden.
 
 Die Visualisierung ist sinnvoll, da sie es dem Anwender ermöglicht sich mit den hinterliegenden
 Daten vertraut zu machen und die verschiedenen Ausprägungen zu analysieren und auf ihre Güte zu überprüfen.
  Datenlage zu überprüfen.
 
-\textbf{Falls im Normal-Q-Q-Plot sich eine Gerade ergibt, ist die
+Falls im Normal-Q-Q-Plot sich eine Gerade ergibt, ist die
 empirische Verteilung etwa normalverteilt
-Anstieg der Gerade ist $\sigma$, Verschiebung der Gerade ist $\mu$.}
+Anstieg der Gerade ist $\sigma$, Verschiebung der Gerade ist $\mu$.
+Die klassische Herangehensweise in den Einfluss zu überprüfen sind hochkomplizierte und benötigen
+ statistisches Hintergrundwissen auf Seiten des Anwenders. Die Visualisierungsanwendung soll es dem Anwender ermöglichen
+ den Datensatz und die Merkmale derer zu untersuchen und Rückschlüsse auf die Beziehungen von Ausprägungen untereinander und mit Verhaltensindikatoren und zu treffen. Dies ermöglicht dem Anweder die Daten auf Validität zu überprüfen und die  }
+
 
 \subsubsection{Visualisierung Zwei: Boxplott}
 

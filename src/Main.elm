@@ -85,9 +85,9 @@ init : () -> (Model, Cmd Msg)
 init _ =
   ( 
       {datenladen = Loading,
-      droppdown1 = "Alter",
-      droppdown2 = "Alter",
-      droppdown3 = "Alter",
+      droppdown1 = "",
+      droppdown2 = "",
+      droppdown3 = "",
       droppdown4 = "",
       droppdown5 = "",
       minFilter = Nothing,
@@ -231,8 +231,8 @@ view model =
                        , Html.span [ Html.Attributes.style "font-size" "16px" ] [Html.text "Untersuchendes Attribut" ]
                        ,Html.br [] []        
                   ,Html.select [ onInput Option1Selected ]
-                [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "Select an option" ]
-                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown1) ] [ Html.text "Geschlecht" ]
+                [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "NA" ]
+                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown1) ] [ Html.text "Geschlecht Bool" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown1) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown1) ] [ Html.text "Schlafdauer" ]
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown1) ] [ Html.text "Schlaf Effizienz" ]
@@ -242,7 +242,7 @@ view model =
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown1) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown1) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown1) ] [ Html.text "Alkohol Konsum" ]         
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher" ]  
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher Bool" ]  
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown1) ] [ Html.text "Sport Einheiten" ]   ]                            
                   , Html.br [] []
                   , Html.br [] []
@@ -271,11 +271,11 @@ view model =
                   , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Blackbox"]
                   , Html.br [] []
                   , Html.br [] []
-                  , Html.text "BlackBox Links: Y" 
+                  , Html.text "Y-Variable" 
                   , Html.br [] []
                , Html.select [ onInput Option2Selected ]
-                  [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Select an option" ]
-                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown2) ] [ Html.text "Geschlecht" ]
+                  [ Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "NA" ]
+                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown2) ] [ Html.text "Geschlecht Bool" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown2) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown2) ] [ Html.text "Schlafdauer" ]
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown2) ] [ Html.text "Schlaf Effizienz" ]
@@ -285,17 +285,17 @@ view model =
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown2) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown2) ] [ Html.text "Alkohol Konsum" ]         
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher" ]  
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher Bool" ]  
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown2) ] [ Html.text "Sport Einheiten" ]
-                  , Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Leer" ] ]
+                 ]
                   , Html.br [] []
                   , Html.br [] []
                   , Html.br [] []
-                  , Html.text "BlackBox Rechts: Z"
+                  , Html.text "Z- Variable"
                   , Html.br [] []
                ,  Html.select [ onInput Option3Selected ]
-                  [ Html.option [ value "", selected ("" == model.droppdown3) ] [ Html.text "Select an option" ]
-                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown3) ] [ Html.text "Geschlecht" ]
+                  [ Html.option [ value "", selected ("" == model.droppdown3) ] [ Html.text "NA" ]
+                  , Html.option [ value "Geschlecht", selected ("Geschlecht" == model.droppdown3) ] [ Html.text "Geschlecht Bool" ]
                   , Html.option [ value "Alter", selected ("Alter" == model.droppdown3) ] [ Html.text "Alter" ]
                   , Html.option [ value "Schlafdauer", selected ("Schlafdauer" == model.droppdown3) ] [ Html.text "Schlafdauer" ]
                   , Html.option [ value "Schlaf Effizienz", selected ("Schlaf Effizienz" == model.droppdown3) ] [ Html.text "Schlaf Effizienz" ]
@@ -305,9 +305,9 @@ view model =
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown3) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown3) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown3) ] [ Html.text "Alkohol Konsum" ]         
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher" ]  
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher Bool" ]  
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]
-                  , Html.option [ value "", selected ("" == model.droppdown2) ] [ Html.text "Leer" ]   ]                 
+                    ]                 
                   , Html.br [] []
                   , Html.br [] []
                   , Html.br [] []
@@ -463,7 +463,7 @@ view model =
                       ,scatterplot 
                        { xDescription = "Normalverteilung"
                          , yDescription = model.droppdown3
-                       , data = combinedListZ_Scatter
+                         , data = combinedListZ_Scatter
                         }]
                           
                          

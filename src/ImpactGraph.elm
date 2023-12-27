@@ -209,6 +209,7 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
                   , cy yPosition
                   , TypedSvg.Attributes.InPx.r (scaledRadius)
                   , fill <| Paint <| colorTon
+                  , stroke <| Paint <| Color.rgb 0 0 0
                   ]
                    []
         , text_
