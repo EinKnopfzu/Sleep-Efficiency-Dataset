@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 13:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 13:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -790,11 +790,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 131--142
 File: NormQQPlott.JPG Graphic file (type jpg)
 <use NormQQPlott.JPG>
 Package pdftex.def Info: NormQQPlott.JPG  used on input line 171.
-(pdftex.def)             Requested size: 525.9637pt x 348.3004pt.
-
-Overfull \hbox (70.71951pt too wide) in paragraph at lines 171--172
- [][] 
- []
+(pdftex.def)             Requested size: 364.19673pt x 241.18378pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -820,7 +816,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 199--208
 
  []
 
-[9 <./NormQQPlott.JPG>]
+[9{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc} <./NormQQPlott.JPG>]
 Underfull \hbox (badness 10000) in paragraph at lines 222--223
 
  []
@@ -830,11 +826,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
-[10{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
+[10]
 
 LaTeX Warning: Empty bibliography on input line 283.
 
-[11] [12] (./bericht-vorlage.aux)
+[11] (./bericht-vorlage.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
@@ -855,18 +851,18 @@ Package logreq Info: Writing requests to 'bericht-vorlage.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21919 strings out of 475187
- 402006 string characters out of 5767784
+ 21918 strings out of 475187
+ 401999 string characters out of 5767784
  1931248 words of memory out of 5000000
  42923 multiletter control sequences out of 15000+600000
  609267 words of font info for 78 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,107p,11019b,2371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on bericht-vorlage.pdf (12 pages, 221795 bytes).
+Output written on bericht-vorlage.pdf (11 pages, 221310 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 159 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 172 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 184 PDF objects out of 1000 (max. 8388607)
+ 155 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
