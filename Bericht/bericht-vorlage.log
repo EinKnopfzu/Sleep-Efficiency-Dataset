@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 20:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -755,93 +755,96 @@ Overfull \hbox (15.70476pt too wide) in paragraph at lines 32--34
 
 LaTeX Warning: Citation '2' on page 2 undefined on input line 39.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--72
-
- []
-
-[2] [3] [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 117--136
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 117--136
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--148
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 76.
+(c:/texlive/2023/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [3{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}] [4] [5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 119--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--148
+Underfull \hbox (badness 10000) in paragraph at lines 119--138
 
  []
 
-[6]
-<NormQQPlott.JPG, id=45, 525.965pt x 348.30125pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--150
+
+ []
+
+[7]
+<NormQQPlott.JPG, id=51, 525.965pt x 348.30125pt>
 File: NormQQPlott.JPG Graphic file (type jpg)
 <use NormQQPlott.JPG>
-Package pdftex.def Info: NormQQPlott.JPG  used on input line 182.
+Package pdftex.def Info: NormQQPlott.JPG  used on input line 184.
 (pdftex.def)             Requested size: 364.19673pt x 241.18378pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 192--194
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
 
-[8 <./NormQQPlott.JPG>]
-<RoengtenBSP.JPG, id=62, 1285.80376pt x 828.09375pt>
+[9 <./NormQQPlott.JPG>]
+<RoengtenBSP.JPG, id=67, 1285.80376pt x 828.09375pt>
 File: RoengtenBSP.JPG Graphic file (type jpg)
 <use RoengtenBSP.JPG>
-Package pdftex.def Info: RoengtenBSP.JPG  used on input line 219.
+Package pdftex.def Info: RoengtenBSP.JPG  used on input line 221.
 (pdftex.def)             Requested size: 364.19673pt x 234.55606pt.
-<ParalleleBSPPixel.JPG, id=63, 1325.95375pt x 850.17625pt>
+<ParalleleBSPPixel.JPG, id=68, 1325.95375pt x 850.17625pt>
 File: ParalleleBSPPixel.JPG Graphic file (type jpg)
 <use ParalleleBSPPixel.JPG>
-Package pdftex.def Info: ParalleleBSPPixel.JPG  used on input line 238.
+Package pdftex.def Info: ParalleleBSPPixel.JPG  used on input line 240.
 (pdftex.def)             Requested size: 364.19673pt x 233.50731pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9 <./RoengtenBSP.JPG>]
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
+[10 <./RoengtenBSP.JPG>]
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 265--266
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
-[10 <./ParalleleBSPPixel.JPG>] [11]
-<Bsp_QQ-Plot.JPG, id=84, 1349.04pt x 1168.365pt>
+[11 <./ParalleleBSPPixel.JPG>] [12]
+<Bsp_QQ-Plot.JPG, id=89, 1349.04pt x 1168.365pt>
 File: Bsp_QQ-Plot.JPG Graphic file (type jpg)
 <use Bsp_QQ-Plot.JPG>
-Package pdftex.def Info: Bsp_QQ-Plot.JPG  used on input line 335.
+Package pdftex.def Info: Bsp_QQ-Plot.JPG  used on input line 337.
 (pdftex.def)             Requested size: 364.19673pt x 315.40929pt.
- [12 <./Bsp_QQ-Plot.JPG>]
-<Bsp_ImpactGraph.PNG, id=93, 1271.75125pt x 831.105pt>
+ [13 <./Bsp_QQ-Plot.JPG>]
+<Bsp_ImpactGraph.PNG, id=99, 1271.75125pt x 831.105pt>
 File: Bsp_ImpactGraph.PNG Graphic file (type png)
 <use Bsp_ImpactGraph.PNG>
-Package pdftex.def Info: Bsp_ImpactGraph.PNG  used on input line 347.
+Package pdftex.def Info: Bsp_ImpactGraph.PNG  used on input line 349.
 (pdftex.def)             Requested size: 364.19673pt x 238.00873pt.
- [13 <./Bsp_ImpactGraph.png>]
+ [14 <./Bsp_ImpactGraph.png>]
 
-LaTeX Warning: Empty bibliography on input line 372.
+LaTeX Warning: Empty bibliography on input line 374.
 
-[14] (./bericht-vorlage.aux)
+[15] (./bericht-vorlage.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
@@ -862,18 +865,18 @@ Package logreq Info: Writing requests to 'bericht-vorlage.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21931 strings out of 475187
- 402474 string characters out of 5767784
- 1930248 words of memory out of 5000000
- 42936 multiletter control sequences out of 15000+600000
- 597235 words of font info for 63 fonts, out of 8000000 for 9000
+ 21969 strings out of 475187
+ 403420 string characters out of 5767784
+ 1929248 words of memory out of 5000000
+ 42968 multiletter control sequences out of 15000+600000
+ 597600 words of font info for 64 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,107p,11019b,2371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on bericht-vorlage.pdf (14 pages, 1068096 bytes).
+Output written on bericht-vorlage.pdf (15 pages, 1069943 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 169 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 175 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
  186 words of extra memory for PDF output out of 10000 (max. 10000000)
 

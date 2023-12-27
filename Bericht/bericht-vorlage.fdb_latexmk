@@ -1,24 +1,25 @@
 # Fdb version 4
-["biber bericht-vorlage"] 0 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1703703669 -1
+["biber bericht-vorlage"] 0 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1703704898 -1
   "./literatur.bib" 1703665068 1681 8dc34e7b8306256f9952c9c56902c339 ""
-  "bericht-vorlage.bcf" 1703703668 107822 7780b8ee0010d5f413eb480b2d6f4fc4 "pdflatex"
+  "bericht-vorlage.bcf" 1703704896 107822 7780b8ee0010d5f413eb480b2d6f4fc4 "pdflatex"
   (generated)
   "bericht-vorlage.bbl"
   "bericht-vorlage.blg"
   (rewritten before read)
-["pdflatex"] 1703703662 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1703703669 0
+["pdflatex"] 1703704890 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1703704898 0
   "Bsp_ImpactGraph.png" 1703701765 77749 50b152302469125fc29b73ced7a2fb05 ""
   "Bsp_QQ-Plot.JPG" 1703698013 123360 c4bbbc660fa3a31981257ce235f3ca75 ""
   "NormQQPlott.JPG" 1703665351 45919 e40578ea20e9299d0bbfa663df9c9115 ""
   "ParalleleBSPPixel.JPG" 1703687840 343858 c50eab703f1c0104cd82f1e324427c10 ""
   "RoengtenBSP.JPG" 1703680806 499561 948b5f425d18c9cb14d0655f0a6f4bdb ""
-  "bericht-vorlage.aux" 1703703668 11079 55248d50ec144838d812070e08416e5c "pdflatex"
+  "bericht-vorlage.aux" 1703704896 11080 07da1654f6d1df908b7dd734f35acd6d "pdflatex"
   "bericht-vorlage.bbl" 1703667918 0 d41d8cd98f00b204e9800998ecf8427e "biber bericht-vorlage"
-  "bericht-vorlage.out" 1703703666 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "bericht-vorlage.run.xml" 1703703668 2411 a99c109aa5a06ecdca85bbb679d88246 "pdflatex"
-  "bericht-vorlage.tex" 1703703654 30372 085b3ce3b096a40d27eaa8e69dd0924f ""
-  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1703703654 30372 085b3ce3b096a40d27eaa8e69dd0924f ""
+  "bericht-vorlage.out" 1703704894 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "bericht-vorlage.run.xml" 1703704896 2411 a99c109aa5a06ecdca85bbb679d88246 "pdflatex"
+  "bericht-vorlage.tex" 1703704881 31079 2f816c78120aed468a54d3f45acd9abe ""
+  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1703704881 31079 2f816c78120aed468a54d3f45acd9abe ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1691421962 2375 baa924870cfb487815765f9094cf3728 ""
+  "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc" 1691421962 3031 6c4d3515bf7115d8518af1c9ab97ca44 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1691420818 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1691420393 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1691418894 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -41,6 +42,7 @@
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm" 1691421962 11868 4f81e9b6033c032bdaf9884f4d7ef412 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr12.tfm" 1691421962 11888 6841b91e46b65cf41a49b160e6e74130 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr7.tfm" 1691421962 11852 5a9022f105fd1ee2797df861e79ae9a0 ""
+  "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ts1-lmr10.tfm" 1691421962 1556 b86d923e6b2f9aab2e313098a95cb0b8 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb" 1691421962 121021 836464b5fe0c782d94085eb083550ccc ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb" 1691421962 116908 9a7a12d1e4df280ea0ab4aad83cdef88 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb" 1691421962 119235 05e5c8d6d60439433e50047898c2c0e0 ""
@@ -132,6 +134,7 @@
   "c:/texlive/2023/texmf-dist/tex/latex/lm/ot1lmr.fd" 1691421962 1882 28c08db1407ebff35a658fd141753d16 ""
   "c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd" 1691421962 1867 996fe743d88a01aca041ed22cc10e1bb ""
   "c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmss.fd" 1691421962 1641 f48673bce41ac279099d0c9523459753 ""
+  "c:/texlive/2023/texmf-dist/tex/latex/lm/ts1lmr.fd" 1691421962 1914 884882d7ebb0fd65cea93fca77ff6f5a ""
   "c:/texlive/2023/texmf-dist/tex/latex/logreq/logreq.def" 1691421978 1620 fb1c32b818f2058eca187e5c41dfae77 ""
   "c:/texlive/2023/texmf-dist/tex/latex/logreq/logreq.sty" 1691421978 6187 b27afc771af565d3a9ff1ca7d16d0d46 ""
   "c:/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty" 1691423629 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
