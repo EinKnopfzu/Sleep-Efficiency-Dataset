@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 18:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 18:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -589,8 +589,7 @@ Package csquotes Info: Redefining alias 'default' -> 'ngerman'.
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 17.
 (c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-No file bericht-vorlage.aux.
+) (./bericht-vorlage.aux)
 \openout1 = `bericht-vorlage.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -612,6 +611,7 @@ LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 Package hyperref Info: Link coloring OFF on input line 17.
+ (./bericht-vorlage.out) (./bericht-vorlage.out)
 \@outlinefile=\write4
 \openout4 = `bericht-vorlage.out'.
 
@@ -623,7 +623,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
 (scrartcl)           before \begin{document} on input line 17.
-(c:/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
  (c:/texlive/2023/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
@@ -831,32 +831,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 259--260
  []
 
 [11 <./ParalleleBSPPixel.JPG>] [12]
-
-LaTeX Warning: File `Bsp_QQ-Plot.JPG' not found on input line 329.
-
-
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:329: Package pdftex.def Error: File `Bsp_QQ-Plot.JPG' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.329 ... [width = 0.8\textwidth]{Bsp_QQ-Plot.JPG}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 329.
-(c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+<Bsp_QQ-Plot.JPG, id=88, 1349.04pt x 1168.365pt>
+File: Bsp_QQ-Plot.JPG Graphic file (type jpg)
+<use Bsp_QQ-Plot.JPG>
+Package pdftex.def Info: Bsp_QQ-Plot.JPG  used on input line 329.
+(pdftex.def)             Requested size: 364.19673pt x 315.40929pt.
+ [13 <./Bsp_QQ-Plot.JPG>]
 
 LaTeX Warning: Empty bibliography on input line 349.
 
-[13] [14] (./bericht-vorlage.aux)
+[14] (./bericht-vorlage.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
@@ -865,14 +849,8 @@ L3 programming layer <2023-08-03>
 
 LaTeX Warning: There were undefined references.
 
-
-Package rerunfilecheck Warning: File `bericht-vorlage.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `bericht-vorlage.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `bericht-vorlage.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                bericht-vorlage
@@ -883,18 +861,18 @@ Package logreq Info: Writing requests to 'bericht-vorlage.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21980 strings out of 475187
- 403371 string characters out of 5767784
+ 21923 strings out of 475187
+ 402285 string characters out of 5767784
  1931248 words of memory out of 5000000
- 42988 multiletter control sequences out of 15000+600000
- 597554 words of font info for 64 fonts, out of 8000000 for 9000
+ 42929 multiletter control sequences out of 15000+600000
+ 597235 words of font info for 63 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,107p,11019b,2371s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on bericht-vorlage.pdf (14 pages, 979997 bytes).
+<c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
+Output written on bericht-vorlage.pdf (14 pages, 1029835 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 171 compressed objects within 2 object streams
+ 204 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
  40 named destinations out of 1000 (max. 500000)
- 176 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

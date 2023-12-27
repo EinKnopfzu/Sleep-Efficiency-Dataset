@@ -14,7 +14,6 @@ import TypedSvg.Attributes exposing (x1)
 import Scale exposing (ContinuousScale) 
 import Round exposing (ceiling)
 import Color exposing (Color, rgba)
-import TypedSvg.Types exposing (px)
 import Scale.Color exposing (redsInterpolator, greensInterpolator)
 
 --etwas hindernd, dass ELM keine Rückewärts kompatibilität erzwingt und man so nicht die neusten Versionen nutzen kann, wenn diese Abhängig sind
@@ -169,6 +168,7 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
 
         yPosition : Float
         yPosition = ya + (sin (toFloat index * winkel) * radiusUmkreis)
+
 
         unterOberIndikator : Float
         unterOberIndikator = (sin (toFloat index * winkel) * radiusUmkreis)
