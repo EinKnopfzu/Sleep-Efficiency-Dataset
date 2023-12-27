@@ -104,9 +104,9 @@ init _ =
       minFilter = Nothing,
       maxFilter = Nothing
       ,pixel = 2
-      , rgb1 = 0
-      , rgb2 = 0
-      , rgb3 = 0
+      , rgb1 = 255
+      , rgb2 = 255
+      , rgb3 = 255
       ,oppacity = 0.08
       , daten = [  { myid_ = "Test"
       , myalter = 0.0
