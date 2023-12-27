@@ -290,12 +290,20 @@ Stellen die Gliederung ihres Quellcodes vor.:
 Der Code besteht aus einem Main Modul, welches die anderen Module importiert, die Daten einlädt und die interaktionen zwischenspeichert.
 Die drei Visualisierungen sind in jeweils einem anderem Modul implementiert, dabei werden die benötigten Informationen übergeben.
 
-Das Model besteht aus speichert die Ausprägungen ab, der zustand des Einladens, die Wahl der Attribute in den droppdown, die Daten werden als List (Aussortierte_Daten Abgespeichert), die Filter und die Pixelgröße und die RGBA Werte werden als einfache Float abgespeichert.
+Das Model besteht aus speichert die Ausprägungen ab, der zustand des Einladens, 
+die Wahl der Attribute in den droppdown, die Daten werden als List (Aussortierte_Daten Abgespeichert) ,
+ die Filter und die Pixelgröße und die RGBA Werte werden als einfache Float abgespeichert.
 
  Haben Sie verschiedene Elm-Module erstellt. Was war aufwändig umzusetzen, 
+
  was ließ sich mit dem vorhanden Code aus den Übungen relativ einfach umsetzen? 
 
 Wie sieht die Elm-Datenstruktur für das Model aus, in dem die verschiedenen Zustände der Interaktion gespeichert werden können.
+Die interaktion werden im Modell als einfache String oder Floats abgespeichert. 
+Die interaktion ist vorallem durch Projektion und Selektion durchgeführt, dies ist in der Anwendung durch die Filter und die Auswahl der Attribute umgesetzt.
+Die angepassung der Daten an die Anforderungen der Visualiserungen erfolgt im Main vor der übergabe in die Grafiken. 
+
+
 
 \section{Anwendungsfälle}
 Präsentieren sie für jede der drei Visualisierungen einen sinnvollen Anwendungsfall 

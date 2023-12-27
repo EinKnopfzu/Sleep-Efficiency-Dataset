@@ -39,11 +39,8 @@ combineLists_Box names list1 list2 list3 =
 blackbox :List (MultiDimPoint) -> Float -> Float -> Float -> Float -> Float -> Svg msg
 blackbox model pixel rgb1 rgb2 rgb3 oppacity=
     let
-        {- hier können Sie die Beschriftung des Testpunkts berechnen -}
-        kreisbeschriftung : String
-        kreisbeschriftung =
-            ""
-        -- Alle Punkte in Liste(Float)
+
+        -- Alle Datenwerte
         delta : List (List Float)
         delta =
             List.map .value model
