@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 02:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 02:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -747,7 +747,7 @@ Runaway argument?
 c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:82: Paragraph ended before \text@command was complete.
 <to be read again> 
                    \par 
-l.82 ...0, 0, 2, 3, 5], es gibt 6 fehlende Werte.}
+l.82 ..., 0, 2, 3, 5], es gibt 6 fehlende Werte. }
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
@@ -762,7 +762,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--82
 c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:82: Too many }'s.
 <recently read> \egroup 
                         
-l.82 ...0, 0, 2, 3, 5], es gibt 6 fehlende Werte.}
+l.82 ..., 0, 2, 3, 5], es gibt 6 fehlende Werte. }
                                                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
@@ -795,91 +795,72 @@ Such booboos are generally harmless, so keep going.
 
 Runaway argument?
 {Aufgabenstellung: Analyse der Variablen und den Einfuss der Verhalte\ETC.
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:150: Paragraph ended before \text@command was complete.
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:149: Paragraph ended before \text@command was complete.
 <to be read again> 
                    \par 
-l.150 ...erten auf den QQ-Plot auswirken können.}
+l.149 ...erten auf den QQ-Plot auswirken können.}
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:150: Too many }'s.
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:149: Too many }'s.
 <recently read> \egroup 
                         
-l.150 ...erten auf den QQ-Plot auswirken können.}
+l.149 ...erten auf den QQ-Plot auswirken können.}
                                                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 [8]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 183.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 183.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 183.
+
 Runaway argument?
-{ Expressivität und Effektivität der Visualisierung diskutieren. Di\ETC.
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:186: Paragraph ended before \text@command was complete.
+{ Präsentieren der Visualisierung und Interaktionsmöglichkeiten. Wi\ETC.
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:200: Paragraph ended before \text@command was complete.
 <to be read again> 
                    \par 
-l.186 ...auf Validität zu überprüfen und die  }
-                                                  
+l.200 }
+       
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
-
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 186.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 186.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 186.
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:186: Too many }'s.
-<recently read> \egroup 
-                        
-l.186 ...auf Validität zu überprüfen und die  }
-                                                  
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
 
 [9{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
-Runaway argument?
-{ Präsentieren der Visualisierung und Interaktionsmöglichkeiten. Wi\ETC.
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:203: Paragraph ended before \text@command was complete.
-<to be read again> 
-                   \par 
-l.203 }
-       
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:203: Too many }'s.
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:200: Too many }'s.
 <recently read> \egroup 
                         
-l.203 }
+l.200 }
        
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 Runaway argument?
 { Präsentieren der Visualisierung und Interaktionsmöglichkeiten. Wi\ETC.
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:218: Paragraph ended before \text@command was complete.
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:215: Paragraph ended before \text@command was complete.
 <to be read again> 
                    \par 
-l.218 ...ivität der Visualisierung diskutieren. }
+l.215 ...ivität der Visualisierung diskutieren. }
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-[10]
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:218: Too many }'s.
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:215: Too many }'s.
 <recently read> \egroup 
                         
-l.218 ...ivität der Visualisierung diskutieren. }
+l.215 ...ivität der Visualisierung diskutieren. }
                                                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-[11]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 260.
+[10] [11]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 257.
  (c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [12] (./bericht-vorlage.aux)
@@ -917,7 +898,7 @@ Here is how much of TeX's memory you used:
  1143 hyphenation exceptions out of 8191
  108i,8n,107p,11024b,2371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on bericht-vorlage.pdf (12 pages, 252288 bytes).
+Output written on bericht-vorlage.pdf (12 pages, 251751 bytes).
 PDF statistics:
  206 PDF objects out of 1000 (max. 8388607)
  172 compressed objects within 2 object streams

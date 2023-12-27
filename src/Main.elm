@@ -335,8 +335,8 @@ view model =
                       "Alkohol Konsum" ->  model.daten |> List.filter (\d -> d.myalkohol_konsum >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myalkohol_konsum <= Maybe.withDefault 10000 model.maxFilter)
                       "Raucher" -> model.daten |> List.filter (\d -> d.myraucher >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.myraucher <= Maybe.withDefault 10000 model.maxFilter)
                       "Sport Einheiten" -> model.daten |> List.filter (\d -> d.mysport >= Maybe.withDefault 0 model.minFilter) |> List.filter (\d -> d.mysport <= Maybe.withDefault 10000 model.maxFilter)
-                      _ -> []                     
-
+                      _ -> []         
+    
 
                    xList : List (Float)
                    xList =
@@ -444,7 +444,7 @@ view model =
                     , Html.Attributes.style "font-family" "Arial"] 
                     [div[ Html.Attributes.style "padding" "2em"
                          , Html.Attributes.style "margin-left" "15%" ]
-                        [ Html.text " Scatterplot Norm QQ Plot: Hilft Ihnen zu analysieren ob ein Attibut normalverteilt ist. "]
+                        [ Html.text " Scatterplot Norm QQ Plot: Hilft Ihnen zu analysieren ob ein Attribut normalverteilt ist. Wählen Sie dazu ein Attribut aus und geben Sie optional einen Min und Max Wert an. Die in Röngten ausgewählten Werte werden werden kleiner darunter angezeigt. "]
                         ,scatterplot 
                     { xDescription = "Normalverteilung"
                     , yDescription = model.droppdown1
@@ -458,7 +458,7 @@ view model =
                      [scatterplot 
                      { xDescription = "Normalverteilung"
                         , yDescription = model.droppdown2
-                    , data = combinedListY_Scatter
+                        , data = combinedListY_Scatter
                       }
                       ,scatterplot 
                        { xDescription = "Normalverteilung"
@@ -466,9 +466,14 @@ view model =
                          , data = combinedListZ_Scatter
                         }]
                           
-                         
+                    ,div[ Html.Attributes.style "padding" "2em"
+                         , Html.Attributes.style "margin-left" "15%" ]
+                        [ Html.text " Röngten: Diese Visualisierung soll Ihnen dabei helfen Cluster und versteckte Ahängigkeiten zwischen den Attributen zu finden. "]
+                          
                     ,(blackbox combinedList_Box)
-            --      
+                    ,div[ Html.Attributes.style "padding" "2em"
+                         , Html.Attributes.style "margin-left" "15%" ]
+                        [ Html.text " Hier sehen Sie die Korrelation der Verhaltensweisen und Ausprägungen als eine Art Scheeflocke angezeigt. Wenn Sie ein Attribut in Y und X augewählt wird dies Ihnen auch angezeigt. "]
                     ,graph {xdescriptor = {name = model.droppdown1, data = xList},
                             attribute = [{name = "Alter", data= filteralter},
                              {name= "Geschlecht", data= filtergender},
