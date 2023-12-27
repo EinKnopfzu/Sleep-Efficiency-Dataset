@@ -152,40 +152,31 @@ Leiten sie Anforderungen an das Design der Visualisierungen ab, die sich durch i
 
 Die erste Visualsierung ist die Darstellung der Daten in einem Scatterplott. Spezifisch der eines Normalverteilung QQ Plots. 
 Ein QQ-Plot (Quantile-Quantile-Plot) ist ein nützliches grafisches Werkzeug in der statistischen Datenanalyse, insbesondere wenn es darum geht, die Verteilung von Daten zu überprüfen und mit einer theoretischen Verteilung zu vergleichen, in der Anwendung wird, Aufgrund des Implementationaufwandes, nur der vergleich mit der Normalverteilung vorgenommen. 
+Die Visualisierung zeigt den Wert auf der Y achse an, den ein Datenpunkt hätte, falls der Datensatz einer Normalverteilung folgen würde.
+Diese werden dann auf einem zwei dimensionalem Diagramm dargestellt. Die X Achse zeigt die Quantile der Daten an, die Y Achse zeigt die Quantile der Normalverteilung an.
+
 Die Typischen Aufgabenfelder eines QQ Plots sind die Normalitätsüberprüfung, die Identifikation von Abweichungen, die Bestätigung der Normalverteilungshypothese und Identifikation von Ausreißern.
-Bei der Normalitätsüberprüfung, der primäre Zweck eines QQ-Plots, geht es darum zu überprüfen ob ein Attribut  einer Normalverteilung folgt. Ein perfekter QQ-Plot würde alle Punkte auf der Linie der Gleichverteilung platzieren. Abweichungen von dieser Linie können auf Abweichungen von der Normalverteilung hindeuten. Der Anwender muss in der Visualisierung sehen kann anhand der roten Linie die vom 25 Quantil bis zum 75 Quantil gezogen wird. Lässt den Anwender überprüfen ob die Daten der noralverteilung folgen 
+Bei der Normalitätsüberprüfung, der primäre Zweck eines QQ-Plots, geht es darum zu überprüfen ob ein Attribut 
+einer Normalverteilung folgt. Ein perfekter QQ-Plot würde alle Punkte auf der Linie der Gleichverteilung platzieren.
+ Abweichungen von dieser Linie deuten auf Abweichungen von der Normalverteilung hin. Der Anwender kann in der Visualisierung
+ sehen ob die Attribute einer Normalverteilung folgen. Falls diese Perfekt Normalverteilt sein sollten, liegen die Datenpunkte 
+ direkt auf der schwarzen Linie. Die in der Grafik eingezeichnete rote Line ist vom 25 Quantil bis zum 75 Quantil gezogen. Dies lässt den Anwender überprüfen ob es eine additive verschiebung gibt. 
+Die Identifikation von Ausreisern, können im Normal QQ-Plot, an den visuellen Enden identifiziert werden. Starke abweichungen sind durch eine große Distanz zur schwarzen Linie identifizierbar. Diese können durch das Filtern des Datenbereiches entfernt werden. 
+weiter ist es möglich einen Vergleich verschiedener Verteilungena anzustellen. Dies ist aufgrund des Umfang des Projektes nicht in der Anwendung implementiert
+Dies Ermöglicht es dem Anwender die Daten und interpretierbarkeit einzuschätzen und diese in geringem Maße mit den Filtern zu Selektieren. Dies erlaubt es dem Anwender die aussagekräftigen Attribute von den aussageschwachen zu unterscheiden.
 
-    Identifikation von Abweichungen:
-        Ein QQ-Plot ermöglicht es, visuell Abweichungen von der Normalverteilung zu identifizieren. Beispielsweise können Schwanzschwerpunkte oder Spitzen auf nicht-normale Verteilungen oder Ausreißer hinweisen.
 
-    Bestätigung von Normalverteilung:
-        Wenn die Punkte im QQ-Plot gut auf der Linie der Gleichverteilung liegen, deutet dies darauf hin, dass die Stichprobe wahrscheinlich einer Normalverteilung folgt. Dies ist wichtig für viele statistische Tests, die die Annahme einer normalen Verteilung voraussetzen.
-
-    Vergleich verschiedener Verteilungen:
-        QQ-Plots können nicht nur für die Überprüfung der Normalverteilung, sondern auch für den Vergleich mit anderen theoretischen Verteilungen verwendet werden. Dies ermöglicht es, die Eignung verschiedener Verteilungen für die Beschreibung von Daten zu beurteilen.
-
-    Identifikation von Ausreißern:
-        Ausreißer können im QQ-Plot leicht identifiziert werden, da sie als Punkte abseits der erwarteten Linie erscheinen. Dies ist besonders wichtig, wenn man Ausreißer in den Daten untersuchen oder eliminieren möchte. 
-
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
-  \includegraphics*{NormQQPlott}
+  \includegraphics*{NormQQPlott.JPG}
   \caption{Visualisierung Eins - Norm QQ-Plot REM }
 \end{figure}
 
+Das oben Auswählen und das Filtern geschieht in der Seitenleiste, hier kann der Benutzer das Atrribut auswählen, dass er untersuchen möchte und direkt darunter dieses in seinem Wertebereich filtern. 
+Der eingeschränkte Datenbereich wird dann in den anderen Visualisierungen verwendet.
 
+Der Benutzer kann in der Visualisierung zwei weitere Attribute auswählen. Diese werden in gleicher Form als QQ-Plott dargestellt und ermöglichen eine schnelle Einschätzung der Güte. 
 
-
-
-Dieses Diagramm zeigt auf der x Achse die Normalverteilung an und auf der Y achse die Daten des gweählten Attributes.
-Das Ziel der Visualisierung ist es die Daten
-
-Wieso sind diese gut und erfüllen die Anforderungen an das Design?
-
- Der QQ-Plot ermöglicht eine visuelle Überprüfung von Abweichungen zwischen den empirischen
- und theoretischen Quantilen. Abweichungen können auf nicht-normalverteilte Daten hinweisen.
- Abweichungen nach oben könnten auf eine rechtssteilere Verteilung hindeuten, während Abweichungen 
- nach unten auf eine linkssteilere Verteilung hinweisen könnten.
 
 
 
@@ -194,11 +185,17 @@ Wieso erfüllt die Visualisierung den anfordeurngen der Anwender?
 Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen.
 
 Wieso diese Visualisierung und nicht andere? 
-Wir wollen echte mögliche Alternativen die zu einem ähnlichem mentalem Modell führen.\\
+Wir wollen echte mögliche Alternativen die zu einem ähnlichem mentalem Modell führen.
+Ein Histogramm würd ezu einem ähnlichem mentalem Modell führen, allerdings würde dieses.
+\\
 
 Expressivität und Effektivität der Visualisierung diskutieren.\\
+
+
+
 Die Zielgruppe der Visualisierungen sind Nutzer mit einem Interesse an den zu grundeliegenden Daten. 
- Es soll also nicht einfach Ergebnisse präsentiert werden sondern die hinterlegten Inputdaten dargestellt werden.
+
+
 Die Visualisierung ist sinnvoll, da sie es dem Anwender ermöglicht sich mit den hinterliegenden
 Daten vertraut zu machen und die verschiedenen Ausprägungen zu analysieren und auf ihre Güte zu überprüfen.
  Datenlage zu überprüfen.

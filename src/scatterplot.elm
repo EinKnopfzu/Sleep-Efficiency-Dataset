@@ -24,6 +24,7 @@ import TypedSvg.Attributes.InPx exposing (y1)
 import TypedSvg.Attributes.InPx exposing (x2)
 import TypedSvg.Attributes.InPx exposing (y2)
 import TypedSvg.Attributes exposing (x1)
+import Round exposing (round)
 
 
 
@@ -127,7 +128,7 @@ addNV data  =
         listederFValuesundDaten : List (ScatterplottPoint)  
         listederFValuesundDaten =
             List.indexedMap (\i pt -> { pt | x = ((toFloat i + 0.5) / n1), y = pt.y }) geordneteDaten
-            
+             
         quantilesofData : List (Float)    
         quantilesofData = 
             List.map .x listederFValuesundDaten
@@ -180,7 +181,7 @@ addNV data  =
 
         qqquants = List.map (\a -> Maybe.withDefault 0.0 ( quantile a valuesofdata)) 
 
-
+        normalverteileDaten : List (Float)
         normalverteileDaten =
             List.map transformierer quantilesofData
 
@@ -202,18 +203,26 @@ scatterplot model =
         kreisbeschriftung =
             List.map .pointName model.data 
 
+        minXAchse : Float
+        minXAchse = 
+            Maybe.withDefault 0.0 (List.minimum <| List.map .y model.data)
+
+        maxXAchse : Float
+        maxXAchse = 
+          Maybe.withDefault 0.0 (List.maximum <| List.map .y model.data)
+
         minYAchse : Float
         minYAchse = 
-            Maybe.withDefault 0.0 (List.minimum <| List.map .y model.data)
+            Maybe.withDefault 0.0 (List.minimum <| List.map .x model.data)
 
         maxYAchse : Float
         maxYAchse = 
-          Maybe.withDefault 0.0 (List.maximum <| List.map .y model.data)
+          Maybe.withDefault 0.0 (List.maximum <| List.map .x model.data)
 
-        xNVS = Scale.convert xScaleLocal minYAchse
-        yNVS= Scale.convert yScaleLocal minYAchse
-        xNVE = Scale.convert xScaleLocal maxYAchse
-        yNVE = Scale.convert yScaleLocal maxYAchse
+        xNVS = Scale.convert xScaleLocal minXAchse
+        yNVS= Scale.convert yScaleLocal minXAchse
+        xNVE = Scale.convert xScaleLocal maxXAchse
+        yNVE = Scale.convert yScaleLocal maxXAchse
 
 
         xValues : List Float
@@ -231,10 +240,7 @@ scatterplot model =
         yScaleLocal : ContinuousScale Float
         yScaleLocal =
             yScale yValues
-
-
-        
-            
+ 
         nvWerte =
            List.map .x model.data
            
@@ -257,20 +263,13 @@ scatterplot model =
         xE = Scale.convert xScaleLocal nvWerte75
         yE = Scale.convert yScaleLocal valuesofdata75
 
-
-
-        quantilListe : List (List Float)
-        quantilListe =
-            [ [ nvWerte25, valuesofdata25 ]
-            , [ nvWerte75, valuesofdata75 ]
-            ]   
                
     in
     svg [ viewBox 0 0 (w)  (h ) , TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 80 ]
         [ TypedSvg.style [] [ TypedSvg.Core.text """
             .point circle { stroke: rgba(0, 255, 0,0.4); fill: rgba(255, 255, 255,0.3); }
             .point text { display: none; }
-            .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
+            .point:hover circle { stroke: rgba(0, 0,  0,1.0); fill: rgb(118, 214, 78); }
             .point:hover text { display: inline; }
           """ ]
     
@@ -323,7 +322,17 @@ scatterplot model =
                 , stroke <| Paint <| Color.rgba 0 0 0 0.9
                 ]    []
             ] 
-        ]
+        , g [ transform [ Translate padding padding ] ]
+            [ text_
+                [ x ( 400)
+                , y (0)
+                , fontSize (TypedSvg.Types.px 16)
+                , textAnchor TypedSvg.Types.AnchorMiddle
+                ]
+                [ Html.text ("Minimum:" ++ " "++ (Round.ceiling 3 minXAchse )++ "  " ++ " Maximum: " ++" " ++ (Round.ceiling  3 maxXAchse )++ " ")] 
+            ]
+            ]
+        
 
 point : ContinuousScale Float -> ContinuousScale Float -> ScatterplottPoint -> Svg msg
 point scaleX scaleY xyPoint =
