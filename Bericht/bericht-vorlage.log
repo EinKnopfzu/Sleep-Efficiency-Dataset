@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 18:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 19:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -837,10 +837,16 @@ File: Bsp_QQ-Plot.JPG Graphic file (type jpg)
 Package pdftex.def Info: Bsp_QQ-Plot.JPG  used on input line 329.
 (pdftex.def)             Requested size: 364.19673pt x 315.40929pt.
  [13 <./Bsp_QQ-Plot.JPG>]
+<Bsp_ImpactGraph.PNG, id=98, 1271.75125pt x 831.105pt>
+File: Bsp_ImpactGraph.PNG Graphic file (type png)
+<use Bsp_ImpactGraph.PNG>
+Package pdftex.def Info: Bsp_ImpactGraph.PNG  used on input line 341.
+(pdftex.def)             Requested size: 364.19673pt x 238.00873pt.
+ [14 <./Bsp_ImpactGraph.png>]
 
-LaTeX Warning: Empty bibliography on input line 349.
+LaTeX Warning: Empty bibliography on input line 366.
 
-[14] (./bericht-vorlage.aux)
+[15] (./bericht-vorlage.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
@@ -861,18 +867,18 @@ Package logreq Info: Writing requests to 'bericht-vorlage.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21923 strings out of 475187
- 402285 string characters out of 5767784
+ 21932 strings out of 475187
+ 402481 string characters out of 5767784
  1931248 words of memory out of 5000000
- 42929 multiletter control sequences out of 15000+600000
+ 42936 multiletter control sequences out of 15000+600000
  597235 words of font info for 63 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,107p,11019b,2371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on bericht-vorlage.pdf (14 pages, 1029835 bytes).
+Output written on bericht-vorlage.pdf (15 pages, 1072824 bytes).
 PDF statistics:
- 204 PDF objects out of 1000 (max. 8388607)
- 168 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 211 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
 
