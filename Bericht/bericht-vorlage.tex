@@ -230,23 +230,22 @@ Der Anwender kann somit mithilfe dieser Visualisierung schnell Rückschlüsse au
 Alternativ hätte eine Korrelationsmatrix genutzt werden können um die Korrelation darzustellen. Dies wäre auch zu einem änhöichen Mentalem Modell geführt.
 
 \subsection{Interaktion}
-Die präsentierten Visualisierungstechniken müssen interaktiv zu einer Anwendung verknüpft werden.
+Die Visualisierungen sind durch Interaktion miteinander verknüpft. Da es sich um eine Onepage Application handelt ist die 
+Interaktion über die Einstellungen umgesetzt um so unötiges klciken zu vermeiden.
 
-1 erste Visualisierung: Auswahl des Attributs -> Hauptattribut der beiden anderen Visualisierungen
-Filtern des Datenbereiches. -> Schränkt die Datenmenge ein auf die Sich die anderen Beziehen.
+In dem Scatterplott kann das Hauptattribut ausgewählt werden und der Datenbereich eingeschränkt werden. 
+Diese setzt also den Fokus für die weiteren Visualisierungen.
 
-2. zweite Visualisierung: Auswahl der Attribute -> In 1 werden Junior QQ plots aufgerufen. 
--> Und an die "Schneeflocke" übergeben.
+Die Einschränkung wird auf die verwendeten Daten in den anderen Visualisierungen angewendet so dass nur relevante Daten dargestellt werden.
 
+Das in 1. gewählte attribut wird  Hauptattribut in dem ParalleleM koordinatem System auf die X position angeordnet.
+In Visualisierung 2 können zwei weitere  Attribute hinzugefügt werden. Diese werden in Vis 1. als Junior QQ Plotts dargesetellt.
 
-Die Interaktion mit einer Visualisierung soll in den anderen Visualisierungen zu einer Änderung führen. 
-Erklären sie die möglichen Interaktionen mit den einzelnen Visualisierungen und die möglichen Verknüpfungen zwischen ihnen.
-Begründen Sie warum die konkreten Interaktionen umgesetzt wurden und welche Zwecke für die Anwenderinnen mit ihnen unterstützt werden.
-Begründen sie ebenfalls warum sie andere Interaktionsmöglichkeiten nicht umgesetzt haben.
-Wenn sie keine der geforderten Interaktionen umsetzen, erhalten Sie im gesamten Projekt deutlichen Punktabzug. 
+Die dritte Visualisierung wird durch die beiden anderen beeinflusst. So ist das in Vis 1 gewählte Attribut das Hauptattribut auf das korreliert wird und die in Vis 2 gewählten Attribute werden als zusätzliche Zapfen dargestellt.
+
 
 \section{Implementierung}
-Die Visualisierung ist als One Page Application konzipiert, dies ist Aufhrund der benötigten Interaktion mit den Filtern un dWahl der Attribute nützlich.
+Die Visualisierung ist als One Page Application konzipiert, dies ist Aufgrund der benötigten Interaktion mit den Filtern un dWahl der Attribute nützlich.
 Das Main.elm ruft
 
 Links einstellungen und Filter, daneben Die visualiserungen mit Erklärungen.
