@@ -177,9 +177,6 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmr10.tfm
-INPUT ./bericht-vorlage.aux
-INPUT ./bericht-vorlage.aux
-INPUT bericht-vorlage.aux
 OUTPUT bericht-vorlage.aux
 OUTPUT bericht-vorlage.out
 OUTPUT bericht-vorlage.pdf
@@ -258,10 +255,10 @@ INPUT c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmssbx10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmssbx10.tfm
-INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm
+INPUT ./NormQQPlott.JPG
+INPUT ./NormQQPlott.JPG
+INPUT ./NormQQPlott.JPG
+INPUT ./NormQQPlott.JPG
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr8.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr6.tfm
@@ -289,4 +286,3 @@ INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb
-INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb

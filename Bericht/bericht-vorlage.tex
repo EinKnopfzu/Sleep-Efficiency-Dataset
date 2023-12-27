@@ -121,9 +121,7 @@ Weiter ist es von Nutzen die Korrelation interpretieren zu können.
 Die Interpreatation von Rot als negative und Grün als positive ist von Nutzen um die ergebnisse schneller zu erfassen, ist allerdings nicht notwendig.
 \\
 \\
-Die ersten beiden Qualität der Daten zu überprüfen, die Interaktion und zusammenhänge zu identifizieren und einflüssel des verhaltens auf die Attribute zu identifizieren. 
-Das Problem ist folgendes: In hochkomplexen Systemen sind die Einflussfaktoren
- die die Ausprägung eines Merkmals beeinflussen nicht immer klar. Daher ist es wichtig, 
+Das Problem ist folgendes: Daher ist es wichtig, 
  dass wir die Daten visualisieren um die Zusammenhänge zu erkennen.
 Die Visualisierung soll uns also erlauben den Einfluss von multiplen Verhaltensindikatoren auf die Ausprägung eines Merkmales zu schätzen.
 \\
@@ -152,9 +150,31 @@ Leiten sie Anforderungen an das Design der Visualisierungen ab, die sich durch i
 
 \subsubsection{Visualisierung Eins: QQ-Plot Datenlage Normalverteilt?}
 
-Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
+Die erste Visualsierung ist die Darstellung der Daten in einem Scatterplott. Spezifisch der eines Normalverteilung QQ Plots. 
+Ein QQ-Plot (Quantile-Quantile-Plot) ist ein nützliches grafisches Werkzeug in der statistischen Datenanalyse, insbesondere wenn es darum geht, die Verteilung von Daten zu überprüfen und mit einer theoretischen Verteilung zu vergleichen, in der Anwendung wird, Aufgrund des Implementationaufwandes, nur der vergleich mit der Normalverteilung vorgenommen. 
+Die Typischen Aufgabenfelder eines QQ Plots sind die Normalitätsüberprüfung, die Identifikation von Abweichungen, die Bestätigung der Normalverteilungshypothese und Identifikation von Ausreißern.
+Bei der Normalitätsüberprüfung, der primäre Zweck eines QQ-Plots, geht es darum zu überprüfen ob ein Attribut  einer Normalverteilung folgt. Ein perfekter QQ-Plot würde alle Punkte auf der Linie der Gleichverteilung platzieren. Abweichungen von dieser Linie können auf Abweichungen von der Normalverteilung hindeuten. Der Anwender muss in der Visualisierung sehen kann anhand der roten Linie die vom 25 Quantil bis zum 75 Quantil gezogen wird. Lässt den Anwender überprüfen ob die Daten der noralverteilung folgen 
 
-\includegraphics*{../Bilder/NormQQPlot.PNG}
+    Identifikation von Abweichungen:
+        Ein QQ-Plot ermöglicht es, visuell Abweichungen von der Normalverteilung zu identifizieren. Beispielsweise können Schwanzschwerpunkte oder Spitzen auf nicht-normale Verteilungen oder Ausreißer hinweisen.
+
+    Bestätigung von Normalverteilung:
+        Wenn die Punkte im QQ-Plot gut auf der Linie der Gleichverteilung liegen, deutet dies darauf hin, dass die Stichprobe wahrscheinlich einer Normalverteilung folgt. Dies ist wichtig für viele statistische Tests, die die Annahme einer normalen Verteilung voraussetzen.
+
+    Vergleich verschiedener Verteilungen:
+        QQ-Plots können nicht nur für die Überprüfung der Normalverteilung, sondern auch für den Vergleich mit anderen theoretischen Verteilungen verwendet werden. Dies ermöglicht es, die Eignung verschiedener Verteilungen für die Beschreibung von Daten zu beurteilen.
+
+    Identifikation von Ausreißern:
+        Ausreißer können im QQ-Plot leicht identifiziert werden, da sie als Punkte abseits der erwarteten Linie erscheinen. Dies ist besonders wichtig, wenn man Ausreißer in den Daten untersuchen oder eliminieren möchte. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics*{NormQQPlott}
+  \caption{Visualisierung Eins - Norm QQ-Plot REM }
+\end{figure}
+
+
+
 
 
 Dieses Diagramm zeigt auf der x Achse die Normalverteilung an und auf der Y achse die Daten des gweählten Attributes.
