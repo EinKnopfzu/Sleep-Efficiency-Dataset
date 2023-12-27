@@ -266,6 +266,7 @@ Optional werden auch Zustände aus dem Model an mit übergeben.
 \subsubsection{QQ Plott}
 Der QQ-Plott (scatterplott.elm) definiert zwei wichtige Funktionen die erzeugung von Normalverteilten Daten und das zeichnen des Plotts.
 
+Die Funktion `addNV' funtkioniert wie folgt:
 \begin{enumerate}
   \item Die Eingabedaten (\texttt{data}) werden nach den $y$-Werten sortiert.
   \item Es werden verschiedene Berechnungen durchgeführt, um die Normalverteilung zu approximieren und Quantile der Daten zu erhalten.
@@ -276,19 +277,41 @@ Der QQ-Plott (scatterplott.elm) definiert zwei wichtige Funktionen die erzeugung
   \item Ein QQ-Plot wird erstellt, indem die transformierten Werte gegen die ursprünglichen Datenpunkte aufgetragen werden.
 \end{enumerate}
 
+Die Funktion draw Scatterplott skaliert die Datenpunkte auf Ihre relative XY Position und zeichnet diese in einem SVG. 
+Die rote linie wird zwischen dem 25 und 75 Quantil Punkt gezogen und die schwarze Linie folgt bildet die Funktion  f(x) = x indirekt ab.
+Da diese Funktion aus der Übung bekannt ist wird diese hier nicht weiter erläutert.
 
+\subsubsection{Parallele Koordinaten}
+Die Funktion `blackbox' zeichnet die Parallele Koordinaten Visualisierung.
 
+\begin {enumerate}
+\item Die Funktion nimmt eine Liste von mehrdimensionalen Punkten (model), Pixelgröße (pixel), sowie RGB- und Opazitätswerte für die Farbe entgegen.
+\item Die Min Max werden berechnet um eine Skalierung zu ermöglichen.
+\item Die Daten werden auf Ihre basierend auf der Dimension skaliert und auf die entsprechenden Achsen projiziert.
+\item Die Verbindungslinien werden zwischen den Punkten an Ihren relativen Positionen gemalt.
+\item Die Farbgebung und Opazität der Linien können durch die Parameter rgb1, rgb2, rgb3 und opacity aus dem Main.Model gesteuert werden.
+\end{enumerate}
+
+Die Funktionen zur berechnung der Quantile wurden belassen um bei zukünftiger weiter Entwicklung diese Möglichkeit dem Anwender zu bieten.
+
+\subsubsection{Weihnachtsstern}
+Die Funktion `graph' zeichnet die Weihnachtsstern Visualisierung.
+
+Hierbei werden die Informationen (Hauptattribut, Verhaltensweisen und ausgewählten Attribute) als DatenTyp ImpactGraph übergeben. Dieser Speichert den Namen des Attributes und eine Liste (Name, List (Float))ab. 
 
 
 \begin{figure}[h]
   \centering
-  \includegraphics [width = 0.8\textwidth]{RoengtenBSP.JPG}
+  \includegraphics [width = 0.8\textwidth]{ImpactGraphData.JPG}
   \caption{Visualisierung Drei: WeihnachtsStern: Anzahl Erwachungen }
 \end{figure}
- 
+
+Hier herzuheben ist die reaktive Positionierung der Kreise um das `Hauptattribut' herum.
+Die Funktion winkelEinteilung berechnet gleichverteilte Winkelschritte mit : 2 * pi / (length data + 1) 
+Die Funtkion Kreis übernimmt relvante Informationen über die größe und Positionierung der Elemente. 
+Hervorzustellen sind hierbei die Funktionen xPosition und yPositon welche basierend auf dem Index einer Liste eine relative Positionierung um den Kreise berechnen. 
 
 
-Die Filter und die Pixelgröße und die RGBA Werte werden als einfache Float abgespeichert.
 
 Da Elm keine Rückwärts kompatibilität erzwingt, ist es manchmal nicht möglich die neuste version eines Paketes zu verwenden. 
 Dies ist allerdings etwas frustrierend, wenn man ein Nützliches paket gefunden hat. Es ist allerdings mögloich den Quellcode auf 

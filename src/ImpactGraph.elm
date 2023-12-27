@@ -77,9 +77,7 @@ combineLists : List Float -> List Float -> List (Float, Float)
 combineLists list1 list2 =
             List.map2 Tuple.pair list1 list2
 
--- Ziel ist es eine Grafik zu erschaffen di eim zentrum unseren X Datensatz hat (Sagen wir als Quader . ) und den in de rMitte Zeichnet. 
--- dann geben wi reine distanz an. das ist die maximale Distanz bei den X Werten zum Quader. 
--- Die Quader werden dann um den Quader herum gezeichnet 
+
 graph : ImpactGraphData -> Svg msg
 graph model =
     let
