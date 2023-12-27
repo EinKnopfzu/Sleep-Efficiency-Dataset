@@ -90,6 +90,24 @@ type alias Model
      , minFilter : Maybe Float
      , maxFilter : Maybe Float }
 
+type Msg
+  = GotText (Result Http.Error String)
+  | Option1Selected String
+  | Option2Selected String
+  | Option3Selected String
+  | Option4Selected String
+  | Pixelchange String
+  | Rgb1change String
+  | Rgb2change String
+  | Rgb3change String 
+  | OppacityChange String
+  | MinFilterChanged String
+  | MaxFilterChanged String
+  
+  
+subscriptions : Model -> Sub Msg
+subscriptions model =
+  Sub.none
 
 
 init : () -> (Model, Cmd Msg)
@@ -134,21 +152,7 @@ init _ =
 
 -- UPDATE
 
-type Msg
-  = GotText (Result Http.Error String)
-  | Option1Selected String
-  | Option2Selected String
-  | Option3Selected String
-  | Option4Selected String
-  | Pixelchange String
-  | Rgb1change String
-  | Rgb2change String
-  | Rgb3change String 
-  | OppacityChange String
-  | MinFilterChanged String
-  | MaxFilterChanged String
-  | Reload
-  
+
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -195,8 +199,6 @@ update msg model =
         MaxFilterChanged value ->
             ({ model | maxFilter =  (String.toFloat value) }, Cmd.none)
         
-        Reload ->
-            init ()
 
         
 
@@ -206,9 +208,6 @@ update msg model =
 
 -- SUBSCRIPTIONS
 
-subscriptions : Model -> Sub Msg
-subscriptions model =
-  Sub.none
 
 
 -- VIEW
@@ -296,7 +295,7 @@ view model =
                   , Html.br [] []
                    , Html.br [] []
 
-                  , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Blackbox"]
+                  , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Parallele Koordinaten"]
                   , Html.br [] []
                   , Html.text "Y-Variable" 
                   , Html.br [] []

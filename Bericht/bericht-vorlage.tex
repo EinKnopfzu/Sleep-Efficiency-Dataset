@@ -278,9 +278,19 @@ Begründen sie ebenfalls warum sie andere Interaktionsmöglichkeiten nicht umges
 Wenn sie keine der geforderten Interaktionen umsetzen, erhalten Sie im gesamten Projekt deutlichen Punktabzug. 
 
 \section{Implementierung}
-Beschreiben Sie die Implementierung ihrer Visualisierungsanwendung in Elm. Stellen die Gliederung ihres Quellcodes vor.
+Beschreiben Sie die Implementierung ihrer Visualisierungsanwendung in Elm. 
+Onepage application, da die interaktion mit den Filtern und darstellungen einfach sein soll.
+Links einstellungen und Filter, daneben Die visualiserungen mit Erklärungen.
+Die Visualisierungen werden im `view' als Funktionen aufgerufen die ein Svg msg produzieren, welches abgebildet wird 
+ Gespeichert und dann in der View Funktion aufgerufen.
+
+
+Stellen die Gliederung ihres Quellcodes vor.:
+
 Der Code besteht aus einem Main Modul, welches die anderen Module importiert, die Daten einlädt und die interaktionen zwischenspeichert.
 Die drei Visualisierungen sind in jeweils einem anderem Modul implementiert, dabei werden die benötigten Informationen übergeben.
+
+Das Model besteht aus speichert die Ausprägungen ab, der zustand des Einladens, die Wahl der Attribute in den droppdown, die Daten werden als List (Aussortierte_Daten Abgespeichert), die Filter und die Pixelgröße und die RGBA Werte werden als einfache Float abgespeichert.
 
  Haben Sie verschiedene Elm-Module erstellt. Was war aufwändig umzusetzen, 
  was ließ sich mit dem vorhanden Code aus den Übungen relativ einfach umsetzen? 
