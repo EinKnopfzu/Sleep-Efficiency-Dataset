@@ -442,7 +442,10 @@ view model =
                     , Html.Attributes.style "height" "100%"
                     , Html.Attributes.style "width" "80%"
                     , Html.Attributes.style "font-family" "Arial"] 
-                    [ scatterplot 
+                    [div[ Html.Attributes.style "padding" "2em"
+                         , Html.Attributes.style "margin-left" "15%" ]
+                        [ Html.text " Scatterplot Norm QQ Plot: Hilft Ihnen zu analysieren ob ein Attibut normalverteilt ist. "]
+                        ,scatterplot 
                     { xDescription = "Normalverteilung"
                     , yDescription = model.droppdown1
                     , data = combinedListX_Scatter

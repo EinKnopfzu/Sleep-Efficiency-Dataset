@@ -43,12 +43,6 @@ blackbox model =
         kreisbeschriftung : String
         kreisbeschriftung =
             ""
-
-        -- Zwei Probleme 1: Skalierung der Linien,
-        -- Skalieren der Punkte auf die relative x- und y-Position
-        -- Umwandeln der MultiDimPoint in eine Liste von Floats
-
-
         -- Alle Punkte in Liste(Float)
         delta : List (List Float)
         delta =
@@ -111,9 +105,9 @@ blackbox model =
           """ ]
         , g [transform [Translate padding padding ] ]
             [rect
-                [ x ( 5)
+                [ x ( 0)
                 , y ( 0 )
-                , width ( w)
+                , width ( w - padding)
                 , height ( h - 2*padding  +5)
                 , fill (Paint <| Color.rgba 0 0 0 1)
                 ]
@@ -130,7 +124,7 @@ blackbox model =
             , class [ "y-axis" ]
             ]
             [ text_
-                [ x (padding  - 5)
+                [ x (30 )
                 , y -15
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorStart
@@ -142,7 +136,7 @@ blackbox model =
             , class [ "y-axis" ]
             ]
             [ text_
-                [ x (w - padding - 5 )
+                [ x (w/2 - padding *0.5 - 10 )
                 , y -15
                 , fontSize (TypedSvg.Types.px 16)
                 , textAnchor TypedSvg.Types.AnchorMiddle
