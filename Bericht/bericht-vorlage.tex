@@ -90,78 +90,60 @@ Der Datensatz hat drei Nominale (Id, Gender und Raucher) und zwölf Quantitative
  \item Exercise frequency: Gibt an, wie viele Einheiten Sport die Person in der Woche macht. Dabei ist nicht angegeben, welche Maßeinheit diese Einheiten Sport haben. Die Daten haben Quantile von [0, 0, 2, 3, 5], es gibt 6 fehlende Werte.
 \end{itemize}
 
-
-Unter der Annahme, dass die Daten valide sind und die angegebene Interpretation der Attribute korrekt ist,
- gewährt dieser Datensatz detaillierte Einblicke in die Schlafqualität, insbesondere hinsichtlich der Schlafphasen und ihrer Dauer.
-  Allerdings weist die Erfassung der Kaffee- und Alkoholeinnahme Schwächen auf, da diese Substanzen im menschlichen Körper eine geringe
-Halbwertszeit haben, und somit der zeitliche Kontext der Einnahme relevant wäre. 
- Weitere Einflussfaktoren auf die Schlafqualität werden nicht erfasst, ebenso wenig wird die Länge
- individueller Schlafunterbrechungen differenziert oder den drei Schlafphasen zugeordnet. 
- Daher könnte es für den Anwender von Interesse sein zu erfahren, welche der Schlafphasen durch bestimmte Verhaltensweisen 
- gestört werden. Zudem lässt sich argumentieren, dass die Verteilung der Verhaltensweisen sehr linksseitig ist, 
- möglicherweise auf kulturelle Unterschiede zurückzuführen. Daher sollte die Aussagekraft des Datensatzes auf den
-
- marokkanischen Lebensstil eingeschränkt werden.
+Unter der Annahme, dass die Daten valide sind und die angegebene Interpretation der Attribute korrekt ist, gewährt dieser Datensatz detaillierte Einblicke in die Schlafqualität, insbesondere hinsichtlich der Schlafphasen und ihrer Dauer. Allerdings weist die Erfassung der Kaffee- und Alkoholeinnahme Schwächen auf, da diese Substanzen im menschlichen Körper eine geringe Halbwertszeit haben, und somit der zeitliche Kontext der Einnahme relevant wäre. Weitere Einflussfaktoren auf die Schlafqualität werden nicht erfasst, ebenso wenig wird die Länge individueller Schlafunterbrechungen differenziert oder den drei Schlafphasen zugeordnet. Daher könnte es für den Anwender von Interesse sein zu erfahren, welche der Schlafphasen durch bestimmte Verhaltensweisen gestört werden. Zudem lässt sich argumentieren, dass die Verteilung der Verhaltensweisen sehr linksseitig ist, dies ist möglicherweise auf kulturelle Unterschiede zurückzuführen. Daher sollte die Aussagekraft des Datensatzes auf den marokkanischen Lebensstil eingeschränkt werden.
 \textbf{ Die Daten }
-Der Datensatz wurde auf  \href{https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency/data}{Kaggle} 
-veröffentlicht und unterliegem keinem Copyright Schutz. Die Daten sind als CSV mit einer Größe von 9kB zugänglich.
-Die Daten sind in dem Github Repository abgepeichert, dies ermöglicht eine zentrale aktualisierung der Daten, falls dies Nötig sein sollte.  
- Das Programm ruft die CVS Datei  mittels eines Http.get request auf und speichert diese als einen String ab.  
-Falls der requst klappt wird die Message `Got Text Ok fulltext' an die Funktion `update' gesendet. Der String ist hierbei repräsentiert durch `fullText'.
-Daraufhin wird im `Model' das `datenladen' auf Success gesetzt.
- Auf den String wird die Funktion `stringtoUnverarbeitete', deren Ziel es ist den String in eine List(UnverarbeiteteDaten) zu transformieren.
- Die Funktion benutzt das  Paket BrianHicks/elm-csv (Im Code als Decode)  Diese zieht die Namen der Felder aus der ersten Reihe in dem String. Die Funktion decode decodiert die Inputdaten, relevant hierbei ist das, auch leere Felder in dem String vorkommen dürfen. Die Funktion Decode.blank gibt ein  `Nothing' zurück, falls das Feld leer sein sollte.
- Wenn es doch zu einem Fehler kommen sollte gibt die Funktion stringtoUnverarbeitete eine leere Liste zurück an das Modell.
- Wenn die Daten nun in der Form Unverarbeitete Daten sind wird die Funktion `sleep2Point' angewandt. Diese entfernt einen Tupel, wenn eines seiner Felder ein `Nothing' beinhaltet. Weiter werden die Werte für REM, Tiefschlaf und Leitschlaf in wirklich in diesen verbrachten Stunden transformiert indem diese, 
- mit 0.1 in Prozente übertragen wurden und dann mit der Schlafeffizienz und Schlandauer multipliziert.
- Dies ist besser, da somit die interpretation erleichtert wird, und die Vergleichbarkeit wird hergestellt. Vor der Transformation waren die Schlafphasen einer Person die 5 Stunden schläft und einer Person die 10 Stunden schläft nicht unterscheidbar. Jetzt läsäst sich klar anzeigen wie viel die Personen in den Schlafphasen verbracht haben.
- Gender und Raucher werden von einem String zu einem Float mittels case handeling konvertiert (genderToFloat und raucherToFloat). Dies ermöglicht es mit den Daten zu rechnen und erleichtert das weiter visualisieren. 
- Die Funktion sleep2Point hat einen Output von Typ Alias `Aussortierte Daten'.
- Weiter werden die Attribute Bedtime und Wakeuptime in den aktuellen Visualisierungen nicht benutzt, könnte es bei der Weiterentwicklung interessant werden, daher wurden Sie im Datenkonstrukt belassen aber nicht weiter behandelt. Man könnte von einer sanften Projektion sprechen.
- Innerhalb der Einstellungen kann der Anwender eine Selektion durchführen und Einschränkungen auf das zu untersuchende Attribut anwenden.
-  So werden nur Datentupel an die Visualisierungen übergeben die dem Kriterium entsprechen.
+  Der Datensatz wurde auf \href{https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency/data}{Kaggle} veröffentlicht und ist die dritte Version. Die Daten sind als CSV mit einer Größe von 9 kB zugänglich. Sie sind im GitHub-Repository abgelegt, was eine zentrale Aktualisierung der Daten ermöglicht, falls dies notwendig sein sollte.
+
+ Das Programm ruft die CSV-Datei mittels eines HTTP-GET-Requests auf und speichert sie als einen String ab. Falls der Request erfolgreich ist, wird die Nachricht `Got Text Ok fulltext' an die Funktion `update` gesendet. Der String wird dabei durch `fullText' repräsentiert. Daraufhin wird im `Model' das `datenladen' auf `Success' gesetzt.
+ Auf den String wird die Funktion `stringtoUnverarbeitete' angewandt, deren Ziel es ist, den String in eine `Liste (UnverarbeiteteDaten)' zu transformieren. Die Funktion verwendet das Paket `BrianHicks/elm-csv' (im Code als Decode bezeichnet), um die Namen der Felder aus der ersten Zeile im String zu extrahieren. Die Funktion `decode' decodiert die Eingabedaten, wobei zu beachten ist, dass auch leere Felder im String vorkommen dürfen. Die Funktion `Decode.blank' gibt ein `Nothing' zurück, falls das Feld leer ist. Wenn es dennoch zu einem Fehler kommt, gibt die Funktion `stringtoUnverarbeitete' eine leere Liste an das Modell zurück.
+ Wenn die Daten nun in Form von `UnverarbeiteteDaten' vorliegen, wird die Funktion `sleep2Point` angewandt. Diese entfernt ein Tupel, wenn eines seiner Felder ein `Nothing' enthält. Weiter werden die Werte für REM, Tiefschlaf und Leichtschlaf in tatsächlich verbrachte Stunden transformiert, indem sie mit 0.1 in Prozent umgerechnet und dann mit der Schlafeffizienz und Schlafdauer multipliziert werden. Dies verbessert die Interpretierbarkeit und stellt die Vergleichbarkeit her.
+ Gender und Raucher werden von einem String zu einem Float mittels Case-Handling konvertiert (Funktionen `genderToFloat' und `raucherToFloat'). Dies ermöglicht das Rechnen mit den Daten und erleichtert die weitere Visualisierung.
+ Die Funktion `sleep2Point' hat einen Output vom Typ Alias `AussortierteDaten`. Weiter werden die Attribute Bedtime und Wakeup Time in den aktuellen Visualisierungen nicht verwendet, könnten jedoch bei der Weiterentwicklung interessant werden. Daher wurden sie im Datenkonstrukt belassen, aber nicht weiter behandelt – man könnte von einer sanften Projektion sprechen. Innerhalb der Einstellungen kann der Anwender eine Selektion durchführen und Einschränkungen auf das zu untersuchende Attribut anwenden. So werden nur Datentupel an die Visualisierungen übergeben, die dem Kriterium entsprechen.
 
 
    
 \newpage
 \section{Visualisierungen}
 \subsection{Analyse der Anwendungsaufgaben}
-Die Aufgaben die durch die Visualisierung gelöst werden sollen: \\ 
- Die Hauptaufgabe der visualisierungen ist es dem Nutzer dabei behilflich zu sein sich 
-einen Überblick über die gegebenen Daten zu machen, und die Attribute auf Ihren zusammenhang zu anderen
-zu analysieren und dann die größe der Einflüsse der Verhaltensweisen auf das untersuchte Attrbiut zu differenzieren. 
-Der Anwender muss zunächst die Datenlage kritisch analysieren und die güte der einzelnen Attribute auf Ihre Aussagekräftigkeit zu bewerten. 
-Nach Bewertung der Attribute vergleicht er diese mit anderen Attributen und kann so komplexe Zusammenhänge und Beziehungen erkennen. 
-Daraufhin müssen die Einflüsse des Verhaltens auf die Attribute analysiert werden.
-Dabei muss der Anwender die Grundlagen der statistischen Interpretation und relevanz
-von Normalverteilungen für die Interpretation von Datenlagen kennen. Er sollte also wissen, dass die Datenlage normalverteilt sein sollte, um statistische Aussagen treffen zu können.
-Weiter ist es von Nutzen die Korrelation interpretieren zu können. 
-Die Interpreatation von Rot als negative und Grün als positive ist von Nutzen um die ergebnisse schneller zu erfassen, ist allerdings nicht notwendig.
-\\
-\\
-Das Problem ist folgendes: Daher ist es wichtig, 
- dass wir die Daten visualisieren um die Zusammenhänge zu erkennen.
-Die Visualisierung soll uns also erlauben den Einfluss von multiplen Verhaltensindikatoren auf die Ausprägung eines Merkmales zu schätzen.
-\\
-\\
-Analysieren sie die konkreten Anwendungsaufgaben, die die Lösung des Zielproblems durch die Anwender:innen bearbeitet werden müssen. 
 
-Welche sinnvollen mentale Modelle helfen den Personen bei der Bearbeitung. 
-Aufgabenstellung: Analyse der Variablen und den Einfuss der Verhaltensindikatoren
-%Welche Visualisierungen helfen den Personen, die die Software verwenden, sinnvolle mentale Modelle aufzubauen. 
-Handelt sich um explorative Visualisierung 
-Menatle Modelle: Was ist eine Normalverteilung? 
-Abweichungen von der Linie:
-  Ein Verständnis dafür, wie Abweichungen von der diagonalen Linie im QQ-Plot auf nicht-normale Verteilungen oder systematische Abweichungen hinweisen können.
-  Schwänze und Spitzen:
-Das mentale Modell von Schwänzen und Spitzen in einer Verteilung hilft dabei zu verstehen, wie sich Ausreißer oder starke Konzentrationen von Werten auf den QQ-Plot auswirken können.
-\\
-\\
+Die konkreten Anwendungsaufgaben, die von den Anwendern bearbeitet werden müssen, zielen darauf ab, die Daten kritisch zu analysieren, Zusammenhänge zwischen verschiedenen Attributen explorativ zu erkennen und den Einfluss der Verhaltensweisen zu erkennen.
+\begin{enumerate}
+  \item Datenlage analysieren:
+  \begin{itemize}
+    \item    Die Nutzer müssen zunächst die Datenlage kritisch analysieren und die Güte der einzelnen Attribute bewerten. Hierbei ist ein Verständnis für die statistische Interpretation und die Relevanz von Normalverteilungen zur Aussagefähigkeit der Visualisierungen wichtig.
 
-Sind diese mentalen Modelle für sie notwendig, um die Aufgaben lösen zu können? 
-Gehen sie bei ihrer Argumentation von den Anwendungsaufgaben aus und kommen sie dann zu den mentalen Modellen, deren Aufbau durch Visualisierungen unterstützt wird. 
+  \end{itemize}
+  \item Vergleich von Attributen:
+  \begin{itemize}
+    \item Nach der Bewertung der Güte der Attribute, soll ein Nutzer den Zusammenhang dieser mit anderen Attributen verstehen. Es soll hierbei auch auf versteckte Zusammenhänge stoßen können und die indirekte Beziehungen erkennen. Die Visualisierungen unterstützen dabei, Muster und Trends in den Daten zu identifizieren.
+  \end{itemize}
+  \item Analyse der Einflüsse des Verhaltens:
+  \begin{itemize}
+    \item Die Einflüsse des Verhaltens auf die Attribute müssen analysiert werden. Hierbei ist es notwendig, den Einfluss von multiplen Verhaltensindikatoren auf die Ausprägung eines Merkmals zu schätzen.
+  \end{itemize}
+\end{enumerate}
+Bei diesen Aufgabe sind die folgenden mentalen Modelle von Bedeutung:
+
+\begin{enumerate}
+  \item Statistische Interpretation:
+  \begin{itemize}
+    \item Nutzer sollten Grundlagen der statistischen Interpretation und die Relevanz von Normalverteilungen verstehen. Visualisierungen wie QQ-Plots können dabei helfen, Abweichungen von der Normalverteilung zu identifizieren.
+  \end{itemize}
+  \item Korrelation interpretieren:
+  \begin{itemize}
+    \item Ein Verständnis für die Interpretation von Korrelationen ist wichtig. Visualisierungen können durch Farbgebung (z. B. Rot für negative und Grün für positive Korrelationen) unterstützen, auch wenn dies nicht zwingend notwendig ist.
+  \end{itemize}
+  \item Parallele Koordinaten Interpretieren:
+  \begin{itemize}
+    \item Benutzer sollten verstehen, dass jede Achse ein Attribut repräsentiert, und Linien zwischen den Achsen die Beziehung zwischen Werten in verschiedenen Dimensionen anzeigen. Die Interpretation von Parallelenkoordinaten erfordert die Fähigkeit, Muster in den Linienverläufen zu erkennen und so Zusammenhänge zwischen den Attributen zu verstehen.
+  \end{itemize}
+\end{enumerate}
+
+
 \subsection{Anforderungen an die Visualisierungen}
 Leiten sie Anforderungen an das Design der Visualisierungen ab, die sich durch ihre Analyse des Zielproblems ergeben.
+
+
 
 \textbf{ Anforderungen an das Design. }
 \subsection{Präsentation der Visualisierungen}
