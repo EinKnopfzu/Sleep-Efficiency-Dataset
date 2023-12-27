@@ -245,21 +245,38 @@ Die dritte Visualisierung wird durch die beiden anderen beeinflusst. So ist das 
 
 
 \section{Implementierung}
-Die Visualisierung ist als One Page Application konzipiert, dies ist Aufgrund der benötigten Interaktion mit den Filtern un dWahl der Attribute nützlich.
-Das Main.elm ruft
+Die Visualisierung ist als One Page Application konzipiert, dies ist Aufgrund der benötigten Interaktion mit den Filtern und häufiger auswah der Attribute nützlich.
+Das Main.elm ruf zu beginn die Init Funktion auf, welche den type Alias Modell zunächst standard werde übergibt und die Daten einliest. 
+Die Kommunikation mit dem View erfolgt über den Typ Msg der verschiedene Ausprängungen über Änderungen an dem Modell an die Update Funktion weitergibt. 
+Die Update Funktion gibt die angehangene Information and das Model zurück.
+Besonderer Erklärung bedarf es hier der Abspeicherung des Datensatzes, dieser wird im Model direkt als List (Aussortierte_Daten) abgespeichert.
+Der typ Aussortierte_Daten ist ein Tupel der die Merkmalsausprägungen abspeichert hierebi werden nur die ID, Schlafenszeit und die Aufwachzeit als String abgelegt. Die Anderen Attribute sind alle in Floats transformiert.
 
-Links einstellungen und Filter, daneben Die visualiserungen mit Erklärungen.
-Die Visualisierungen werden im `view' als Funktionen aufgerufen die ein Svg msg produzieren, welches abgebildet wird 
- Gespeichert und dann in der View Funktion aufgerufen.
+Die im Main wichtigste Funktion ist das View. Hier werden verschiedene div erzeugt in denen die Interaktionen und Visualisierungen erzeugt sind,
+Die Auswahl der Attribute erfolgt über ein Droppdown. Dieses übergibt einen Sting ans Main und die Variable bezieht nimmt mittels case Handeling den gewünschen Wert an.
+
+Die in Visualisierung 1 gewählter Filter bereich wird als `daten' an die anderen Funktionen übergeben.
+Die so gefilterten Daten werden in einzelne Listen aufgebrochen und die benötigten Attribute wieder zusammengesetzt. 
+(combined... Funktionen)
 
 
-Stellen die Gliederung ihres Quellcodes vor.:
+Die Daten werden dann im div an die in den anderen Modulen definierten Funktionen zum Zeichnen der Visualiserungen übergeben. 
+Optional werden auch Zustände aus dem Model an mit übergeben.
 
-Der Code besteht aus einem Main Modul, welches die anderen Module importiert, die Daten einlädt und die interaktionen zwischenspeichert.
-Die drei Visualisierungen sind in jeweils einem anderem Modul implementiert, dabei werden die benötigten Informationen übergeben.
+\subsubsection{QQ Plott}
+Der QQ-Plott (scatterplott.elm) definiert zwei wichtige Funktionen die erzeugung von Normalverteilten Daten und das zeichnen des Plotts.
+Bei der transformierung werden die 
 
-Das Model besteht aus speichert die Ausprägungen ab, der zustand des Einladens, 
-die Wahl der Attribute in den droppdown, die Daten werden als List Aussortierte Daten abgespeichert.
+
+
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics [width = 0.8\textwidth]{RoengtenBSP.JPG}
+  \caption{Visualisierung Drei: WeihnachtsStern: Anzahl Erwachungen }
+\end{figure}
+ 
 
 
 Die Filter und die Pixelgröße und die RGBA Werte werden als einfache Float abgespeichert.
