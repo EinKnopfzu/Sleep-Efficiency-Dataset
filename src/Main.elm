@@ -482,8 +482,9 @@ view model =
                              {name= "Raucher", data= filterraucher},
                              {name= "Sport", data= filtersport}
                              ]
-                             ++ if model.droppdown2 /= "" then [{name = model.droppdown2, data = yList}] else []
-                             ++ if model.droppdown3 /= "" then [{name = model.droppdown3, data = zList}] else []}
+                             ++ (if model.droppdown2 /= "" then [{name = model.droppdown2, data = yList}] else [])
+                             ++ if model.droppdown3 /= "" then [{name = model.droppdown3, data = zList}] else []
+                             }
 
                    ,footer]
                     ]
