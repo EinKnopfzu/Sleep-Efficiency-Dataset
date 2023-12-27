@@ -217,12 +217,14 @@ Die Visualisierung ist weniger effektiv, da der Anwender verschiedene Kombinatio
 
 \subsubsection{Visualisierung Drei: Weihnachts Stern} 
 Die dritte Visualisierung lässt sich wohl den pixelorientierten Techniken zuordnen. Dabei werden die im Abschnitt Daten erwähnten Verhaltensweisen und Attribute wie Alter, Geschlecht, Koffeinkonsum, Alkoholkonsum, Tabakkonsum und Sporteinheiten kreisförmig um das Hauptattribut angeordnet. Basierend auf ihrer Korrelation zu diesem Hauptattribut werden sie sowohl farblich als auch in ihrer Größe modifiziert. Die in Visualisierung 2 hinzugefügten Attribute können ebenfalls integriert werden. Somit wird die Korrelation doppelt dargestellt. Die Farbgebung erfolgt durch die Skalierung der Korrelation auf ein Farbschema: negativ wird durch Rot dargestellt, positiv durch Grün. Die Intensität der Farbe wird positiv durch die Korrelation beeinflusst, während der Betrag der Korrelation die Größe des Kreises beeinflusst. Dadurch werden Daten mit hoher Korrelation besonders hervorgehoben. Um die Expressivität beizubehalten, sind die Merkmale und ihre Korrelation als Schriftzug eingefügt. Es sollte jedoch beachtet werden, dass eine qualitative Interpretation suggeriert werden könnte. In der Abbildung ist beispielsweise die Anzahl der Erwachungen dargestellt.
+
 \begin{figure}[h]
   \centering
   \includegraphics [width = 0.8\textwidth]{RoengtenBSP.JPG}
   \caption{Visualisierung Drei: WeihnachtsStern: Anzahl Erwachungen }
 \end{figure}
-Obwohl das Erwachen in der nacht keine Steigerung der lebensqualität ist, könnte angenommen werden, dass die geröteten Attribute grundsätzlich Negativ sind.
+
+Obwohl das Erwachen in der Nacht keine Steigerung der lebensqualität ist, könnte angenommen werden, dass die geröteten Attribute grundsätzlich Negativ sind.
 
 Der Anwender kann somit mithilfe dieser Visualisierung schnell Rückschlüsse auf den Einfluss des Verhaltens auf das untersuchte Hauptattribut ziehen. Wichtig dabei ist zu verstehen, dass Korrelation nicht gleichbedeutend mit Kausalität ist.
 Alternativ hätte eine Korrelationsmatrix genutzt werden können um die Korrelation darzustellen. Dies wäre auch zu einem änhöichen Mentalem Modell geführt.
@@ -244,8 +246,9 @@ Begründen sie ebenfalls warum sie andere Interaktionsmöglichkeiten nicht umges
 Wenn sie keine der geforderten Interaktionen umsetzen, erhalten Sie im gesamten Projekt deutlichen Punktabzug. 
 
 \section{Implementierung}
-Beschreiben Sie die Implementierung ihrer Visualisierungsanwendung in Elm. 
-Onepage application, da die interaktion mit den Filtern und darstellungen einfach sein soll.
+Die Visualisierung ist als One Page Application konzipiert, dies ist Aufhrund der benötigten Interaktion mit den Filtern un dWahl der Attribute nützlich.
+Das Main.elm ruft
+
 Links einstellungen und Filter, daneben Die visualiserungen mit Erklärungen.
 Die Visualisierungen werden im `view' als Funktionen aufgerufen die ein Svg msg produzieren, welches abgebildet wird 
  Gespeichert und dann in der View Funktion aufgerufen.
