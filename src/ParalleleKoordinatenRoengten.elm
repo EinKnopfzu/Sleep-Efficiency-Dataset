@@ -163,8 +163,8 @@ blackbox model =
             (List.map
                 (\x ->
                     Path.element (Shape.line Shape.linearCurve x)
-                        [ stroke (Paint <| Color.rgba 255 255 255 0.08)
-                        , strokeWidth (TypedSvg.Types.px 4)
+                        [ stroke (Paint <| Color.rgba 255 255 0 0.008)
+                        , strokeWidth (TypedSvg.Types.px 50)
                         , fill PaintNone
                         ]
                 )

@@ -148,6 +148,11 @@ Leiten sie Anforderungen an das Design der Visualisierungen ab, die sich durch i
 \textbf{ Anforderungen an das Design. }
 \subsection{Präsentation der Visualisierungen}
 
+
+
+
+
+
 \subsubsection{Visualisierung Eins: QQ-Plot Datenlage Normalverteilt?}
 
 Die erste Visualsierung ist die Darstellung der Daten in einem Scatterplott. Spezifisch der eines Normalverteilung QQ Plots. 
@@ -169,52 +174,59 @@ Dies Ermöglicht es dem Anwender die Daten und interpretierbarkeit einzuschätze
 \begin{figure}[h]
   \centering
   \includegraphics [width = 0.8\textwidth]{NormQQPlott.JPG}
-  \caption{Visualisierung Eins - Norm QQ-Plot REM }
+  \caption{Visualisierung Eins  Norm QQ-Plot REM }
 \end{figure}
 
 Das oben Auswählen und das Filtern geschieht in der Seitenleiste, hier kann der Benutzer das Atrribut auswählen, dass er untersuchen möchte und direkt darunter dieses in seinem Wertebereich filtern. 
 Der eingeschränkte Datenbereich wird dann in den anderen Visualisierungen verwendet.
-
-Der Benutzer kann in der Visualisierung zwei weitere Attribute auswählen. Diese werden in gleicher Form als QQ-Plott dargestellt und ermöglichen eine schnelle Einschätzung der Güte. 
-
-
+Der Benutzer kann in der zweiten Visualisierung zwei weitere Attribute zum untersuchen auswählen. Diese werden darufhin unter dem Hauptscatterplott als kleinere QQ-Plott dargestellt und ermöglichen eine schnelle Einschätzung der Güte. 
+Hier mit wird vissualisiert, dass die Attribute mit denen verglichen wird den gleichen Ansprüchen gegenüberstehen muss wie das Hauptattribut.
 
 
-Wieso erfüllt die Visualisierung den anfordeurngen der Anwender?
-
-Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen.
-
-Wieso diese Visualisierung und nicht andere? 
-Wir wollen echte mögliche Alternativen die zu einem ähnlichem mentalem Modell führen.
-Ein Histogramm würd ezu einem ähnlichem mentalem Modell führen, allerdings würde dieses.
+Alternativ hätte auch ein Histogramm verwendetwerden können, bei diesel hätte ein Distributionfitting leichter stattfinden können. 
 \\
 
 Expressivität und Effektivität der Visualisierung diskutieren.\\
 
-
-
 Die Zielgruppe der Visualisierungen sind Nutzer mit einem Interesse an den zu grundeliegenden Daten. 
 
 
-Die Visualisierung ist sinnvoll, da sie es dem Anwender ermöglicht sich mit den hinterliegenden
-Daten vertraut zu machen und die verschiedenen Ausprägungen zu analysieren und auf ihre Güte zu überprüfen.
- Datenlage zu überprüfen.
-Falls im Normal-Q-Q-Plot sich eine Gerade ergibt, ist die
-empirische Verteilung etwa normalverteilt
-Anstieg der Gerade ist $\sigma$, Verschiebung der Gerade ist $\mu$.
-Die klassische Herangehensweise in den Einfluss zu überprüfen sind hochkomplizierte und benötigen
- statistisches Hintergrundwissen auf Seiten des Anwenders. Die Visualisierungsanwendung soll es dem Anwender ermöglichen 
- den Datensatz und die Merkmale derer zu untersuchen und Rückschlüsse auf die Beziehungen von Ausprägungen untereinander und mit Verhaltensindikatoren und zu treffen. Dies ermöglicht dem Anweder die Daten auf Validität zu überprüfen.\\
+
+
+
 
 
 \subsubsection{Visualisierung Zwei: Boxplott}
 Präsentieren der Visualisierung und Interaktionsmöglichkeiten. 
+3 Dimensionen werden abgebildet. Die in QQ-Plott ausgewählte sowie zwei Weitere Atrribute. Die Achsen sind Parallel zueinander angelegt und gleich groß. Die Ausprägungen eines Datupels werden dargestellt, indem man die Ausprägung den der Tupel am Attribut hat auf die Y achse Skaliert. Dann wird eine gerade linie zwischen den positionen auf den anliegenden Achsen gezogen. 
+Die Endpunkte der Liniensegmente korrespondieren also mit den Attributwerten.
+Das Hauptattribut, welches in Visualisierung 1. ausgewählt wurde ist in der Mitte anglegegt. Das Y Attribut zu der linken und das Z Attribut zu der rechten Seite.
+Es wurde bewusst darauf verzichtet weitere Attributsdimensionen hinzuzufügen, da es einerseits der Anwender einen Fokus auf die Analyse des Hauptattributes hat und andererseits, bei mehr als 3 Attributen zusammenhänge suggeriert werden könnten, die nicht unbedingt vorhanden sein müssen. Nur weil eine Clusterung zwischen Dimension 1 und 2 und zwischen 2 und 3 beseteht. Bedueted das nicht immer, dass es eine Clusterung zwischen 1 und 3 gibt. 
+ Dies ist der Effektivität abträglich, da so zusammenhänge suggeriert werden könnten di enicht intendiert sind.
+
+Die Parallelen Koordinaten eignen sich gut für mehrdimensionale, quantitative und endliche Daten. 
+(Dimension< 20)
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics [width = 0.8\textwidth]{RoengtenBSP.JPG}
+  \caption{Visualisierung Eins  Norm QQ-Plot REM }
+\end{figure}
 
 Wieso sind diese gut und erfüllen die Anforderungen an das Design?
 
+
+
 Wieso erfüllt die Visualisierung den Anforderungen der Anwender?
+ Der Anwender hat ein Interesse die zusammenhänge zwischen dem Hauptattribut und den anderen Attributen zu untersuchen. Er
+ Durch die Betrachtung der Muster und Formen der Linien können Muster, Trends oder Gruppierungen in den Daten identifiziert werden.
+  Zum Beispiel können parallele Linien auf eine starke Korrelation zwischen den entsprechenden Variablen hinweisen. 
+  Der Anwender kann somit Rückschlüsse auf den zusammenhang von Attributen ausbilden und diese mithilfe von Visualisierung NR. 3 
+  Rückschlüsse auf die, hinterden Daten liegenden Mechanismen schließen und somit sein Verständnis von Schlafqualität zu verbessern.
 
 Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen.
+Die Linien gaben eine Opazität von 0.3, so dass die 
 
 Wieso diese Visualisierung und nicht andere? Wir wollen echte mögliche 
 Alternativen die zu einem ähnlichem mentalem Modell führen.
