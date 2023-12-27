@@ -1,19 +1,19 @@
 # Fdb version 4
-["biber bericht-vorlage"] 0 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1703670857 -1
+["biber bericht-vorlage"] 0 "bericht-vorlage.bcf" "bericht-vorlage.bbl" "bericht-vorlage" 1703672771 -1
   "./literatur.bib" 1703665068 1681 8dc34e7b8306256f9952c9c56902c339 ""
-  "bericht-vorlage.bcf" 1703670856 107822 7780b8ee0010d5f413eb480b2d6f4fc4 "pdflatex"
+  "bericht-vorlage.bcf" 1703672770 107822 7780b8ee0010d5f413eb480b2d6f4fc4 "pdflatex"
   (generated)
   "bericht-vorlage.bbl"
   "bericht-vorlage.blg"
   (rewritten before read)
-["pdflatex"] 1703670851 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1703670857 2
+["pdflatex"] 1703672765 "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" "bericht-vorlage.pdf" "bericht-vorlage" 1703672771 2
   "NormQQPlott.JPG" 1703665351 45919 e40578ea20e9299d0bbfa663df9c9115 ""
-  "bericht-vorlage.aux" 1703670856 10264 b2f241fb76a463004d87a7f4bdf92762 "pdflatex"
+  "bericht-vorlage.aux" 1703672770 10264 222461af6d8fbe05d331f35f0e877f99 "pdflatex"
   "bericht-vorlage.bbl" 1703667918 0 d41d8cd98f00b204e9800998ecf8427e "biber bericht-vorlage"
-  "bericht-vorlage.out" 1703670855 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "bericht-vorlage.run.xml" 1703670856 2411 a99c109aa5a06ecdca85bbb679d88246 "pdflatex"
-  "bericht-vorlage.tex" 1703670842 24048 f7e819ce0ad10821dc22a77c243679a2 ""
-  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1703670842 24048 f7e819ce0ad10821dc22a77c243679a2 ""
+  "bericht-vorlage.out" 1703672769 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "bericht-vorlage.run.xml" 1703672770 2411 a99c109aa5a06ecdca85bbb679d88246 "pdflatex"
+  "bericht-vorlage.tex" 1703672755 26050 5a347d329200bc2ef58b7106423459a8 ""
+  "c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex" 1703672755 26050 5a347d329200bc2ef58b7106423459a8 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1691421962 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1691421962 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1691420818 3524 cb3e574dea2d1052e39280babc910dc8 ""

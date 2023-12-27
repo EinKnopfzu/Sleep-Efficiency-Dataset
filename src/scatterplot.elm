@@ -202,6 +202,18 @@ scatterplot model =
         kreisbeschriftung =
             List.map .pointName model.data 
 
+        minYAchse : Float
+        minYAchse = 
+            Maybe.withDefault 0.0 (List.minimum <| List.map .y model.data)
+
+        maxYAchse : Float
+        maxYAchse = 
+          Maybe.withDefault 0.0 (List.maximum <| List.map .y model.data)
+
+        xNVS = Scale.convert xScaleLocal minYAchse
+        yNVS= Scale.convert yScaleLocal minYAchse
+        xNVE = Scale.convert xScaleLocal maxYAchse
+        yNVE = Scale.convert yScaleLocal maxYAchse
 
 
         xValues : List Float
@@ -220,15 +232,8 @@ scatterplot model =
         yScaleLocal =
             yScale yValues
 
-        half : ( Float, Float ) -> Float
-        half t =
-            (Tuple.second t - Tuple.first t) / 2
 
-        labelPositions : { x : Float, y : Float }
-        labelPositions =
-            { x = wideExtent xValues |> half
-            , y = wideExtent yValues |> Tuple.second
-            }
+        
             
         nvWerte =
            List.map .x model.data
@@ -236,8 +241,10 @@ scatterplot model =
         valuesofdata =
            List.map .y model.data
            
+        nvWerte25 : Float
         nvWerte25 =
             Maybe.withDefault 0.0 (quantile 0.25 nvWerte)
+        nvWerte75 : Float
         nvWerte75 =
             Maybe.withDefault 0.0 (quantile 0.75 nvWerte)
         valuesofdata25 =
@@ -302,10 +309,20 @@ scatterplot model =
                 , TypedSvg.Attributes.InPx.y1 (yS)
                 , TypedSvg.Attributes.InPx.x2 (xE)
                 , TypedSvg.Attributes.InPx.y2 (yE)
-                , TypedSvg.Attributes.InPx.strokeWidth 2  -- Adjusted stroke width
+                , TypedSvg.Attributes.InPx.strokeWidth 2  
                 , stroke <| Paint <| Color.rgba 255 0 0 1
                 ]    []
-            ]   
+            ] 
+        ,  g [ transform [ Translate padding padding ] ]
+            [ line
+              [ TypedSvg.Attributes.InPx.x1 (xNVS)
+                , TypedSvg.Attributes.InPx.y1 (yNVS)
+                , TypedSvg.Attributes.InPx.x2 (xNVE)
+                , TypedSvg.Attributes.InPx.y2 (yNVE)
+                , TypedSvg.Attributes.InPx.strokeWidth 1  
+                , stroke <| Paint <| Color.rgba 0 0 0 0.9
+                ]    []
+            ] 
         ]
 
 point : ContinuousScale Float -> ContinuousScale Float -> ScatterplottPoint -> Svg msg
