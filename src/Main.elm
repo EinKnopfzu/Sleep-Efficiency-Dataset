@@ -174,19 +174,19 @@ update msg model =
             ({ model | droppdown4 = value }, Cmd.none)
 
         Pixelchange value ->
-            ({ model | pixel = Maybe.withDefault 3 (String.toFloat value) }, Cmd.none)       
+            ({ model | pixel =  Maybe.withDefault 1 (String.toFloat value) }, Cmd.none)       
 
         Rgb1change value ->
-            ({ model | rgb1 = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none)
+            ({ model | rgb1 =  Maybe.withDefault 255 (String.toFloat value)}, Cmd.none)
 
         Rgb2change value ->
-            ({ model | rgb2 = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none)
+            ({ model | rgb2 =   Maybe.withDefault 255 (String.toFloat value) }, Cmd.none)
 
         Rgb3change value ->
-            ({ model | rgb3 = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none)     
+            ({ model | rgb3 =   Maybe.withDefault 255 (String.toFloat value) }, Cmd.none)     
 
         OppacityChange value ->
-            ({ model | oppacity = Maybe.withDefault 0 (String.toFloat value) }, Cmd.none)  
+            ({ model | oppacity =  Maybe.withDefault 0.08 (String.toFloat value) }, Cmd.none)  
 
         MinFilterChanged value ->
             ({ model | minFilter =  (String.toFloat value) }, Cmd.none)
@@ -291,10 +291,8 @@ view model =
                   []
    --             , button [ onClick SubmitInput ] [ text "Submit" ]
                   , Html.br [] []
-                  , Html.br [] []
-                  , Html.br [] []
+
                   , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Blackbox"]
-                  , Html.br [] []
                   , Html.br [] []
                   , Html.text "Y-Variable" 
                   , Html.br [] []
@@ -314,8 +312,7 @@ view model =
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown2) ] [ Html.text "Sport Einheiten" ]
                  ]
                   , Html.br [] []
-                  , Html.br [] []
-                  , Html.br [] []
+                
                   , Html.text "Z- Variable"
                   , Html.br [] []
                ,  Html.select [ onInput Option3Selected ]
@@ -332,10 +329,38 @@ view model =
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown3) ] [ Html.text "Alkohol Konsum" ]         
                   , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher: Bool" ]  
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]
-                    ]                 
-                  , Html.br [] []
-                  , Html.br [] []
-                  , Html.br [] []
+                    ]    
+                , Html.br [] []
+                , div [] [
+                  input
+                    [ type_ "text"
+                    , placeholder "Pixelgröße"
+                    , onInput Pixelchange
+                  ]
+                  []
+                   ,input
+                    [ type_ "text"
+                    , placeholder "Blues"
+                    , onInput Rgb1change
+                  ]
+                  []
+                   ,input
+                    [ type_ "text"
+                    , placeholder "Reds"
+                    , onInput Rgb2change
+                  ]
+                  []    
+                      ,input
+                        [ type_ "text"
+                        , placeholder "Greens"
+                        , onInput Rgb3change]
+                        []
+                , input
+                    [ type_ "text"
+                    , placeholder "Oppacity"
+                    , onInput OppacityChange]
+                    []         ]
+                  
     --              , Html.text 
                   , Html.br [] []
                 ]]   
@@ -491,11 +516,23 @@ view model =
                          , data = combinedListZ_Scatter
                         }]
                           
-                    ,div[ Html.Attributes.style "padding" "2em"
-                         , Html.Attributes.style "margin-left" "15%" ]
-                        [ Html.text " Röngten: Diese Visualisierung soll Ihnen dabei helfen Cluster und versteckte Ahängigkeiten zwischen den Attributen zu finden. "]
+                    , div [Html.Attributes.style "padding" "2em", Html.Attributes.style "margin-left" "15%"]
+                     [ Html.text " Röngten: Diese Visualisierung soll Ihnen dabei helfen Cluster und versteckte Ahängigkeiten zwischen den Attributen zu finden. "
+                       , Html.text "Pixel Value"
+                        ]
+                    , div [Html.Attributes.style "padding" "2em", Html.Attributes.style "margin-left" "15%"]
+                     [ Html.text "R"
+                       
+                     ]
+     --               , viewInput model.rgb1 Rgb1change
+     --               , viewInput model.rgb2 Rgb2change
+     --               , viewInput model.rgb3 Rgb3change
+     --               , viewInput model.pixel Pixelchange
+     --               , viewInput model.oppacity OppacityChange     
                           
-                    ,(blackbox combinedList_Box)
+                    , div [] []      
+                    ,(blackbox combinedList_Box model.pixel model.rgb1 model.rgb2 model.rgb3 model.oppacity)
+                    
                     ,div[ Html.Attributes.style "padding" "2em"
                          , Html.Attributes.style "margin-left" "15%" ]
                         [ Html.text " Hier sehen Sie die Korrelation der Verhaltensweisen und Ausprägungen als eine Art Scheeflocke angezeigt. Wenn Sie ein Attribut in Y und X augewählt wird dies Ihnen auch angezeigt. "]
@@ -518,8 +555,9 @@ view model =
                 
 
                     
-                    
-                
+viewInput : String -> String -> String -> (String -> msg) -> Html msg
+viewInput t p v toMsg =
+  input [ type_ t, placeholder p, value v, onInput toMsg ] []        
                 
                 
 

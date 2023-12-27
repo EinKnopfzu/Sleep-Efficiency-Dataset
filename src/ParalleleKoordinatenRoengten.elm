@@ -36,8 +36,8 @@ combineLists_Box names list1 list2 list3 =
         list2
         list3
 
-blackbox :List (MultiDimPoint) -> Svg msg
-blackbox model =
+blackbox :List (MultiDimPoint) -> Float ->Float -> Float -> Float -> Float-> Svg msg
+blackbox model pixel rgb1 rgb2 rgb3 oppacity=
     let
         {- hier können Sie die Beschriftung des Testpunkts berechnen -}
         kreisbeschriftung : String
@@ -163,8 +163,8 @@ blackbox model =
             (List.map
                 (\x ->
                     Path.element (Shape.line Shape.linearCurve x)
-                        [ stroke (Paint <| Color.rgba 255 255 0 0.008)
-                        , strokeWidth (TypedSvg.Types.px 50)
+                        [ stroke (Paint <| Color.rgba (rgb1) (rgb2) (rgb3) (oppacity))
+                        , strokeWidth (TypedSvg.Types.px (pixel))
                         , fill PaintNone
                         ]
                 )
