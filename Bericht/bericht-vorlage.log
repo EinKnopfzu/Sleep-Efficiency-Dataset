@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 10:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.7)  27 DEC 2023 10:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -589,8 +589,7 @@ Package csquotes Info: Redefining alias 'default' -> 'ngerman'.
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 17.
 (c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-No file bericht-vorlage.aux.
+) (./bericht-vorlage.aux)
 \openout1 = `bericht-vorlage.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -623,7 +622,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
 (scrartcl)           before \begin{document} on input line 17.
-(c:/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
+ (c:/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
  (c:/texlive/2023/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
@@ -704,15 +703,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'bericht-vorlage.bbl' found.
- (./bericht-vorlage.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                2
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+ (./bericht-vorlage.bbl)
 Package biblatex Info: Reference section=0 on input line 17.
 Package biblatex Info: Reference segment=0 on input line 17.
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 30.
@@ -748,24 +739,32 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
  (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+) [1
 
-LaTeX Warning: Citation '2' on page 1 undefined on input line 50.
+
+{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+
+LaTeX Warning: Citation 'Munzner2008' on page 2 undefined on input line 33.
+
+
+Overfull \hbox (15.70476pt too wide) in paragraph at lines 32--34
+\T1/lmr/m/n/10.95 fällt in die Ka-te-go-rie von InfoVis-Paper, die Ta-ma-ra Munz-ner De-sign Stu-dy nennt  [[]]:
+ []
+
+
+LaTeX Warning: Citation '2' on page 2 undefined on input line 50.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 50--56
 
  []
 
-[1
-
-
-{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+[2]
 Underfull \hbox (badness 10000) in paragraph at lines 60--65
 
  []
 
-[2] [3] [4]
+[3] [4] [5] [6]
 Underfull \hbox (badness 10000) in paragraph at lines 111--132
 
  []
@@ -775,60 +774,66 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--132
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 133--144
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 133--144
 
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 175--177
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--144
 
  []
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 186.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 186.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 186.
+[7]
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--190
-
- []
+LaTeX Warning: File `../Bilder/NormQQPlot.PNG' not found on input line 157.
 
 
-c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:193: LaTeX Error: There's no line here to end.
+c:/Users/mick/Desktop/Visualisierung/Sleep/Repository/Sleep-Efficiency-Dataset/Bericht/bericht-vorlage.tex:157: Package pdftex.def Error: File `../Bilder/NormQQPlot.PNG' not found: using draft setting.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.193 
-      
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+l.157 \includegraphics*{../Bilder/NormQQPlot.PNG}
+                                                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 157.
+(c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Underfull \hbox (badness 10000) in paragraph at lines 176--178
 
+ []
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 187.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 187.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 187.
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--191
+
+ []
+
+[8{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
 Underfull \hbox (badness 10000) in paragraph at lines 205--206
 
  []
 
-[7{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
+
 Underfull \hbox (badness 10000) in paragraph at lines 220--221
 
  []
 
-[8]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 263.
- (c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [9] (./bericht-vorlage.aux)
+[9]
+
+LaTeX Warning: Empty bibliography on input line 266.
+
+[10] (./bericht-vorlage.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
@@ -855,18 +860,18 @@ Package logreq Info: Writing requests to 'bericht-vorlage.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21982 strings out of 475187
- 403169 string characters out of 5767784
- 1930248 words of memory out of 5000000
- 42988 multiletter control sequences out of 15000+600000
- 616644 words of font info for 81 fonts, out of 8000000 for 9000
+ 21973 strings out of 475187
+ 403345 string characters out of 5767784
+ 1931248 words of memory out of 5000000
+ 42980 multiletter control sequences out of 15000+600000
+ 609586 words of font info for 79 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,7n,107p,11019b,2371s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on bericht-vorlage.pdf (9 pages, 244520 bytes).
+<c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on bericht-vorlage.pdf (10 pages, 203344 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
+ 181 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
  161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
