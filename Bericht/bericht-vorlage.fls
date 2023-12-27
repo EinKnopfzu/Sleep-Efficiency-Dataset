@@ -274,6 +274,11 @@ INPUT ./RoengtenBSP.JPG
 INPUT ./RoengtenBSP.JPG
 INPUT ./RoengtenBSP.JPG
 INPUT ./RoengtenBSP.JPG
+INPUT ./ParalleleBSPPixel.JPG
+INPUT ./ParalleleBSPPixel.JPG
+INPUT ./ParalleleBSPPixel.JPG
+INPUT ./ParalleleBSPPixel.JPG
+INPUT ./ParalleleBSPPixel.JPG
 INPUT bericht-vorlage.aux
 INPUT ./bericht-vorlage.out
 INPUT ./bericht-vorlage.out
