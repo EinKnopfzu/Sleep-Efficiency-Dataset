@@ -265,7 +265,16 @@ Optional werden auch Zustände aus dem Model an mit übergeben.
 
 \subsubsection{QQ Plott}
 Der QQ-Plott (scatterplott.elm) definiert zwei wichtige Funktionen die erzeugung von Normalverteilten Daten und das zeichnen des Plotts.
-Bei der transformierung werden die 
+
+\begin{enumerate}
+  \item Die Eingabedaten (\texttt{data}) werden nach den $y$-Werten sortiert.
+  \item Es werden verschiedene Berechnungen durchgeführt, um die Normalverteilung zu approximieren und Quantile der Daten zu erhalten.
+  \item Eine Transformation (\texttt{transformierer}) wird definiert, um Werte von der Normalverteilung auf die ursprüngliche Verteilung zurückzuübertragen.
+  \item Die Funktion \texttt{invNormalCdf} berechnet die inverse Normalverteilungskumulative Funktion.
+  \item Quantile werden mit Schätzungen verglichen, um Werte auf der Normalverteilung zu erhalten.
+  \item Die Daten werden entsprechend transformiert, um die Normalverteilung darzustellen.
+  \item Ein QQ-Plot wird erstellt, indem die transformierten Werte gegen die ursprünglichen Datenpunkte aufgetragen werden.
+\end{enumerate}
 
 
 
