@@ -242,7 +242,7 @@ view model =
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown1) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown1) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown1) ] [ Html.text "Alkohol Konsum" ]         
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher Bool" ]  
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher: Bool" ]  
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown1) ] [ Html.text "Sport Einheiten" ]   ]                            
                   , Html.br [] []
                   , Html.br [] []
@@ -285,7 +285,7 @@ view model =
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown2) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown2) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown2) ] [ Html.text "Alkohol Konsum" ]         
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher Bool" ]  
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown2) ] [ Html.text "Raucher: Bool" ]  
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown2) ] [ Html.text "Sport Einheiten" ]
                  ]
                   , Html.br [] []
@@ -305,7 +305,7 @@ view model =
                   , Html.option [ value "Erwacht Anzahl", selected ("Erwacht Anzahl" == model.droppdown3) ] [ Html.text "Erwacht Anzahl" ]
                   , Html.option [ value "Koffein Konsum", selected ("Koffein Konsum" == model.droppdown3) ] [ Html.text "Koffein Konsum" ]       
                   , Html.option [ value "Alkohol Konsum", selected ("Alkohol Konsum" == model.droppdown3) ] [ Html.text "Alkohol Konsum" ]         
-                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher Bool" ]  
+                  , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown3) ] [ Html.text "Raucher: Bool" ]  
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]
                     ]                 
                   , Html.br [] []
@@ -396,7 +396,7 @@ view model =
 
                    filtergender : List Float
                    filtergender =
-                        (List.map .mygeschlecht daten) 
+                        List.map .mygeschlecht daten
                      
                    filterkoffein : List(Float)
                    filterkoffein =

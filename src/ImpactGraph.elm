@@ -63,7 +63,7 @@ type alias IndexedImpactData =
 
 runden : Float -> Float
 runden nr =
-     Maybe.withDefault 0.0 (String.toFloat (Round.ceiling 4 nr))
+     Maybe.withDefault 0.0 (String.toFloat (Round.ceiling 5 nr))
 
 type alias ImpactGraphPoint =
     { xPosition: Float
@@ -122,8 +122,6 @@ graph model =
             .hoverText:hover text_ { display: inline; stroke: rgba(255, 255, 0, 1.0);  }
             .hoverText text_ { display: none; }
           """ ]
-       
-
        , g [ transform [ Translate padding 0] ]
             [ rect
             [ TypedSvg.Attributes.InPx.x1 (5)
@@ -140,9 +138,6 @@ graph model =
         , g [transform [ Translate padding 0]]
                 
              ( List.map (\i -> kreis xa ya model.xdescriptor i.index i.data winkelEinteilung 130) indexedimpactDataList)
---        , g [ transform [ Translate padding padding ] ]
-   --          ( List.map (\i -> Pfeil))
-
         , g [ transform [ Translate padding 0 ] ]
             [ text_
             [ x (xa )
@@ -152,7 +147,6 @@ graph model =
             ]
             [ TypedSvg.Core.text model.xdescriptor.name ] 
             ]
-    
         , g [ transform [ Translate padding 0 ] ]
             [ circle [ cx xa, cy ya, TypedSvg.Attributes.InPx.r (Scatterplot.radius * 3) ]
             []
@@ -181,15 +175,8 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
 
 -- Berechnet die Korrelation und rundet sie auf die 4 Nachkommastelle auf. 
         größe :   Float
-        größe = runden (Maybe.withDefault 0.0 ( (r (combineLists xAttribut.data datenwerte.data))))
-
-        rgbScale : ContinuousScale Float
-        rgbScale  =
-            Scale.linear ( 0, 255 ) (0, 1)
-
-        
+        größe = runden (Maybe.withDefault 0.0 ( (r (combineLists xAttribut.data datenwerte.data))))     
           
-
         radiusScale : ContinuousScale Float
         radiusScale  =
             Scale.linear ( 20 , 50 ) (0, 1)
@@ -200,12 +187,20 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
 
         colorTon : Color
         colorTon = if größe <= 0.0 
-                then  redsInterpolator größe
+                then  redsInterpolator( (größe* -1))
                 else greensInterpolator größe      
 
     in
     g [  ]
-        [ circle [ cx xPosition
+        [line xa ya xPosition yPosition
+            ,circle [ cx xPosition
+                  , cy yPosition
+                  , TypedSvg.Attributes.InPx.r (scaledRadius)
+                  , fill <| Paint <| Color.rgb 255 255 255
+                  , stroke <| Paint <| Color.rgb 0 0 0
+                  ]
+                   []
+            ,circle [ cx xPosition
                   , cy yPosition
                   , TypedSvg.Attributes.InPx.r (scaledRadius)
                   , fill <| Paint <| colorTon
@@ -214,12 +209,12 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
                    []
         , text_
             [ x (xPosition  )
-            , y (if unterOberIndikator <= 0.1 then (yPosition - 8) else (yPosition + 20))-- scaledRadius)
+            , y (if unterOberIndikator <= 0.1 then (yPosition - scaledRadius - 8 )
+                 else (yPosition + scaledRadius + 16 + 8))
             , textAnchor TypedSvg.Types.AnchorMiddle
             , TypedSvg.Attributes.class ["hoverText"]
             ]
             [ TypedSvg.Core.text (datenwerte.name  ++ ": "++ String.fromFloat größe) ]
-        , line xa ya xPosition yPosition
              ]
 
 line : Float -> Float -> Float -> Float -> Svg msg
