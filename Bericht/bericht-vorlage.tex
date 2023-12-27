@@ -305,8 +305,10 @@ Github, lokal abzuspecihern und als anderes Paket zu importieren, solange die Ab
  was ließ sich mit dem vorhanden Code aus den Übungen relativ einfach umsetzen? 
 
 Wie sieht die Elm-Datenstruktur für das Model aus, in dem die verschiedenen Zustände der Interaktion gespeichert werden können.
-Die interaktion werden im Modell als einfache String oder Floats abgespeichert. 
-Die interaktion ist vorallem durch Projektion und Selektion durchgeführt, dies ist in der Anwendung durch die Filter und die Auswahl der Attribute umgesetzt.
+
+Die interaktion werden im Modell als einfache String oder Floats abgespeichert. Der Datensatz wird also nach seiner Transformierung in der Init  nicht weiter verarbeitet.
+
+Da die Interaktion ist vorallem durch Projektion und Selektion umgesetzt, dies ist in der Anwendung durch die Filter und die Auswahl der Attribute umgesetzt.
 Die angepassung der Daten an die Anforderungen der Visualiserungen erfolgt im Main vor der übergabe in die Grafiken. 
 
 
@@ -314,11 +316,19 @@ Die angepassung der Daten an die Anforderungen der Visualiserungen erfolgt im Ma
 \section{Anwendungsfälle}
 Präsentieren sie für jede der drei Visualisierungen einen sinnvollen Anwendungsfall 
 in dem ein bestimmter Fakt, ein Muster oder die Abwesenheit eines Musters visuell festgestellt wird.
+
+
 Begründen sie warum dieser Anwendungsfall wichtig für die Zielgruppe der Anwenderinnen ist.
 Diskutieren sie weiterhin, ob die oben beschriebene Information auch mit anderen 
 Visualisierungstechniken hätte gefunden werden können.
 Falls dies möglich wäre, vergleichen sie die den Aufwand und die Schwierigkeiten ihres Ansatzes und der Alternativen. 
 \subsection{Anwendung Visualisierung Eins}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics [width = 0.8\textwidth]{Bsp_QQ-Plot.JPG}
+  \caption{Visualisierung Eins: Anwendungsbeispiel}
+\end{figure}
 
 \subsection{Anwendung Visualisierung Zwei}
 

@@ -177,16 +177,7 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmr.fd
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmr10.tfm
-INPUT ./bericht-vorlage.aux
-INPUT ./bericht-vorlage.aux
-INPUT bericht-vorlage.aux
 OUTPUT bericht-vorlage.aux
-INPUT ./bericht-vorlage.out
-INPUT ./bericht-vorlage.out
-INPUT bericht-vorlage.out
-INPUT bericht-vorlage.out
-INPUT ./bericht-vorlage.out
-INPUT ./bericht-vorlage.out
 OUTPUT bericht-vorlage.out
 OUTPUT bericht-vorlage.pdf
 INPUT c:/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
@@ -279,6 +270,10 @@ INPUT ./ParalleleBSPPixel.JPG
 INPUT ./ParalleleBSPPixel.JPG
 INPUT ./ParalleleBSPPixel.JPG
 INPUT ./ParalleleBSPPixel.JPG
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm
 INPUT bericht-vorlage.aux
 INPUT ./bericht-vorlage.out
 INPUT ./bericht-vorlage.out
@@ -289,3 +284,4 @@ INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb

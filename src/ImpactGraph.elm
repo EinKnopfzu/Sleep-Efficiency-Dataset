@@ -1,18 +1,18 @@
 module ImpactGraph exposing (..)
 
-import Scatterplot exposing (w, h, padding, radius, tickCount, defaultExtent)
+import Scatterplot exposing (w, h, padding, radius)
 
 import List exposing (..)
 import JXstat exposing (..)
-import TypedSvg exposing (circle, g, line, rect, style, svg, text_, tspan)
-import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox, title)
-import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y, rx, x1, x2, y1, y2, dy, dx)
-import TypedSvg.Core exposing (Svg, text)
+import TypedSvg exposing (circle, g, line, rect,  svg, text_)
+import TypedSvg.Attributes exposing ( fill,  fontSize, stroke, textAnchor, transform, viewBox)
+import TypedSvg.Attributes.InPx exposing (cx, cy,  r,  x, y, rx, x1, x2, y1, y2)
+import TypedSvg.Core exposing (Svg)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
 import TypedSvg.Attributes exposing (x1)
-import Html exposing (text, br)
+
 import Scale exposing (ContinuousScale) 
-import Round exposing (round)
+import Round exposing (ceiling)
 import Color exposing (Color, rgba)
 import TypedSvg.Types exposing (px)
 import Scale.Color exposing (redsInterpolator, greensInterpolator)
@@ -186,7 +186,6 @@ kreis xa ya xAttribut index datenwerte winkel radiusUmkreis=
                 then   Scale.convert radiusScale (größe * -1)
                 else  Scale.convert radiusScale größe
            
-
         colorTon : Color
         colorTon = if größe <= 0.0 
                 then  redsInterpolator( (größe* -1))
