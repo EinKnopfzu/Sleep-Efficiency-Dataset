@@ -36,7 +36,7 @@ combineLists_Box names list1 list2 list3 =
         list2
         list3
 
-blackbox :List (MultiDimPoint) -> Float ->Float -> Float -> Float -> Float-> Svg msg
+blackbox :List (MultiDimPoint) -> Float -> Float -> Float -> Float -> Float -> Svg msg
 blackbox model pixel rgb1 rgb2 rgb3 oppacity=
     let
         {- hier können Sie die Beschriftung des Testpunkts berechnen -}
@@ -164,7 +164,7 @@ blackbox model pixel rgb1 rgb2 rgb3 oppacity=
                 (\x ->
                     Path.element (Shape.line Shape.linearCurve x)
                         [ stroke (Paint <| Color.rgba (rgb1) (rgb2) (rgb3) (oppacity))
-                        , strokeWidth (TypedSvg.Types.px (pixel))
+                        , strokeWidth (TypedSvg.Types.px (pixel) )
                         , fill PaintNone
                         ]
                 )

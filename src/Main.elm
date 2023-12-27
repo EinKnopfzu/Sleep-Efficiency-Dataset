@@ -83,9 +83,9 @@ type alias Model
      , droppdown5 : String
      , daten :List (Aussortierte_Daten)
      , pixel : Float
-     ,rgb1 : Float
-     ,rgb2 : Float
-     ,rgb3 : Float
+     , rgb1 : Float
+     , rgb2 : Float
+     , rgb3 : Float
      , oppacity : Float
      , minFilter : Maybe Float
      , maxFilter : Maybe Float }
@@ -147,6 +147,7 @@ type Msg
   | OppacityChange String
   | MinFilterChanged String
   | MaxFilterChanged String
+  | Reload
   
 
 
@@ -177,13 +178,13 @@ update msg model =
             ({ model | pixel =  Maybe.withDefault 1 (String.toFloat value) }, Cmd.none)       
 
         Rgb1change value ->
-            ({ model | rgb1 =  Maybe.withDefault 255 (String.toFloat value)}, Cmd.none)
+            ({ model | rgb1 =  Maybe.withDefault 0.5 (String.toFloat value)  }, Cmd.none)
 
         Rgb2change value ->
-            ({ model | rgb2 =   Maybe.withDefault 255 (String.toFloat value) }, Cmd.none)
+            ({ model | rgb2 =   Maybe.withDefault 0.5 (String.toFloat value) }, Cmd.none)
 
         Rgb3change value ->
-            ({ model | rgb3 =   Maybe.withDefault 255 (String.toFloat value) }, Cmd.none)     
+            ({ model | rgb3 =   Maybe.withDefault 0.5 (String.toFloat value) }, Cmd.none)     
 
         OppacityChange value ->
             ({ model | oppacity =  Maybe.withDefault 0.08 (String.toFloat value) }, Cmd.none)  
@@ -193,6 +194,9 @@ update msg model =
 
         MaxFilterChanged value ->
             ({ model | maxFilter =  (String.toFloat value) }, Cmd.none)
+        
+        Reload ->
+            init ()
 
         
 
@@ -240,9 +244,8 @@ view model =
                     , Html.Attributes.style "font-family" "Arial"
                   ]
                   [
-                                      Html.br [] []
-                  , Html.br [] []
-                  , Html.br [] []
+                   
+                   Html.br [] []
                   , Html.br [] []
                     , Html.u[Html.Attributes.style "font-size" "20px" 
                          , Html.Attributes.style "font-weight" "bold"]
@@ -250,10 +253,10 @@ view model =
                          , Html.br [] []
                          , Html.br [] []
                          , Html.br [] []
-                         , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Norm-QQ Plot"]
+                         , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "QQ-Plot"]
                          , Html.br [] []
                          , Html.br [] []
-                       , Html.span [ Html.Attributes.style "font-size" "16px" ] [Html.text "Untersuchendes Attribut" ]
+                       , Html.span [ Html.Attributes.style "font-size" "16px" ] [Html.text "X-Attribut" ]
                        ,Html.br [] []        
                   ,Html.select [ onInput Option1Selected ]
                 [ Html.option [ value "", selected ("" == model.droppdown1) ] [ Html.text "NA" ]
@@ -270,7 +273,7 @@ view model =
                   , Html.option [ value "Raucher", selected ("Raucher" == model.droppdown1) ] [ Html.text "Raucher: Bool" ]  
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown1) ] [ Html.text "Sport Einheiten" ]   ]                            
                   , Html.br [] []
-                  , Html.br [] []
+                 
                   , Html.text "Min Value"
                   , Html.br [] []
                   ,input
@@ -291,6 +294,7 @@ view model =
                   []
    --             , button [ onClick SubmitInput ] [ text "Submit" ]
                   , Html.br [] []
+                   , Html.br [] []
 
                   , Html.u [ Html.Attributes.style "font-size" "16px" ] [Html.text "Blackbox"]
                   , Html.br [] []
@@ -331,6 +335,7 @@ view model =
                   , Html.option [ value "Sport Einheiten", selected ("Sport Einheiten" == model.droppdown3) ] [ Html.text "Sport Einheiten" ]
                     ]    
                 , Html.br [] []
+                 , Html.br [] []
                 , div [] [
                   input
                     [ type_ "text"
@@ -340,26 +345,27 @@ view model =
                   []
                    ,input
                     [ type_ "text"
-                    , placeholder "Blues"
+                    , placeholder "Rot [0-1]"
                     , onInput Rgb1change
                   ]
                   []
                    ,input
                     [ type_ "text"
-                    , placeholder "Reds"
+                    , placeholder "Grün [0-1]"
                     , onInput Rgb2change
                   ]
                   []    
-                      ,input
+                  ,input
                         [ type_ "text"
-                        , placeholder "Greens"
+                        , placeholder "Blau [0-1]"
                         , onInput Rgb3change]
                         []
                 , input
                     [ type_ "text"
                     , placeholder "Oppacity"
                     , onInput OppacityChange]
-                    []         ]
+                    []         
+                ]
                   
     --              , Html.text 
                   , Html.br [] []
@@ -494,9 +500,9 @@ view model =
                     , Html.Attributes.style "font-family" "Arial"] 
                     [div[ Html.Attributes.style "padding" "2em"
                          , Html.Attributes.style "margin-left" "15%" ]
-                        [ Html.text " Scatterplot Norm QQ Plot: Hilft Ihnen zu analysieren ob ein Attribut normalverteilt ist. Wählen Sie dazu ein Attribut aus und geben Sie optional einen Min und Max Wert an. Die in Röngten ausgewählten Werte werden werden kleiner darunter angezeigt. "]
+                        [ Html.text " Der Norm QQ Plot hilft Ihnen zu analysieren ob ein Attribut normalverteilt ist. Wählen Sie dazu ein Attribut aus und geben Sie optional einen Min und Max Wert an um Extrema Einzuschränken. Die Junior QQ-Plotts reagieren auf die Einstellungen für Visualisierung zwei. "]
                         ,scatterplot 
-                    { xDescription = "Normalverteilung"
+                    { xDescription = "Normalverteilte Werte"
                     , yDescription = model.droppdown1
                     , data = combinedListX_Scatter
                     }
@@ -506,31 +512,20 @@ view model =
                          ,Html.Attributes.style "margin-left" "15%"
                          , Html.Attributes.style "padding" "2em" ]
                      [scatterplot 
-                     { xDescription = "Normalverteilung"
+                     { xDescription = "Normalverteilte Werte"
                         , yDescription = model.droppdown2
                         , data = combinedListY_Scatter
                       }
                       ,scatterplot 
-                       { xDescription = "Normalverteilung"
+                       { xDescription = "Normalverteilte Werte"
                          , yDescription = model.droppdown3
                          , data = combinedListZ_Scatter
                         }]
                           
                     , div [Html.Attributes.style "padding" "2em", Html.Attributes.style "margin-left" "15%"]
-                     [ Html.text " Röngten: Diese Visualisierung soll Ihnen dabei helfen Cluster und versteckte Ahängigkeiten zwischen den Attributen zu finden. "
-                       , Html.text "Pixel Value"
-                        ]
-                    , div [Html.Attributes.style "padding" "2em", Html.Attributes.style "margin-left" "15%"]
-                     [ Html.text "R"
+                     [ Html.text " Röngten: Diese Visualisierung soll Ihnen dabei helfen Muster und versteckte Ahängigkeiten zwischen den Attributen zu entdecken. Die Attribute, Strichgröße und RGBA Werte könnenn Sie in den Einstellungen anpassen."
                        
-                     ]
-     --               , viewInput model.rgb1 Rgb1change
-     --               , viewInput model.rgb2 Rgb2change
-     --               , viewInput model.rgb3 Rgb3change
-     --               , viewInput model.pixel Pixelchange
-     --               , viewInput model.oppacity OppacityChange     
-                          
-                    , div [] []      
+                        ]    
                     ,(blackbox combinedList_Box model.pixel model.rgb1 model.rgb2 model.rgb3 model.oppacity)
                     
                     ,div[ Html.Attributes.style "padding" "2em"
