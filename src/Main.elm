@@ -5,7 +5,6 @@ import Html exposing (..)
 import Html.Attributes exposing(..)
 import Html.Events exposing (onInput)
 import Http
-import List exposing (filter, sum)
 import Csv.Decode as Decode exposing (Decoder)
 import Scatterplot exposing (..)
 import ParalleleKoordinatenRoengten exposing (blackbox) 
@@ -24,37 +23,6 @@ main =
     }
 
 -- MODEL
-header : Html msg
-header =
-    div
-        [ Html.Attributes.style "background-color" "#333"
-        , Html.Attributes.style "color" "white"
-        , Html.Attributes.style "text-align" "center"
-        , Html.Attributes.style "padding" "0.5em"
-        ]
-        [ h1 [] [ Html.text "Informationsvisualiserung Sleep Quality" ] ]
-
-inhalt : Html msg
-inhalt =
-    div [ Html.Attributes.style "padding" "2em",
-          Html.Attributes.style "max-width" "900px",
-          Html.Attributes.style "margin" "0 auto" ]
-        [ p [] [ Html.text "Zielstellung : Visualiserung" ]
-        , p [] [ Html.text "Hier ist etwas Beispieltext." ]
-        ]
-
-footer : Html msg
-footer =
-    div [ Html.Attributes.style "background-color" "#333",
-          Html.Attributes.style "color" "white",
-          Html.Attributes.style "text-align" "center",
-          Html.Attributes.style "padding" "0em",
-  --        Html.Attributes.style "position" "fixed",
-          Html.Attributes.style "bottom" "0 + padding", 
-          Html.Attributes.style "width" "100%",
-          Html.Attributes.style "height" "4%" ]
-        [ p [] [ Html.text "© 2023 Mick Wörner 217246242" ]
-        ]
 
 
 type Zustand
@@ -573,6 +541,29 @@ view model =
                    ,footer]
                     ]
 
+header : Html msg
+header =
+    div
+        [ Html.Attributes.style "background-color" "#333"
+        , Html.Attributes.style "color" "white"
+        , Html.Attributes.style "text-align" "center"
+        , Html.Attributes.style "padding" "0.5em"
+        ]
+        [ h1 [] [ Html.text "Informationsvisualiserung Sleep Quality" ] ]
+
+
+footer : Html msg
+footer =
+    div [ Html.Attributes.style "background-color" "#333",
+          Html.Attributes.style "color" "white",
+          Html.Attributes.style "text-align" "center",
+          Html.Attributes.style "padding" "0em",
+  --        Html.Attributes.style "position" "fixed",
+          Html.Attributes.style "bottom" "0 + padding", 
+          Html.Attributes.style "width" "100%",
+          Html.Attributes.style "height" "4%" ]
+        [ p [] [ Html.text "© 2023 Mick Wörner 217246242" ]
+        ]
 
 --Verarbeitung der Daten
 

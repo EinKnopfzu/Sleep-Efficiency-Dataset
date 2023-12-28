@@ -4,29 +4,31 @@ module Scatterplot exposing (..)
 import Axis
 import Browser
 import Color exposing (Color(..), rgb)
-import List exposing (filter, sum)
-import Debug
-import Html exposing (Html, div, pre, text)
-import Html.Attributes exposing (selected, style, value)
-import Html.Events exposing (onInput)
-import Http
-import Maybe.Extra exposing (isJust)
+import Html exposing (text)
 import Scale exposing (ContinuousScale)
-import Stat
-import Statistics exposing (extent, quantile)
-import TypedSvg exposing (circle, g, line, rect, style, svg, text_)
-import TypedSvg.Attributes exposing (class, color, fill, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
-import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
-import TypedSvg.Core exposing (Svg, text)
+import Statistics exposing ( quantile)
+import TypedSvg exposing (circle, g, line,  svg, text_)
+import TypedSvg.Attributes exposing (class, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
+import TypedSvg.Attributes.InPx exposing (cx, cy, r,  x, y)
+import TypedSvg.Core exposing (Svg)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))
-import TypedSvg.Attributes.InPx exposing (x1)
-import TypedSvg.Attributes.InPx exposing (y1)
-import TypedSvg.Attributes.InPx exposing (x2)
-import TypedSvg.Attributes.InPx exposing (y2)
-import TypedSvg.Attributes exposing (x1)
 import Round exposing (round)
 
 
+type alias ScatterplottXYPoint =
+    { xValue : Float
+     ,yValue : Float}
+
+-- XyData soll den Datensatz Beschreiben, der im Scatterplott angezeigt wird
+type alias ScatterplottXYData =
+    { xDescription : String
+    , yDescription : String
+    , data : List ScatterplottPoint
+    }
+
+--Repräsentiert den individuellen Punkt mit Name. 
+type alias ScatterplottPoint =
+    { pointName : String, x : Float, y : Float }
 
 
 --Variablen zur Dartsellung der Größe dr Grafiken gelten auch in den anderen Modulen
@@ -63,25 +65,6 @@ combineLists : List Float -> List Float ->List String -> List ScatterplottPoint
 combineLists x y z =
     List.map3 (\zValue xValue yValue -> { pointName = zValue, x = xValue, y = yValue }) z x y
 
-
-
-
-
---Der Typ soll die relative Position eines Datenpunktes darstellen. 
-type alias ScatterplottXYPoint =
-    { xValue : Float
-     ,yValue : Float}
-
--- XyData soll den Datensatz Beschreiben, der im Scatterplott angezeigt wird
-type alias ScatterplottXYData =
-    { xDescription : String
-    , yDescription : String
-    , data : List ScatterplottPoint
-    }
-
---Repräsentiert den individuellen Punkt mit Name. 
-type alias ScatterplottPoint =
-    { pointName : String, x : Float, y : Float }
 
 wideExtent : List Float -> ( Float, Float )
 wideExtent values =
