@@ -221,7 +221,7 @@ Die dritte Visualisierung lässt sich wohl den pixelorientierten Techniken zuord
 
 \begin{figure}[h]
   \centering
-  \includegraphics [width = 0.8\textwidth]{RoengtenBSP.JPG}
+  \includegraphics[width = 0.8\textwidth]{WeihnachtsStern.JPG}
   \caption{Visualisierung Drei: WeihnachtsStern: Anzahl Erwachungen }
 \end{figure}
 
@@ -247,8 +247,7 @@ Die dritte Visualisierung wird durch die beiden anderen beeinflusst. So ist das 
 
 \section{Implementierung}
 
-
-Die Visualisierung ist als One-Page-Application konzipiert, was aufgrund der benötigten Interaktion mit den Filtern und der häufigen Auswahl der Attribute nützlich ist. Das `Main.elm` ruft zu Beginn die `Init`-Funktion auf, die den Type Alias `Modell` zunächst auf den Standardwert setzt und die Daten einliest. Die Kommunikation mit dem View erfolgt über den Typ `Msg`, der verschiedene Ausprägungen über Änderungen am Modell an die `Update`-Funktion weitergibt. Die `Update`-Funktion gibt die angehängte Information an das Modell zurück. Besonderer Erklärung bedarf hier die Abspeicherung des Datensatzes, dieser wird im Modell direkt als `List (Aussortierte_Daten)` abgespeichert. Der Typ `Aussortierte_Daten` ist ein Tupel, das die Merkmalsausprägungen abspeichert. Hierbei werden nur die ID, Schlafenszeit und die Aufwachzeit als String abgelegt. Die anderen Attribute sind alle in Floats transformiert. Da die Interaktion vor allem durch Projektion und Selektion umgesetzt ist, erfolgt dies in der Anwendung durch die Filter und die Auswahl der Attribute, die im Modell gespeichert werden.
+Die Visualisierung ist als One-Page-Application konzipiert, was aufgrund der benötigten Interaktion mit den Filtern und der häufigen Auswahl der Attribute nützlich ist. Das `Main.elm` ruft zu Beginn die `Init`-Funktion auf, die den Type Alias `Modell` zunächst auf den Standardwert setzt und die Daten einliest. Die Kommunikation mit dem View erfolgt über den Typ `Msg`, der verschiedene Ausprägungen über Änderungen am Modell an die `Update`-Funktion weitergibt. Die `Update`-Funktion gibt die angehängte Information an das Modell zurück. Besonderer Erklärung bedarf hier die Abspeicherung des Datensatzes, dieser wird im Modell direkt als `List (Aussortierte\_Daten)` abgespeichert. Der Typ `Aussortierte\_Daten` ist ein Tupel, das die Merkmalsausprägungen abspeichert. Hierbei werden nur die ID, Schlafenszeit und die Aufwachzeit als String abgelegt. Die anderen Attribute sind alle in Floats transformiert. Da die Interaktion vor allem durch Projektion und Selektion umgesetzt ist, erfolgt dies in der Anwendung durch die Filter und die Auswahl der Attribute, die im Modell gespeichert werden.
 
 Die im `Main` wichtigste Funktion ist das `View`. Hier werden verschiedene `div` erzeugt, in denen die Interaktionen und Visualisierungen erstellt sind. Die Auswahl der Attribute erfolgt über ein Dropdown. Dieses übergibt einen String an das `Main` und die Variable bezieht mithilfe eines `case`-Handlings den gewünschten Wert. Der in Visualisierung 1 gewählte Filterbereich wird als `daten` an die anderen Funktionen übergeben. Die so gefilterten Daten werden in einzelne Listen aufgebrochen und die benötigten Attribute wieder zusammengesetzt (Funktionen wie `combined...`). Die Daten werden dann im `div` an die in den anderen Modulen definierten Funktionen zum Zeichnen der Visualisierungen übergeben. Optional werden auch Zustände aus dem Modell mit übergeben.
 
@@ -301,8 +300,8 @@ Hervorzustellen sind hierbei die Funktionen xPosition und yPositon welche basier
 
 \begin{figure}[h]
   \centering
-  \includegraphics [width = 0.8\textwidth]{Relative XY Positionierung der Kreise.JPG}
-  \caption{Relative XY Positionierung der Kreise. }
+  \includegraphics[width = 0.8\textwidth]{RelativeXYPositionierungderKreise.png}
+  \caption{Relative XY Positionierung der Kreise.}
 \end{figure}
 
 
