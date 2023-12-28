@@ -318,7 +318,8 @@ Für die Zeichnung des Scatterplott und die Implementierung der Parallelen Koord
 Im folgendem wird die Anwendung der Visualisierungen anhand von Beispielen erläutert.
 
 \subsection{Anwendung Visualisierung Eins}
-
+ Zu Beginn wird das zu untersuchenende Attribut ausgewählt. In diesem Fall ist es die Schlaf Effizienz. Diese wurde fefiltert auf einen Datenbereich von [0.55; 0.85]
+ Hier lässt sich eine gute Annäherung an die Normalverteilung erkennen. Das REM Attribut ist auch annähernd Normalverteilt und hat nur schwache Ausreißer. Der Leichtschlaf Anteils hingegen weist eine schlängerlung auf. Dies ist relevant für die spätere Analyse des Parallelen koordinaten Systems.
 \begin{figure}[h]
   \centering
   \includegraphics[width = 0.8\textwidth]{Bsp_QQ-Plot.JPG}
@@ -327,8 +328,8 @@ Im folgendem wird die Anwendung der Visualisierungen anhand von Beispielen erlä
 
 \subsection{Anwendung Visualisierung Zwei}
 
-Im zweiten Schritt der visualisierung wurden die Attribute REM und Leichtschalf Anteil untersucht. Man kann gut erkennen, dass es eine Zusammenhang zwischen niedrigem Leichtenschlaf und hoher Schlafeffizienz gibt. Bei hohem leichtschlaf Anteil geht ein leichtes Cluster zu einer reduzierten Schlafeffizienz. 
-Der zusammenhang zwische REM und Schlafeffizienz, besteht aus parallel Absenkenden Strichen, dies deutet darauf hin, dass mit Anstieg des REM Schlafanteils die Schlaff Effizienz abnimmt.
+Im zweiten Schritt der Visualisierung wurden die Attribute REM und Leichtschalf Anteil untersucht auf Interaktion aufeinander untersucht. Man kann gut erkennen, dass es eine Zusammenhang zwischen niedrigem Leichtenschlaf und hoher Schlafeffizienz gibt. Dies ist allerdings durch die rechts Verschiebung der Daten zu erklären. Bei hohem leichtschlaf Anteil geht ein weiteres Cluster zu einer reduzierten Schlafeffizienz. 
+Der Zusammenhang zwische REM und Schlafeffizienz, besteht aus parallel Absenkenden Strichen, dies deutet darauf hin, dass es eine direkte Positive Korrelation zwischen dem REM Schlafanteils die Schlaff Effizienz gibt.
 
 \begin{figure}[h]
 
@@ -346,6 +347,8 @@ So lässt sich nur aus der Visualisierung ohne Vorwissen die Hypothese entwickel
 Die durch Visualisierung 2 entwicklete Hypothese, kann durch Visualisierung 3 unterstützt werden. 
 Die Repräsentation der Korrelierung durch die Kugeln  in größe und Farbe zeigen stützen, dass die Korrelation von REM auf die Schlaffeffizienz positiv ist und die korrelation des Leichtschlafanteils negativ. 
 Weiter kann man erkennen, dass die Standardmäßig angezeigten Verhaltensweisens Attribute mit der Schlafeffizienz korrelieren. 
+Obwohl die Cluster des REM und Leichtschlafes verschieden sind haben Sie dennoch beide einen starken Einfluss auf die Schlaffeffizienz.
+Verhaltensweisen wie Alkohol konsum und auch das Rauchen scheinen die Schlafeffizienz zu reduzieren.
 
 
 \section{Verwandte Arbeiten}
