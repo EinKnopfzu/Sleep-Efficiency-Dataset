@@ -193,7 +193,7 @@ In der Visualisierung werden drei Dimensionen abgebildet: das im QQ-Plot ausgew�
 
 Das Hauptattribut, das in Visualisierung 1 ausgewählt wurde, befindet sich in der Mitte, das Y-Attribut auf der linken und das Z-Attribut auf der rechten Seite. Es wurde bewusst darauf verzichtet, weitere Attributsdimensionen hinzuzufügen. Dies dient einerseits dazu, dass der Anwender seinen Fokus auf die Analyse des Hauptattributes legt, und andererseits könnten bei mehr als 3 Attributen suggerierte Zusammenhänge entstehen, die nicht zwangsläufig vorhanden sein müssen. Eine Clusterung zwischen Dimension 1 und 2 sowie zwischen 2 und 3 bedeutet nicht zwangsläufig eine Clusterung zwischen 1 und 3. Dies wäre der Effektivität abträglich, da so Zusammenhänge suggeriert werden könnten, die nicht beabsichtigt sind.
 
-Parallele Koordinaten eignen sich besonders gut für mehrdimensionale, quantitative und endliche Daten. Diese sind in unserem Datensatz gegeben. Die Visualisierung ermöglicht es dem Anwender, Muster und Trends in den Daten zu identifizieren, die auf Beziehungen zwischen den Attributen hinweisen. Zum Beispiel können parallele Linien auf eine starke Korrelation zwischen den entsprechenden Variablen hinweisen. Die Visualisierung ermöglicht es dem Anwender, Rückschlüsse auf den Zusammenhang von Attributen zu ziehen und diese mit Visualisierung 1 zu vergleichen. Die Untersuchung der Attribute und das Visualisieren kann mittels eines interaktiven Anpassens der Pixelgröße und RGBA-Werte erfolgen, dies ist nützlich, da viele der Inputdaten wenige unterschiedliche Wertausprägungen haben, was die Clusterung der Inputdaten erschwert. Um dennoch interessante Muster erkennen kann. So kann der Benutzer basierend auf seinen eigenen visuellen Bedürfnissen Anpassungen vornehmen. In Bild 3 wird dies vorgestellt.
+Parallele Koordinaten eignen sich besonders gut für mehrdimensionale, quantitative und endliche Daten. Diese sind in unserem Datensatz gegeben. Die Visualisierung ermöglicht es dem Anwender, Muster und Trends in den Daten zu identifizieren, die auf Beziehungen zwischen den Attributen hinweisen. Zum Beispiel können parallele Linien auf eine starke Korrelation zwischen den entsprechenden Variablen hinweisen. Die Visualisierung ermöglicht es dem Anwender, Rückschlüsse auf den Zusammenhang von Attributen zu ziehen und diese mit Visualisierung 1 zu vergleichen. Die Untersuchung der Attribute und das Visualisieren kann mittels eines interaktiven Anpassens der Pixelgröße und RGBA-Werte erfolgen, dies ist nützlich, da viele der Inputdaten wenige unterschiedliche Wertausprägungen haben, was die Clusterung der Inputdaten erschwert. Um dennoch interessante Muster erkennen kann. So kann der Benutzer basierend auf seinen eigenen visuellen Bedürfnissen Anpassungen vornehmen. In Bild 3 wird dies vorgestellt. Dazu müssen dem Anwender Konzepte wie Clusterin, Farbwahrnehmung  und Abstrahierung bekannt sein.
 
 
 
@@ -211,8 +211,7 @@ Parallele Koordinaten eignen sich besonders gut für mehrdimensionale, quantitat
   \includegraphics [width = 0.8\textwidth]{ParalleleBSPPixel.JPG}
   \caption{Visualisierung Zwei: Parallele Koordinaten:Pixel 30, RGBA (255, 255, 255, 0.006) }
 \end{figure}
-Wahrnehmungsprinzipien und Theorie über Informationsvisualisierung verweisen:
-Clusterin, Farbwahrnehmung  und Abstrahierung
+
 Alternativ hätte eine Radviz Visualisierung angewandt werden können, diese hätte allerdings den Fokus weg vom zu untersuchendem Hauptattribut gelenkt. Daher ist Sie keine alternative gewesen obwohl Sie die gleichen Daten darstellt und zu ähnlichen Mentalen modellen führt basiert.
 Die Visualisierung ist weniger effektiv, da der Anwender verschiedene Kombinationen von Attributen und Pixel ausprobieren muss um sich ein Bild zu machen. Dies ist allerdings auch der Stärke der Visualisierung, da der Anwender sich die Visualisierung so anpassen kann, dass Sie seinen Bedürfnissen entspricht. Hinsichtlich der Expressivität, kann es dazu kommen, dass der Anwender durch Farbgebungen z.b. Rote Linien. Eine nicht intendierte Interpretation erzeugt.
 
@@ -225,7 +224,7 @@ Die dritte Visualisierung lässt sich wohl den pixelorientierten Techniken zuord
   \caption{Visualisierung Drei: WeihnachtsStern: Anzahl Erwachungen }
 \end{figure}
 
-Obwohl das Erwachen in der Nacht keine Steigerung der lebensqualität ist, könnte angenommen werden, dass die geröteten Attribute grundsätzlich Negativ sind.
+Obwohl das Erwachen in der Nacht keine Steigerung der Lebensqualität ist, könnte angenommen werden, dass die geröteten Attribute grundsätzlich Negativ sind.
 
 Der Anwender kann somit mithilfe dieser Visualisierung schnell Rückschlüsse auf den Einfluss des Verhaltens auf das untersuchte Hauptattribut ziehen. Wichtig dabei ist zu verstehen, dass Korrelation nicht gleichbedeutend mit Kausalität ist.
 Alternativ hätte eine Korrelationsmatrix genutzt werden können um die Korrelation darzustellen. Dies wäre auch zu einem änhöichen Mentalem Modell geführt.
